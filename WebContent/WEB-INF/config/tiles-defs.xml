@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<!-- tiles-defs.xml -->
+<tiles-definitions>
+	<!-- project3 -->
+	<definition name="">
+	</definition>
+
+   <!-- <definition>태그 하나당 화면 한개를 정의 -->   
+   <definition name=".main" path="/0725/base.jsp">
+   
+     <!-- path속성에 정의된 base.jsp에서 include할 페이지들에 대한 정의 -->
+      <put name="header" value="/0725/header.jsp"></put>
+      <put name="menu" value="/0725/menu.jsp"></put>
+      <put name="body" value="/0725/body.jsp"></put>
+      <put name="footer" value="/0725/footer.jsp"></put>
+      
+   </definition>
+   
+   <definition name=".form" extends=".main">
+      <put name="body" value="/guest/inputForm.jsp"/>
+   </definition>
+   
+   <definition name=".login" extends=".main">
+      <put name="body" value="/0723/login_form.jsp"></put>
+   </definition>
+</tiles-definitions>
+
+
