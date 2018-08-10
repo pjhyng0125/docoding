@@ -9,19 +9,24 @@
 <title>마이 페이지 창</title>
 </head>
 <body>
+<%-- - mypage_base 완료   (o)
+	 - 각 jsp페이지 만들기	(x)
+	 - 해당 jsp 페이지 tiles-defs.xml 등록하기		(x)
+	 - struts-config.xml action 등록하기  	(x)	--%>
+
 <center>
 	<table width="100%">	<!-- 공용 top head table -->
-		<tr><td><tiles:insert attribute=""/></td></tr>
-		<tr><td><tiles:insert attribute=""/></td></tr>
-		<tr><td><tiles:insert attribute=""/></td></tr>
+		<tr><td><tiles:insert attribute="h"/></td></tr>
+		<tr><td><tiles:insert attribute="s"/></td></tr>
+		<tr><td><tiles:insert attribute="menu"/></td></tr>
 	</table>
 	<table width="100%"> <!-- body table -->
 		<tr>
-			<td width="20%"><tiles:insert attribute=""/></td>	<!-- menu bar  -->
-			<td><tiles:insert attribute=""></tiles:insert></td> <!-- main body -->
+			<td width="20%"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
+			<td><tiles:insert attribute="b"></tiles:insert></td> <!-- main body -->
 		</tr>
 		
-		<tr><td><tiles:insert attribute=""/></td></tr> <!-- 공용 footer -->
+		<tr><td><tiles:insert attribute="f"/></td></tr> <!-- 공용 footer -->
 	</table>
 </center>
 </body>

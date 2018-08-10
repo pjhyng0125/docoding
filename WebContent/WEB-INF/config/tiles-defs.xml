@@ -26,6 +26,16 @@
    <definition name=".login" extends=".main">
       <put name="body" value="/0723/login_form.jsp"></put>
    </definition>
+   
+   <!-- 이성훈 mypage tiles 설정 -->
+   <definition name=".mypage">
+   	  <put name="h" value=""/>
+   	  <put name="s" value=""/>
+   	  <put name="menu" value=""/>
+   	  <put name="b" value=""/>
+   	  <put name="f" value=""/>
+   </definition>
+   
 </tiles-definitions>
 
 
