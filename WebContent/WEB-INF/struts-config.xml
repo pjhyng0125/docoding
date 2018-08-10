@@ -92,6 +92,11 @@
         <action
             path="/Welcome"
             forward="/pages/Welcome.jsp"/>
+            
+	<!-- tiles -->
+	<action path="/tiles/main" forward=".main"></action>
+	<action path="/tiles/form" forward=".form"></action>
+	<action path="/tiles/login" forward=".login"></action>
 
     <!-- sample input and input submit actions
 
