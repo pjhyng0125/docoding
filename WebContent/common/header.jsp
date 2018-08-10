@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>freeReply</title>
+<title>header</title>
 </head>
-<%--freeReply.jsp --%>
+<%--header.jsp --%>
 <body>
 
 </body>
