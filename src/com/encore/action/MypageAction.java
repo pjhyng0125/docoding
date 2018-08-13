@@ -42,7 +42,7 @@ public class MypageAction extends Action {
 		case "m_modify_form":
 			
 			//request.setAttribute("result", dao.modify_form(id));
-			System.out.println("pass : "+request.getParameter("pwd"));
+			//System.out.println("pass : "+request.getParameter("pwd"));
 			request.setAttribute("result", true);
 			request.setAttribute("pageAction", pageAction);
 			//id="";
@@ -56,7 +56,16 @@ public class MypageAction extends Action {
 			request.setAttribute("pwd", "1234");					// 잠시동안 쓸 값
 			forward = mapping.findForward("assign");
 			break;
-		}
+		case "a_assign_seller":
+			
+			String account_num = request.getParameter("account_num");	// 계좌번호 받기
+			request.setAttribute("pageAction", pageAction);
+			request.setAttribute("result", true);
+			request.setAttribute("result", true);
+			forward = mapping.findForward("assign");
+			break;
+		
+		} // switch - case문 종료
 
 		return forward;
 	}

@@ -1,6 +1,8 @@
 package com.encore.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.encore.vo.Member;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -44,6 +46,21 @@ public class MypageDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
+	}
+	
+	public boolean assign_seller(String id, String account_num) {
+		
+		Map<String, String>map = new HashMap<>();
+		map.put("id", id);
+		map.put("account_num", account_num);
+		try {
+			smc.insert("mypage.assign_seller", map);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 }

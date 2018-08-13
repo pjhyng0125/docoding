@@ -48,6 +48,7 @@
 						if(result.trim()==="true"){
 							$('#d2').hide();
 							$('#d3').show();
+							$('[name=pwd]').val('');
 						}
 					}
 			});	// ajax
