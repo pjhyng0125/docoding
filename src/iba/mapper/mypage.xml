@@ -15,7 +15,7 @@
 	</update>
 	
 	<insert id="assign_seller" parameterClass="java.util.Map">
-		insert into sell_assign values()
+		insert into sell_assign values(#id#, #account_num#, to_char(sysdate,'yyyy-mm-dd'),true,0)
 	</insert>
 	
 </sqlMap>
