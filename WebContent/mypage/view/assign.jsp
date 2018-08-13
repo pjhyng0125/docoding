@@ -40,15 +40,22 @@
 		});	// bt_check
 		
 		$('#bt_assign').click(function(){
-			if($('#account').val().length==0){
+			if($('#account_num').val().length==0){
 				alert('계좌번호를 입력하세요');
 			}
 			else {
 			$.ajax({
 					url:'/docoding/mypageAction.do',
-					data:{"pageAction":"a_assgin_seller","id":"abcd"},
+					data:{
+							"pageAction":"a_assgin_seller",
+							"id":"abcd",
+							"account_num":$('#account_num').val()
+						 },
 					success : function(result){
-						
+						$('#d1').hide();
+						$('#d2').hide();
+						$('#d3').hide();
+						$('#d4').show();
 					}
 				
 			});	// ajax
@@ -78,7 +85,7 @@
 			<table border="1">
 				<tr>
 					<td>계좌번호 입력 :</td>
-					<td><input type="text" id="account" size="15"></td>
+					<td><input type="text" id="account_num" size="15"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><button id="bt_assign">판매자 등록하기</button></td>
@@ -86,7 +93,7 @@
 			</table>
 		</div>
 		<div id="d4" style="display: none;">
-			판매자 등록이 완료 되었습니다. <a href="">마이페이지 창으로 이동하기</a>
+			판매자 등록이 완료 되었습니다. <a href="/docoding/mypage.do">마이페이지 창으로 이동하기</a>
 		</div>
 	</center>
 </body>

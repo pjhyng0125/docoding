@@ -60,7 +60,7 @@ public class MypageAction extends Action {
 			
 			String account_num = request.getParameter("account_num");	// 계좌번호 받기
 			request.setAttribute("pageAction", pageAction);
-			request.setAttribute("result", true);
+			//request.setAttribute("result", dao.assign_seller(id, account_num));
 			request.setAttribute("result", true);
 			forward = mapping.findForward("assign");
 			break;

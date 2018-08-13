@@ -5,10 +5,10 @@
 	<c:when test="${pageAction=='a_search_pwd' }">	<%-- 비밀번호 확인 / ''을통해 string 구별 --%>
 		${pwd }
 	</c:when>
-<%--
-	<c:when test="${pageAction=='m_modify_form' }">	<%-- 수정폼 전달후 확인 
+
+	<c:when test="${pageAction=='a_assign_seller' }">	<%-- 수정폼 전달후 확인 --%>
 		${result }
 	</c:when>
 	
-	--%>
+	
 </c:choose>
