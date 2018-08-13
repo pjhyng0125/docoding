@@ -8,6 +8,6 @@
 </head>
 <%--menu.jsp --%>
 <body>
-
+menu
 </body>
 </html>

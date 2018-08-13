@@ -10,9 +10,15 @@
 </head>
 <body>
 <%-- - mypage_base 완료   (o)
-	 - 각 jsp페이지 만들기	(x)
-	 - 해당 jsp 페이지 tiles-defs.xml 등록하기		(x)
-	 - struts-config.xml action 등록하기  	(x)	--%>
+	 - 각 jsp페이지 만들기	(세모) -> 바꿀 jsp 만들어주기 
+	 - 해당 jsp 페이지 tiles-defs.xml 등록하기		(세모) -> body에 바꿀 jsp 생성시 등록해주기
+	 - struts-config.xml action 등록하기  	(x) 	--%>
+
+	<!-- 이성훈 mypage action 설정 시작-->
+	<!-- tiles -->
+	<!-- action class -->
+	<!-- 이성훈 mypage action 설정 종료-->
+
 
 <center>
 	<table width="100%">	<!-- 공용 top head table -->

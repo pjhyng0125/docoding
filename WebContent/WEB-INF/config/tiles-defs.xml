@@ -26,14 +26,21 @@
       <put name="body" value="/0723/login_form.jsp"></put>
    </definition>
    
-   <!-- 이성훈 mypage tiles 설정 -->
-   <definition name=".mypage">
-   	  <put name="h" value=""/>
-   	  <put name="s" value=""/>
-   	  <put name="menu" value=""/>
-   	  <put name="b" value=""/>
-   	  <put name="f" value=""/>
+  <!-- 이성훈 mypage tiles 설정 시작  -->
+   <definition name=".mypage" path="/mypage/view/mypage_base.jsp">
+   	  <put name="h" value="/common/header.jsp"/>
+   	  <put name="s" value="/common/search.jsp"/>
+   	  <put name="menu" value="/common/menu.jsp"/>
+   	  <put name="sidemenu" value="/mypage/result/sidemenu.jsp"/>
+   	  <put name="b" value="/mypage/result/basic.jsp"/>
+   	  <put name="f" value="/common/footer.jsp"/>
    </definition>
+   
+   <definition name=".modify" extends=".mypage">
+   	  <put name="b" value="/mypage/result/modify.jsp"></put>
+   </definition>
+   
+   <!-- 이성훈 mypage tiles 설정 종료  -->
    
 </tiles-definitions>
 
