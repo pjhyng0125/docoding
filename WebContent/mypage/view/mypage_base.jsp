@@ -12,12 +12,11 @@
 <%-- - mypage_base 완료   (o)
 	 - 각 jsp페이지 만들기	(세모) -> 바꿀 jsp 만들어주기 
 	 - 해당 jsp 페이지 tiles-defs.xml 등록하기		(세모) -> body에 바꿀 jsp 생성시 등록해주기
-	 - struts-config.xml action 등록하기  	(x) 	--%>
-
-	<!-- 이성훈 mypage action 설정 시작-->
-	<!-- tiles -->
-	<!-- action class -->
-	<!-- 이성훈 mypage action 설정 종료-->
+	 - struts-config.xml action 등록하기  	(x) 	
+	 
+	 연결주소 : localhost/docoding/mypage.do
+	 
+	 --%>
 
 
 <center>
@@ -28,11 +27,11 @@
 	</table>
 	<table width="100%"> <!-- body table -->
 		<tr>
-			<td width="20%"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
+			<td width="15%"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
 			<td><tiles:insert attribute="b"></tiles:insert></td> <!-- main body -->
 		</tr>
 		
-		<tr><td><tiles:insert attribute="f"/></td></tr> <!-- 공용 footer -->
+		<tr><td colspan="2"><tiles:insert attribute="f"/></td></tr> <!-- 공용 footer -->
 	</table>
 </center>
 </body>

@@ -98,6 +98,24 @@
 	<action path="/common/form" forward=".form"></action>
 	<action path="/common/login" forward=".login"></action>
 
+
+	<!-- 이성훈 mypage action 설정 시작  -->
+	
+	<!-- tiles -->
+	<action path="/mypage" forward=".mypage"/>
+	<action path="/mypage/modify" forward=".modify"/>
+	
+	<!-- action class -->
+	<action path="/mypageAction"
+			type="com.encore.action.MypageAction">
+		<forward name="modify"
+				 path="/mypage/result/modify.jsp"/>
+	
+	</action>
+	<!-- 이성훈 mypage action 설정 종료  -->
+	
+	
+	
     <!-- sample input and input submit actions
 
         <action
