@@ -113,12 +113,11 @@
 			type="com.encore.action.MypageAction">
 		<forward name="modify"
 				 path="/mypage/result/modify_result.jsp"/>
-		<forward name="assign"
-				 path="/mypage/result/assign_result.jsp"/>
+		<forward name="message"
+				 path="/mypage/result/message.jsp"/>
 		<forward name="addcash"
 				 path="/mypage/result/addcash_result.jsp"/>
-		<forward name="drop"
-				 path="/mypage/result/drop_result.jsp"/>		 		 
+		 		 
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->
 	

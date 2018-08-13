@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/docoding/js/jquery3.3.1.js"></script>
+<script type="text/javascript" src="/docoding/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인

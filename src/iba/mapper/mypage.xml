@@ -18,4 +18,7 @@
 		insert into sell_assign values(#id#, #account_num#, to_char(sysdate,'yyyy-mm-dd'),true,0)
 	</insert>
 	
+	<delete id="drop_member" parameterClass="java.util.Map">
+		delete from member where id=#id#, name=#name#, pass=#pass#
+	</delete>
 </sqlMap>

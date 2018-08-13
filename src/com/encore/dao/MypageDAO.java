@@ -63,4 +63,19 @@ public class MypageDAO {
 		
 		return false;
 	}
+	
+	public boolean drop_member(String id, String name,String pass) {
+		Map<String, String>map = new HashMap<>();
+		map.put("id", id);
+		map.put("name", name);
+		map.put("pass", pass);
+		
+		try {
+			int t = smc.delete("mypage.drop_member", map);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

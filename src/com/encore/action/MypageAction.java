@@ -53,16 +53,32 @@ public class MypageAction extends Action {
 			
 			// request.setAttribute("pwd", dao.search_pwd(id));
 			request.setAttribute("pageAction", pageAction);
-			request.setAttribute("pwd", "1234");					// 잠시동안 쓸 값
-			forward = mapping.findForward("assign");
+			request.setAttribute("msg", "1234");					// 잠시동안 쓸 값
+			forward = mapping.findForward("message");
 			break;
 		case "a_assign_seller":
 			
 			String account_num = request.getParameter("account_num");	// 계좌번호 받기
 			request.setAttribute("pageAction", pageAction);
 			//request.setAttribute("result", dao.assign_seller(id, account_num));
-			request.setAttribute("result", true);
-			forward = mapping.findForward("assign");
+			request.setAttribute("msg", true);
+			forward = mapping.findForward("message");
+			break;
+			
+		case "d_drop_member":
+			id="abcd";
+			String id_d = request.getParameter("id_d");
+			String name = request.getParameter("name");
+			String pass = request.getParameter("pass");
+			if(id.equals(id_d)) {
+				//request.setAttribute("msg", dao.drop_member(id_d, name, pass));
+				request.setAttribute("msg", true);
+			}else {
+				System.out.println("삭제 id와 로그인 상태 id 불일치");
+				request.setAttribute("msg", "fail");
+			}
+			
+			forward = mapping.findForward("message");
 			break;
 		
 		} // switch - case문 종료
