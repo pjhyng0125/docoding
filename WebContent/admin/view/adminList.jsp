@@ -6,7 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+
+</script>
+<%--adminList: 관리자 창에서 선택 리스트를 출력하는 페이지 --%>
 <body>
+<center>
 adminList.jsp
+<table width="100%">
+	<tr>
+		<th>아이디</th><th>이름</th><th>성별</th><th>생년월일</th><th>이메일</th><th>폰</th><th>로그인 상태</th><th>판매자 인증</th>
+	</tr>
+</table>
+</center>
 </body>
 </html>
