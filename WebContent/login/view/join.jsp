@@ -6,7 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<%-- join.jsp --%>
 <body>
-
+	<center>
+	<table width="300" border="0" cellpadding="5">
+	
+	
+	
+	</table>
+	</center>
 </body>
 </html>
