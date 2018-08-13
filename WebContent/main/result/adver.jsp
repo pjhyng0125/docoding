@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<%-- login.jsp --%>
+<%-- adver.jsp --%>
 <body>
-
+<font color="blue" size="10">광고!</font>
 </body>
 </html>
