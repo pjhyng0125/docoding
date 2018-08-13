@@ -2,7 +2,16 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="mypage">
 	<select id="select_pwd" parameterClass="String" resultClass="String">
-		select pass from member where id=#id#;
+		select pass from member where id=#id#
 	</select>
 
+	<select id="modify_form" parameterClass="String" resultClass="com.encore.vo.Member">
+		select id, pass, name, birth, email, phone  from member where id=#id#
+	</select>
+	
+	<update id="modify" parameterClass="com.encore.vo.Member">
+		update member set pass=#pass#, name=#name#, email=#email#, phone=#phone# 
+		where id=#id# 
+	</update>
+	
 </sqlMap>
