@@ -27,6 +27,7 @@
    </definition>
    
   <!-- 이성훈 mypage tiles 설정 시작  -->
+  
    <definition name=".mypage" path="/mypage/view/mypage_base.jsp">
    	  <put name="h" value="/common/header.jsp"/>
    	  <put name="s" value="/common/search.jsp"/>
@@ -35,9 +36,20 @@
    	  <put name="b" value="/mypage/result/basic.jsp"/>
    	  <put name="f" value="/common/footer.jsp"/>
    </definition>
-   
+    
    <definition name=".modify" extends=".mypage">
-   	  <put name="b" value="/mypage/result/modify.jsp"></put>
+   	  <put name="b" value="/mypage/view/modify.jsp"></put>
+   </definition>
+   
+   <definition name=".cash" extends=".mypage">
+      <put name="b" value="/mypage/result/addcash.jsp"></put>
+   </definition>
+   
+   <definition name=".assign" extends=".mypage">
+   	  <put name="b" value="/mypage/result/assign.jsp"/>
+   </definition>
+   <definition name=".drop" extends=".mypage">
+   	  <put name="b" value="/mypage/result/drop.jsp"/>
    </definition>
    
    <!-- 이성훈 mypage tiles 설정 종료  -->

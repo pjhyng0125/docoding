@@ -104,12 +104,15 @@
 	<!-- tiles -->
 	<action path="/mypage" forward=".mypage"/>
 	<action path="/mypage/modify" forward=".modify"/>
+	<action path="/mypage/cash" forward=".cash"/>
+	<action path="/mypage/assign" forward=".assign"/>
+	<action path="/mypage/drop" forward=".drop"/>
 	
 	<!-- action class -->
 	<action path="/mypageAction"
 			type="com.encore.action.MypageAction">
 		<forward name="modify"
-				 path="/mypage/result/modify.jsp"/>
+				 path="/mypage/result/modify_result.jsp"/>
 	
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->

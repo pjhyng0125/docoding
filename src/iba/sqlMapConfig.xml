@@ -26,11 +26,10 @@
     </dataSource>
   </transactionManager>  
 
-  <!-- ★ sql문들이 저장되어 있는 XML을 등록 ★-->
-  <sqlMap resource="./iba/mapper/guest.xml" />
-  <sqlMap resource="./iba/mapper/emp.xml" />
+  <!-- ★ sql문들이 저장되어 있는 XML을 등록 ★-->	<!-- guest, emp, reply.xml 없으므로 지움 0813 이성훈 -->
+
   <sqlMap resource="./iba/mapper/addr.xml" />
-  <sqlMap resource="./iba/mapper/reply.xml" />
+  <sqlMap resource="./iba/mapper/mypage.xml"/>
   
 </sqlMapConfig>
 

@@ -10,8 +10,10 @@
 	$(function(){
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인
 			$.ajax({
-					url:'',		// action class와 연결
+					url:'/docoding/mypageAction.do',		// action class와 연결
+					data : {"pageAction":"m_search_pwd","id":"abcd"},
 					success :function(pwd){
+						alert(pwd);
 						if(pwd===$('[name=pwd]').val()){
 							$('#d1').hide();
 							$('#d2').show();
@@ -48,7 +50,7 @@
 <center>
 <div id="d1" style="display: ">
 비밀번호 확인 : <input type="password" name="pwd" size="10">
-			<input type="button" name="pw_check_bt"><br>
+			<input type="button" name="pw_check_bt" value="확인"><br>
 - 개인정보 확인을 위한 비밀번호 요청 -			
 </div>	
 <div id="d2" style="display: none;">

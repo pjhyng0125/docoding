@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
             <a href="" class="navbar-brand">
-                <img src="../img/play_data_white.png" alt="playdata">
+                <img src="/docoding/img/play_data_white.png" alt="playdata">
             </a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
                 <span class="navbar-toggler-icon"/>
