@@ -26,6 +26,37 @@
       <put name="body" value="/0723/login_form.jsp"></put>
    </definition>
    
+  <!-- 박진형 admin tiles 설정 시작  -->
+  
+  <definition name=".input" path="/common/base.jsp">
+	<put name="header" value="/common/header.jsp"></put>
+	<put name="menu" value="/common/menu.jsp"></put>
+	<put name="body" value="/admin/view/inputSell.jsp"></put>
+	<put name="footer" value="/common/footer.jsp"></put>
+</definition>
+
+<definition name=".admin" extends=".input">
+	<put name="body" value="/admin/view/adminList.jsp"/>
+	<put name="menu" value="/admin/view/admin_menu.jsp"/>
+</definition>
+
+<definition name=".sell" extends=".input">
+	<put name="body" value="/admin/view/sellData.jsp"/>
+	<put name="menu" value="/admin/view/admin_menu.jsp"/>
+</definition>
+
+<definition name=".free" extends=".input">
+	<put name="body" value="/admin/view/freeData.jsp"/>
+	<put name="menu" value="/admin/view/admin_menu.jsp"/>
+</definition>
+
+<definition name=".autho" extends=".input">
+	<put name="body" value="/admin/view/authoData.jsp"/>
+	<put name="menu" value="/admin/view/admin_menu.jsp"/>
+</definition>
+  
+  <!-- 박진형 admin tiles 설정 종료  -->
+
   <!-- 이성훈 mypage tiles 설정 시작  -->
   
    <definition name=".mypage" path="/mypage/view/mypage_base.jsp">

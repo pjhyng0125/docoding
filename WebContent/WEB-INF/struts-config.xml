@@ -99,6 +99,25 @@
 	<action path="/common/login" forward=".login"></action>
 
 
+	<!-- 박진형 admin action 설정 시작  -->
+	
+<action path="/common/form" forward=".form"></action>
+<action path="/common/login" forward=".login"></action>
+
+<action path="/view/input" forward=".input"></action>
+<action path="/view/admin" forward=".admin"></action>
+<action path="/view/sell" forward=".sell"></action>
+<action path="/view/free" forward=".free"></action>
+<action path="/view/autho" forward=".autho"></action>
+
+<action path="/action/admin"
+		type="com.encore.docoding.action.AdminAction">
+		<forward name="sell" path="/admin/result/sellResult.jsp"></forward>
+</action>
+
+	<!-- 박진형 admin action 설정  종료  -->
+
+
 	<!-- 이성훈 mypage action 설정 시작  -->
 	
 	<!-- tiles -->

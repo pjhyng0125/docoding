@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<center>
 freeData.jsp
+<table width="100%">
+	<tr>
+		<th>게시물 번호</th><th>카테고리</th><th>제목</th><th>게시자 id</th><th>내용</th><th>작성 시간</th><th>조회수</th>
+	</tr>
+</table>
+</center>
 </body>
 </html>
