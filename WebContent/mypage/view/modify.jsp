@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/docoding/js/jquery3.3.1.js"></script>
+<script type="text/javascript" src="/docoding/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인
@@ -23,6 +23,8 @@
 							$('#modify_birth').val(result.birth);
 							$('#modify_email').val(result.email);
 							$('#modify_phone').val(result.phone);
+						}else{
+							alert('비밀번호를 확인해 주세요!');
 						}
 					},
 					dataType : 'json'
@@ -68,13 +70,15 @@
 - 개인정보 확인을 위한 비밀번호 요청 -			
 </div>	
 <div id="d2" style="display: none;">
-아이디    :<input type="text" id="modify_id" disabled="disabled"><br>
-비밀번호 :<input type="password" id="modify_pwd"><br>
-비밀번호 확인:<input type="password" id="modify_pwd2"><br>
-이름 : <input type="text" id="modify_name"><br>
-생년월일 :<input type="text" id="modify_birth" disabled="disabled"><br>
-이메일    : <input type="text" id= "modify_email"><br>
-연락처    : <input type="text" id="modify_phone"><br>
+<table>
+<tr><td>아이디    :</td><td><input type="text" id="modify_id" disabled="disabled"></td></tr>
+<tr><td>비밀번호 :</td><td><input type="password" id="modify_pwd"></td></tr>
+<tr><td>비밀번호 확인:</td><td><input type="password" id="modify_pwd2"></td></tr>
+<tr><td>이름 :</td> <td><input type="text" id="modify_name"></td></tr>
+<tr><td>생년월일 :</td><td><input type="text" id="modify_birth" disabled="disabled"></td></tr>
+<tr><td>이메일    :</td> <td><input type="text" id= "modify_email"></td></tr>
+<tr><td>연락처    :</td> <td><input type="text" id="modify_phone"></td></tr>
+</table>
 <button id="modify_bt">회원정보 수정하기</button>
 </div>
 <div id="d3" style="display: none">
