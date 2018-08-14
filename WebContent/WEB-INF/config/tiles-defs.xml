@@ -60,27 +60,27 @@
   <!-- 이성훈 mypage tiles 설정 시작  -->
   
    <definition name=".mypage" path="/mypage/view/mypage_base.jsp">
-   	  <put name="h" value="/common/header.jsp"/>
-   	  <put name="s" value="/common/search.jsp"/>
+   	  <put name="header" value="/common/header.jsp"/>
+   	  <put name="search" value="/common/search.jsp"/>
    	  <put name="menu" value="/common/menu.jsp"/>
    	  <put name="sidemenu" value="/mypage/result/sidemenu.jsp"/>
-   	  <put name="b" value="/mypage/view/basic.jsp"/>
-   	  <put name="f" value="/common/footer.jsp"/>
+   	  <put name="body" value="/mypage/view/basic.jsp"/>
+   	  <put name="footer" value="/common/footer.jsp"/>
    </definition>
     
    <definition name=".modify" extends=".mypage">
-   	  <put name="b" value="/mypage/view/modify.jsp"></put>
+   	  <put name="body" value="/mypage/view/modify.jsp"></put>
    </definition>
    
    <definition name=".cash" extends=".mypage">
-      <put name="b" value="/mypage/view/addcash.jsp"></put>
+      <put name="body" value="/mypage/view/addcash.jsp"></put>
    </definition>
    
    <definition name=".assign" extends=".mypage">
-   	  <put name="b" value="/mypage/view/assign.jsp"/>
+   	  <put name="body" value="/mypage/view/assign.jsp"/>
    </definition>
    <definition name=".drop" extends=".mypage">
-   	  <put name="b" value="/mypage/view/drop.jsp"/>
+   	  <put name="body" value="/mypage/view/drop.jsp"/>
    </definition>
    
    <!-- 이성훈 mypage tiles 설정 종료  -->

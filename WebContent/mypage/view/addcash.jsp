@@ -8,7 +8,8 @@
 </head>
 <%-- 캐쉬 충전창 --%>
 <body>
-cash charge page
-
+	<form>
+		cash charge page
+	</form>
 </body>
 </html>
