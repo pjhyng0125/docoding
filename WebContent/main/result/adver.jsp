@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<%-- adver.jsp --%>
-<body>
-<font color="blue" size="10">광고!</font>
-</body>
-</html>
+
+    <div class='animation_canvas' align="right">
+        <div class='slider_panel'>
+            <a href="http://playdata.io/academy/" target="_blank"><img class='slider_image' src='/docoding/image/play_iot.png'/></a>
+            <a href="http://playdata.io/academy/" target="_blank"><img class='slider_image' src='/docoding/image/big_data.png'/></a>
+            <a href="http://www.yanadoo.co.kr/" target="_blank"><img class='slider_image' src='/docoding/image/yanado.png'/></a>
+            <a href="http://yanolja.in/ko/" target="_blank"><img class='slider_image' src='/docoding/image/yanolja.png'/></a>
+        </div>
+        <div class='control_panel'>
+            <div class='control_button'></div>
+            <div class='control_button'></div>
+            <div class='control_button'></div>
+            <div class='control_button'></div>
+        </div>
+    </div>   

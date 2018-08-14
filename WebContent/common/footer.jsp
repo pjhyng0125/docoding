@@ -24,7 +24,5 @@
 			<div class="zilla-social size-16px"></div>
 		</div>
 	</div>
-	</div>
-	</div>
 </body>
 </html>

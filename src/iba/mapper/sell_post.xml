@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="sp">
+<typeAlias alias="sellpost" type="com.encore.vo.Sell_post"/>
+	<insert id="insert_sellpost" parameterClass="sellpost">
+		insert into sell_post (sp_no,sp_category,sp_title,sp_content,id,sp_time,sp_filename) 
+		values (sellpost_seq.nextVal,#sp_category#,#sp_title#,#sp_content#,#id#,sysdate,#sp_filename#)
+	</insert>
+	
+	<select id="select_sellpost" resultClass="sellpost">
+		select sp_no,sp_category,sp_title,sp_content,id,sp_time,sp_filename,sp_count from sell_post
+	</select>
+</sqlMap>

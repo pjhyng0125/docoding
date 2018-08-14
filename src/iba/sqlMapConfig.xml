@@ -30,6 +30,7 @@
 
   <sqlMap resource="./iba/mapper/addr.xml" />
   <sqlMap resource="./iba/mapper/mypage.xml"/>
+  <sqlMap resource="./iba/mapper/sell_post.xml"/>
   
 </sqlMapConfig>
 

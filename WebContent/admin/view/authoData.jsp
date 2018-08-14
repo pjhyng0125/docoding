@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-sellData.jsp
+<center>
+authoData.jsp
+<table width="100%">
+	<tr>
+		<th>아이디</th><th>계좌번호</th><th>인증 날짜</th><th>판매 게시물 개수</th>
+	</tr>
+</table>
+</center>
 </body>
 </html>

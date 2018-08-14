@@ -21,17 +21,17 @@
 
 <center>
 	<table width="100%">	<!-- 공용 top head table -->
-		<tr><td><tiles:insert attribute="h"/></td></tr>
-		<tr><td><tiles:insert attribute="s"/></td></tr>
+		<tr><td><tiles:insert attribute="header"/></td></tr>
+		<tr><td><tiles:insert attribute="search"/></td></tr>
 		<tr><td><tiles:insert attribute="menu"/></td></tr>
 	</table>
 	<table width="100%"> <!-- body table -->
 		<tr>
 			<td width="15%"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
-			<td><tiles:insert attribute="b"></tiles:insert></td> <!-- main body -->
+			<td><tiles:insert attribute="body"></tiles:insert></td> <!-- main body -->
 		</tr>
 		
-		<tr><td colspan="2"><tiles:insert attribute="f"/></td></tr> <!-- 공용 footer -->
+		<tr><td colspan="2"><tiles:insert attribute="footer"/></td></tr> <!-- 공용 footer -->
 	</table>
 </center>
 </body>

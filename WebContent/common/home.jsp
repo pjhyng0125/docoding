@@ -14,11 +14,8 @@
 <body>
 <table width="100%">	
 <tr><td><tiles:insert attribute="header"/></td></tr>
-<tr><td><div>여기는 디브</div></td></tr>
-<tr><td><tiles:insert attribute="menu"/></td></tr>
-<tr><td><tiles:insert attribute="body"/></td></tr>
+<tr><td><div><tiles:insert attribute="home"/></div></td></tr>
 <tr><td><tiles:insert attribute="footer"/></td></tr>
 </table>
-
 </body>
 </html>
