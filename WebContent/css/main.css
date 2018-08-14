@@ -1,0 +1,108 @@
+@charset "EUC-KR";
+
+/* main.css  */
+/* ----------------------------- main 시작 -----------------------------  */
+#tr1 {
+	height: 300px;
+}
+
+#tr3 {
+	height: 400px;
+}
+/* -----------------------------  main 끝  ----------------------------- */
+
+/* -----------------------------  searchBar 시작 -----------------------------  */
+body {
+	font-family: Arial;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+form.example input[type=text] {
+	padding: 10px;
+	font-size: 17px;
+	border: 1px solid grey;
+	float: left;
+	width: 80%;
+	background: #f1f1f1;
+}
+
+form.example button {
+	float: left;
+	width: 20%;
+	padding: 10px;
+	background: #2196F3;
+	color: white;
+	font-size: 17px;
+	border: 1px solid grey;
+	border-left: none;
+	cursor: pointer;
+}
+
+form.example button:hover {
+	background: #0b7dda;
+}
+
+form.example::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.img .example {
+	position: absolute;
+	top: 200px;
+	/* in conjunction with left property, decides the text position */
+	left: 570px;
+	width: 300px;
+}
+/*  ----------------------------- searchBar 끝  ----------------------------- */
+
+/* -----------------------------  adver 시작  ----------------------------- */
+.animation_canvas {
+	overflow: hidden;
+	position: relative;
+	width: 250px;
+	height: 200px;
+}
+
+.slider_panel {
+	width: 3000px;
+	position: relative;
+}
+
+.slider_image {
+	float: left;
+	width: 250px;
+	height: 200px;
+}
+
+.control_panel {
+	position: absolute;
+	top: 183px;
+	left: 100px;
+	height: 13px;
+	overflow: hidden;
+}
+
+.control_button {
+	width: 12px;
+	height: 46px;
+	position: relative;
+	float: left;
+	cursor: pointer;
+	background:
+		url('http://www.whisperorphans.org/About/how-whisper-began-images/how-whisper-began-images/res/bullet3.png');
+}
+
+.control_button:hover {
+	top: -15px;
+}
+
+.control_button.active {
+	top: -30px;
+}
+
+/*  ----------------------------- adver 끝  ----------------------------- */
