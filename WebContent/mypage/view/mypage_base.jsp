@@ -25,9 +25,9 @@
 		<tr><td><tiles:insert attribute="search"/></td></tr>
 		<tr><td><tiles:insert attribute="menu"/></td></tr>
 	</table>
-	<table width="100%"> <!-- body table -->
+	<table style="margin-left:10px;margin-right:10px "> <!-- body table -->
 		<tr>
-			<td width="15%"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
+			<td width="10%" align="left"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
 			<td><tiles:insert attribute="body"></tiles:insert></td> <!-- main body -->
 		</tr>
 		

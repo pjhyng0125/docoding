@@ -19,8 +19,10 @@
 </head>
 <body>
 <center>
-<div id="d1">보유 캐쉬 : </div>
-<div id="d2">판매자 등록 여부 : </div>
+<font size="6">
+<span id="d1">보유 캐쉬 : </span> <span id="d2">판매자 등록 여부 : </span>
+<hr>
+</font>
 </center>
 </body>
 </html>

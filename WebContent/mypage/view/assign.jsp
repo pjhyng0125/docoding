@@ -70,15 +70,18 @@
 	<input type="hidden" id="get_id">
 
 	<center>
+		<h4>판매자 등록</h4>
+		<hr><br>
 		<div id="d1" style="display:">
-			비밀번호 확인 : <input type="password" name="pwd" size="10"> <input
-				type="button" name="pw_check_bt" value="확인"><br> - 개인정보
-			확인을 위한 비밀번호 요청 -
+			비밀번호 확인 : <input type="password" name="pwd" size="10" autofocus> <input
+				type="button" name="pw_check_bt" value="확인"><br>
+				 - 개인정보 확인을 위한 비밀번호 요청 -
 		</div>
 		<div id="d2" style="display: none;">
-			<input type="radio" name="radio" value="agree" checked>위 약관에
-			동의합니다.<br> <input type="radio" name="radio" value="dis">위
-			약관에 동의하지 않습니다.<br>
+			<input type="radio" name="radio" value="agree" id="agree" checked>
+			<label for="agree">위 약관에 동의합니다.</label><br> 
+			<input type="radio" name="radio" value="dis" id="dis">
+			<label for="dis">위 약관에 동의하지 않습니다.</label><br>
 			<button id="bt_check">확인</button>
 		</div>
 		<div id="d3" style="display: none;">

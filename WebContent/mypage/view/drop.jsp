@@ -39,9 +39,12 @@
 <!-- 회원탈퇴 -->
 <body>
 <center>
+<h4>회원 탈퇴</h4>
+<hr>
+<br>
 <div id="d1" style="display: ">
 <table border="0" cellpadding="5">
-<tr align="center"><td>아이디</td><td><input type="text" id="input_id"></td></tr>
+<tr align="center"><td>아이디</td><td><input type="text" id="input_id" autofocus></td></tr>
 <tr align="center"><td>비밀번호</td><td><input type="password" id="input_pwd"> </td></tr>
 <tr align="center"><td>이름</td><td><input type="text" id="input_name"></td></tr>
 <tr align="center"><td colspan="2"><button id="bt_check">입력</button></td></tr>

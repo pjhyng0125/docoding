@@ -12,18 +12,18 @@
 </head>
 <%--header.jsp --%>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
-            <a href="" class="navbar-brand">
-                <img src="/docoding/img/play_data_white.png" alt="playdata">
-            </a>
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark" id="nav">
+          
             <button class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
                 <span class="navbar-toggler-icon"/>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="myNavbar">
+            <div class="collapse navbar-collapse justify-content-center" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/docoding/mypage.do">마이페이지</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">고객센터</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="/docoding/mypage.do">내 정보</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/docoding/mypage/buylist.do">구매목록</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">판매목록</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">히스토리</a></li>
                 </ul>
             </div>
         </nav>

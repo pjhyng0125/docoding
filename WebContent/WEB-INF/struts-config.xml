@@ -126,6 +126,7 @@
 	<action path="/mypage/cash" forward=".cash"/>
 	<action path="/mypage/assign" forward=".assign"/>
 	<action path="/mypage/drop" forward=".drop"/>
+	<action path="/mypage/buylist" forward=".buylist"/>
 	
 	<!-- action class -->
 	<action path="/mypageAction"
