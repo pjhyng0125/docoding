@@ -53,7 +53,9 @@
 		}
 		
 		if (!form.captcha.value){
-			alert("화면에 보이는 보안코드를 입력해주세요")}
+			alert("화면에 보이는 보안코드를 입력해주세요");
+			return false;
+			}
 		}
 		
 
@@ -66,7 +68,7 @@
 	function openIdChk() {
 
 		window.name = "parentForm";
-		window.open("member/IdCheckForm.jsp", "chkForm",
+		window.open("/docoding/login/view/idCheck.jsp", "chkForm",
 				"width=500, height=300, resizable = no, scrollbars = no");
 	}
 
