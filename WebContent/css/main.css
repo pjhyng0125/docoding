@@ -61,48 +61,6 @@ form.example::after {
 /*  ----------------------------- searchBar 끝  ----------------------------- */
 
 /* -----------------------------  adver 시작  ----------------------------- */
-.animation_canvas {
-	overflow: hidden;
-	position: relative;
-	width: 250px;
-	height: 200px;
-}
 
-.slider_panel {
-	width: 3000px;
-	position: relative;
-}
-
-.slider_image {
-	float: left;
-	width: 250px;
-	height: 200px;
-}
-
-.control_panel {
-	position: absolute;
-	top: 183px;
-	left: 100px;
-	height: 13px;
-	overflow: hidden;
-}
-
-.control_button {
-	width: 12px;
-	height: 46px;
-	position: relative;
-	float: left;
-	cursor: pointer;
-	background:
-		url('http://www.whisperorphans.org/About/how-whisper-began-images/how-whisper-began-images/res/bullet3.png');
-}
-
-.control_button:hover {
-	top: -15px;
-}
-
-.control_button.active {
-	top: -30px;
-}
 
 /*  ----------------------------- adver 끝  ----------------------------- */
