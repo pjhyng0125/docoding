@@ -11,8 +11,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.encore.dao.AuthoDAO;
+import com.encore.dao.Free_postDAO;
 import com.encore.dao.MemberDAO;
 import com.encore.dao.Sell_postDAO;
+import com.encore.vo.Free_post;
 import com.encore.vo.Member_admin;
 import com.encore.vo.Sell_assign;
 import com.encore.vo.Sell_post;
@@ -29,6 +31,7 @@ public class AdminAction extends Action {
 		Sell_postDAO sp_dao=new Sell_postDAO();
 		MemberDAO m_dao=new MemberDAO();
 		AuthoDAO au_dao=new AuthoDAO();
+		Free_postDAO fp_dao=new Free_postDAO();
 		MultipartRequest mreq=null;
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -64,6 +67,27 @@ public class AdminAction extends Action {
 			ArrayList<Sell_post> list=(ArrayList<Sell_post>)sp_dao.select_sellpost();
 			request.setAttribute("list", list);
 			forward=mapping.findForward("sell");
+			break;
+		}
+		case "insert_freepost":{
+			System.out.println("in insert freepost");
+			Free_post fp=new Free_post();
+			fp.setId(request.getParameter("id"));
+			fp.setFp_category(request.getParameter("category"));
+			fp.setFp_content(request.getParameter("content"));
+			fp.setFp_title(request.getParameter("title"));
+			if(fp_dao.insert_freepost(fp)) {
+				response.getWriter().print("success!!!");
+			}else {
+				response.getWriter().print("failed...OTL");				
+			}
+			forward=null;
+			break;
+		}
+		case "select_freepost":{
+			ArrayList<Free_post> list=(ArrayList<Free_post>)fp_dao.select_freepost();
+			request.setAttribute("list", list);
+			forward=mapping.findForward("free");
 			break;
 		}
 		case "select_admin":{

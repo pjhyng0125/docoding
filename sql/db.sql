@@ -44,7 +44,7 @@ CREATE TABLE free_post (
 	fp_content VARCHAR2(500) NOT NULL, /* 내용 */
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
 	fp_time DATE, /* 작성시간 */
-	fp_count NUMBER /* 조회수 */
+	fp_count NUMBER default 0 /* 조회수 */
 );
 
 CREATE UNIQUE INDEX PK_free_post

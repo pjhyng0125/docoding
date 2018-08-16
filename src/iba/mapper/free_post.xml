@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="fp">
-
+	<typeAlias alias="freepost" type="com.encore.vo.Free_post"/>
+	<insert id="insert_freepost" parameterClass="freepost">
+		insert into free_post (fp_no,fp_category,fp_title,fp_content,id,fp_time) 
+		values (freepost_seq.nextVal,#fp_category#,#fp_title#,#fp_content#,#id#,sysdate)
+	</insert>
+	
+	<select id="select_freepost" resultClass="freepost">
+		select fp_no,fp_category,fp_title,fp_content,id,fp_time,fp_count from free_post
+	</select>
 </sqlMap>
