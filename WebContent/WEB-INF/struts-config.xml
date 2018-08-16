@@ -138,6 +138,8 @@
 				 path="/mypage/result/message.jsp"/>
 		<forward name="addcash"
 				 path="/mypage/result/addcash_result.jsp"/>
+		<forward name="buylist"
+				 path="/mypage/result/buylist_result.jsp"/> 
 		 		 
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->

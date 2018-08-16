@@ -11,7 +11,6 @@
 		
 		var pageAction;
 		$('#sel_buylist').click(function(){
-			//alert('buylist')
 			pageAction = "sel_buylist";
 			$('#basic').hide();
 			$('#list').show();
@@ -19,16 +18,17 @@
 			$.ajax({
 					url:'/docoding/mypageAction.do',
 					data:{"pageAction":pageAction,"id":$('#id_get').val()},
-					success:function(){
-						
+					success:function(result){
+						$('#add_list').html(result);		
 					},
-					dataType:'json'
+					error:function(xhr){
+						alert(xhr.status+":"+xhr.statusText);
+					}
 			});
 			
 		});	// buylist
 		
 		$('#sel_bookmark').click(function(){
-			//alert('bookmark')
 			pageAction = "sel_bookmark";
 			$('#basic').hide();
 			$('#list').show();
@@ -36,10 +36,10 @@
 			$.ajax({
 				url:'/docoding/mypageAction.do',
 				data:{"pageAction":pageAction,"id":$('#id_get').val()},
-				success:function(){
+				success:function(result){
 					
-				},
-				dataType:'json'
+					$('#add_list').html(result);
+				}
 			});
 		});	// bookmark
 		
@@ -48,6 +48,7 @@
 </head>
 <body>
 <input type="hidden" id="get_id">
+<input type="hidden" id="login_flag">
 <center>
 <div>
 <h4>구매자료 및 즐겨찾기 현황</h4>
@@ -64,16 +65,10 @@
 <br>
 <font size="5"><div id="title"></div></font>
 <hr width="80%">
-<table width="80%" align="center" border="1">
-	<thead align="center">
-		<tr><th>일자</th><th>제목 및 내용</th><th width="17%">작성자</th><th width="10%">조회수</th></tr>
-	</thead>
-	<tbody width="80%" align="center">
-		<tr><td>a</td><td>b</td><td>c</td><td>d</td></tr>
-	</tbody>
-</table>
+<div id="add_list">
+
 </div>
-	
+</div>	
 </center>
 </body>
 </html>

@@ -68,7 +68,7 @@
 <%-- 판매자 등록 창 --%>
 <body>
 	<input type="hidden" id="get_id">
-
+	<input type="hidden" id="login_flag">
 	<center>
 		<h4>판매자 등록</h4>
 		<hr><br>

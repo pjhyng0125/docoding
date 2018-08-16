@@ -21,4 +21,10 @@
 	<delete id="drop_member" parameterClass="java.util.Map">
 		delete from member where id=#id#, name=#name#, pass=#pass#
 	</delete>
+	
+	<select id="select_list" parameterClass="String" resultClass="HashMap">
+		select bp_time, sp_category, sp_title, sp_id, sp_count 
+		from sell_post sp, buy_post bp 
+		where sp.sp_no = bp.sp_no, bp.bp_id=#id#
+	</select>
 </sqlMap>
