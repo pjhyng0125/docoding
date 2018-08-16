@@ -32,7 +32,7 @@ public class MypageDAO {
 	public Member modify_form(String id) {	// 회원정보 띄우기
 		Member m = null;
 		try {
-			smc.queryForObject("mypage.modify_form", id);
+			m = (Member) smc.queryForObject("mypage.modify_form", id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -91,5 +91,15 @@ public class MypageDAO {
 		}
 		
 		return list;
+	}
+	public int count_buylist(String id) {
+		int t=0;
+		try {
+			t = (Integer)smc.queryForObject("mypage.count_buylist", id);
+			return t;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return t;
 	}
 }

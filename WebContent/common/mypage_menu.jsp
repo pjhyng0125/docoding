@@ -11,8 +11,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script type="text/javascript">
 	$(function(){
-		$('.nav-item').click(function(){
-			$(this).attr('b','active');		// 안되네... 되도문제긴함.
+		$('li').click(function(){
+			$(this).attr('class',"nav-item active");		// 안되네... 되도문제긴함.
+			//alert($(this).attr('class'))					// 값은 변하는데 적용은 왜 안될까.
 		});
 	});
 </script>
@@ -28,9 +29,9 @@
             <div class="collapse navbar-collapse justify-content-center" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="nav-item active"><a class="nav-link" href="/docoding/mypage.do">내 정보</a></li>
-                    <li class="nav-item" b><a class="nav-link" href="/docoding/mypage/buylist.do">구매목록</a></li>
-                    <li class="nav-item" b><a class="nav-link" href="">판매목록</a></li>
-                    <li class="nav-item" b><a class="nav-link" href="">히스토리</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="/docoding/mypage/buylist.do">구매목록</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="">판매목록</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="">히스토리</a></li>
                 </ul>
             </div>
         </nav>

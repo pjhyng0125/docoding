@@ -36,37 +36,39 @@ public class MypageAction extends Action {
 		// 명령어와 비밀번호를 보내려면 맵을 보내야할 같다.
 		case "m_search_pwd": 
 			
-			// request.setAttribute("pwd", dao.search_pwd(id));
+			request.setAttribute("pwd", dao.search_pwd(id));
+			request.setAttribute("member", dao.modify_form(id));
 			request.setAttribute("pageAction", pageAction);
-			request.setAttribute("pwd", "1234");					// 잠시동안 쓸 값
 			
-			request.setAttribute("member",m=new Member("abcd1234", "1234", "홍길동", null,"1999-09-09", "abcd1234@naver.com", "010-1234-5678",false, null, 0) );						// 잠시동안 쓸 ㄱ밧
 			forward = mapping.findForward("modify");
 			break;
 
 		case "m_modify_form":
+			m = new Member();
+			m.setId(id);
+			m.setPass(request.getParameter("pwd"));
+			m.setName(request.getParameter("name"));
+			m.setEmail(request.getParameter("email"));
+			m.setPhone(request.getParameter("phone"));
 			
-			//request.setAttribute("result", dao.modify_form(id));
-			//System.out.println("pass : "+request.getParameter("pwd"));
-			request.setAttribute("result", true);
+			request.setAttribute("result", dao.modify(m));
 			request.setAttribute("pageAction", pageAction);
-			//id="";
 			forward = mapping.findForward("modify");
 			break;
 
 		case "a_search_pwd":
 			
-			// request.setAttribute("pwd", dao.search_pwd(id));
+			request.setAttribute("msg", dao.search_pwd(id));
 			request.setAttribute("pageAction", pageAction);
-			request.setAttribute("msg", "1234");					// 잠시동안 쓸 값
+			//request.setAttribute("msg", "1234");					// 잠시동안 쓸 값
 			forward = mapping.findForward("message");
 			break;
 		case "a_assign_seller":
 			
 			String account_num = request.getParameter("account_num");	// 계좌번호 받기
+		
 			request.setAttribute("pageAction", pageAction);
-			//request.setAttribute("result", dao.assign_seller(id, account_num));
-			request.setAttribute("msg", true);
+			request.setAttribute("msg", dao.assign_seller(id, account_num));
 			forward = mapping.findForward("message");
 			break;
 			
@@ -76,13 +78,11 @@ public class MypageAction extends Action {
 			String name = request.getParameter("name");
 			String pass = request.getParameter("pass");
 			if(id.equals(id_d)) {
-				//request.setAttribute("msg", dao.drop_member(id_d, name, pass));
-				request.setAttribute("msg", true);
+				request.setAttribute("msg", dao.drop_member(id_d, name, pass));
 			}else {
 				System.out.println("삭제 id와 로그인 상태 id 불일치");
 				request.setAttribute("msg", "fail");
 			}
-			
 			forward = mapping.findForward("message");
 			break;
 			
@@ -90,7 +90,7 @@ public class MypageAction extends Action {
 			
 			//request.setAttribute("buylist", dao.select_buylist(id));
 			List<Map> list = new ArrayList<>();
-			Map map= new HashMap<>();
+			/*Map map= new HashMap<>();
 			map.put("bp_time", "2017-08-05");
 			map.put("sp_category", "java");
 			map.put("sp_title", "자바개론");
@@ -103,9 +103,17 @@ public class MypageAction extends Action {
 			map2.put("sp_title", "자바개론2");
 			map2.put("sp_id", "작성자2");
 			map2.put("sp_count", 15);
-			list.add(map2);
-			System.out.println(list);
-			request.setAttribute("list", list);
+			list.add(map2);*/
+			if(dao.count_buylist(id)==0) {
+				request.setAttribute("msg", "자료를 구매한 기록이 없습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}else {
+				list = dao.select_buylist(id);
+				System.out.println(list);
+				request.setAttribute("list", list);
+			}
+			
 			request.setAttribute("pageAction", pageAction);
 			forward = mapping.findForward("buylist");
 			break;

@@ -14,9 +14,8 @@
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인
 			$.ajax({
 					url:'/docoding/mypageAction.do',		// action class와 연결
-					data : {"pageAction":"m_search_pwd","id":"abcd"},
+					data : {"pageAction":"m_search_pwd","id":$('#get_id').attr("value")},
 					success :function(result){
-						//alert(result);
 						if(result.pwd===$('[name=pwd]').val()){
 							$('#d1').hide();
 							$('#d2').show();
@@ -66,7 +65,7 @@
 </script>
 </head>
 <body>
-<input type="hidden" id="get_id">
+<input type="hidden" id="get_id" value="abcd">
 <input type="hidden" id="login_flag">
 
 <center>

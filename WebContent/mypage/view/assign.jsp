@@ -11,7 +11,7 @@
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인
 			$.ajax({
 					url:'/docoding/mypageAction.do',		// action class와 연결
-					data : {"pageAction":"a_search_pwd","id":"abcd"},
+					data : {"pageAction":"a_search_pwd","id":$('#get_id').attr("value")},
 					success :function(result){
 						//alert(result.trim());
 						if(result.trim()===$('[name=pwd]').val()){
@@ -47,15 +47,22 @@
 			$.ajax({
 					url:'/docoding/mypageAction.do',
 					data:{
-							"pageAction":"a_assgin_seller",
+							"pageAction":"a_assign_seller",
 							"id":"abcd",
 							"account_num":$('#account_num').val()
 						 },
 					success : function(result){
-						$('#d1').hide();
-						$('#d2').hide();
-						$('#d3').hide();
-						$('#d4').show();
+						if(result.trim()==true){
+							$('#d1').hide();
+							$('#d2').hide();
+							$('#d3').hide();
+							$('#d4').show();
+						}else{
+							alert('판매자 등록 실패')
+							$('#d1').show();
+							$('#d2').hide();
+							$('#d3').hide();
+						}
 					}
 				
 			});	// ajax
@@ -67,7 +74,7 @@
 </head>
 <%-- 판매자 등록 창 --%>
 <body>
-	<input type="hidden" id="get_id">
+	<input type="hidden" id="get_id" value="abcd">
 	<input type="hidden" id="login_flag">
 	<center>
 		<h4>판매자 등록</h4>

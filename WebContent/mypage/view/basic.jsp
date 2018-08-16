@@ -22,7 +22,9 @@
 <input type="hidden" id="login_flag">
 <center>
 <font size="6">
-<span id="d1">보유 캐쉬 : </span> <span id="d2">판매자 등록 여부 : </span>
+<div id="hello"></div>
+<div id="d1">보유 캐쉬 : </div>
+<div id="d2">판매자 등록 여부 : </div>
 <hr>
 </font>
 </center>

@@ -17,15 +17,14 @@
 			$('#title').html('구매 자료 현황');
 			$.ajax({
 					url:'/docoding/mypageAction.do',
-					data:{"pageAction":pageAction,"id":$('#id_get').val()},
+					data:{"pageAction":pageAction,"id":$('#get_id').attr("value")},
 					success:function(result){
 						$('#add_list').html(result);		
 					},
 					error:function(xhr){
 						alert(xhr.status+":"+xhr.statusText);
 					}
-			});
-			
+			});	// ajax 
 		});	// buylist
 		
 		$('#sel_bookmark').click(function(){
@@ -35,19 +34,19 @@
 			$('#title').html('즐겨찾기 현황');
 			$.ajax({
 				url:'/docoding/mypageAction.do',
-				data:{"pageAction":pageAction,"id":$('#id_get').val()},
+				data:{"pageAction":pageAction,"id":$('get_id').val()},
 				success:function(result){
 					
 					$('#add_list').html(result);
 				}
-			});
+			});	// ajax
 		});	// bookmark
 		
 	});
 </script>
 </head>
 <body>
-<input type="hidden" id="get_id">
+<input type="hidden" id="get_id" value="abcd">
 <input type="hidden" id="login_flag">
 <center>
 <div>

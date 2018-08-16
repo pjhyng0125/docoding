@@ -17,11 +17,11 @@
 	<tbody width="80%" align="center">
 	<c:forEach items="${list }" var="item">
 		<tr>
-			<td>${item.bp_time}</td>
-			<td>${item.sp_category}</td>
-			<td>${item.sp_title}</td>
-			<td>${item.sp_id}</td>
-			<td>${item.sp_count}</td>
+			<td>${item.BP_TIME}</td>
+			<td>${item.SP_CATEGORY}</td>
+			<td>${item.SP_TITLE}</td>
+			<td>${item.ID}</td>
+			<td>${item.SP_COUNT}</td>
 		</tr>	
 	</c:forEach>
 	</tbody>
