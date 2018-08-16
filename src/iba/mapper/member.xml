@@ -3,11 +3,13 @@
 <sqlMap namespace="mem">
 <typeAlias alias="member_admin" type="com.encore.vo.Member_admin"/>
 	<select id="select_admin" resultClass="member_admin">
+	<![CDATA[
 		select id,name,gender,birth,email,phone,m_time,login_flag, 
 		case when (select count(*) from sell_assign where id=member.id)=1
 		then 'authorized'
-		ELSE 'unauthorized '
+		ELSE 'unauthorized'
 		END autho
 		from member
+	]]>
 	</select>
 </sqlMap>
