@@ -20,7 +20,7 @@
 			</tr>
 			<tr id="tr2">
 				<td width="50%" align="right"><tiles:insert attribute="adver"/></td>
-				<td><tiles:insert attribute="login" /></td>
+				<td><tiles:insert attribute="login"/></td>
 			</tr>
  			<tr id="tr3">
 				<td colspan="2" width="100%"><tiles:insert attribute="category" /></td>

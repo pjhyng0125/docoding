@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<!-- addr.xml -->
+<sqlMap namespace="main">
+	<select id="login" resultClass="int" parameterClass="java.util.Map">
+		select count(*) from member where id =#userid# and pass=#userpass#
+	</select>
+</sqlMap>

@@ -147,6 +147,15 @@
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->
 	
+	<!-- 장우영 main action 설정 시작 -->
+	<!-- tiles -->
+	<action path="/main" forward=".home"/>
+	<action path="/loginAction" type="com.encore.action.LoginAction">
+		<forward name="successL" path="/main/result/success_login.jsp"></forward>
+		<forward name="failL" path="/main/result/fail_login.jsp"></forward>
+	</action>
+	<!-- 장우영 main action 설정 종료 -->
+	
 	
 	
     <!-- sample input and input submit actions
