@@ -45,6 +45,11 @@
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
 
+<definition name=".inputfree" extends=".input">
+	<put name="body" value="/admin/view/inputFree.jsp"/>
+	<put name="menu" value="/common/menu.jsp"/>
+</definition>
+
 <definition name=".free" extends=".input">
 	<put name="body" value="/admin/view/freeData.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>

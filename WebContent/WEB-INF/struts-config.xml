@@ -107,6 +107,7 @@
 <action path="/view/input" forward=".input"></action>
 <action path="/view/admin" forward=".admin"></action>
 <action path="/view/sell" forward=".sell"></action>
+<action path="/view/inputfree" forward=".inputfree"></action>
 <action path="/view/free" forward=".free"></action>
 <action path="/view/autho" forward=".autho"></action>
 
@@ -115,6 +116,7 @@
 		<forward name="sell" path="/admin/result/sellResult.jsp"></forward>
 		<forward name="admininfo" path="/admin/result/memResult.jsp"></forward>
 		<forward name="authoinfo" path="/admin/result/authoResult.jsp"></forward>		
+		<forward name="free" path="/admin/result/freeResult.jsp"></forward>		
 </action>
 
 	<!-- 박진형 admin action 설정  종료  -->
