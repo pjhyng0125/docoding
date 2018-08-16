@@ -6,26 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
 <script type="text/javascript">
-	// 회원가입 화면의 입력값들을 검사한다.
+
 	function checkValue() {
 		var form = document.userInfo;
 
-		/* if (!form.id.value) {
+		 if (!form.id.value) {
 			alert("아이디를 입력하세요.");
 			return false;
-		} */
+		} 
 
-		/* if (form.idDuplication.value != "idCheck") {
+		 if (form.idDuplication.value != "idCheck") {
 			alert("아이디 중복체크를 해주세요.");
 			return false;
-		} */
+		} 
 
 		if (!form.pass.value) {
 			alert("비밀번호를 입력하세요.");
 			return false;
 		}
 
-		// 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
+		
 		if (form.pass.value != form.passcheck.value) {
 			alert("비밀번호를 동일하게 입력하세요.");
 			return false;
@@ -59,12 +59,12 @@
 		}
 		
 
-	// 취소 버튼 클릭시 첫화면으로 이동
+	
 	function goFirstForm() {
 		location.href = "MainForm.do";
 	}
 
-	// 아이디 중복체크 화면open
+	
 	function openIdChk() {
 
 		window.name = "parentForm";
@@ -72,9 +72,6 @@
 				"width=500, height=300, resizable = no, scrollbars = no");
 	}
 
-	// 아이디 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
-	// 이렇게 하는 이유는 중복체크 후 다시 아이디 창이 새로운 아이디를 입력했을 때
-	// 다시 중복체크를 하도록 한다.
 	function inputIdChk() {
 		document.userInfo.idDuplication.value = "idUncheck";
 	}

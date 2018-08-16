@@ -7,23 +7,23 @@
 <title>아이디 중복 체크</title>
 
 <style type="text/css">
-#wrap {
-	width: 490px;
-	text-align: center;
-	margin: 0 auto 0 auto;
-}
+	#wrap {
+		width: 490px;
+		text-align: center;
+		margin: 0 auto 0 auto;
+	}
 
-#chk {
-	text-align: center;
-}
+	#chk {
+		text-align: center;
+	}
 
-#cancelBtn {
-	visibility: visible;
-}
+	#cancelBtn {
+		visibility: visible;
+	}
 
-#useBtn {
-	visibility: hidden;
-}
+	#useBtn {
+		visibility: hidden;
+	}
 </style>
 
 <script type="text/javascript">
