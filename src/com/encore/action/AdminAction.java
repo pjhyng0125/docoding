@@ -10,9 +10,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.encore.dao.AuthoDAO;
 import com.encore.dao.MemberDAO;
 import com.encore.dao.Sell_postDAO;
 import com.encore.vo.Member_admin;
+import com.encore.vo.Sell_assign;
 import com.encore.vo.Sell_post;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -26,6 +28,7 @@ public class AdminAction extends Action {
 		ActionForward forward=null;
 		Sell_postDAO sp_dao=new Sell_postDAO();
 		MemberDAO m_dao=new MemberDAO();
+		AuthoDAO au_dao=new AuthoDAO();
 		MultipartRequest mreq=null;
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -67,6 +70,12 @@ public class AdminAction extends Action {
 			ArrayList<Member_admin> list=(ArrayList<Member_admin>)m_dao.select_admin();
 			request.setAttribute("list", list);
 			forward=mapping.findForward("admininfo");
+			break;
+		}
+		case "select_autho":{
+			ArrayList<Sell_assign> list=(ArrayList<Sell_assign>)au_dao.select_autho();
+			request.setAttribute("list", list);
+			forward=mapping.findForward("authoinfo");
 			break;
 		}
 		}//switch

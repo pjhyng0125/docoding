@@ -114,6 +114,7 @@
 		type="com.encore.action.AdminAction">
 		<forward name="sell" path="/admin/result/sellResult.jsp"></forward>
 		<forward name="admininfo" path="/admin/result/memResult.jsp"></forward>
+		<forward name="authoinfo" path="/admin/result/authoResult.jsp"></forward>		
 </action>
 
 	<!-- 박진형 admin action 설정  종료  -->

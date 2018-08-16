@@ -5,15 +5,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		url:"/docoding/action/admin.do",
+		data:{action:"select_autho"},
+		success:function(htmlTxt){
+			$('#d1').html(htmlTxt);
+		}
+	});
+});
+</script>
 </head>
 <body>
 <center>
-authoData.jsp
-<table width="100%">
-	<tr>
-		<th>아이디</th><th>계좌번호</th><th>인증 날짜</th><th>판매 게시물 개수</th>
-	</tr>
-</table>
+<div id="d1"></div>
 </center>
 </body>
 </html>

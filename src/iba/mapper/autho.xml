@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="autho">
-
+<typeAlias alias="autho_admin" type="com.encore.vo.Sell_assign"/>
+	<select id="select_autho" resultClass="autho_admin">
+		select id,account_num,sa_time,sell_count
+		from sell_assign
+	</select>
 </sqlMap>
