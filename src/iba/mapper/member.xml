@@ -5,8 +5,8 @@
 	<select id="select_admin" resultClass="member_admin">
 		select id,name,gender,birth,email,phone,m_time,login_flag, 
 		case when (select count(*) from sell_assign where id=member.id)=1
-		then '인증'
-		ELSE '비인증'
+		then 'authorized'
+		ELSE 'unauthorized '
 		END autho
 		from member
 	</select>

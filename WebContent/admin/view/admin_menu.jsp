@@ -14,10 +14,10 @@
 </head>
 <body>
 <ul>
-	<li><a href="/Struts/view/admin.do">회원정보</a></li>
-	<li><a href="/Struts/view/sell.do">판매 게시물</a></li>
-	<li><a href="/Struts/view/free.do">자유 게시물</a></li>
-	<li><a href="/Struts/view/autho.do">판매자 인증</a></li>
+	<li><a href="/docoding/view/admin.do">회원정보</a></li>
+	<li><a href="/docoding/view/sell.do">판매 게시물</a></li>
+	<li><a href="/docoding/view/free.do">자유 게시물</a></li>
+	<li><a href="/docoding/view/autho.do">판매자 인증</a></li>
 </ul>
 	<div id="d1"></div>
 </body>

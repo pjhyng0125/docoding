@@ -29,7 +29,7 @@ public class AdminAction extends Action {
 		MultipartRequest mreq=null;
 		
 		if(action==null) {
-			String savepath=request.getServletContext().getRealPath("/0814/upload");
+			String savepath=request.getServletContext().getRealPath("/upload");
 			System.out.println(savepath);
 			int maxSize=5*1024*1024;
 			mreq = new MultipartRequest(request, savepath, maxSize, "UTF-8", new DefaultFileRenamePolicy());

@@ -16,12 +16,8 @@
 			}
 		});
 	});
-<script>
-</head>
-<script type="text/javascript">
-
 </script>
-<%--adminList: 관리자 창에서 선택 리스트를 출력하는 페이지 --%>
+</head><%--adminList: 관리자 창에서 선택 리스트를 출력하는 페이지 --%>
 <body>
 <center>
 <div id="d1"></div>
