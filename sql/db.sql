@@ -3,13 +3,13 @@ drop sequence sellreply_seq;
 drop sequence freepost_seq;
 drop sequence freereply_seq;
 
-drop table member;
-drop table buy_post;
-drop table free_post;
 drop table free_reply;
-drop table sell_post;
 drop table sell_reply;
+drop table free_post;
+drop table buy_post;
+drop table sell_post;
 drop table sell_assign;
+drop table member;
 
 /* 새 테이블 */
 CREATE TABLE member (
@@ -20,7 +20,7 @@ CREATE TABLE member (
 	birth VARCHAR2(20) NOT NULL, /* 생년월일 */
 	email VARCHAR2(100) NOT NULL, /* 이메일 */
 	phone VARCHAR2(20) NOT NULL, /* 연락처 */
-	login_flag CHAR(1) constraint login_CK CHECK(login_flag in ('0','1')), /* 로그인여부 */
+	login_flag char(1) constraint login_CK check(login_flag in ('0','1')), /* 로그인여부 */
 	m_time DATE /* 가입일자 */
 );
 
@@ -32,9 +32,7 @@ CREATE UNIQUE INDEX PK_member
 ALTER TABLE member
 	ADD
 		CONSTRAINT PK_member
-		PRIMARY KEY (
-			id
-		);
+		PRIMARY KEY (id);
 
 /* 새 테이블2 */
 CREATE TABLE free_post (
@@ -55,9 +53,7 @@ CREATE UNIQUE INDEX PK_free_post
 ALTER TABLE free_post
 	ADD
 		CONSTRAINT PK_free_post
-		PRIMARY KEY (
-			fp_no
-		);
+		PRIMARY KEY (fp_no);
 
 /* 새 테이블3 */
 CREATE TABLE free_reply (
@@ -69,16 +65,12 @@ CREATE TABLE free_reply (
 );
 
 CREATE UNIQUE INDEX PK_free_reply
-	ON free_reply (
-		fr_no ASC,
-		fr_time ASC
-	);
+	ON free_reply (fp_no ASC, fr_no ASC);
 
 ALTER TABLE free_reply
 	ADD
 		CONSTRAINT PK_free_reply
 		PRIMARY KEY (fp_no, fr_no);
-
 
 /* 새 테이블4 */
 CREATE TABLE sell_post (
@@ -100,9 +92,7 @@ CREATE UNIQUE INDEX PK_sell_post
 ALTER TABLE sell_post
 	ADD
 		CONSTRAINT PK_sell_post
-		PRIMARY KEY (
-			sp_no
-		);
+		PRIMARY KEY (sp_no);
 
 
 /* 새 테이블5 */
@@ -114,16 +104,14 @@ CREATE TABLE sell_reply (
 	sr_content VARCHAR2(500) /* 내용 */
 );
 
-CREATE UNIQUE INDEX PK_sell_reply
-	ON sell_reply (
-		sr_no ASC,
-		sr_time ASC
-	);
+CREATE UNIQUE INDEX PK_sell_reply 
+	ON sell_reply (sp_no ASC, sr_no ASC);
 
 ALTER TABLE sell_reply
 	ADD
 		CONSTRAINT PK_sell_reply
 		PRIMARY KEY (sp_no, sr_no);
+
 
 /* 새 테이블6 */
 CREATE TABLE sell_assign (
@@ -141,9 +129,7 @@ CREATE UNIQUE INDEX PK_sell_assign
 ALTER TABLE sell_assign
 	ADD
 		CONSTRAINT PK_sell_assign
-		PRIMARY KEY (
-			id
-		);
+		PRIMARY KEY (id);
 
 /*새 테이블7*/
 create table buy_post (
@@ -156,7 +142,39 @@ alter table buy_post
 	add
 		constraint pk_buy_post
 		primary key(bp_id, sp_no);
-		
+
+
+
+/*foreign key 연결*/
+alter table sell_assign
+	add
+		constraint fk_sell_assign
+		foreign key (id) references member (id);
+alter table buy_post
+	add
+		constraint fk_buy_post
+		foreign key (bp_id) references member (id);		
+alter table buy_post
+	add
+		constraint fk_buy_post_2
+		foreign key (sp_no) references sell_post (sp_no);
+alter table free_post
+	add
+		constraint fk_free_post
+		foreign key (id) references member (id);
+alter table free_reply
+	add
+		constraint fk_free_reply
+		foreign key (fp_no) references free_post (fp_no);
+alter table sell_post
+	add
+		constraint fk_sell_post
+		foreign key (id) references member (id);
+alter table sell_reply
+	add
+		constraint fk_sell_reply
+		foreign key (sp_no) references sell_post (sp_no);
+
 /*게시물 댓글 no 관련 sequence*/
 create sequence sellpost_seq
 start with 1
