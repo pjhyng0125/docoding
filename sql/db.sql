@@ -10,6 +10,7 @@ drop table buy_post;
 drop table sell_post;
 drop table sell_assign;
 drop table member;
+drop table manager;
 
 /* 새 테이블 */
 CREATE TABLE member (
@@ -21,7 +22,8 @@ CREATE TABLE member (
 	email VARCHAR2(100) NOT NULL, /* 이메일 */
 	phone VARCHAR2(20) NOT NULL, /* 연락처 */
 	login_flag char(1) constraint login_CK check(login_flag in ('0','1')), /* 로그인여부 */
-	m_time DATE /* 가입일자 */
+	m_time DATE, /* 가입일자 */
+	cash NUMBER default 0
 );
 
 CREATE UNIQUE INDEX PK_member
@@ -81,7 +83,8 @@ CREATE TABLE sell_post (
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
 	sp_time DATE, /* 작성시간 */
 	sp_filename VARCHAR2(100), /* 파일이름 */
-	sp_count NUMBER default 0 /* 조회수 */
+	sp_count NUMBER default 0, /* 조회수 */
+	sold_count NUMBER default 0
 );
 
 CREATE UNIQUE INDEX PK_sell_post
@@ -118,7 +121,8 @@ CREATE TABLE sell_assign (
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
 	account_num VARCHAR2(20), /*계좌번호*/
 	sa_time DATE, /* 인증된시간 */
-	sell_count NUMBER
+	sell_count NUMBER default 0,
+	profit_sell NUMBER default 0
 );
 
 CREATE UNIQUE INDEX PK_sell_assign
@@ -143,7 +147,10 @@ alter table buy_post
 		constraint pk_buy_post
 		primary key(bp_id, sp_no);
 
-
+/*새 테이블8*/
+create table manager (
+	profit NUMBER default 0
+);
 
 /*foreign key 연결*/
 alter table sell_assign
@@ -162,14 +169,14 @@ alter table free_post
 	add
 		constraint fk_free_post
 		foreign key (id) references member (id);
-alter table free_reply
-	add
-		constraint fk_free_reply
-		foreign key (fp_no) references free_post (fp_no);
 alter table sell_post
 	add
 		constraint fk_sell_post
 		foreign key (id) references member (id);
+alter table free_reply
+	add
+		constraint fk_free_reply
+		foreign key (fp_no) references free_post (fp_no);
 alter table sell_reply
 	add
 		constraint fk_sell_reply
