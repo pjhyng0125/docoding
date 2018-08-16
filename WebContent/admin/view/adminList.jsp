@@ -15,7 +15,7 @@
 adminList.jsp
 <table width="100%">
 	<tr>
-		<th>아이디</th><th>이름</th><th>성별</th><th>생년월일</th><th>이메일</th><th>폰</th><th>로그인 상태</th><th>판매자 인증</th>
+		<th>아이디</th><th>이름</th><th>성별</th><th>생년월일</th><th>이메일</th><th>폰</th><th>가입날짜</th><th>로그인 상태</th><th>판매자 인증</th>
 	</tr>
 </table>
 </center>
