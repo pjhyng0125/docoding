@@ -27,6 +27,7 @@ public class AdminAction extends Action {
 		Sell_postDAO sp_dao=new Sell_postDAO();
 		MemberDAO m_dao=new MemberDAO();
 		MultipartRequest mreq=null;
+		response.setContentType("text/html; charset=UTF-8");
 		
 		if(action==null) {
 			String savepath=request.getServletContext().getRealPath("/upload");
