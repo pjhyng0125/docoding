@@ -54,7 +54,7 @@ $(function(){
 	</select>
 	<input type="file" name="upload">
 	<input type="button" id="post" value="발행">
-	<input type="button" id="cancel" value="취소">
+	<input type="button" id="cancel" value="취소"><br>
 	<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요" required></textarea>
 </form>
 <%--0814 수정 끝 --%>
