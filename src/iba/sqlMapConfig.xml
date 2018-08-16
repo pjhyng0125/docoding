@@ -33,6 +33,7 @@
   <sqlMap resource="./iba/mapper/free_post.xml"/>
   <sqlMap resource="./iba/mapper/member.xml"/>
   <sqlMap resource="./iba/mapper/autho.xml"/>
+   <sqlMap resource="./iba/mapper/main.xml"/>
   
 </sqlMapConfig>
 

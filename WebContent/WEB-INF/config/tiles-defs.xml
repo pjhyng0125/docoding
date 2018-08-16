@@ -16,6 +16,7 @@
       <put name="menu" value="/common/menu.jsp"></put>
       <put name="footer" value="/common/footer.jsp"></put>
       
+      
    </definition>
    
    <definition name=".form" extends=".main">
@@ -88,6 +89,30 @@
    </definition>
    
    <!-- 이성훈 mypage tiles 설정 종료  -->
+      
+   
+   <!-- 장우영 main tiles 설정 시작 -->
+   <!-- <definition>태그 하나당 화면 한개를 정의 -->   
+ <!--   <definition name=".mainHome" path="/common/home.jsp">
+   
+     path속성에 정의된 base.jsp에서 include할 페이지들에 대한 정의
+      <put name="header" value="/common/header.jsp"></put>
+      <put name="menu" value="/common/menu.jsp"></put>
+      <put name="footer" value="/common/footer.jsp"></put>
+       <put name="home" value=".home"></put>
+   </definition> -->
+   
+   	 <definition name=".home" path="/main/view/mainView.jsp">
+   		 <put name="searchBar" value="/main/view/searchBar.jsp"/>
+   		 <put name="adver" value="/main/result/adver.jsp"/>
+   		 <put name="login" value="/main/view/login.jsp"/>
+   		 <put name="category" value="/main/result/category.jsp"/>
+   		 <put name="successL" value="/main/result/success_login.jsp"/>
+   	 </definition>
+
+   	 
+   <!-- 장우영 main tiles 설정 종료 -->	
+	
    
 </tiles-definitions>
 
