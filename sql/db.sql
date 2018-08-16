@@ -61,6 +61,7 @@ ALTER TABLE free_post
 
 /* 새 테이블3 */
 CREATE TABLE free_reply (
+	fp_no NUMBER NOT NULL, /*자유 게시물 번호*/
 	fr_no NUMBER NOT NULL, /* 글번호 */
 	fr_time DATE NOT NULL, /* 작성시간 */
 	fr_id VARCHAR2(50), /* 작성아이디 */
@@ -76,10 +77,8 @@ CREATE UNIQUE INDEX PK_free_reply
 ALTER TABLE free_reply
 	ADD
 		CONSTRAINT PK_free_reply
-		PRIMARY KEY (
-			fr_no,
-			fr_time
-		);
+		PRIMARY KEY (fp_no, fr_no);
+
 
 /* 새 테이블4 */
 CREATE TABLE sell_post (
@@ -108,6 +107,7 @@ ALTER TABLE sell_post
 
 /* 새 테이블5 */
 CREATE TABLE sell_reply (
+	sp_no NUMBER NOT NULL, /*판매 게시물 번호*/
 	sr_no NUMBER NOT NULL, /* 글번호 */
 	sr_time DATE NOT NULL, /* 작성시간 */
 	sr_id VARCHAR2(50), /* 작성아이디 */
@@ -123,10 +123,7 @@ CREATE UNIQUE INDEX PK_sell_reply
 ALTER TABLE sell_reply
 	ADD
 		CONSTRAINT PK_sell_reply
-		PRIMARY KEY (
-			sr_no,
-			sr_time
-		);
+		PRIMARY KEY (sp_no, sr_no);
 
 /* 새 테이블6 */
 CREATE TABLE sell_assign (
