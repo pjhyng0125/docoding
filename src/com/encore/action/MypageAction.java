@@ -1,5 +1,10 @@
 package com.encore.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -79,6 +84,30 @@ public class MypageAction extends Action {
 			}
 			
 			forward = mapping.findForward("message");
+			break;
+			
+		case "sel_buylist":											// 구매목록 불러오기
+			
+			//request.setAttribute("buylist", dao.select_buylist(id));
+			List<Map> list = new ArrayList<>();
+			Map map= new HashMap<>();
+			map.put("bp_time", "2017-08-05");
+			map.put("sp_category", "java");
+			map.put("sp_title", "자바개론");
+			map.put("sp_id", "작성자1");
+			map.put("sp_count", 13);
+			list.add(map);
+			Map map2= new HashMap<>();
+			map2.put("bp_time", "2017-01-05");
+			map2.put("sp_category", "java2");
+			map2.put("sp_title", "자바개론2");
+			map2.put("sp_id", "작성자2");
+			map2.put("sp_count", 15);
+			list.add(map2);
+			System.out.println(list);
+			request.setAttribute("list", list);
+			request.setAttribute("pageAction", pageAction);
+			forward = mapping.findForward("buylist");
 			break;
 		
 		} // switch - case문 종료

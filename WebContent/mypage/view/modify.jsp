@@ -67,7 +67,7 @@
 </head>
 <body>
 <input type="hidden" id="get_id">
-
+<input type="hidden" id="login_flag">
 
 <center>
 <h4 class="seperate" bgcolor="green">회원정보 확인/수정</h4>

@@ -20,7 +20,7 @@
 					data:{"pageAction":"d_drop_member","id_d":$('#input_id').val(),
 						"name":$('#input_name').val(),"pass":$('#input_pass').val()},
 					success : function(result){
-						alert(result.trim());	// fail or true
+					//	alert(result.trim());	// fail or true
 						if(result.trim()==="true"){
 							$('#d1').hide();
 							$('#d2').show();
@@ -38,6 +38,8 @@
 </head>
 <!-- 회원탈퇴 -->
 <body>
+<input type="hidden" id="get_id">
+<input type="hidden" id="login_flag">
 <center>
 <h4>회원 탈퇴</h4>
 <hr>

@@ -2,6 +2,7 @@ package com.encore.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.encore.vo.Member;
@@ -38,7 +39,7 @@ public class MypageDAO {
 		return m;
 	}
 	
-	public boolean modify(Member m) {
+	public boolean modify(Member m) {		// 회원 정보 수정하기
 		
 		try {
 			int t =smc.update("mypage.modify", m);
@@ -49,7 +50,7 @@ public class MypageDAO {
 		return false;
 	}
 	
-	public boolean assign_seller(String id, String account_num) {
+	public boolean assign_seller(String id, String account_num) {	// 판매자 등록
 		
 		Map<String, String>map = new HashMap<>();
 		map.put("id", id);
@@ -64,7 +65,7 @@ public class MypageDAO {
 		return false;
 	}
 	
-	public boolean drop_member(String id, String name,String pass) {
+	public boolean drop_member(String id, String name,String pass) { // 회원탈퇴
 		Map<String, String>map = new HashMap<>();
 		map.put("id", id);
 		map.put("name", name);
@@ -77,5 +78,18 @@ public class MypageDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public List<Map> select_buylist(String id) {
+		
+		List<Map> list = null;
+		
+		try {
+			list = smc.queryForList("mypage.select_list", id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 }
