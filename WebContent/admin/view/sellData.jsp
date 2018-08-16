@@ -9,7 +9,7 @@
 <script type="text/javascript">
 $(function(){
 	$.ajax({
-		url:"/Struts/action/admin.do",
+		url:"/docoding/action/admin.do",
 		data:{action:"select_sellpost"},
 		success:function(htmlTxt){
 			$('#d1').html(htmlTxt);

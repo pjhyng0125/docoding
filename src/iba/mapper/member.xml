@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
-<sqlMap namespace="member">
-	<select id="">
+<sqlMap namespace="mem">
+<typeAlias alias="member_admin" type="com.encore.vo.Member_admin"/>
+	<select id="select_admin" resultClass="member_admin">
+		select id,name,gender,birth,email,phone,m_time,login_flag, 
+		case when (select count(*) from sell_assign where id=member.id)=1
+		then '인증'
+		ELSE '비인증'
+		END autho
+		from member
 	</select>
 </sqlMap>

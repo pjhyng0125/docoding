@@ -5,6 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:"/docoding/action/admin.do",
+			data:{action:"select_admin"},
+			success:function(htmlTxt){
+				$('#d1').html(htmlTxt);
+			}
+		});
+	});
+<script>
 </head>
 <script type="text/javascript">
 
@@ -12,12 +24,7 @@
 <%--adminList: 관리자 창에서 선택 리스트를 출력하는 페이지 --%>
 <body>
 <center>
-adminList.jsp
-<table width="100%">
-	<tr>
-		<th>아이디</th><th>이름</th><th>성별</th><th>생년월일</th><th>이메일</th><th>폰</th><th>가입날짜</th><th>로그인 상태</th><th>판매자 인증</th>
-	</tr>
-</table>
+<div id="d1"></div>
 </center>
 </body>
 </html>

@@ -19,7 +19,7 @@ $(function(){
 		var formData=new FormData(form);
 		//게시물 입력 + 파일 업로드
 		$.ajax({
-			url:"/Struts/action/admin.do",
+			url:"/docoding/action/admin.do",
 			type:"POST",
 			processData:false,
 			contentType:false,
@@ -58,6 +58,6 @@ $(function(){
 	<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요" required></textarea>
 </form>
 <%--0814 수정 끝 --%>
-<button id="admin"><a href="/Struts/view/admin.do">관리자 화면</a></button><br>
+<button id="admin"><a href="/docoding/view/admin.do">관리자 화면</a></button><br>
 </body>
 </html>

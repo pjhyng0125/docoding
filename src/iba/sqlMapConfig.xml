@@ -28,9 +28,11 @@
 
   <!-- ★ sql문들이 저장되어 있는 XML을 등록 ★-->	<!-- guest, emp, reply.xml 없으므로 지움 0813 이성훈 -->
 
-  <sqlMap resource="./iba/mapper/addr.xml" />
   <sqlMap resource="./iba/mapper/mypage.xml"/>
   <sqlMap resource="./iba/mapper/sell_post.xml"/>
+  <sqlMap resource="./iba/mapper/free_post.xml"/>
+  <sqlMap resource="./iba/mapper/member.xml"/>
+  <sqlMap resource="./iba/mapper/autho.xml"/>
   
 </sqlMapConfig>
 

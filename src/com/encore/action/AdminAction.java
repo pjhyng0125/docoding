@@ -10,7 +10,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.encore.dao.MemberDAO;
 import com.encore.dao.Sell_postDAO;
+import com.encore.vo.Member_admin;
 import com.encore.vo.Sell_post;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -23,6 +25,7 @@ public class AdminAction extends Action {
 		String action=request.getParameter("action");
 		ActionForward forward=null;
 		Sell_postDAO sp_dao=new Sell_postDAO();
+		MemberDAO m_dao=new MemberDAO();
 		MultipartRequest mreq=null;
 		
 		if(action==null) {
@@ -35,7 +38,7 @@ public class AdminAction extends Action {
 		}
 		
 		switch(action) {
-		case "insert_sellpost":
+		case "insert_sellpost":{
 			Sell_post sp=new Sell_post();
 			//0814 수정 파일명 set 시작
 			sp.setSp_filename(mreq.getFilesystemName("upload"));
@@ -52,12 +55,20 @@ public class AdminAction extends Action {
 			}
 			forward=null;
 			break;
-		case "select_sellpost":
+		}
+		case "select_sellpost":{
 			ArrayList<Sell_post> list=(ArrayList<Sell_post>)sp_dao.select_sellpost();
 			request.setAttribute("list", list);
 			forward=mapping.findForward("sell");
 			break;
 		}
+		case "select_admin":{
+			ArrayList<Member_admin> list=(ArrayList<Member_admin>)m_dao.select_admin();
+			request.setAttribute("list", list);
+			forward=mapping.findForward("admininfo");
+			break;
+		}
+		}//switch
 	
 		return forward;
 	}
