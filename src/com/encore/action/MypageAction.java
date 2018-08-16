@@ -35,7 +35,7 @@ public class MypageAction extends Action {
 			request.setAttribute("pageAction", pageAction);
 			request.setAttribute("pwd", "1234");					// 잠시동안 쓸 값
 			
-			request.setAttribute("member",m=new Member("abcd1234", "1234", "홍길동", null,"1999-09-09", "abcd1234@naver.com", "010-1234-5678",false, null) );						// 잠시동안 쓸 ㄱ밧
+			request.setAttribute("member",m=new Member("abcd1234", "1234", "홍길동", null,"1999-09-09", "abcd1234@naver.com", "010-1234-5678",false, null, 0) );						// 잠시동안 쓸 ㄱ밧
 			forward = mapping.findForward("modify");
 			break;
 

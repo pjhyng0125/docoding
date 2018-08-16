@@ -12,14 +12,14 @@ public class Member {
 	private String email;
 	private String phone;
 	private boolean login_flag;
-	private Date m_time;
-	
+	private String m_time;
+	private int cash;
 	public Member() {
 		super();
 	}
 	
 	public Member(String id, String pass, String name, String gender, String birth, String email, String phone,
-			boolean login_flag, Date m_time) {
+			boolean login_flag, String m_time, int cash) {
 		super();
 		this.id = id;
 		this.pass = pass;
@@ -30,10 +30,16 @@ public class Member {
 		this.phone = phone;
 		this.login_flag = login_flag;
 		this.m_time = m_time;
+		this.cash = cash;
 	}
 
-
-
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", birth=" + birth
+				+ ", email=" + email + ", phone=" + phone + ", login_flag=" + login_flag + ", m_time=" + m_time
+				+ ", cash=" + cash + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
 	public String getId() {
 		return id;
 	}
@@ -82,21 +88,18 @@ public class Member {
 	public void setLogin_flag(boolean login_flag) {
 		this.login_flag = login_flag;
 	}
-	public Date getM_time() {
+	public String getM_time() {
 		return m_time;
 	}
-	public void setM_time(Date m_time) {
+	public void setM_time(String m_time) {
 		this.m_time = m_time;
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", birth=" + birth
-				+ ", email=" + email + ", phone=" + phone + ", login_flag=" + login_flag + ", m_time=" + m_time + "]";
+	public int getCash() {
+		return cash;
 	}
-	
+	public void setCash(int cash) {
+		this.cash = cash;
+	}
 	
 	
 }
