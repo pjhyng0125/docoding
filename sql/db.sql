@@ -4,6 +4,7 @@ drop sequence freepost_seq;
 drop sequence freereply_seq;
 
 drop table member;
+drop table buy_post;
 drop table free_post;
 drop table free_reply;
 drop table sell_post;
@@ -19,7 +20,7 @@ CREATE TABLE member (
 	birth VARCHAR2(20) NOT NULL, /* 생년월일 */
 	email VARCHAR2(100) NOT NULL, /* 이메일 */
 	phone VARCHAR2(20) NOT NULL, /* 연락처 */
-	login_flag char(1) constraint login_CK check(login_flag('0','1')), /* 로그인여부 */
+	login_flag CHAR(1) constraint login_CK CHECK(login_flag in ('0','1')), /* 로그인여부 */
 	m_time DATE /* 가입일자 */
 );
 
@@ -146,6 +147,19 @@ ALTER TABLE sell_assign
 		PRIMARY KEY (
 			id
 		);
+
+/*새 테이블7*/
+create table buy_post (
+	bp_id varchar2(50) not null,
+	sp_no number not null,
+	bp_time date
+);
+
+alter table buy_post
+	add
+		constraint pk_buy_post
+		primary key(bp_id, sp_no);
+		
 /*게시물 댓글 no 관련 sequence*/
 create sequence sellpost_seq
 start with 1
