@@ -47,9 +47,9 @@
 <br>
 <div id="d1" style="display: ">
 <table border="0" cellpadding="5">
-<tr align="center"><td>아이디</td><td><input type="text" id="input_id" autofocus></td></tr>
-<tr align="center"><td>비밀번호</td><td><input type="password" id="input_pwd"> </td></tr>
-<tr align="center"><td>이름</td><td><input type="text" id="input_name"></td></tr>
+<tr align="center"><td>아이디 :</td><td><input type="text" id="input_id" autofocus></td></tr>
+<tr align="center"><td>비밀번호 :</td><td><input type="password" id="input_pwd"> </td></tr>
+<tr align="center"><td>이름 :</td><td><input type="text" id="input_name"></td></tr>
 <tr align="center"><td colspan="2"><button id="bt_check">입력</button></td></tr>
 <tr align="center"><td colspan="2">회원 탈퇴를 위한 개인정보 입력 요망</td></tr>
 </table>

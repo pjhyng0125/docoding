@@ -137,9 +137,9 @@ ALTER TABLE sell_assign
 
 /*새 테이블7*/
 create table buy_post (
-	bp_id varchar2(50) not null,
-	sp_no number not null,
-	bp_time date
+	bp_id varchar2(50) not null,--구매자
+	sp_no number not null,	-- 구매 게시물 번호
+	bp_time date	--	구매날짜
 );
 
 alter table buy_post

@@ -71,12 +71,8 @@
   <!-- 이성훈 mypage tiles 설정 시작  -->
   
    <definition name=".mypage" path="/mypage/view/mypage_base.jsp">
-   	  <put name="header" value="/common/header.jsp"/>
-   	  <put name="search" value="/common/search.jsp"/>
-   	  <put name="menu" value="/common/mypage_menu.jsp"/>
    	  <put name="sidemenu" value="/mypage/view/sidemenu.jsp"/>
    	  <put name="body" value="/mypage/view/basic.jsp"/>
-   	  <put name="footer" value="/common/footer.jsp"/>
    </definition>
     
    <definition name=".modify" extends=".mypage">
