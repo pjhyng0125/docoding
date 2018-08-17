@@ -104,12 +104,12 @@
 <action path="/common/form" forward=".form"></action>
 <action path="/common/login" forward=".login"></action>
 
-<action path="/view/input" forward=".input"></action>
-<action path="/view/admin" forward=".admin"></action>
-<action path="/view/sell" forward=".sell"></action>
-<action path="/view/inputfree" forward=".inputfree"></action>
-<action path="/view/free" forward=".free"></action>
-<action path="/view/autho" forward=".autho"></action>
+<action path="/input" forward=".input"></action>
+<action path="/admin" forward=".admin"></action>
+<action path="/sell" forward=".sell"></action>
+<action path="/inputfree" forward=".inputfree"></action>
+<action path="/free" forward=".free"></action>
+<action path="/autho" forward=".autho"></action>
 
 <action path="/action/admin"
 		type="com.encore.action.AdminAction">
