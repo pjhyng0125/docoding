@@ -158,7 +158,6 @@
 	
 	<!-- 민지환 login action 설정 시작 -->
 	<!-- tiles -->
-	<action path="/login" forward=".login"></action>
 	<!-- 민지환 login action 설정 종료 -->
 	
 	<!-- 박형진 postlist action  -->
