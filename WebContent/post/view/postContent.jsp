@@ -25,9 +25,13 @@
 <script type="text/javascript">
 $(function() {
 		$.ajax({
-			url : "/docoding/post/result/contentReply.jsp",
+			url : "/docoding/post/result/postContent.do",
 			success : function(result) {
 				$('#replyDiv').html(result);
+			},
+			data:{
+				action:"selectReply",
+				sp_no:"${sell.sp_no}"
 			},
 			error : function(xhr, status, error) {
 				alert('서버에러!!');
@@ -42,8 +46,49 @@ $(function() {
 			location.href = '/docoding/post/view/postList.do?action=list&order='+order+'&page='+page			
 		})
 		
+		
+		// id, no, content 넘기기 insertReply
 		$('#replyDiv').on('click','input[value=댓글등록]',function(){
-			
+			if(confirm('댓글을 등록하시겠습니까?')){
+				$.ajax({
+					url : "/docoding/post/result/postContent.do",
+					success : function(result) {
+						$('#replyDiv').html(result);
+					},
+					data:{
+						action:"insertReply",
+						sr_id:"길라임",
+						sp_no:"${param.no}",
+						sr_content:$('textarea').val()
+					}
+				})
+			}
+		})
+		
+		//댓글 삭제
+		$('#replyDiv').on('click','#delReply',function(){
+			//****로그인한 아이디가 같은지 체크
+			var hidden = $(this).next().val();
+			if(confirm('정말로 삭제하시겠습니까?')){
+				$.ajax({
+					url : "/docoding/post/result/postContent.do",
+					success : function(result) {
+						$('#replyDiv').html(result);
+					},
+					data:{
+						action:"deleteReply",
+						sp_no:"${param.no}",
+						sr_no:hidden
+					}
+				})
+			}
+		})
+		
+		//판매게시물 첨부파일 구매
+		$('#buyTr').on('click','input[value=구매하기]',function(){
+			alert('hi');
+			if(confirm('정말로 구매하시겠습니까?')){
+			}
 		})
 
 	}) 
@@ -77,6 +122,9 @@ $(function() {
 								<p>${sell.sp_content }</p>
 							</td>
 						</tr>
+						<tr id="buyTr"><td colspan="2"	><div class="input-group-btn" style="float: right;">
+						<input class="btn btn-default"
+		type="button" value="구매하기"></div></td></tr>
 					</tbody>
 				</table>
 				<div id='replyDiv'></div>

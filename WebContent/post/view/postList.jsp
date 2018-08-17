@@ -24,19 +24,20 @@
 	crossorigin="anonymous">
 <script type="text/javascript">
 	$(function() {
-		
+		var action = "${param.action}"
 		var order = "${param.order}"
 		var page = "${param.page}"
 		
 		if(order=="") order=0
 		if(page=="") page=1
+		if(action=="") action="list"
 		$.ajax({
 			url : "/docoding/post/result/postList.do",
 			success : function(result) {
-				$('div').html(result);
+				$('#postList').html(result);
 			},
 			data : {
-				action : "list",
+				action : action,
 				order: order,
 				page: page
 			},
@@ -50,11 +51,32 @@
 		
 		//아이디 또는 제목 검색
 		$('#postList').on('click', 'div[name=searchBtn]', function() {
-			var option = $('select option:selected').text();
-			var searchTxt = $('#searchTxt').val().toUpperCase();
-			alert('hi');
-			if (option == '아이디') {
-				$('#tbody #searchId').filter(function() {
+			var option = $('select option:selected').val(); //아이디 또는 제목
+			var searchTxt = $('#searchTxt').val().toUpperCase(); //검색명
+			
+			
+			alert(option);
+		
+			$.ajax({
+				url : "/docoding/post/result/postList.do",
+				success : function(result) {
+					$('#postList').html(result);
+				},
+				data : {
+					action : "search",
+					order:order,
+					option : option,
+					searchTxt : searchTxt,
+					page: page
+				},
+				error : function(xhr, status, error) {
+					alert('서버에러!!');
+					alert('상태: ' + xhr.status + ', 상태text: ' + xhr.statusText
+							+ '\nstatus: ' + status + '\nerror: ' + error)
+				}//에러 콜백
+			})
+/* 			if (option == '아이디') {
+				$('#tbody #sp_id').filter(function() {
 					var txt = $(this).text().toUpperCase();
 					$(this).parent().toggle(txt.indexOf(searchTxt) > -1)
 				})
@@ -63,13 +85,13 @@
 					var txt = $(this).text().toUpperCase();
 					$(this).parent().toggle(txt.indexOf(searchTxt) > -1)
 				})
-			}
+			} */
 		})
 		
+		//클릭한 게시물 확인
 		$('#postList').on('click','tr',function(){
-			alert('g ')
 			var no = $(this).find(':hidden').val();
-			location.href = "/docoding/post/result/postContent.do?action=select&page="+page+"&order="+order+"&no="+no;		
+			location.href = "/docoding/post/result/postContent.do?action=selectContent&page="+page+"&order="+order+"&no="+no;		
 		})
 	})
 </script>

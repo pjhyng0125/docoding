@@ -2,6 +2,7 @@ package com.encore.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.encore.vo.Sell_post;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -27,6 +28,35 @@ public class Sell_postDAO {
 	
 	public List<Sell_post> select_sellpost() throws SQLException {
 		return smc.queryForList("sp.select_sellpost");
+	}
+	
+	public List<Sell_post> selectSPAll(Map<String, Object> map) {
+		List<Sell_post> list = null;
+		try {
+			list = smc.queryForList("sp.selectSPAll",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public Sell_post select(int no) {
+		try {
+			return (Sell_post) smc.queryForObject("sp.selectContent",no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int selectTotalPage(Map<String, Object> map) {
+		try {
+			System.out.println(map);
+			return (int) smc.queryForObject("sp.selectTotalPage",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	
 }

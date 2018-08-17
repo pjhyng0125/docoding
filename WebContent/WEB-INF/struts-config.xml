@@ -161,6 +161,21 @@
 	<action path="/login" forward=".login"></action>
 	<!-- 민지환 login action 설정 종료 -->
 	
+		<!-- 박형진 postlist action  -->
+	
+	<action path="/post/view/postList" forward="/post/view/postList.jsp"></action>
+	<action path="/post/result/postList" type="com.encore.action.SellPostAction">
+		<forward name="list" path="/post/result/sellList.jsp"/>
+	</action>
+
+	<action path="/post/view/postContent" forward="/post/view/postContent.jsp"></action>
+	<action path="/post/result/postContent" type="com.encore.action.SellContentAction">
+		<forward name="content" path="/post/view/postContent.do"/>
+		<forward name="reply" path="/post/view/postContent.do"/>
+		<forward name="reply" path="/post/result/contentReply.jsp"/>
+	</action>
+	<!-- 박형진 postlist action 설정 종료 -->
+	
     <!-- sample input and input submit actions
 
         <action

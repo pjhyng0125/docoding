@@ -6,13 +6,13 @@
 <br>
 <br>
 <div id="list" class="col-sm-4 text-left">
-	<h3><a href="/docoding/post/view/postList.do" id="category"><span>Java</span></a></h3>
+	<h3><a href="/docoding/post/view/postList.do?action=list" id="category"><span>Java</span></a></h3>
 	<br>
 </div>
 <nav class="navbar navbar-expand-sm ">
 	<ul class="nav navbar-nav">
-		<li class="nav-item" value="0"><a class="nav-link" href="/docoding/post/view/postList.do?action=list&order=0&page=${param.page }">조회순</a></li>
-		<li class="nav-item" value="1"><a class="nav-link" href="/docoding/post/view/postList.do?action=list&order=1&page=${param.page }"
+		<li class="nav-item" value="0"><a class="nav-link" href="/docoding/post/view/postList.do?action=${param.action }&order=0&page=${param.page }">조회순</a></li>
+		<li class="nav-item" value="1"><a class="nav-link" href="/docoding/post/view/postList.do?action=${param.action }&order=1&page=${param.page }"
 			value="dateup">날짜순</a></li>
 	</ul>
 	<hr>
@@ -24,9 +24,9 @@
 			<tr>
 				<th width="10%">카테고리</th>
 				<th width="20%">제목</th>
-				<th width="35%">줄거리</th>
+				<th width="43%">줄거리</th>
 				<th width="10%">작성자</th>
-				<th width="15%">작성일</th>
+				<th width="7%">작성일</th>
 				<th width="10%">조회수</th>
 			</tr>
 		</thead>
@@ -35,9 +35,9 @@
 				<tr>
 					<td><img src="/docoding/image/${list.sp_filename }"
 						class="img-fluid" alt=""></td>
-					<td id="title" style="width: 20%">${list.sp_title}</td>
+					<td id="title">${list.sp_title}</td>
 					<td>${list.sp_content }</td>
-					<td id="searchId">${list.id}</td>
+					<td id="sp_id">${list.id}</td>
 					<td>${list.sp_time}</td>
 					<td>${list.sp_count}<input type="hidden" value="${list.sp_no }"></td>
 				<tr>
@@ -58,7 +58,7 @@
 		<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
 		</c:if>
 		<c:forEach begin="1" end="${totalPage }" var="i">
-		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/view/postList.do?action=list&order=${param.order }&page=${i }">${i}</a></li>
+		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/view/postList.do?action=${param.action }&order=${param.order }&page=${i }">${i}</a></li>
 		</c:forEach>
 		
 		<c:choose>
@@ -75,8 +75,8 @@
 		<div class="col-sm-4">
 			<div class="input-group">
 				<select>
-					<option>아이디</option>
-					<option>제목</option>
+					<option value="searchId">아이디</option>
+					<option value="searchTitle">제목</option>
 				</select> <input type="text" class="form-control" id='searchTxt'>
 				<div class="input-group-append" name="searchBtn">
 					<button class="btn btn-default" type="button">

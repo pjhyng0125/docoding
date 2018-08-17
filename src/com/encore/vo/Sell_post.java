@@ -8,7 +8,7 @@ public class Sell_post {
 	private String sp_title;
 	private String sp_content;
 	private String id;
-	private Date sp_time;
+	private String sp_time;
 	private String sp_filename;
 	private int sp_count;
 	
@@ -16,7 +16,7 @@ public class Sell_post {
 		super();
 	}
 
-	public Sell_post(int sp_no, String sp_category, String sp_title, String sp_content, String id, Date sp_time,
+	public Sell_post(int sp_no, String sp_category, String sp_title, String sp_content, String id, String sp_time,
 			String sp_filename, int sp_count) {
 		super();
 		this.sp_no = sp_no;
@@ -69,11 +69,11 @@ public class Sell_post {
 		this.id = id;
 	}
 
-	public Date getSp_time() {
+	public String getSp_time() {
 		return sp_time;
 	}
 
-	public void setSp_time(Date sp_time) {
+	public void setSp_time(String sp_time) {
 		this.sp_time = sp_time;
 	}
 
