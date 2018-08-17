@@ -31,6 +31,7 @@ $(function(){
 				$('#title').val('제목');
 				$('#content').val('내용을 입력하세요');
 				$('#category').val('선택');
+				
 			}
 		});
 	});
