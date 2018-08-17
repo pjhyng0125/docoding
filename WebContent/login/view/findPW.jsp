@@ -18,9 +18,7 @@
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">아이디<font
 					color="red">*</font></td>
-				<td colspan="3"><input type="text" name="id"
-					style="width: 371px; height: 51px"> <input type="button"
-					value="중복확인" maxlength="50" style="height: 40px;"></td>
+				<td colspan="3"><input type="text" name="id" style="width: 371px; height: 51px">
 			</tr>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">휴대폰<font
@@ -77,7 +75,7 @@
 		<br> <br> <br> 
 		<input type="submit" value="찾기"
 			style="background-color: orange; width: 69px; height: 38px;">
-		<input type="button" value="취소"
+		<input type="button" value="취소" onclick="window.close()"
 			style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </body>

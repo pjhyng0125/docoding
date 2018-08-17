@@ -37,7 +37,7 @@
 		<br> <br> <br> 
 		<input type="submit" value="찾기"
 			style="background-color: orange; width: 69px; height: 38px;">
-		<input type="button" value="취소"
+		<input type="button" value="취소" onclick="window.close()"
 			style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </body>

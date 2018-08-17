@@ -156,7 +156,10 @@
 	</action>
 	<!-- 장우영 main action 설정 종료 -->
 	
-	
+	<!-- 민지환 login action 설정 시작 -->
+	<!-- tiles -->
+	<action path="/login" forward=".login"></action>
+	<!-- 민지환 login action 설정 종료 -->
 	
     <!-- sample input and input submit actions
 
