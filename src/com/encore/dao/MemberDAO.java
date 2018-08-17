@@ -34,6 +34,17 @@ public boolean login(Map<String,String> map) {
 		return false;
 
 	}
+public boolean idCheck() {
+	try {
+		   int cnt = (Integer) smc.queryForObject("login.idCheck", map);
+			if(cnt==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+
+	}
 private static MemberDAO instance;
 	
 	public static MemberDAO getInstance(){

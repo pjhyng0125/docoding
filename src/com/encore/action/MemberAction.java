@@ -17,18 +17,12 @@ public class MemberAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-	
-		String id = request.getParameter("id");
-		MemberDAO dao = MemberDAO.getInstance();
+		String id = request.getParameter("userid");
 		
-		boolean result = dao.duplicateIdCheck(id);
-				PrintWriter out = response.getWriter();
-
-				if(result)	out.println("0"); // 아이디 중복
-				else		out.println("1");
+		Map<>
 				
-				out.close();
-				
-				return null;
-			}
-		}
+		return null;
+		
+	}
+}
+	
