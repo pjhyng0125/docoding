@@ -51,12 +51,10 @@ form.example::after {
 	display: table;
 }
 
-.img .example {
-	position: absolute;
-	top: 200px;
+.example {
+	position: relative;
+	top: -100px;
 	/* in conjunction with left property, decides the text position */
-	left: 570px;
-	width: 300px;
 }
 /*  ----------------------------- searchBar ³¡  ----------------------------- */
 

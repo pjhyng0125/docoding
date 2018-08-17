@@ -4,15 +4,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/lib/w3.css">
 <style>
-.mySlides {display:none}
+.mySlides {display:none;
+		  weidth: 250px;
+		  height: 200px;
+		  }
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
 .w3-badge {height:13px;width:13px;padding:0}
-.myslides {
-	weidth: 250px;
-	height: 200px;
-}
-
-.
 
 </style>
 <body>

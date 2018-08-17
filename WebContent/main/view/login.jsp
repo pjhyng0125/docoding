@@ -2,32 +2,48 @@
     pageEncoding="UTF-8"%>
 <%-- login.jsp --%>
 <script>
-	$(function(){
+	function check(){
+		if(loginCheck.userid.value ==""){
+			alert("아이디를 입력해 주세요.");
+			loginCheck.userid.focus();
+			return false;
+		}else if(loginCheck.userpass.value==""){
+			alert("비밀번호를 입력해 주세요.");
+			loginCheck.userpass.focus();
+			return false;
+		}else{ 
+			return true;
+		} 
+	}
+ 
+	 $(function(){
 		$('[name=login]').click(function(){
 			$.ajax({
 				url:'/docoding/loginAction.do',
 				data:{
-					userid:$('[name=userid]').val(),
+					userid:$('[name=userid]').val(),					
 					userpass:$('[name=userpass]').val()
 				},
 				success:function(result){
 					$('#loginForm').html(result);
 				}
 				
-			});		
-		});		
-
+			});
+		});	
 		
-	});
+	}); 
+	
+	
+	
 </script>
 <div  id="loginForm">
-<form method="post">
+<form name="loginCheck" method="post">
 <fieldset>
 <legend><strong>코딩합니다!</strong> LOGIN</legend>
 <table cellpadding="5">
 	<tr>
 		<td><input type="text" placeholder="아이디" name="userid" required></td>
-		<td rowspan="2"><input type="button" name="login" value="로그인"></td>
+		<td rowspan="2"><input type="button" name="login" value="로그인" onclick="check()"></td>
 	</tr>
 	<tr>
 		<td><input type="password" placeholder="비밀번호" name="userpass" required></td>
