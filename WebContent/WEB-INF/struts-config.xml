@@ -162,7 +162,8 @@
 	
 	<!-- 박형진 postlist action  -->
 	<!-- tiles -->
-	<action path="/post/view/postList" forward=".post"/>
+	<action path="/post/sellList" forward=".sellList"/>
+	<action path="/post/sellContent" forward=".sellContent"/>
 	
 	<!-- action -->
 

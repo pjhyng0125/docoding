@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>postList</title>
-<script type="text/javascript" src="../../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="docoding/js/jquery-3.3.1.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -27,27 +27,40 @@
 		var action = "${param.action}"
 		var order = "${param.order}"
 		var page = "${param.page}"
-		
+		var data;
 		if(order=="") order=0
 		if(page=="") page=1
 		if(action=="") action="list"
+		
+		if(action=="list"){
+			data = {
+				action : action,
+				order: order,
+				page: page
+			};
+		}else if(action=="search"){
+			data = {
+				action : action,
+				order: order,
+				page:page,
+				option: "${param.option}",
+				searchTxt:"${param.searchTxt}"
+
+			}
+		}
+		
 		$.ajax({
 			url : "/docoding/post/result/postList.do",
 			success : function(result) {
 				$('#postList').html(result);
 			},
-			data : {
-				action : action,
-				order: order,
-				page: page
-			},
+			data : data,
 			error : function(xhr, status, error) {
 				alert('서버에러!!');
 				alert('상태: ' + xhr.status + ', 상태text: ' + xhr.statusText
 						+ '\nstatus: ' + status + '\nerror: ' + error)
 			}//에러 콜백
 		})
-
 		
 		//아이디 또는 제목 검색
 		$('#postList').on('click', 'div[name=searchBtn]', function() {
@@ -56,10 +69,11 @@
 			
 			
 			alert(option);
-		
-			$.ajax({
+			location.href = "/docoding/post/sellList.do?action=search&option="+option+"&searchTxt="+searchTxt;
+/* 			$.ajax({
 				url : "/docoding/post/result/postList.do",
 				success : function(result) {
+
 					$('#postList').html(result);
 				},
 				data : {
@@ -74,7 +88,7 @@
 					alert('상태: ' + xhr.status + ', 상태text: ' + xhr.statusText
 							+ '\nstatus: ' + status + '\nerror: ' + error)
 				}//에러 콜백
-			})
+			}) */
 /* 			if (option == '아이디') {
 				$('#tbody #sp_id').filter(function() {
 					var txt = $(this).text().toUpperCase();
@@ -91,8 +105,15 @@
 		//클릭한 게시물 확인
 		$('#postList').on('click','tr',function(){
 			var no = $(this).find(':hidden').val();
-			location.href = "/docoding/post/result/postContent.do?action=selectContent&page="+page+"&order="+order+"&no="+no;		
+			location.href = "/docoding/post/sellContent.do?action=selectContent&page="+page+"&order="+order+"&no="+no;		
 		})
+		
+		//글쓰기
+		$('#postList').on('click','#createPost',function(){
+			location.href = "/docoding/input.do";		
+		})
+		
+		
 	})
 </script>
 <style>
@@ -125,7 +146,7 @@ div>#paging {
 	text-align: center;
 }
 
-nav {
+#orderNav {
 	margin: 0px;
 	height: 30px;
 }
