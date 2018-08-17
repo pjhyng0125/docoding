@@ -30,6 +30,12 @@ $(function(){
 				$('#title').val('제목');
 				$('#content').val('내용을 입력하세요');
 				$('#category').val('선택');
+				
+			if($.browser.msie){
+				$('#upload').replaceWith($('#upload').clone(true));
+			}else{
+				$('#upload').val('');
+			}
 			}
 		});
 	});
@@ -52,13 +58,13 @@ $(function(){
 		<option>jsp</option>
 		<option>jQuery</option>
 	</select>
-	<input type="file" name="upload">
+	<input type="file" id="upload" name="upload">
 	<input type="button" id="post" value="발행">
 	<input type="button" id="cancel" value="취소"><br>
 	<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요" required></textarea>
 </form>
 <%--0814 수정 끝 --%>
-<button id="admin"><a href="/docoding/view/admin.do">관리자 화면</a></button><br>
-<button id="free"><a href="/docoding/view/inputfree.do">자유 게시판 입력</a></button>
+<button id="admin"><a href="/docoding/admin.do">관리자 화면</a></button><br>
+<button id="free"><a href="/docoding/inputfree.do">자유 게시판 입력</a></button>
 </body>
 </html>

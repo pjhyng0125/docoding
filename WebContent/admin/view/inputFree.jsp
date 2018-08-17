@@ -52,7 +52,8 @@ inputFree.jsp
 	</select>
 	<input type="button" id="post" value="발행">
 	<input type="button" id="cancel" value="취소"><br>
-	<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요" required></textarea>
-	<button id="admin"><a href="/docoding/view/admin.do">관리자 화면</a></button><br>
+	<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요" required></textarea><br>
+	<button id="admin"><a href="/docoding/admin.do">관리자 화면</a></button><br>
+	<button id="admin"><a href="/docoding/input.do">판매 게시물 입력</a></button><br>
 </body>
 </html>

@@ -15,7 +15,7 @@
 	<li>jsp</li>
 	<li>jQuery</li>
 	<li>자유게시판</li>
-	<li><a href="/docoding/view/admin.do">관리자 화면</a></li>
+	<li><a href="/docoding/admin.do">관리자 화면</a></li>
 </ul>
 </body>
 </html>
