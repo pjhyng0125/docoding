@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.encore.util.DBConnection;
+import com.encore.vo.Member;
 import com.encore.vo.Member_admin;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -45,6 +46,10 @@ private static MemberDAO instance;
 		return smc.queryForList("mem.select_admin");
 		
 	}
+	
+	public List<Member> select_idCheck() throws SQLException{
+		return smc.queryForList("select id from jsp_idCheck where id=?");
+	}
 	public boolean duplicateIdCheck(String id)
 	{
 		Connection conn = null;
@@ -55,7 +60,7 @@ private static MemberDAO instance;
 		try {
 			
 			StringBuffer query = new StringBuffer();
-			query.append("SELECT ID FROM JSP_MEMBER WHERE ID=?");
+			query.append("select id from jsp_member where id=?");
 						
 			conn = DBConnection.getConnection();
 			pstm = conn.prepareStatement(query.toString());
