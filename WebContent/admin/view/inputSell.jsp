@@ -36,6 +36,7 @@ $(function(){
 			//}else{
 				$('#upload').val('');
 			//}
+				location.href="/docoding/sell.do";
 			}
 		});
 	});
