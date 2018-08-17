@@ -16,9 +16,9 @@
 			<tr>
 				<td align="center" width="150" bgcolor="#b8d6d8">새로운 비밀번호<font
 					color="red">*</font></td>
-				<td colspan="3"><input type="password" name="pass"
-					style="width: 371px; height: 51px"> <font color="red">영어/숫자/특자
-						문자포함(6자리~12자리)</font></td>
+				<td colspan="3"><input type="password" name="pass" placeholder="영문/숫자/특수문자포함(6자리~12자리)"
+					style="width: 371px; height: 51px">
+				</td>
 			</tr>
 			<tr>
 				<td align="center" width="150" bgcolor="#b8d6d8">새로운 비밀번호확인</td>

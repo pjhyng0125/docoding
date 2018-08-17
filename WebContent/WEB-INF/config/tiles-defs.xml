@@ -92,7 +92,7 @@
    <definition name=".buylist" extends=".mypage">
    	  <put name="body" value="/mypage/view/buylist.jsp"/>
    </definition>
-   
+  
    <!-- 이성훈 mypage tiles 설정 종료  -->
       
    
@@ -118,7 +118,15 @@
    	 
    <!-- 장우영 main tiles 설정 종료 -->	
 	
+   <!-- 민지환 login tiles 설정 시작  -->
    
+   <definition name=".login" path="/login/view/login_base.jsp">
+   		<put name="header" value="/common/header.jsp"></put>
+   		<put name="login" value="/login/view/join.jsp"></put>
+   		<put name="footer" value="/common/footer.jsp"></put>
+   </definition>
+   
+   <!-- 민지환 login tiles 설정 종료  -->
 </tiles-definitions>
 
 

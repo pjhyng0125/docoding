@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +19,7 @@
 		 if (form.idDuplication.value != "idCheck") {
 			alert("아이디 중복체크를 해주세요.");
 			return false;
-		} 
+		}  
 
 		if (!form.pass.value) {
 			alert("비밀번호를 입력하세요.");
@@ -79,7 +80,7 @@
 </head>
 <%-- join.jsp --%>
 <body>
-	<form method="post" action="MemberJoinAction.do" name="userInfo"
+	<form method="post" action="main.jsp" name="userInfo"
 		onsubmit="return checkValue()">
 	<center>
 		<br> <br> <b><font size="7" color="gray" face="impact">코딩합니다</font>
@@ -117,8 +118,7 @@
 				<td align="center" width="100" bgcolor="#b8d6d8">이름<font
 					color="red">*</font></td>
 				<td colspan="3">
-					<input type="text" name="name"
-					style="width: 371px; height: 51px"> 
+					<input type="text" name="name" placeholder="이름을 입력해주세요" style="width: 371px; height: 51px"> 
 					<input name="gender"
 					id="man" type="radio" checked="checked" value="male"><label
 					class="on" id="manLb" onclick="Join.eraseLabel('noticeName')"
@@ -131,8 +131,7 @@
 				<td align="center" width="100" bgcolor="#b8d6d8">생년월일<font
 					color="red">*</font></td>
 				<td colspan="3">
-				<select name="year"
-					style="height: 30px; width: 61px">
+				<select name="year" style="height: 30px; width: 61px">
 						<%
 							for (int i = 2018; i >= 1900; i--) {
 						%>
@@ -197,7 +196,7 @@
 				<th align="center" width="120" bgcolor="#b8d6d8">자동가입방지<font
 					color="red">*</font></th>
 				<td class="attach"><img id="captchaimg" name="captchaimg"
-					src="../../image/captcha.png" alt="Captcha image" height="45" /> <a
+					src="../../image/captcha1.png" alt="Captcha image" height="45" /> <a
 					onclick="document.inputForm.captchaimg.src='/captcha?id='+Math.random();"
 					id="refresh" style="cursor: pointer">이미지 새로고침</a></td>
 			</tr>
@@ -206,7 +205,7 @@
 				<td class="td">
 					<input type="text" name="captcha" size="10" style="width: 157px;" /> 
 					<input type="button" value="확인" style="background-color: #b8d6d8"></td>
-			</tr>
+			</tr> 
 		</table>
 		<br> <br> <br> 
 			<input type="submit" value="가입"
@@ -214,6 +213,6 @@
 			<input type="reset" value="취소" onclick="goFirstForm()"
 			style="background-color: orange; width: 69px; height: 38px;">
 	</center>
-	</form>
+</form>
 </body>
 </html>
