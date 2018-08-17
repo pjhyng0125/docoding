@@ -20,11 +20,18 @@
 
 
 <center>
+	<table width="100%">	<!-- 공용 top head table -->
+		<tr><td><tiles:insert attribute="header"/></td></tr>
+		<tr><td><tiles:insert attribute="search"/></td></tr>
+		<tr><td><tiles:insert attribute="menu"/></td></tr>
+	</table>
 	<table style="margin-left:10px;margin-right:10px "> <!-- body table -->
 		<tr>
 			<td width="10%" align="left"><tiles:insert attribute="sidemenu"/></td>	<!-- menu bar  -->
 			<td><tiles:insert attribute="body"></tiles:insert></td> <!-- main body -->
 		</tr>
+		
+		<tr><td colspan="2"><tiles:insert attribute="footer"/></td></tr> <!-- 공용 footer -->
 	</table>
 </center>
 </body>
