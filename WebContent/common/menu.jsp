@@ -8,14 +8,5 @@
 </head>
 <%--menu.jsp --%>
 <body>
-<ul>
-	<li>java</li>
-	<li>DB</li>
-	<li>javascript</li>
-	<li>jsp</li>
-	<li>jQuery</li>
-	<li>자유게시판</li>
-	<li><a href="/docoding/admin.do">관리자 화면</a></li>
-</ul>
 </body>
 </html>
