@@ -167,17 +167,26 @@
 	<!-- tiles -->
 	<action path="/post/sellList" forward=".sellList"/>
 	<action path="/post/sellContent" forward=".sellContent"/>
+	<action path="/post/freeList" forward=".freeList"/>
+	<action path="/post/freeContent" forward=".freeContent"/>
 	
 	<!-- action -->
 
-	<action path="/post/result/postList" type="com.encore.action.SellPostAction">
+	<action path="/post/result/sellList" type="com.encore.action.SellPostAction">
 		<forward name="list" path="/post/result/sellList.jsp"/>
+	</action>
+	<action path="/post/result/freeList" type="com.encore.action.FreePostAction">
+		<forward name="list" path="/post/result/freeList.jsp"/>
 	</action>
 
 	<action path="/post/view/postContent" forward="/post/view/postContent.jsp"></action>
-	<action path="/post/result/postContent" type="com.encore.action.SellContentAction">
+	<action path="/post/result/sellContent" type="com.encore.action.SellContentAction">
 		<forward name="content" path="/post/view/postContent.do"/>
-		<forward name="reply" path="/post/view/postContent.do"/>
+		<forward name="reply" path="/post/result/contentReply.jsp"/>
+	</action>
+	
+	<action path="/post/result/freeContent" type="com.encore.action.FreeContentAction">
+		<forward name="content" path="/post/view/postContent.do"/>
 		<forward name="reply" path="/post/result/contentReply.jsp"/>
 	</action>
 	<!-- 박형진 postlist action 설정 종료 -->
