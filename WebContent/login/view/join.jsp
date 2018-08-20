@@ -11,7 +11,6 @@
 <script type="text/javascript">
 $(function(){
 	$('#userId').click(function(){
-		alert('1');
 		$.ajax({	
 			url:"/docoding/joinAction.do",
 			data:{
@@ -25,8 +24,12 @@ $(function(){
 				phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
 			},
 			success:function(data){
-				alert('2');
-				alert(data);
+				if(data=="success"){
+					alert(data);
+					location.href="/docoding/main.do";
+				}else{
+					alert(data);
+				}
 			}
 		});//ajax
 	});//버튼 클릭

@@ -35,10 +35,8 @@ public class MemberAction extends Action{
 			m.setPhone(request.getParameter("phone"));
 			
 			if(dao.select_login(m)) {
-				System.out.println("success");
 				response.getWriter().print("success");
 			}else {
-				System.out.println("failed");
 				response.getWriter().print("failled");
 			}
 		}

@@ -20,9 +20,15 @@
       
    </definition>
    
+  <!-- 민지환 admin tiles 설정 시작  -->
    <definition name=".join" extends=".main">
       <put name="body" value="/login/view/join.jsp"></put>   
    </definition>
+
+   <definition name=".findIdPw" extends=".main">
+      <put name="body" value="/login/view/findIDPW.jsp"></put>   
+   </definition>
+  <!-- 민지환 admin tiles 설정 종료  -->
    
   <!-- 박진형 admin tiles 설정 시작  -->
   
@@ -124,6 +130,13 @@
       <put name="footer" value="/common/footer.jsp"></put>
        <put name="home" value=".home"></put>
    </definition> -->
+   
+    <definition name=".main" path="/common/home.jsp">
+      <put name="header" value="/common/header.jsp"></put>
+      <put name="menu" value="/common/menu.jsp"></put>
+      <put name="footer" value="/common/footer.jsp"></put>
+      <put name="home" value=".home"></put> 
+    </definition>
    
    	 <definition name=".home" path="/main/view/mainView.jsp">
    		 <put name="searchBar" value="/main/view/searchBar.jsp"/>

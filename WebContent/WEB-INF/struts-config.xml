@@ -99,12 +99,15 @@
 	<action path="/common/login" forward=".login"></action>
 
 
-	<!-- 박진형 admin action 설정 시작  -->
+	<!-- 민지환 admin action 설정 시작  -->
+<action path="/join" forward=".join"></action>
+<action path="/findIdPw" forward=".findIdPw"></action>
+	<!-- 민지환 admin action 설정 종료  -->
 	
+	<!-- 박진형 admin action 설정 시작  -->
 <action path="/common/form" forward=".form"></action>
 <action path="/common/login" forward=".login"></action>
 
-<action path="/join" forward=".join"></action>
 
 <action path="/input" forward=".input"></action>
 <action path="/admin" forward=".admin"></action>
