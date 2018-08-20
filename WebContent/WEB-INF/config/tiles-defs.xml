@@ -119,10 +119,13 @@
    	  <put name="body" value="/mypage/view/drop.jsp"/>
    </definition>
    
-   <definition name=".buylist" extends=".mypage">
+   <definition name=".mybuylist" extends=".mypage">
    	  <put name="body" value="/mypage/view/buylist.jsp"/>
    </definition>
-  
+   <definition name=".mysell" extends=".mypage">
+   	  <put name="body" value="/mypage/view/sell_list.jsp"/>
+   </definition>
+
    <!-- 이성훈 mypage tiles 설정 종료  -->
       
    
