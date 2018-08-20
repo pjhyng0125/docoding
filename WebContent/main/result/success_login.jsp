@@ -12,10 +12,7 @@
     					}
     			});
     		});
-    		
- 
-    	});
-    
+    	});    
     </script>
 <div id="successForm">
 <form>

@@ -20,5 +20,16 @@
     //------------------------------- adver 끝 -----------------------
 
     //------------------------------- login 시작 -----------------------
-    				// ---------- login success 시작 -----------   	
+    				// ---------- login success 시작 -----------   
+    
+    
+    //---------------------------- searchBar 시작 ---------------------
+	$(function() {
+		var languages = [ "Java","JavaScript","sql","xml","DB","DataBase","jQuery"];
+		
+
+		$("#my-language").autocomplete({
+			source : languages
+		});
+	});
     

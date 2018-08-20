@@ -30,6 +30,7 @@ public class LoginAction extends Action {
 			Map<String,String> map = new HashMap<>();
 			map.put("userid", id); //map.put("name","우영");
 			map.put("userpass", pass); //map.put("name","우영");
+			System.out.println("loginMap>>"+map);
 			
 			
 			MemberDAO dao = new MemberDAO();

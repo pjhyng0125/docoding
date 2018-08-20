@@ -2,33 +2,27 @@
     pageEncoding="UTF-8"%>
 <%-- login.jsp --%>
 <script>
-	function check(){
-		if(loginCheck.userid.value ==""){
-			alert("아이디를 입력해 주세요.");
-			loginCheck.userid.focus();
-			return false;
-		}else if(loginCheck.userpass.value==""){
-			alert("비밀번호를 입력해 주세요.");
-			loginCheck.userpass.focus();
-			return false;
-		}else{ 
-			return true;
-		} 
-	}
- 
 	 $(function(){
 		$('[name=login]').click(function(){
-			$.ajax({
-				url:'/docoding/loginAction.do',
-				data:{
-					userid:$('[name=userid]').val(),					
-					userpass:$('[name=userpass]').val()
-				},
-				success:function(result){
-					$('#loginForm').html(result);
-				}
-				
-			});
+			if(loginCheck.userid.value ==""){
+				alert("아이디를 입력해 주세요.");
+				loginCheck.userid.focus();				
+			}else if(loginCheck.userpass.value==""){
+				alert("비밀번호를 입력해 주세요.");
+				loginCheck.userpass.focus();
+			}else{ 
+				$.ajax({
+					url:'/docoding/loginAction.do',
+					data:{
+						userid:$('[name=userid]').val(),					
+						userpass:$('[name=userpass]').val()
+					},
+					success:function(result){
+						$('#loginForm').html(result);
+					}
+					
+				});
+			}
 		});	
 		
 	}); 
@@ -43,13 +37,13 @@
 <table cellpadding="5">
 	<tr>
 		<td><input type="text" placeholder="아이디" name="userid" required></td>
-		<td rowspan="2"><input type="button" name="login" value="로그인" onclick="check()"></td>
+		<td rowspan="2"><input type="button" name="login" value="로그인" ></td>
 	</tr>
 	<tr>
 		<td><input type="password" placeholder="비밀번호" name="userpass" required></td>
 	</tr>
 	<tr>
-		<th colspan="3"><font size="2"><a>회원가입</a> <a>아이디</a>/<a>비번찾기</a></font></th>
+		<th colspan="3"><font size="2"><a>회원가입</a> <a>아이디/비번찾기</a></font></th>
 	</tr> 
 </table>
 </fieldset>
