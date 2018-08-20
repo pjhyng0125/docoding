@@ -34,7 +34,7 @@
 		var option = "${param.option}";
 		var searchTxt= "${param.searchTxt}";
 		
-		if(postName=="") postName="free"
+		if(postName=="") postName="Java"
 		if(order=="") order=0
 		if(page=="") page=1	
 		if(action=="") action="list"
@@ -60,11 +60,11 @@
 		if(postName=="free"){
 			url="/docoding/post/result/freeList.do"
 		}else{
-			url="/docoding/post/result/postList.do"			
+			url="/docoding/post/result/sellList.do"			
 		}
 		
 		$.ajax({
-			url : url, //sellList.do로 변경
+			url : url,
 			success : function(result) {
 				$('#postList').html(result);
 			},
@@ -80,7 +80,7 @@
 		$('#postList').on('click', 'div[name=searchBtn]', function() {
 			option = $('select option:selected').val(); //아이디 또는 제목
 			searchTxt = $('#searchTxt').val(); //검색명
-			
+			urlToList()
 			
 			alert(option);
 			location.href = url+"?postName="+postName+"&action=search&order=0&page=1&option="+option+"&searchTxt="+searchTxt;
@@ -119,6 +119,7 @@
 		//클릭한 게시물 확인
 		$('#postList').on('click','tr',function(){
 			var no = $(this).find(':hidden').val();
+			urlToContent();
 			
 			if(action=="search"){
 				location.href = url+"?postName="+postName+"&action=selectContent&order="+order+"&page="+page+"&option="+option+"&searchTxt="+searchTxt+"&no="+no;									
@@ -128,12 +129,32 @@
 		})
 		
 		//글쓰기
+		
 		$('#postList').on('click','#createPost',function(){
-			location.href = "/docoding/input.do";		
+			if(postName=="free"){
+			location.href = "/docoding/free.do";						
+			}else{
+			location.href = "/docoding/input.do";						
+			}
 		})
 		
+		function urlToContent(){
+			if(postName=="free"){
+				url="/docoding/post/freeContent.do"
+			}else{
+				url="/docoding/post/sellContent.do"			
+			}
+		}
 		
+		function urlToList(){
+			if(postName=="free"){
+				url="/docoding/post/freeList.do"
+			}else{
+				url="/docoding/post/sellList.do"			
+			}
+		}
 	})
+
 </script>
 <style>
 #list {

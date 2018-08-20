@@ -68,7 +68,14 @@
 			<li class="page-item"><a class="page-link">&laquo;</a></li>
 		</c:if>
 		<c:if test="${param.page>1 }">
-			<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+			<c:if test='${param.action.equals("search") }'>
+				<li class="page-item" value="${i }"><a class="page-link"
+					href="/docoding/post/freeList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i-1 }&option=${param.option}&searchTxt=${param.searchTxt}">&laquo;</a></li>
+			</c:if>
+			<c:if test='${param.action.equals("list") }'>
+				<li class="page-item" value="${i }"><a class="page-link"
+					href="/docoding/post/freeList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i-1 }">&laquo;</a></li>
+			</c:if>
 		</c:if>
 		<c:forEach begin="1" end="${totalPage }" var="i">
 			<c:if test='${param.action.equals("search") }'>
@@ -86,7 +93,14 @@
 				<li class="page-item"><a class="page-link">&raquo;</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+				<c:if test='${param.action.equals("search") }'>
+					<li class="page-item" value="${i }"><a class="page-link"
+						href="/docoding/post/freeList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i+1 }&option=${param.option}&searchTxt=${param.searchTxt}">&raquo;</a></li>
+				</c:if>
+				<c:if test='${param.action.equals("list") }'>
+					<li class="page-item" value="${i }"><a class="page-link"
+						href="/docoding/post/freeList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i+1 }">&raquo;</a></li>
+				</c:if>
 			</c:otherwise>
 		</c:choose>
 	</ul>
