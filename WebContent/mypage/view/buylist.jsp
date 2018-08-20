@@ -62,13 +62,13 @@
 			});
 			}else{
 				alert('가장 첫 페이지 입니다.')
-				page=page+1;
+				page = parseInt(page)+1;
 			}
 		});	// 이전페이지로 이동
 		
 		$('#add_list').on('click','#next',function(){
 			
-			page = page+1;
+			page = parseInt(page)+1;
 			if(page<=max_page){
 			$.ajax({
 					url:'/docoding/mypageAction.do',

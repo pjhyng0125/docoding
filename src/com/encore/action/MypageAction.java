@@ -63,7 +63,15 @@ public class MypageAction extends Action {
 			//request.setAttribute("msg", "1234");					// 잠시동안 쓸 값
 			forward = mapping.findForward("message");
 			break;
+			
 		case "a_assign_seller":
+			
+		/*	if(dao.check_assign(id)) {							///// 여기가 아니구나! ㅠㅜ
+				request.setAttribute("pageAction", pageAction);
+				request.setAttribute("msg", "이미 판매자 등록이 완료되었습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}else {}*/
 			
 			String account_num = request.getParameter("account_num");	// 계좌번호 받기
 		
@@ -71,6 +79,7 @@ public class MypageAction extends Action {
 			request.setAttribute("msg", dao.assign_seller(id, account_num));
 			forward = mapping.findForward("message");
 			break;
+			
 			
 		case "d_drop_member":
 			id="abcd";
@@ -113,7 +122,49 @@ public class MypageAction extends Action {
 			request.setAttribute("pageAction", pageAction);
 			forward = mapping.findForward("buylist");
 			break;
-		
+			
+		case "mysell":											// 구매목록 불러오기
+			
+			String page2 = request.getParameter("page");
+			int pageNo2 = Integer.parseInt(page2);				
+			int end2 = pageNo2*5;
+			String start2 = end2-4+"";
+			
+			Map<String, String> map2 = new HashMap<>();
+			map2.put("end", end2+"");
+			map2.put("start", start2);
+			map2.put("id", id);
+			
+			List<Map> list2 = new ArrayList<>();
+			
+			if(dao.total_sellpage(id, 5+"")==0) {
+				request.setAttribute("msg", "자료 판매 기록이 없습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}else {	
+				
+				request.setAttribute("max_page", dao.total_sellpage(id,5+""));
+				list2 = dao.select_sellpage(map2);
+				System.out.println("list : "+list2);
+				request.setAttribute("list", list2);
+			}		
+			request.setAttribute("pageAction", pageAction);
+			forward = mapping.findForward("sellList");
+			break;
+			
+		case "sell_delete":
+			
+			String no = request.getParameter("no");
+			if(dao.sell_delete(id, no)) {
+				request.setAttribute("msg", "삭제가 완료 되었습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}else {
+				request.setAttribute("msg", "삭제 실패 하였습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}
+			
 		} // switch - case문 종료
 
 		return forward;

@@ -16,10 +16,10 @@
 		}
 		var max_page='';
 		
-		$('#sel_buylist').click(function(){
+		$('#mysell').click(function(){
 		
 			
-			pageAction = "sel_buylist";
+			pageAction = "mysell";
 			$('#basic').hide();
 			$('#list').show();
 			$('#title').html('판매 자료 현황');
@@ -51,24 +51,26 @@
 		
 		$('#add_list').on('click','#prev',function(){
 			
+			
 			page = page-1;
 			if(page>0){
 			$.ajax({
 					url:'/docoding/mypageAction.do',
 					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
 					success:function(result){
-						$('#add_list').html(result);		
+						$('#add_list').html(result);	
 					}	
 			});
 			}else{
 				alert('가장 첫 페이지 입니다.')
-				page=page+1;
+				page = parseInt(page)+1;
 			}
 		});	// 이전페이지로 이동
 		
 		$('#add_list').on('click','#next',function(){
 			
-			page = page+1;
+			
+			page = parseInt(page)+1;
 			if(page<=max_page){
 			$.ajax({
 					url:'/docoding/mypageAction.do',
@@ -82,11 +84,38 @@
 				page=page-1;
 			}
 		});	// 다음페이지로 이동
+		
+		$('#add_list').on('click','.del_bt',function(){
+			
+			var no = $(this).attr('value');
+			pageAction = "sell_delete";
+			$.ajax({
+				url:'/docoding/mypageAction.do',
+				data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"no":no},
+				success:function(result){
+					alert(result);
+					pageAction = "mysell"
+					$.ajax({
+						url:'/docoding/mypageAction.do',
+						data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
+						success:function(result){
+				
+							$('#add_list').html(result);	
+							max_page=$('#max_page').val();
+						},
+						error:function(xhr){
+							alert(xhr.status+":"+xhr.statusText);
+						}
+					});
+				}	
+			});
+		});	// 판매 게시글 삭제버튼
+		
 		$('#sel_bookmark').click(function(){
 			pageAction = "sel_bookmark";
 			$('#basic').hide();
 			$('#list').show();
-			$('#title').html('즐겨찾기 현황');
+			$('#title').html('판매수익 현황');
 			$.ajax({
 				url:'/docoding/mypageAction.do',
 				data:{"pageAction":pageAction,"id":$('get_id').val()},
@@ -107,7 +136,7 @@
 <div>
 <br>
 <h4>판매자료 및 판매수익 현황</h4>
-<a id="sel_buylist"><font size="4">판매자료</font></a> <font size="4">  |  </font> 
+<a id="mysell"><font size="4">판매자료</font></a> <font size="4">  |  </font> 
 <a id="sel_bookmark"><font size="4">수익현황</font></a>
 <hr width="30%">
 </div>

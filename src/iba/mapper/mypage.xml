@@ -55,4 +55,32 @@
 		select ceil((select count(*) from sell_post sp, buy_post bp where sp.sp_no = bp.sp_no and bp.bp_id=#id#)/#pagecount#) 
 		from dual
 	</select>
+	
+	
+		<!-- 판매 전체 페이지 수 조회 -->
+	<select id="total_sellpage" parameterClass="Map" resultClass="int">
+		select ceil((select count(*) from sell_post where id=#id#)/#pagecount#)
+		from dual
+	</select>
+	
+	<select id="select_sellpage" resultClass="HashMap" parameterClass="java.util.Map">
+	<![CDATA[
+		select to_char(sp_time, 'yyyy-mm-dd') sp_time, sp_title, sold_count, sp_count, sp_no
+		from (select sp_time, sp_title, sold_count, sp_count, sp_no, rownum rn 
+				from (select sp_time, sp_title, sold_count, sp_count, sp_no
+					  from sell_post
+					  where id=#id#
+					  order by sp_time desc)
+			  )
+		where rn >= #start# and rn <= #end#
+	]]>
+	</select>
+	
+	<delete id="sell_delete" parameterClass="Map">
+		delete from sell_post where id=#id# and sp_no=#sp_no#
+	</delete>
+	
+	<select id="check_assign" parameterClass="String" resultClass="int">
+		select count(*) from sell_assign where id = #id#
+	</select>
 </sqlMap>

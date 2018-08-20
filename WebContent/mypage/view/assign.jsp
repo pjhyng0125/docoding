@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/docoding/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인
 			$.ajax({
 					url:'/docoding/mypageAction.do',		// action class와 연결

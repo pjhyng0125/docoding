@@ -80,18 +80,7 @@ public class MypageDAO {
 		return false;
 	}
 	/*---------------------------------------------------------------------------*/
-	public List<Map> select_buylist(String id) {	// 삭제여부
-		
-		List<Map> list = null;
-		
-		try {
-			list = smc.queryForList("mypage.select_list", id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
+	
 	public int count_buylist(String id) {	// 페이지 유무에 따라 없으면 조회 결과 없음을 나타내기위에 사용
 		int t=0;
 		try {
@@ -130,5 +119,59 @@ public class MypageDAO {
 		}
 		
 		return 0;
+	}
+	
+	/*------------------------------ buy list ------------------------*/
+	public int total_sellpage(String id, String page_count) {
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pagecount", page_count);
+		try {
+			int t = (Integer)smc.queryForObject("mypage.total_sellpage",map);
+			return t;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public List<Map> select_sellpage(Map<String, String> map) {
+		List<Map> list = null;
+		try {
+			list = smc.queryForList("mypage.select_sellpage",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public boolean sell_delete(String id, String no) {
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("sp_no", no);
+ 		
+		try {
+			int t = smc.delete("mypage.sell_delete", map);
+			System.out.println("t : "+t);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public boolean check_assign(String id) {
+		
+		try {
+			int t = (int) smc.queryForObject("mypage.check_assign", id);
+			System.out.println("t : "+t);
+			if(t==1)return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }
