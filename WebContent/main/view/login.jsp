@@ -43,7 +43,7 @@
 		<td><input type="password" placeholder="비밀번호" name="userpass" required></td>
 	</tr>
 	<tr>
-		<th colspan="3"><font size="2"><a>회원가입</a> <a>아이디/비번찾기</a></font></th>
+		<th colspan="3"><font size="2"><a href="/docoding/join.do">회원가입</a> <a>아이디/비번찾기</a></font></th>
 	</tr> 
 </table>
 </fieldset>

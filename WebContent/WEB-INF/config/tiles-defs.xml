@@ -20,54 +20,42 @@
       
    </definition>
    
-   <definition name=".form" extends=".main">
-      <put name="body" value="/guest/inputForm.jsp"/>
-   </definition>
-   
-   <definition name=".login" extends=".main">
-      <put name="body" value="/0723/login_form.jsp"></put>
-   </definition>
-   
    <definition name=".join" extends=".main">
-	<put name="body" value="/login/view/join.jsp"/>
-</definition>
+      <put name="body" value="/login/view/join.jsp"></put>   
+   </definition>
    
   <!-- 박진형 admin tiles 설정 시작  -->
   
-  <definition name=".input" path="/common/base.jsp">
-	<put name="header" value="/common/header.jsp"></put>
+  <definition name=".input" extends=".main">
 	<put name="menu" value="/common/menu.jsp"></put>
 	<put name="body" value="/admin/view/inputSell.jsp"></put>
-	<put name="footer" value="/common/footer.jsp"></put>
 </definition>
 
 
-<definition name=".admin" extends=".input">
+<definition name=".admin" extends=".main">
 	<put name="body" value="/admin/view/adminList.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
 
-<definition name=".sell" extends=".input">
+<definition name=".sell" extends=".main">
 	<put name="body" value="/admin/view/sellData.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
 
-<definition name=".inputfree" extends=".input">
+<definition name=".inputfree" extends=".main">
 	<put name="body" value="/admin/view/inputFree.jsp"/>
 	<put name="menu" value="/common/menu.jsp"/>
 </definition>
 
-<definition name=".free" extends=".input">
+<definition name=".free" extends=".main">
 	<put name="body" value="/admin/view/freeData.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
 
-<definition name=".autho" extends=".input">
+<definition name=".autho" extends=".main">
 	<put name="body" value="/admin/view/authoData.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
-
-
   
   <!-- 박진형 admin tiles 설정 종료  -->
   
@@ -119,24 +107,23 @@
    	  <put name="body" value="/mypage/view/drop.jsp"/>
    </definition>
    
-   <definition name=".mybuylist" extends=".mypage">
+   <definition name=".buylist" extends=".mypage">
    	  <put name="body" value="/mypage/view/buylist.jsp"/>
    </definition>
-   <definition name=".mysell" extends=".mypage">
-   	  <put name="body" value="/mypage/view/sell_list.jsp"/>
-   </definition>
-
+  
    <!-- 이성훈 mypage tiles 설정 종료  -->
       
    
    <!-- 장우영 main tiles 설정 시작 -->
-
-  	<definition name=".main" path="/common/home.jsp">
+   <!-- <definition>태그 하나당 화면 한개를 정의 -->   
+ <!--   <definition name=".mainHome" path="/common/home.jsp">
+   
+     path속성에 정의된 base.jsp에서 include할 페이지들에 대한 정의
       <put name="header" value="/common/header.jsp"></put>
       <put name="menu" value="/common/menu.jsp"></put>
       <put name="footer" value="/common/footer.jsp"></put>
-      <put name="home" value=".home"></put> 
-    </definition>
+       <put name="home" value=".home"></put>
+   </definition> -->
    
    	 <definition name=".home" path="/main/view/mainView.jsp">
    		 <put name="searchBar" value="/main/view/searchBar.jsp"/>
