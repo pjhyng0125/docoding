@@ -18,12 +18,13 @@
 select sp_no, sp_category, sp_title, sp_content,id, to_char(sp_time,'YY/MM/DD HH24:MI:SS') as sp_time, sp_filename,sp_count
 from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count, rownum rn 
         from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count
-		  		 from sell_post]]>
+		  		 from sell_post
+		  		 where sp_category=#sp_category#]]>
 	<isNotNull property="searchId">
-		where upper(id) like upper(#searchId#)
+		and upper(id) like upper(#searchId#)
 	</isNotNull>
 	<isNotNull property="searchTitle">
-		where upper(sp_title) like upper(#searchTitle#)
+		and upper(sp_title) like upper(#searchTitle#)
 	</isNotNull>
 	order by sp_no desc
 	)
@@ -48,11 +49,12 @@ from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,s
 	<select id="selectTotalPage" parameterClass="java.util.Map"
 		resultClass="int">
 		select ceil((select count(*) from sell_post
+		where sp_category=#sp_category# 
 		<isNotNull property="searchId">
-			where upper(id) like upper(#searchId#)
+			and upper(id) like upper(#searchId#)
 		</isNotNull>
 		<isNotNull property="searchTitle">
-			where upper(sp_title) like upper(#searchTitle#)
+			and upper(sp_title) like upper(#searchTitle#)
 		</isNotNull>
 		)/#pageCount#) count from dual
 	</select>
