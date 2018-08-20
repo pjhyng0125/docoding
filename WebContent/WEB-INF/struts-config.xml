@@ -104,6 +104,8 @@
 <action path="/common/form" forward=".form"></action>
 <action path="/common/login" forward=".login"></action>
 
+<action path="/join" forward=".join"></action>
+
 <action path="/input" forward=".input"></action>
 <action path="/admin" forward=".admin"></action>
 <action path="/sell" forward=".sell"></action>

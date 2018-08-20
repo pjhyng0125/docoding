@@ -28,6 +28,10 @@
       <put name="body" value="/0723/login_form.jsp"></put>
    </definition>
    
+   <definition name=".join" extends=".main">
+	<put name="body" value="/login/view/join.jsp"/>
+</definition>
+   
   <!-- 박진형 admin tiles 설정 시작  -->
   
   <definition name=".input" path="/common/base.jsp">
@@ -62,6 +66,8 @@
 	<put name="body" value="/admin/view/authoData.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
+
+
   
   <!-- 박진형 admin tiles 설정 종료  -->
   
