@@ -16,6 +16,7 @@ import com.encore.dao.Sell_postDAO;
 import com.encore.vo.Sell_post;
 
 public class SellPostAction extends Action{
+	///docoding/post/result/postList.do  --->sellList.do로 변경필요
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -66,7 +67,11 @@ public class SellPostAction extends Action{
 		
 		List<Sell_post> list = dao.selectSPAll(map);
 		request.setAttribute("list", list);
-		request.setAttribute("totalPage", totalPage);
+		if(totalPage>0) {
+			request.setAttribute("totalPage", totalPage);
+		}else {			
+			request.setAttribute("totalPage", 1);
+		}
 		System.out.println(list);
 		
 		return mapping.findForward(forwardName);

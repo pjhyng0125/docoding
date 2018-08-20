@@ -20,10 +20,10 @@ from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,s
         from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count
 		  		 from sell_post]]>
 	<isNotNull property="searchId">
-		where id like #searchId#
+		where upper(id) like upper(#searchId#)
 	</isNotNull>
 	<isNotNull property="searchTitle">
-		where sp_title like #searchTitle#
+		where upper(sp_title) like upper(#searchTitle#)
 	</isNotNull>
 	order by sp_no desc
 	)
@@ -49,10 +49,10 @@ from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,s
 		resultClass="int">
 		select ceil((select count(*) from sell_post
 		<isNotNull property="searchId">
-			where id like #searchId#
+			where upper(id) like upper(#searchId#)
 		</isNotNull>
 		<isNotNull property="searchTitle">
-			where sp_title like #searchTitle#
+			where upper(sp_title) like upper(#searchTitle#)
 		</isNotNull>
 		)/#pageCount#) count from dual
 	</select>

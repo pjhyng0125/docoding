@@ -30,6 +30,9 @@ public class Sell_postDAO {
 		return smc.queryForList("sp.select_sellpost");
 	}
 	
+	
+	
+	//¹ÚÇüÁøDAO
 	public List<Sell_post> selectSPAll(Map<String, Object> map) {
 		List<Sell_post> list = null;
 		try {

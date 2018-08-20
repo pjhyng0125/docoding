@@ -71,8 +71,18 @@
   	<put name="menu" value="/common/menu.jsp"></put>
   </definition>
 
+  <definition name=".freeList" extends=".main">
+  	<put name="body" value="/post/view/postList.jsp"></put>
+  	<put name="menu" value="/common/menu.jsp"></put>
+  </definition>
+
   <definition name=".sellContent" extends=".main">
-  	<put name="body" value="/post/result/postContent.do"></put>
+  	<put name="body" value="/post/result/sellContent.do"></put>
+  	<put name="menu" value="/common/menu.jsp"></put>
+  </definition>
+
+  <definition name=".freeContent" extends=".main">
+  	<put name="body" value="/post/result/freeContent.do"></put>
   	<put name="menu" value="/common/menu.jsp"></put>
   </definition>
   <!-- 박형진 post tiles 설정 종료  -->

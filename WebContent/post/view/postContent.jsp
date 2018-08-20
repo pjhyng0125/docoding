@@ -41,9 +41,16 @@ $(function() {
 		})
 		
 		$('#replyDiv').on('click','input[value=목록]',function(){
+			var postName = "${param.postName}"
 			var order = ${param.order}
 			var page = ${param.page}
-			location.href = '/docoding/post/sellList.do?action=list&order='+order+'&page='+page			
+			var option = "${param.option}"
+			if(option){
+				var searchTxt = "${param.searchTxt}";
+			location.href = "/docoding/post/sellList.do?postName="+postName+"&action=search&order="+order+"&page="+page+"&option="+option+"&searchTxt="+searchTxt															
+			}else{
+			location.href = "/docoding/post/sellList.do?postName="+postName+"&action=list&order="+order+"&page="+page							
+			}
 		})
 		
 		
