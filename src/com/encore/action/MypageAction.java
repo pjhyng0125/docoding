@@ -88,9 +88,8 @@ public class MypageAction extends Action {
 			
 		case "sel_buylist":											// 구매목록 불러오기
 			
-			//request.setAttribute("buylist", dao.select_buylist(id));
 			String page = request.getParameter("page");
-			int pageNo = Integer.parseInt(page);				// 짚고 넘어가야할 부분.
+			int pageNo = Integer.parseInt(page);				
 			int end = pageNo*5;
 			String start = end-4+"";
 			
@@ -105,17 +104,12 @@ public class MypageAction extends Action {
 				request.setAttribute("msg", "자료를 구매한 기록이 없습니다.");
 				forward = mapping.findForward("message");
 				break;
-			}else {
-				
+			}else {	
 				request.setAttribute("max_page", dao.total_page(id,5+""));
-				System.out.println("map_page : "+dao.total_page(id,5+""));
-				//System.out.println(dao.count_buylist(id));
-				//list = dao.select_buylist(id);
 				list = dao.select_page(map);
 				System.out.println("list : "+list);
 				request.setAttribute("list", list);
-			}
-			
+			}		
 			request.setAttribute("pageAction", pageAction);
 			forward = mapping.findForward("buylist");
 			break;

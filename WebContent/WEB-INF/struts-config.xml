@@ -130,7 +130,8 @@
 	<action path="/mypage/cash" forward=".cash"/>
 	<action path="/mypage/assign" forward=".assign"/>
 	<action path="/mypage/drop" forward=".drop"/>
-	<action path="/mypage/buylist" forward=".buylist"/>
+	<action path="/mypage/mybuylist" forward=".mybuylist"/>
+	<action path="/mypage/mysell" forward=".mysell"/>
 	
 	<!-- action class -->
 	<action path="/mypageAction"
@@ -143,7 +144,9 @@
 				 path="/mypage/result/addcash_result.jsp"/>
 		<forward name="buylist"
 				 path="/mypage/result/buylist_result.jsp"/> 
-		 		 
+		<forward name="sellList"
+				 path="/mypage/result/sell_list_result.jsp"/> 
+			 
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->
 	
