@@ -21,7 +21,7 @@ CREATE TABLE member (
 	birth VARCHAR2(20) NOT NULL, /* 생년월일 */
 	email VARCHAR2(100) NOT NULL, /* 이메일 */
 	phone VARCHAR2(20) NOT NULL, /* 연락처 */
-	login_flag char(1) constraint login_CK check(login_flag in ('0','1')), /* 로그인여부 */
+	login_flag char(1) default '0', /* 로그인여부 */
 	m_time DATE, /* 가입일자 */
 	cash NUMBER default 0
 );
@@ -35,8 +35,11 @@ ALTER TABLE member
 	ADD
 		CONSTRAINT PK_member
 		PRIMARY KEY (id);
+		
+alter table member
+	modify login_flag constraint login_CK check(login_flag in ('0','1'))
 
-/* 새 테이블2 */
+	/* 새 테이블2 */
 CREATE TABLE free_post (
 	fp_no NUMBER NOT NULL, /* 글번호 */
 	fp_category VARCHAR2(20) NOT NULL, /* 카테고리 */
