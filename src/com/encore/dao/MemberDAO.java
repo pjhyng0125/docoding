@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import com.encore.util.DBConnection;
 import com.encore.vo.Member;
 import com.encore.vo.Member_admin;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -24,9 +23,9 @@ public class MemberDAO {
 		return smc.queryForList("mem.select_admin");
 	}
 	
-	public boolean select_login(Member m) {
+	public boolean insert_login(Member m) {
 		try {
-			smc.insert("mem.select_login",m);
+			smc.insert("mem.insert_login",m);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,49 +60,10 @@ public boolean idCheck(String id) {
 		return false;
 
 	}
-private static MemberDAO instance;
+
+}
+
+			
 	
-	public static MemberDAO getInstance(){
-		if(instance==null)
-			instance=new MemberDAO();
-		return instance;
-	}
-	
-	public List<Member> select_idCheck() throws SQLException{
-		return smc.queryForList("select id from jsp_idCheck where id=?");
-	}
-	public boolean duplicateIdCheck(String id)
-	{
-		Connection conn = null;
-		PreparedStatement pstm = null;
-		ResultSet rs = null;
-		boolean x= false;
-		
-		try {
-			
-			StringBuffer query = new StringBuffer();
-			query.append("select id from jsp_member where id=?");
-						
-			conn = DBConnection.getConnection();
-			pstm = conn.prepareStatement(query.toString());
-			pstm.setString(1, id);
-			rs = pstm.executeQuery();
-			
-			if(rs.next()) x= true; 
-			
-			return x;
-			
-		} catch (Exception sqle) {
-			throw new RuntimeException(sqle.getMessage());
-		} finally {
-			try{
-				if ( pstm != null ){ pstm.close(); pstm=null; }
-				if ( conn != null ){ conn.close(); conn=null;	}
-			}catch(Exception e){
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-	}
-	}
 
 

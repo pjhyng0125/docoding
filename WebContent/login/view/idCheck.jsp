@@ -5,30 +5,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>중복확인</title>
-   <script type="text/javascript"></script>
-   <script src="/docoding/js/join.js"></script> 
-	<style type="text/css">
-        #wrap {
-            width: 490px;
-            text-align :center;
-            margin: 0 auto 0 auto;
-        }
-        
-        #chk{
-            text-align :center;
-        }
-        
-        #cancelBtn{
-            visibility:visible;
-        }
-        
-        #useBtn{
-             visibility:hidden;
-        }
- 
-   </style>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript">
+   $(function(){
+	   $('#idCheck').click(function(){
+		   $.ajax({
+			   url:"/docoding/joinAction.do",
+		   	   data:{
+		   		   action:"insert_idCheck",
+		   		   id:$('#userId').val()
+		   		},
+		   		success:function(data){
+		   			alert(data);
+		   		}
+		   });//ajax
+	   });//버튼 클릭
+   });
+   function sendCheckValue(){
+       // 중복체크 결과인 idCheck 값을 전달한다.
+       opener.document.userInfo.idDuplication.value ="idCheck";
+       // 회원가입 화면의 ID입력란에 값을 전달
+       opener.document.userInfo.id.value = document.getElementById("userId").value;
+       
+       if (opener != null) {
+           opener.chkForm = null;
+           self.close();
+       }    
+   }    
+   </script>
 </head>
 <body onload="pValue()">
+	<center>
 <div id="wrap">
     <br>
     <b><font size="4" color="gray">아이디 중복체크</font></b>
@@ -37,13 +44,14 @@
     <div id="chk">
         <form id="checkForm">
             <input type="text" name="idinput" id="userId">
-            <input type="button" value="중복확인" onclick="idCheck()" style="background-color: orange">
+            <input type="button" value="중복확인" id="idCheck" style="background-color: orange">
         </form>
-        <div id="msg"></div>
+        <div id="msg"></div> 
         <br>
-        <input id="cancelBtn" type="button" value="취소" onclick="window.close()" style="background-color:orange"><br>
+        <input id="cancelBtn" type="button" value="취소" onclick="window.close()" style="background-color:orange"><br><br>
         <input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()" style="background-color: orange">
     </div>
 </div>  
+</center>
 </body>
 </html>

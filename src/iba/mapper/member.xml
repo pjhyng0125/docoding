@@ -14,8 +14,13 @@
 	]]>
 	</select>
 	
-	<insert id="select_login" parameterClass="member_login">
+	<insert id="insert_login" parameterClass="member_login">
 		insert into member (id, pass, name, gender, birth, email, phone, m_time)
 		values (#id#, #pass#, #name#, #gender#, #birth#, #email#, #phone#, sysdate)
+	</insert>
+	<insert id="insert_idCheck" parameterClass="member_login">
+		select count(*)
+		from member
+		where id='login_id'
 	</insert>
 </sqlMap>
