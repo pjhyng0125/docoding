@@ -28,8 +28,8 @@ $(function(){
 			success:function(data){
 				alert(data);//입력 성공시: 게시물 입력 성공!!!
 							//입력 실패시: 게시물 입력 실패...OTL
-				$('#title').val('제목');
-				$('#content').val('내용을 입력하세요');
+				$('#title').val('');
+				$('#content').val('');
 				$('#category').val('선택');
 				
 			}

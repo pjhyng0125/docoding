@@ -64,11 +64,10 @@ function checkValue() {
 				"width=500, height=300, resizable = no, scrollbars = no");
 	}
 
-	function inputIdChk() {
+	/*function inputIdChk() {
 		document.userInfo.idDuplication.value = "idUncheck";
-	}
+	}*/
     //---------------------join마침-----------------
-	
 	//----------------------idcheck시작---------------    
 	var httpRequest = null;
     

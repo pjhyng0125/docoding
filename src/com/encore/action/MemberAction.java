@@ -19,15 +19,40 @@ public class MemberAction extends Action{
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String id = request.getParameter("userId");
-		
+		String action=request.getParameter("action");
 		MemberDAO dao = new MemberDAO();
-		boolean flag = dao.idCheck(id);
+		ActionForward forward=null;
+		System.out.println(action);
+		if(action.equals("insert_login")) {
+			//·Î±×ÀÎ insert
+			Member m = new Member();
+			m.setId(request.getParameter("id"));
+			m.setPass(request.getParameter("pass"));
+			m.setName(request.getParameter("name"));
+			m.setGender(request.getParameter("gender"));
+			m.setBirth(request.getParameter("birth"));
+			m.setEmail(request.getParameter("email"));
+			m.setPhone(request.getParameter("phone"));
+			
+			if(dao.select_login(m)) {
+				System.out.println("success");
+				response.getWriter().print("success");
+			}else {
+				System.out.println("failed");
+				response.getWriter().print("failled");
+			}
+		}
 		
-		ActionForward forward;
-		if(!flag) 
-			forward = mapping.findForward("successJ");
+		else if(action.equals("select_idchceck")) {
+			//
+			boolean flag = dao.idCheck(id);
+			//if(!flag) 
+			//forward = mapping.findForward("successJ");
+		}
 		
-		return null;
+		
+		
+		return forward;
 	}
 }
 	
