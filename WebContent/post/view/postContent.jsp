@@ -43,7 +43,7 @@ $(function() {
 		$('#replyDiv').on('click','input[value=목록]',function(){
 			var order = ${param.order}
 			var page = ${param.page}
-			location.href = '/docoding/post/view/postList.do?action=list&order='+order+'&page='+page			
+			location.href = '/docoding/post/sellList.do?action=list&order='+order+'&page='+page			
 		})
 		
 		

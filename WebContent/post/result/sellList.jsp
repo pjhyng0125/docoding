@@ -6,13 +6,13 @@
 <br>
 <br>
 <div id="list" class="col-sm-4 text-left">
-	<h3><a href="/docoding/post/view/postList.do?action=list" id="category"><span>Java</span></a></h3>
+	<h3><a href="/docoding/post/sellList.do" id="category"><span>Java</span></a></h3>
 	<br>
 </div>
-<nav class="navbar navbar-expand-sm ">
+<nav class="navbar navbar-expand-sm" id="orderNav">
 	<ul class="nav navbar-nav">
-		<li class="nav-item" value="0"><a class="nav-link" href="/docoding/post/view/postList.do?action=${param.action }&order=0&page=${param.page }">조회순</a></li>
-		<li class="nav-item" value="1"><a class="nav-link" href="/docoding/post/view/postList.do?action=${param.action }&order=1&page=${param.page }"
+		<li class="nav-item" value="0"><a class="nav-link" href="/docoding/post/sellList.do?action=${param.action }&order=0&page=${param.page }">조회순</a></li>
+		<li class="nav-item" value="1"><a class="nav-link" href="/docoding/post/sellList.do?action=${param.action }&order=1&page=${param.page }"
 			value="dateup">날짜순</a></li>
 	</ul>
 	<hr>
@@ -58,7 +58,12 @@
 		<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
 		</c:if>
 		<c:forEach begin="1" end="${totalPage }" var="i">
-		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/view/postList.do?action=${param.action }&order=${param.order }&page=${i }">${i}</a></li>
+		<c:if test='${param.action.equals("search") }' >
+		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/sellList.do?action=${param.action }&order=${param.order }&page=${i }&option=${param.option}&searchTxt=${param.searchTxt}">${i}</a></li>				
+		</c:if>
+		<c:if test='${param.action.equals("list") }' >
+		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/sellList.do?action=${param.action }&order=${param.order }&page=${i }">${i}</a></li>		
+		</c:if>
 		</c:forEach>
 		
 		<c:choose>
