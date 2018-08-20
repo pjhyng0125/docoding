@@ -6,25 +6,31 @@
 <br>
 <br>
 <div id="list" class="col-sm-4 text-left">
-	<h3><a href="/docoding/post/sellList.do" id="category"><span>Java</span></a></h3>
+	<h3>
+		<a href="/docoding/post/sellList.do" id="category"><span>Java</span></a>
+	</h3>
 	<br>
 </div>
 <nav class="navbar navbar-expand-sm" id="orderNav">
-	<ul class="nav navbar-nav">				
-		<li class="nav-item" value="0">
-			<c:if test='${param.action.equals("search") }' >
-			<a class="nav-link" href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }
-			&order=0&page=${i }&option=${param.option }&searchTxt=${param.searchTxt}">조회순</a></c:if>
-			<c:if test='${param.action.equals("list") }' >
-			<a class="nav-link" href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=0&page=${param.page }">조회순</a></c:if>
-		</li>
-		<li class="nav-item" value="0">
-			<c:if test='${param.action.equals("search") }' >
-			<a class="nav-link" href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }
-			&order=1&page=${i }&option=${param.option }&searchTxt=${param.searchTxt}">날짜순</a></c:if>
-			<c:if test='${param.action.equals("list") }' >
-			<a class="nav-link" href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=1&page=${param.page }">날짜순</a></c:if>
-		</li>
+	<ul class="nav navbar-nav">
+		<li class="nav-item" value="0"><c:if
+				test='${param.action.equals("search") }'>
+				<a class="nav-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }
+			&order=0&page=${i }&option=${param.option }&searchTxt=${param.searchTxt}">조회순</a>
+			</c:if> <c:if test='${param.action.equals("list") }'>
+				<a class="nav-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=0&page=${param.page }">조회순</a>
+			</c:if></li>
+		<li class="nav-item" value="0"><c:if
+				test='${param.action.equals("search") }'>
+				<a class="nav-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }
+			&order=1&page=${i }&option=${param.option }&searchTxt=${param.searchTxt}">날짜순</a>
+			</c:if> <c:if test='${param.action.equals("list") }'>
+				<a class="nav-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=1&page=${param.page }">날짜순</a>
+			</c:if></li>
 	</ul>
 	<hr>
 </nav>
@@ -50,7 +56,8 @@
 					<td>${list.sp_content }</td>
 					<td id="sp_id">${list.id}</td>
 					<td>${list.sp_time}</td>
-					<td>${list.sp_count}<input type="hidden" value="${list.sp_no }"></td>
+					<td>${list.sp_count}<input type="hidden"
+						value="${list.sp_no }"></td>
 				<tr>
 			</c:forEach>
 		</tbody>
@@ -63,27 +70,43 @@
 	<!-- Paging 처리 -->
 	<ul class="pagination">
 		<c:if test="${param.page ==1 || param.page=='' }">
-		<li class="page-item"><a class="page-link">&laquo;</a></li>		
+			<li class="page-item"><a class="page-link">&laquo;</a></li>
 		</c:if>
 		<c:if test="${param.page>1 }">
-		<li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+			<c:if test='${param.action.equals("search") }'>
+				<li class="page-item"><a class="page-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${param.page-1 }&option=${param.option}&searchTxt=${param.searchTxt}">&laquo;</a></li>
+			</c:if>
+			<c:if test='${param.action.equals("list") }'>
+				<li class="page-item"><a class="page-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${param.page-1}">&laquo;</a></li>
+			</c:if>
 		</c:if>
 		<c:forEach begin="1" end="${totalPage }" var="i">
-		<c:if test='${param.action.equals("search") }' >
-		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i }&option=${param.option}&searchTxt=${param.searchTxt}">${i}</a></li>				
-		</c:if>
-		<c:if test='${param.action.equals("list") }' >
-		<li class="page-item" value="${i }"><a class="page-link" href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i }">${i}</a></li>		
-		</c:if>
+			<c:if test='${param.action.equals("search") }'>
+				<li class="page-item" value="${i }"><a class="page-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i }&option=${param.option}&searchTxt=${param.searchTxt}">${i}</a></li>
+			</c:if>
+			<c:if test='${param.action.equals("list") }'>
+				<li class="page-item" value="${i }"><a class="page-link"
+					href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${i }">${i}</a></li>
+			</c:if>
 		</c:forEach>
-		
+
 		<c:choose>
-		<c:when test="${param.page==totalPage}">
-			<li class="page-item"><a class="page-link">&raquo;</a></li>	
-		</c:when>
-		<c:otherwise>		
-			<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>	
-		</c:otherwise>
+			<c:when test="${param.page==totalPage}">
+				<li class="page-item"><a class="page-link">&raquo;</a></li>
+			</c:when>
+			<c:otherwise>
+				<c:if test='${param.action.equals("search") }'>
+					<li class="page-item"><a class="page-link"
+						href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${param.page+1 }&option=${param.option}&searchTxt=${param.searchTxt}">&raquo;</a></li>
+				</c:if>
+				<c:if test='${param.action.equals("list") }'>
+					<li class="page-item"><a class="page-link"
+						href="/docoding/post/sellList.do?postName=${param.postName }&action=${param.action }&order=${param.order }&page=${param.page+1}">&raquo;</a></li>
+				</c:if>
+			</c:otherwise>
 		</c:choose>
 	</ul>
 
