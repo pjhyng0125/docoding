@@ -18,9 +18,7 @@ public class MemberDAO {
 	SqlMapClient smc;
 	public MemberDAO() {
 		smc=MySqlMapClient.getSqlMapInstance();
-		
-
-	}
+		}
 public boolean login(Map<String,String> map) {
 		
 		
@@ -34,9 +32,9 @@ public boolean login(Map<String,String> map) {
 		return false;
 
 	}
-public boolean idCheck() {
+public boolean idCheck(String id) {
 	try {
-		   int cnt = (Integer) smc.queryForObject("login.idCheck", map);
+		   int cnt = (Integer) smc.queryForObject("login.idCheck",id);
 			if(cnt==1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>¾ÆÀÌµğ Áßº¹ Ã¼Å©</title>
-    <script src="/docoding/js/join.js"></script>
-    <script type="text/javascript"></script>
-    
-    <style type="text/css">
+<title>ì¤‘ë³µí™•ì¸</title>
+   <script type="text/javascript"></script>
+   <script src="/docoding/js/join.js"></script> 
+	<style type="text/css">
         #wrap {
             width: 490px;
             text-align :center;
@@ -26,24 +26,24 @@
              visibility:hidden;
         }
  
-   </style>  
+   </style>
 </head>
 <body onload="pValue()">
 <div id="wrap">
     <br>
-    <b><font size="6" color="sky blue">¾ÆÀÌµğ Áßº¹Ã¼Å©</font></b>
+    <b><font size="4" color="gray">ì•„ì´ë”” ì¤‘ë³µì²´í¬</font></b>
     <hr size="1" width="460">
     <br>
     <div id="chk">
         <form id="checkForm">
             <input type="text" name="idinput" id="userId">
-            <input type="button" value="Áßº¹È®ÀÎ" name="idcheck"  style="background-color: orange">
+            <input type="button" value="ì¤‘ë³µí™•ì¸" onclick="idCheck()" style="background-color: orange">
         </form>
         <div id="msg"></div>
         <br>
-        <input id="cancelBtn" type="button" value="Ãë¼Ò" onclick="window.close()" style="background-color: orange"><br>
-        <input id="useBtn" type="button" value="»ç¿ëÇÏ±â" onclick="sendCheckValue()" style="background-color: orange">
+        <input id="cancelBtn" type="button" value="ì·¨ì†Œ" onclick="window.close()" style="background-color:orange"><br>
+        <input id="useBtn" type="button" value="ì‚¬ìš©í•˜ê¸°" onclick="sendCheckValue()" style="background-color: orange">
     </div>
-</div>    
+</div>  
 </body>
 </html>

@@ -35,6 +35,8 @@
   <sqlMap resource="./iba/mapper/autho.xml"/>
    <sqlMap resource="./iba/mapper/main.xml"/>
   <sqlMap resource="./iba/mapper/sell_reply.xml" />
+  <sqlMap resource="./iba/mapper/join.xml" />
+  
 </sqlMapConfig>
 
 
