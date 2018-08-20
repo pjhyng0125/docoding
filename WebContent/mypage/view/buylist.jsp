@@ -10,16 +10,26 @@
 	$(function(){
 		
 		var pageAction;
+		var page = "${param.page}";
+		if(page==""){
+			page=1;
+		}
+		var max_page='';
+		
 		$('#sel_buylist').click(function(){
+		
+			
 			pageAction = "sel_buylist";
 			$('#basic').hide();
 			$('#list').show();
 			$('#title').html('구매 자료 현황');
 			$.ajax({
 					url:'/docoding/mypageAction.do',
-					data:{"pageAction":pageAction,"id":$('#get_id').attr("value")},
+					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
 					success:function(result){
-						$('#add_list').html(result);		
+			
+						$('#add_list').html(result);	
+						max_page=$('#max_page').val();
 					},
 					error:function(xhr){
 						alert(xhr.status+":"+xhr.statusText);
@@ -27,6 +37,51 @@
 			});	// ajax 
 		});	// buylist
 		
+		$('#add_list').on('click','.p_process',function(){
+			
+			page = $(this).attr('value');
+			$.ajax({
+					url:'/docoding/mypageAction.do',
+					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
+					success:function(result){
+						$('#add_list').html(result);		
+					}	
+			});
+		});	// 숫자 클릭 페이지 이동
+		
+		$('#add_list').on('click','#prev',function(){
+			
+			page = page-1;
+			if(page>0){
+			$.ajax({
+					url:'/docoding/mypageAction.do',
+					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
+					success:function(result){
+						$('#add_list').html(result);		
+					}	
+			});
+			}else{
+				alert('가장 첫 페이지 입니다.')
+				page=page+1;
+			}
+		});	// 이전페이지로 이동
+		
+		$('#add_list').on('click','#next',function(){
+			
+			page = page+1;
+			if(page<=max_page){
+			$.ajax({
+					url:'/docoding/mypageAction.do',
+					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
+					success:function(result){
+						$('#add_list').html(result);		
+					}	
+			});
+			}else{
+				alert('마지막 페이지 입니다.');
+				page=page-1;
+			}
+		});	// 다음페이지로 이동
 		$('#sel_bookmark').click(function(){
 			pageAction = "sel_bookmark";
 			$('#basic').hide();
@@ -50,6 +105,7 @@
 <input type="hidden" id="login_flag">
 <center>
 <div>
+<br>
 <h4>구매자료 및 즐겨찾기 현황</h4>
 <a id="sel_buylist"><font size="4">구매자료</font></a> <font size="4">  |  </font> 
 <a id="sel_bookmark"><font size="4">즐겨찾기</font></a>
@@ -61,7 +117,6 @@
 </div>
 
 <div id="list" style="display: none;">
-<br>
 <font size="5"><div id="title"></div></font>
 <hr width="80%">
 <div id="add_list">

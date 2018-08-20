@@ -79,8 +79,8 @@ public class MypageDAO {
 		}
 		return false;
 	}
-	
-	public List<Map> select_buylist(String id) {
+	/*---------------------------------------------------------------------------*/
+	public List<Map> select_buylist(String id) {	// 삭제여부
 		
 		List<Map> list = null;
 		
@@ -92,14 +92,43 @@ public class MypageDAO {
 		
 		return list;
 	}
-	public int count_buylist(String id) {
+	public int count_buylist(String id) {	// 페이지 유무에 따라 없으면 조회 결과 없음을 나타내기위에 사용
 		int t=0;
 		try {
 			t = (Integer)smc.queryForObject("mypage.count_buylist", id);
-			return t;
+			if(t%5>0) {
+				return t+1;
+			}else {
+				return t;
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return t;
+	}
+	
+	public List<Map> select_page(Map<String, String> map) {
+		List<Map> list = null;
+		try {
+			list = smc.queryForList("mypage.select_page",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public int total_page(String id, String page_count) {
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pagecount", page_count);
+		try {
+			int t = (Integer)smc.queryForObject("mypage.select_totalpage",map);
+			return t;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 }
