@@ -10,9 +10,10 @@
 
    <!-- <definition>태그 하나당 화면 한개를 정의 -->   
    <definition name=".main" path="/common/base.jsp">
-   
+ 
      <!-- path속성에 정의된 base.jsp에서 include할 페이지들에 대한 정의 -->
       <put name="header" value="/common/header.jsp"></put>
+      <put name="body" value="/common/body.jsp"></put>
       <put name="menu" value="/common/menu.jsp"></put>
       <put name="footer" value="/common/footer.jsp"></put>
       
@@ -27,6 +28,10 @@
       <put name="body" value="/0723/login_form.jsp"></put>
    </definition>
    
+   <definition name=".join" extends=".main">
+	<put name="body" value="/login/view/join.jsp"/>
+</definition>
+   
   <!-- 박진형 admin tiles 설정 시작  -->
   
   <definition name=".input" path="/common/base.jsp">
@@ -35,6 +40,7 @@
 	<put name="body" value="/admin/view/inputSell.jsp"></put>
 	<put name="footer" value="/common/footer.jsp"></put>
 </definition>
+
 
 <definition name=".admin" extends=".input">
 	<put name="body" value="/admin/view/adminList.jsp"/>
@@ -60,12 +66,32 @@
 	<put name="body" value="/admin/view/authoData.jsp"/>
 	<put name="menu" value="/admin/view/admin_menu.jsp"/>
 </definition>
+
+
   
   <!-- 박진형 admin tiles 설정 종료  -->
   
-  <!-- 박형진 admin tiles 설정 시작  -->
-  
-  <!-- 박형진 admin tiles 설정 종료  -->
+  <!-- 박형진 post tiles 설정 시작  -->
+  <definition name=".sellList" extends=".main">
+  	<put name="body" value="/post/view/postList.jsp"></put>
+  	<put name="menu" value="/common/menu.jsp"></put>
+  </definition>
+
+  <definition name=".freeList" extends=".main">
+  	<put name="body" value="/post/view/postList.jsp"></put>
+  	<put name="menu" value="/common/menu.jsp"></put>
+  </definition>
+
+  <definition name=".sellContent" extends=".main">
+  	<put name="body" value="/post/result/sellContent.do"></put>
+  	<put name="menu" value="/common/menu.jsp"></put>
+  </definition>
+
+  <definition name=".freeContent" extends=".main">
+  	<put name="body" value="/post/result/freeContent.do"></put>
+  	<put name="menu" value="/common/menu.jsp"></put>
+  </definition>
+  <!-- 박형진 post tiles 설정 종료  -->
 
   <!-- 이성훈 mypage tiles 설정 시작  -->
   
@@ -93,10 +119,13 @@
    	  <put name="body" value="/mypage/view/drop.jsp"/>
    </definition>
    
-   <definition name=".buylist" extends=".mypage">
+   <definition name=".mybuylist" extends=".mypage">
    	  <put name="body" value="/mypage/view/buylist.jsp"/>
    </definition>
-  
+   <definition name=".mysell" extends=".mypage">
+   	  <put name="body" value="/mypage/view/sell_list.jsp"/>
+   </definition>
+
    <!-- 이성훈 mypage tiles 설정 종료  -->
       
    
@@ -124,11 +153,7 @@
 	
    <!-- 민지환 login tiles 설정 시작  -->
    
-   <definition name=".login" path="/login/view/login_base.jsp">
-   		<put name="header" value="/common/header.jsp"></put>
-   		<put name="login" value="/login/view/join.jsp"></put>
-   		<put name="footer" value="/common/footer.jsp"></put>
-   </definition>
+  
    
    <!-- 민지환 login tiles 설정 종료  -->
 </tiles-definitions>

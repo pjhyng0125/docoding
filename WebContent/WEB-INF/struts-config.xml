@@ -104,6 +104,8 @@
 <action path="/common/form" forward=".form"></action>
 <action path="/common/login" forward=".login"></action>
 
+<action path="/join" forward=".join"></action>
+
 <action path="/input" forward=".input"></action>
 <action path="/admin" forward=".admin"></action>
 <action path="/sell" forward=".sell"></action>
@@ -130,7 +132,8 @@
 	<action path="/mypage/cash" forward=".cash"/>
 	<action path="/mypage/assign" forward=".assign"/>
 	<action path="/mypage/drop" forward=".drop"/>
-	<action path="/mypage/buylist" forward=".buylist"/>
+	<action path="/mypage/mybuylist" forward=".mybuylist"/>
+	<action path="/mypage/mysell" forward=".mysell"/>
 	
 	<!-- action class -->
 	<action path="/mypageAction"
@@ -143,7 +146,9 @@
 				 path="/mypage/result/addcash_result.jsp"/>
 		<forward name="buylist"
 				 path="/mypage/result/buylist_result.jsp"/> 
-		 		 
+		<forward name="sellList"
+				 path="/mypage/result/sell_list_result.jsp"/> 
+			 
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->
 	
@@ -158,8 +163,38 @@
 	
 	<!-- 민지환 login action 설정 시작 -->
 	<!-- tiles -->
-	<action path="/login" forward=".login"></action>
+	<action path="/joinAction" type="com.encore.action.MemberAction">
+		<forward name="successJ" path="/login/view/join.jsp"></forward>
+	</action>
 	<!-- 민지환 login action 설정 종료 -->
+	
+	<!-- 박형진 postlist action  -->
+	<!-- tiles -->
+	<action path="/post/sellList" forward=".sellList"/>
+	<action path="/post/sellContent" forward=".sellContent"/>
+	<action path="/post/freeList" forward=".freeList"/>
+	<action path="/post/freeContent" forward=".freeContent"/>
+	
+	<!-- action -->
+
+	<action path="/post/result/sellList" type="com.encore.action.SellPostAction">
+		<forward name="list" path="/post/result/sellList.jsp"/>
+	</action>
+	<action path="/post/result/freeList" type="com.encore.action.FreePostAction">
+		<forward name="list" path="/post/result/freeList.jsp"/>
+	</action>
+
+	<action path="/post/view/postContent" forward="/post/view/postContent.jsp"></action>
+	<action path="/post/result/sellContent" type="com.encore.action.SellContentAction">
+		<forward name="content" path="/post/view/postContent.do"/>
+		<forward name="reply" path="/post/result/contentReply.jsp"/>
+	</action>
+	
+	<action path="/post/result/freeContent" type="com.encore.action.FreeContentAction">
+		<forward name="content" path="/post/view/postContent.do"/>
+		<forward name="reply" path="/post/result/contentReply.jsp"/>
+	</action>
+	<!-- 박형진 postlist action 설정 종료 -->
 	
     <!-- sample input and input submit actions
 

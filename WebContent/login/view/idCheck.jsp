@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>¾ÆÀÌµğ Áßº¹ Ã¼Å©</title>
-    
-    <style type="text/css">
+<title>ì¤‘ë³µí™•ì¸</title>
+   <script type="text/javascript"></script>
+   <script src="/docoding/js/join.js"></script> 
+	<style type="text/css">
         #wrap {
             width: 490px;
             text-align :center;
@@ -25,107 +27,23 @@
         }
  
    </style>
-    
-    <script type="text/javascript">
-    
-        var httpRequest = null;
-        
-        // httpRequest °´Ã¼ »ı¼º
-        function getXMLHttpRequest(){
-            var httpRequest = null;
-        
-            if(window.ActiveXObject){
-                try{
-                    httpRequest = new ActiveXObject("Msxml2.XMLHTTP");    
-                } catch(e) {
-                    try{
-                        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-                    } catch (e2) { httpRequest = null; }
-                }
-            }
-            else if(window.XMLHttpRequest){
-                httpRequest = new window.XMLHttpRequest();
-            }
-            return httpRequest;    
-        }
-        
-        
-        // È¸¿ø°¡ÀÔÃ¢ÀÇ ¾ÆÀÌµğ ÀÔ·Â¶õÀÇ °ªÀ» °¡Á®¿Â´Ù.
-        function pValue(){
-            document.getElementById("userId").value = opener.document.userInfo.id.value;
-        }
-        
-        // ¾ÆÀÌµğ Áßº¹Ã¼Å©
-        function idCheck(){
- 
-            var id = document.getElementById("userId").value;
- 
-            if (!id) {
-                alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏÁö ¾Ê¾Ò½À´Ï´Ù.");
-                return false;
-            } 
-            else if((id < "0" || id > "9") && (id < "A" || id > "Z") && (id < "a" || id > "z")){ 
-                alert("ÇÑ±Û ¹× Æ¯¼ö¹®ÀÚ´Â ¾ÆÀÌµğ·Î »ç¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
-                return false;
-            }
-            else
-            {
-                var param="id="+id
-                httpRequest = getXMLHttpRequest();
-                httpRequest.onreadystatechange = callback;
-                httpRequest.open("POST", "MemberAction.do", true);    
-                httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
-                httpRequest.send(param);
-            }
-        }
-        
-        function callback(){
-            if(httpRequest.readyState == 4){
-                // °á°ú°ªÀ» °¡Á®¿Â´Ù.
-                var resultText = httpRequest.responseText;
-                if(resultText == 0){
-                    alert("»ç¿ëÇÒ¼ö¾ø´Â ¾ÆÀÌµğÀÔ´Ï´Ù.");
-                    document.getElementById("cancelBtn").style.visibility='visible';
-                    document.getElementById("useBtn").style.visibility='hidden';
-                    document.getElementById("msg").innerHTML ="";
-                } 
-                else if(resultText == 1){ 
-                    document.getElementById("cancelBtn").style.visibility='hidden';
-                    document.getElementById("useBtn").style.visibility='visible';
-                    document.getElementById("msg").innerHTML = "»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.";
-                }
-            }
-        }
-        
-  
-        function sendCheckValue(){
-
-            opener.document.userInfo.idDuplication.value ="idCheck";
-            opener.document.userInfo.id.value = document.getElementById("userId").value;
-            if (opener != null) {
-                opener.chkForm = null;
-                self.close();
-            }    
-        }    
-   </script>
-    
 </head>
 <body onload="pValue()">
 <div id="wrap">
     <br>
-    <b><font size="4" color="gray">¾ÆÀÌµğ Áßº¹Ã¼Å©</font></b>
+    <b><font size="4" color="gray">ì•„ì´ë”” ì¤‘ë³µì²´í¬</font></b>
     <hr size="1" width="460">
     <br>
     <div id="chk">
         <form id="checkForm">
             <input type="text" name="idinput" id="userId">
-            <input type="button" value="Áßº¹È®ÀÎ" onclick="idCheck()">
+            <input type="button" value="ì¤‘ë³µí™•ì¸" onclick="idCheck()" style="background-color: orange">
         </form>
         <div id="msg"></div>
         <br>
-        <input id="cancelBtn" type="button" value="Ãë¼Ò" onclick="window.close()"><br>
-        <input id="useBtn" type="button" value="»ç¿ëÇÏ±â" onclick="sendCheckValue()">
+        <input id="cancelBtn" type="button" value="ì·¨ì†Œ" onclick="window.close()" style="background-color:orange"><br>
+        <input id="useBtn" type="button" value="ì‚¬ìš©í•˜ê¸°" onclick="sendCheckValue()" style="background-color: orange">
     </div>
-</div>    
+</div>  
 </body>
 </html>

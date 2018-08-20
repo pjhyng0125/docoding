@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="fr">
+<select id="selectReply" parameterClass="int" resultClass="com.encore.vo.Free_reply">
+select fp_no,fr_no,to_char(fr_time,'YY/MM/DD HH24:MI:SS') as fr_time,fr_id,fr_content
+from free_reply
+where fp_no=#fp_no#
+order by fr_no asc
+</select>
+
+<insert parameterClass="com.encore.vo.Free_reply" id="insertReply">
+ insert into free_reply (fp_no,fr_no,fr_time,fr_id,fr_content)
+ values (#fp_no#,freereply_seq.nextval,sysdate,#fr_id#,#fr_content#)
+</insert>
+
+<delete id="deleteReply" parameterClass="int">
+delete from free_reply where fr_no = #fr_no#
+</delete>
+</sqlMap>

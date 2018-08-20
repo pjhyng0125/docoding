@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>menu</title>
+<title>body.jsp</title>
 </head>
-<%--menu.jsp --%>
+<!-- body.jsp -->
 <body>
+
 </body>
 </html>

@@ -6,13 +6,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
-<script type="text/javascript"></script>
-<script src="/docoding/js/join.js"></script>
+<!-- <script src="/docoding/js/join.js"></script> -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#userId').click(function(){
+		alert('1');
+		$.ajax({	
+			url:"/docoding/joinAction.do",
+			data:{
+				action:"insert_login",
+				id:$('#id').val(),
+				pass:$('#pass').val(),
+				name:$('#name').val(),
+				gender:$('input[name=gender]').val(),
+				birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val(),
+				email: $('#mail').val()+"@"+$('#mail2').val(),
+				phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
+			},
+			success:function(data){
+				alert('2');
+				alert(data);
+			}
+		});//ajax
+	});//버튼 클릭
+});//document ready
+</script>
 </head>
 <%-- join.jsp --%>
 <body>
-	<form method="post" action="main.jsp" name="userInfo"
-		onsubmit="return checkValue()">
+	<form method="post"name="userInfo">
 	<center>
 		<br> <br> <b><font size="7" color="gray" face="impact">코딩합니다</font>
 			<font size="7" color="sky blue" face="imapct">회원가입</font></b>
@@ -22,13 +45,13 @@
 			<br>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8"
-					onkeydown="inputIdChk()">아이디<font color="red">*</font></td>
+					>아이디<font color="red">*</font></td>
 				<td colspan="3">
-					<input type="text" name="id" placeholder="영문/숫자(6자리~12자리)" onkeydown="inputIdChk()"
+					<input type="text" id="id" name="id" placeholder="영문/숫자(6자리~12자리)"
 					style="width: 371px; height: 51px"> 
-					<input type="button" value="중복확인" onclick="openIdChk()" maxlength="50"
+	<!-- 				<input type="button" value="중복확인" onclick="openIdChk()" maxlength="50"
 					style="background-color: #b8d6d8; height: 40px;">
-					<input type="hidden" name="idDuplication" value="idUncheck"></td>
+					<input type="hidden" id="idCheck" name="idDuplication" value="idUncheck"></td> -->
 
 			</tr>
 
@@ -36,21 +59,21 @@
 				<td align="center" width="100" bgcolor="#b8d6d8">비밀번호<font
 					color="red">*</font></td>
 				<td colspan="3">
-					<input type="password" name="pass" placeholder="영문/숫자/특수문자포함(6자리~12자리)"
+					<input type="password" id="pass" name="pass" placeholder="영문/숫자/특수문자포함(6자리~12자리)"
 					style="width: 371px; height: 51px"></td>
 			</tr>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">비번확인</td>
 				<td>
-					<input type="password" name="passcheck"
+					<input type="password" name="passcheck" id="passCheck"
 					style="width: 371px; height: 51px"></td>
 			</tr>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">이름<font
 					color="red">*</font></td>
 				<td colspan="3">
-					<input type="text" name="name" placeholder="이름을 입력해주세요" style="width: 371px; height: 51px"> 
-					<input name="gender"
+					<input type="text" name="name" id="name" placeholder="이름을 입력해주세요" style="width: 371px; height: 51px"> 
+					<input name="gender" 
 					id="man" type="radio" checked="checked" value="male"><label
 					class="on" id="manLb" onclick="Join.eraseLabel('noticeName')"
 					for="man">남</label> 
@@ -62,7 +85,7 @@
 				<td align="center" width="100" bgcolor="#b8d6d8">생년월일<font
 					color="red">*</font></td>
 				<td colspan="3">
-				<select name="year" style="height: 30px; width: 61px">
+				<select name="year" id="year" style="height: 30px; width: 61px">
 						<%
 							for (int i = 2018; i >= 1900; i--) {
 						%>
@@ -70,7 +93,7 @@
 						<%
 							}
 						%>
-				</select>년 <select name="month" style="width: 61px; height: 30px">
+				</select>년 <select name="month" id="month" style="width: 61px; height: 30px">
 						<%
 							for (int i = 1; i < 13; i++) {
 								if (i < 10) {
@@ -84,7 +107,7 @@
 							}
 							}
 						%>
-				</select>월 <select name="day" style="width: 61px; height: 30px">
+				</select>월 <select name="day" id="day" style="width: 61px; height: 30px">
 						<%
 							for (int i = 1; i < 32; i++) {
 								if (i < 10)
@@ -98,9 +121,9 @@
 				<td align="center" width="100" bgcolor="#b8d6d8">E-Mail<font
 					color="red">*</font></td>
 				<td colspan="3">
-					<input type="text" name="mail1" maxlength="50"
+					<input type="text" name="mail1" id="mail" maxlength="50"
 					style="height: 51px;">@ 
-				<select name="mail" style="height: 51px; width: 129px">
+				<select name="mail" id="mail2" style="height: 51px; width: 129px">
 						<option>naver.com</option>
 						<option>daum.net</option>
 						<option>gmail.com</option>
@@ -111,15 +134,15 @@
 				<td align="center" width="100" bgcolor="#b8d6d8">휴대폰<font
 					color="red">*</font></td>
 				<td colspan="3">
-				<select name="cell"
+				<select name="cell" id="cell1"
 					style="width: 56px; height: 51px">
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="016">016</option>
 						<option value="017">017</option>
 						<option value="019">019</option>
-				</select> - <input type="text" size="4" maxlength="4" name="cell1"
-					style="height: 45px; width: 59px"> - <input type="text"
+				</select> - <input type="text" size="4" maxlength="4" name="cell1" id="cell2"
+					style="height: 45px; width: 59px"> - <input type="text" id="cell3"
 					size="4" maxlength="4" name="cell2" style="height: 45px; width: 59px"></td>
 
 			</tr>
@@ -139,7 +162,7 @@
 			</tr> 
 		</table>
 		<br> <br> <br> 
-			<input type="submit" value="가입"
+			<input type="button" value="가입" id="userId" 
 			style="background-color: orange; width: 69px; height: 38px;">
 			<input type="reset" value="취소" onclick="goFirstForm()"
 			style="background-color: orange; width: 69px; height: 38px;">

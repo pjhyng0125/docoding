@@ -63,7 +63,7 @@
     <welcome-file>hello.jsp</welcome-file>
   </welcome-file-list>
   
-  <!-- 자동가입방지 -->
+  <!-- 자동가입방지 
   <servlet>
     <servlet-name>CaptchaServlet</servlet-name>
     <servlet-class>x1.com.ct1.CaptchaServlet</servlet-class>
@@ -74,5 +74,5 @@
     <url-pattern>/captcha</url-pattern>
 </servlet-mapping>
 
-
+-->
 </web-app>

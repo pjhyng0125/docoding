@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="sr">
+<select id="selectReply" parameterClass="int" resultClass="com.encore.vo.Sell_reply">
+select sp_no,sr_no,to_char(sr_time,'YY/MM/DD HH24:MI:SS') as sr_time,sr_id,sr_content
+from sell_reply
+where sp_no=#sp_no#
+order by sr_no asc
+</select>
+
+<insert parameterClass="com.encore.vo.Sell_reply" id="insertReply">
+ insert into sell_reply (sp_no,sr_no,sr_time,sr_id,sr_content)
+ values (#sp_no#,sellreply_seq.nextval,sysdate,#sr_id#,#sr_content#)
+</insert>
+
+<delete id="deleteReply" parameterClass="int">
+delete from sell_reply where sr_no = #sr_no#
+</delete>
+</sqlMap>

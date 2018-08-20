@@ -22,6 +22,9 @@
 		delete from member where id=#id# and name=#name# and pass=#pass#
 	</delete>
 	
+	<!--  페이지 처리 및 구매 리스트 관련   -->
+	
+	
 	<select id="select_list" parameterClass="String" resultClass="HashMap">
 		select to_char(bp_time, 'yyyy-mm-dd') bp_time, sp_category, sp_title, id, sp_count 
 		from sell_post sp, buy_post bp 
@@ -32,5 +35,24 @@
 		select count(*) 
 		from sell_post sp, buy_post bp
 		where sp.sp_no = bp.sp_no and bp.bp_id=#id#
+	</select>
+	
+	<select id="select_page" resultClass="HashMap" parameterClass="java.util.Map">
+	<![CDATA[
+		select to_char(bp_time, 'yyyy-mm-dd') bp_time, sp_category, sp_title, id, sp_count
+		from (select bp_time, sp_category, sp_title, id, sp_count, rownum rn 
+				from (select bp_time, sp_category, sp_title, id, sp_count 
+					  from sell_post sp, buy_post bp
+					  where sp.sp_no = bp.sp_no and bp.bp_id=#id#
+					  order by bp_time desc)
+			  )
+		where rn >= #start# and rn <= #end#
+	]]>
+	</select>
+	
+		<!-- 구매 전체 페이지 수 조회 -->
+	<select id="select_totalpage" parameterClass="Map" resultClass="int">
+		select ceil((select count(*) from sell_post sp, buy_post bp where sp.sp_no = bp.sp_no and bp.bp_id=#id#)/#pagecount#) 
+		from dual
 	</select>
 </sqlMap>

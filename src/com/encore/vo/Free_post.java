@@ -8,14 +8,14 @@ public class Free_post {
 	private String fp_title;
 	private String fp_content;
 	private String id;
-	private Date fp_time;
+	private String fp_time;
 	private int fp_count;
 	
 	public Free_post() {
 		super();
 	}
 
-	public Free_post(int fp_no, String fp_category, String fp_title, String fp_content, String id, Date fp_time,
+	public Free_post(int fp_no, String fp_category, String fp_title, String fp_content, String id, String fp_time,
 			int fp_count) {
 		super();
 		this.fp_no = fp_no;
@@ -67,11 +67,11 @@ public class Free_post {
 		this.id = id;
 	}
 
-	public Date getFp_time() {
+	public String getFp_time() {
 		return fp_time;
 	}
 
-	public void setFp_time(Date fp_time) {
+	public void setFp_time(String fp_time) {
 		this.fp_time = fp_time;
 	}
 

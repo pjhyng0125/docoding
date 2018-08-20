@@ -2,6 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="mem">
 <typeAlias alias="member_admin" type="com.encore.vo.Member_admin"/>
+<typeAlias alias="member_login" type="com.encore.vo.Member"/>
 	<select id="select_admin" resultClass="member_admin">
 	<![CDATA[
 		select id,name,gender,birth,email,phone,m_time,login_flag, 
@@ -12,4 +13,9 @@
 		from member
 	]]>
 	</select>
+	
+	<insert id="select_login" parameterClass="member_login">
+		insert into member (id, pass, name, gender, birth, email, phone, m_time)
+		values (#id#, #pass#, #name#, #gender#, #birth#, #email#, #phone#, sysdate)
+	</insert>
 </sqlMap>

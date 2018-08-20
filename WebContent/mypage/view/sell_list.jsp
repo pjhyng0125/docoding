@@ -22,7 +22,7 @@
 			pageAction = "sel_buylist";
 			$('#basic').hide();
 			$('#list').show();
-			$('#title').html('구매 자료 현황');
+			$('#title').html('판매 자료 현황');
 			$.ajax({
 					url:'/docoding/mypageAction.do',
 					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
@@ -106,14 +106,14 @@
 <center>
 <div>
 <br>
-<h4>구매자료 및 즐겨찾기 현황</h4>
-<a id="sel_buylist"><font size="4">구매자료</font></a> <font size="4">  |  </font> 
-<a id="sel_bookmark"><font size="4">즐겨찾기</font></a>
+<h4>판매자료 및 판매수익 현황</h4>
+<a id="sel_buylist"><font size="4">판매자료</font></a> <font size="4">  |  </font> 
+<a id="sel_bookmark"><font size="4">수익현황</font></a>
 <hr width="30%">
 </div>
 
 <div id="basic" style="display: ">
-	구매자료 혹은 즐겨찾기 중 열람하고자 하는 사항을 눌러주세요.
+	판매자료 혹은 판매 수익 현황 중 열람하고자 하는 사항을 눌러주세요.
 </div>
 
 <div id="list" style="display: none;">

@@ -11,15 +11,9 @@ public class Member {
 	private String birth;
 	private String email;
 	private String phone;
-	private boolean login_flag;
 	private String m_time;
-	private int cash;
-	public Member() {
-		super();
-	}
-	
 	public Member(String id, String pass, String name, String gender, String birth, String email, String phone,
-			boolean login_flag, String m_time, int cash) {
+			String m_time) {
 		super();
 		this.id = id;
 		this.pass = pass;
@@ -28,17 +22,10 @@ public class Member {
 		this.birth = birth;
 		this.email = email;
 		this.phone = phone;
-		this.login_flag = login_flag;
 		this.m_time = m_time;
-		this.cash = cash;
 	}
-
-	@Override
-	public String toString() {
-		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", birth=" + birth
-				+ ", email=" + email + ", phone=" + phone + ", login_flag=" + login_flag + ", m_time=" + m_time
-				+ ", cash=" + cash + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+	public Member() {
+		super();
 	}
 	public String getId() {
 		return id;
@@ -82,23 +69,16 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public boolean isLogin_flag() {
-		return login_flag;
-	}
-	public void setLogin_flag(boolean login_flag) {
-		this.login_flag = login_flag;
-	}
 	public String getM_time() {
 		return m_time;
 	}
 	public void setM_time(String m_time) {
 		this.m_time = m_time;
 	}
-	public int getCash() {
-		return cash;
-	}
-	public void setCash(int cash) {
-		this.cash = cash;
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", pass=" + pass + ", name=" + name + ", gender=" + gender + ", birth=" + birth
+				+ ", email=" + email + ", phone=" + phone + ", m_time=" + m_time + "]";
 	}
 	
 	

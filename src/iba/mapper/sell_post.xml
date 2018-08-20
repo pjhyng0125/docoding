@@ -10,4 +10,50 @@
 	<select id="select_sellpost" resultClass="sellpost">
 		select sp_no,sp_category,sp_title,sp_content,id,sp_time,sp_filename,sp_count from sell_post
 	</select>
+	
+<!-- 박형진 -->	
+<select id="selectSPAll" resultClass="sellpost"
+	parameterClass="Map">
+<![CDATA[
+select sp_no, sp_category, sp_title, sp_content,id, to_char(sp_time,'YY/MM/DD HH24:MI:SS') as sp_time, sp_filename,sp_count
+from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count, rownum rn 
+        from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count
+		  		 from sell_post]]>
+	<isNotNull property="searchId">
+		where upper(id) like upper(#searchId#)
+	</isNotNull>
+	<isNotNull property="searchTitle">
+		where upper(sp_title) like upper(#searchTitle#)
+	</isNotNull>
+	order by sp_no desc
+	)
+	)
+	where rn between #start# and #end#
+	<isNotNull property="sp_count">
+		order by sp_count desc
+	</isNotNull>
+	<isNotNull property="sp_time">
+		order by sp_time desc
+	</isNotNull>
+</select>
+
+	<select id="selectContent" parameterClass="int"
+		resultClass="sellpost">
+		select sp_no, sp_category, sp_title, sp_content,id,
+		to_char(sp_time,'YY/MM/DD HH24:MI:SS') as sp_time,
+		sp_filename,sp_count
+		from sell_post
+		where sp_no=#no#
+	</select>
+	<select id="selectTotalPage" parameterClass="java.util.Map"
+		resultClass="int">
+		select ceil((select count(*) from sell_post
+		<isNotNull property="searchId">
+			where upper(id) like upper(#searchId#)
+		</isNotNull>
+		<isNotNull property="searchTitle">
+			where upper(sp_title) like upper(#searchTitle#)
+		</isNotNull>
+		)/#pageCount#) count from dual
+	</select>
 </sqlMap>

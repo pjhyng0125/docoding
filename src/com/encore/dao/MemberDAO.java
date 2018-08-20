@@ -18,14 +18,41 @@ public class MemberDAO {
 	SqlMapClient smc;
 	public MemberDAO() {
 		smc=MySqlMapClient.getSqlMapInstance();
-		
-
+		}
+	
+	public List<Member_admin> select_admin() throws SQLException {
+		return smc.queryForList("mem.select_admin");
 	}
+	
+	public boolean select_login(Member m) {
+		try {
+			smc.insert("mem.select_login",m);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
+	
+	
 public boolean login(Map<String,String> map) {
 		
 		
 		try {
 		   int cnt = (Integer) smc.queryForObject("main.login", map);
+			if(cnt==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+
+	}
+public boolean idCheck(String id) {
+	try {
+		   int cnt = (Integer) smc.queryForObject("login.idCheck",id);
 			if(cnt==1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -40,11 +67,6 @@ private static MemberDAO instance;
 		if(instance==null)
 			instance=new MemberDAO();
 		return instance;
-	}
-	
-	public List<Member_admin> select_admin() throws SQLException {
-		return smc.queryForList("mem.select_admin");
-		
 	}
 	
 	public List<Member> select_idCheck() throws SQLException{

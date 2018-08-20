@@ -88,32 +88,28 @@ public class MypageAction extends Action {
 			
 		case "sel_buylist":											// 구매목록 불러오기
 			
-			//request.setAttribute("buylist", dao.select_buylist(id));
+			String page = request.getParameter("page");
+			int pageNo = Integer.parseInt(page);				
+			int end = pageNo*5;
+			String start = end-4+"";
+			
+			Map<String, String> map = new HashMap<>();
+			map.put("end", end+"");
+			map.put("start", start);
+			map.put("id", id);
+			
 			List<Map> list = new ArrayList<>();
-			/*Map map= new HashMap<>();
-			map.put("bp_time", "2017-08-05");
-			map.put("sp_category", "java");
-			map.put("sp_title", "자바개론");
-			map.put("sp_id", "작성자1");
-			map.put("sp_count", 13);
-			list.add(map);
-			Map map2= new HashMap<>();
-			map2.put("bp_time", "2017-01-05");
-			map2.put("sp_category", "java2");
-			map2.put("sp_title", "자바개론2");
-			map2.put("sp_id", "작성자2");
-			map2.put("sp_count", 15);
-			list.add(map2);*/
+			
 			if(dao.count_buylist(id)==0) {
 				request.setAttribute("msg", "자료를 구매한 기록이 없습니다.");
 				forward = mapping.findForward("message");
 				break;
-			}else {
-				list = dao.select_buylist(id);
-				System.out.println(list);
+			}else {	
+				request.setAttribute("max_page", dao.total_page(id,5+""));
+				list = dao.select_page(map);
+				System.out.println("list : "+list);
 				request.setAttribute("list", list);
-			}
-			
+			}		
 			request.setAttribute("pageAction", pageAction);
 			forward = mapping.findForward("buylist");
 			break;
