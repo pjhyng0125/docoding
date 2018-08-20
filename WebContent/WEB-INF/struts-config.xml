@@ -94,7 +94,7 @@
             forward="/pages/Welcome.jsp"/>
             
 	<!-- tiles -->
-	<action path="/common/main" forward=".main"></action>
+	<action path="/main" forward=".mainview"></action>
 	<action path="/common/form" forward=".form"></action>
 	<action path="/common/login" forward=".login"></action>
 
@@ -157,7 +157,6 @@
 	
 	<!-- 장우영 main action 설정 시작 -->
 	<!-- tiles -->
-	<action path="/main" forward=".home"/>
 	<action path="/loginAction" type="com.encore.action.LoginAction">
 		<forward name="successL" path="/main/result/success_login.jsp"></forward>
 		<forward name="failL" path="/main/result/fail_login.jsp"></forward>

@@ -131,7 +131,7 @@
        <put name="home" value=".home"></put>
    </definition> -->
    
-    <definition name=".main" path="/common/home.jsp">
+    <definition name=".mainview" path="/common/home.jsp">
       <put name="header" value="/common/header.jsp"></put>
       <put name="menu" value="/common/menu.jsp"></put>
       <put name="footer" value="/common/footer.jsp"></put>
