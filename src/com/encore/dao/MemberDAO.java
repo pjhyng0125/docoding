@@ -34,6 +34,17 @@ public class MemberDAO {
 	}
 	
 	
+	public boolean select_idCheck(String idCheck) {
+		try {
+			int cnt = (Integer) smc.queryForObject(".idCheck", idCheck);
+			if(cnt==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+	}
 	
 	
 public boolean login(Map<String,String> map) {
@@ -41,17 +52,6 @@ public boolean login(Map<String,String> map) {
 		
 		try {
 		   int cnt = (Integer) smc.queryForObject("main.login", map);
-			if(cnt==1) return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return false;
-
-	}
-public boolean idCheck(String id) {
-	try {
-		   int cnt = (Integer) smc.queryForObject("login.idCheck",id);
 			if(cnt==1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

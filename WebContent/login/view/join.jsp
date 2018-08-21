@@ -18,22 +18,52 @@ $(function(){
 				id:$('#id').val(),
 				pass:$('#pass').val(),
 				name:$('#name').val(),
-				gender:$('input[name=gender]').val(),
+				gender:$('input[name=gender]:checked').val(),
 				birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val(),
 				email: $('#mail').val()+"@"+$('#mail2').val(),
 				phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
 			},
 			success:function(data){
-				if(data=="success"){
-					alert(data);
-					location.href="/docoding/main.do";
-				}else{
-					alert(data);
-				}
+				
+				alert(data);
 			}
 		});//ajax
 	});//버튼 클릭
-});//document ready
+	$('#idCheck').click(function(){
+		$.ajax({
+			url:"/docoding/joinAction.do",
+		  data:{
+			action:"select_idCheck",
+			id:$('#id').val()
+		},
+		success:function(data){
+			 if (data.cnt > 0) {
+                 
+                 alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+                 //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+                 $("#divInputId").addClass("has-error")
+                 $("#divInputId").removeClass("has-success")
+                 $("#userid").focus();
+                 
+             
+             } else {
+                 alert("사용가능한 아이디입니다.");
+                 //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+                 $("#divInputId").addClass("has-success")
+                 $("#divInputId").removeClass("has-error")
+                 $("#userpwd").focus();
+                 //아이디가 중복하지 않으면  idck = 1 
+                 idck = 1;
+                 
+             }
+         },
+         error : function(error) {
+             
+             alert("error : " + error);
+             }
+         });
+		});
+	});//document ready
 </script>
 </head>
 <%-- join.jsp --%>
@@ -52,10 +82,8 @@ $(function(){
 				<td colspan="3">
 					<input type="text" id="id" name="id" placeholder="영문/숫자(6자리~12자리)"
 					style="width: 371px; height: 51px"> 
-	<!-- 				<input type="button" value="중복확인" onclick="openIdChk()" maxlength="50"
+					<input type="button" value="중복확인" name="id" id="idCheck" maxlength="50"
 					style="background-color: #b8d6d8; height: 40px;">
-					<input type="hidden" id="idCheck" name="idDuplication" value="idUncheck"></td> -->
-
 			</tr>
 
 			<tr>
@@ -76,13 +104,10 @@ $(function(){
 					color="red">*</font></td>
 				<td colspan="3">
 					<input type="text" name="name" id="name" placeholder="이름을 입력해주세요" style="width: 371px; height: 51px"> 
-					<input name="gender" 
-					id="man" type="radio" checked="checked" value="male"><label
-					class="on" id="manLb" onclick="Join.eraseLabel('noticeName')"
-					for="man">남</label> 
-					<input name="gender" id="woman" type="radio"
-					value="female"><label id="womanLb"
-					onclick="Join.eraseLabel('noticeName')" for="woman">여</label></td>
+					<input name="gender" id="man" type="radio" checked="checked" value="male"><label
+					class="on" id="manLb" for="man">남</label> 
+					<input name="gender" id="woman" type="radio" value="female"><label id="womanLb"
+					 for="woman">여</label></td>
 			</tr>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">생년월일<font
@@ -165,10 +190,8 @@ $(function(){
 			</tr> 
 		</table>
 		<br> <br> <br> 
-			<input type="button" value="가입" id="userId" 
-			style="background-color: orange; width: 69px; height: 38px;">
-			<input type="reset" value="취소" onclick="goFirstForm()"
-			style="background-color: orange; width: 69px; height: 38px;">
+			<input type="button" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
+			<input type="reset" value="취소" onclick="goFirstForm()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </form>
 </body>

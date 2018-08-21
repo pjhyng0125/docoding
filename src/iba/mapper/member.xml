@@ -18,9 +18,7 @@
 		insert into member (id, pass, name, gender, birth, email, phone, m_time)
 		values (#id#, #pass#, #name#, #gender#, #birth#, #email#, #phone#, sysdate)
 	</insert>
-	<insert id="insert_idCheck" parameterClass="member_login">
-		select count(*)
-		from member
-		where id='login_id'
-	</insert>
+	<select id="select_idCheck" resultClass="int" parameterClass="String">
+		select count(*) from member where id=#login_id#
+	</select>
 </sqlMap>
