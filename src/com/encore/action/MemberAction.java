@@ -1,6 +1,8 @@
 package com.encore.action;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,23 +36,35 @@ public class MemberAction extends Action{
 			m.setEmail(request.getParameter("email"));
 			m.setPhone(request.getParameter("phone"));
 			
-			if(dao.select_login(m)) {
+			if(dao.insert_login(m)) {
 				response.getWriter().print("success");
 			}else {
 				response.getWriter().print("failled");
 			}
+			
+		}else if(action.equals("select_idCheck")) {
+			if(dao.select_idCheck(request.getParameter("id"))) {
+				
+			}else {
+				
+			}
 		}
-		
-		else if(action.equals("select_idchceck")) {
-			//
-			boolean flag = dao.idCheck(id);
-			//if(!flag) 
-			//forward = mapping.findForward("successJ");
-		}
-		
-		
-		
 		return forward;
+	
+		
 	}
+/*    public Map<Object, Object> idcheck(@RequestBody Member m) {
+        
+        int count = 0;
+        Map<Object, Object> map = new HashMap<Object, Object>();
+ 
+        count = signupService.idcheck(m);
+        map.put("cnt", count);
+ 
+        return map;
+    }*/
+ 
+	
+	
 }
 	
