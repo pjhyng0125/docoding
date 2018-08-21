@@ -29,7 +29,11 @@
 						action:"login"
 					},
 					success:function(result){
-						$('#loginForm').html(result);
+						alert(result);
+						if(result.contains('<script type="text/javascript">'))
+							$('#loginForm').html(result);
+						else
+							alert(result);
 					}
 					
 				});

@@ -24,30 +24,45 @@ public class LoginAction extends Action {
 			String action=request.getParameter("action");
 			MemberDAO dao = new MemberDAO();
 			ActionForward forward =null;
+			Map<String,String> map=null;
+			response.setContentType("text/html; charset=UTF-8");
 			
 			if(action.equals("login")) {
 			String id = request.getParameter("userid");
 			String pass = request.getParameter("userpass");
 			
-			Map<String,String> map = new HashMap<>();
+			map = new HashMap<>();
 			map.put("userid", id); //map.put("name","우영");
 			map.put("userpass", pass); //map.put("name","우영");
 			System.out.println("loginMap>>"+map);
 			
 			boolean flag = dao.login(map);
 			
-			if(!flag) {
-				forward = mapping.findForward("failL");
-			}else {
-				 request.setAttribute("flag", flag); 
-				
-				 HttpSession session = request.getSession();
-				 session.setAttribute("flag", flag);
-
-				 forward = mapping.findForward("successL");
-				 session.setAttribute("login_id", id);
-			}
-			}
+			if(!flag) {	//id와 pw 불일치
+				//forward = mapping.findForward("failL");
+				response.getWriter().println("아이디 또는 비밀번호 불일치");
+			}else {	//id와 pw 일치
+				boolean login_flag=dao.select_login_flag(id);
+				System.out.println("login_flag:"+login_flag);
+				if(!login_flag) {//login_flag='0'이면
+					if(dao.update_login_flag(id))
+						System.out.println("user "+id+" login_flag: 0 -> 1");
+				 
+					//session 영역 저장
+					request.setAttribute("flag", flag); 
+					HttpSession session = request.getSession();
+					session.setAttribute("flag", flag);
+					//session 영역에 로그인 idd 저장
+					session.setAttribute("login_id", id);
+				 
+					forward = mapping.findForward("successL");
+				}//if-dao
+				else {	//login_flag='1'이면 이미 접속중이면
+					System.out.println(id+"는 현재 접속중입니다.");
+					response.getWriter().println(id+"는 현재 접속중입니다.");
+				}
+			}//else
+			}//if-action
 				
 			
 			return forward;

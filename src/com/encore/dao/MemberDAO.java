@@ -61,6 +61,36 @@ public boolean login(Map<String,String> map) {
 
 	}
 
+	public boolean select_login_flag(String userid) {
+		try {
+			return (boolean) smc.queryForObject("mem.select_login_flag", userid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean update_login_flag(String userid) {
+		try {
+		int n=smc.update("mem.update_login_flag", userid);
+		if(n==1)
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean update_logout_flag(String userid) {
+		try {
+			int n=smc.update("mem.update_logout_flag", userid);
+			if(n==1)
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
 
 			
