@@ -31,37 +31,16 @@ $(function(){
 	});//버튼 클릭
 	$('#idCheck').click(function(){
 		$.ajax({
+			type:"POST",
 			url:"/docoding/joinAction.do",
 		  data:{
 			action:"select_idCheck",
-			id:$('#id').val()
+			checkid:$('#id').val()
 		},
 		success:function(data){
-			 if (data.cnt > 0) {
-                 
-                 alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                 //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-                 $("#divInputId").addClass("has-error")
-                 $("#divInputId").removeClass("has-success")
-                 $("#userid").focus();
-                 
-             
-             } else {
-                 alert("사용가능한 아이디입니다.");
-                 //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-                 $("#divInputId").addClass("has-success")
-                 $("#divInputId").removeClass("has-error")
-                 $("#userpwd").focus();
-                 //아이디가 중복하지 않으면  idck = 1 
-                 idck = 1;
-                 
-             }
-         },
-         error : function(error) {
-             
-             alert("error : " + error);
-             }
-         });
+			alert(data);
+			}
+		});
 		});
 	});//document ready
 </script>
@@ -77,18 +56,16 @@ $(function(){
 			<br>
 			<br>
 			<tr>
-				<td align="center" width="100" bgcolor="#b8d6d8"
-					>아이디<font color="red">*</font></td>
+				<td align="center" width="100" bgcolor="#b8d6d8">아이디<font color="red">*</font></td>
 				<td colspan="3">
 					<input type="text" id="id" name="id" placeholder="영문/숫자(6자리~12자리)"
-					style="width: 371px; height: 51px"> 
+					style="width: 371px; height: 51px" required> 
 					<input type="button" value="중복확인" name="id" id="idCheck" maxlength="50"
 					style="background-color: #b8d6d8; height: 40px;">
 			</tr>
 
 			<tr>
-				<td align="center" width="100" bgcolor="#b8d6d8">비밀번호<font
-					color="red">*</font></td>
+				<td align="center" width="100" bgcolor="#b8d6d8">비밀번호<fontcolor="red">*</font></td>
 				<td colspan="3">
 					<input type="password" id="pass" name="pass" placeholder="영문/숫자/특수문자포함(6자리~12자리)"
 					style="width: 371px; height: 51px"></td>
@@ -174,7 +151,7 @@ $(function(){
 					size="4" maxlength="4" name="cell2" style="height: 45px; width: 59px"></td>
 
 			</tr>
-			<tr>
+	<!-- 		<tr>
 				<th align="center" width="120" bgcolor="#b8d6d8">자동가입방지<font
 					color="red">*</font></th>
 				<td class="attach"><img id="captchaimg" name="captchaimg"
@@ -187,7 +164,7 @@ $(function(){
 				<td class="td">
 					<input type="text" name="captcha" size="10" style="width: 157px;" /> 
 					<input type="button" value="확인" style="background-color: #b8d6d8"></td>
-			</tr> 
+			</tr>  -->
 		</table>
 		<br> <br> <br> 
 			<input type="button" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">

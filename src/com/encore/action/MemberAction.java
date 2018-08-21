@@ -24,6 +24,7 @@ public class MemberAction extends Action{
 		String action=request.getParameter("action");
 		MemberDAO dao = new MemberDAO();
 		ActionForward forward=null;
+		response.setContentType("text/html; charset=UTF-8");
 		System.out.println(action);
 		if(action.equals("insert_login")) {
 			//로그인 insert
@@ -43,28 +44,14 @@ public class MemberAction extends Action{
 			}
 			
 		}else if(action.equals("select_idCheck")) {
-			if(dao.select_idCheck(request.getParameter("id"))) {
-				
+			System.out.println(request.getParameter("checkid"));
+			if(dao.select_idCheck(request.getParameter("checkid"))) {
+				response.getWriter().print("사용불가능");
 			}else {
-				
+				response.getWriter().println("사용가능");
 			}
 		}
 		return forward;
-	
-		
 	}
-/*    public Map<Object, Object> idcheck(@RequestBody Member m) {
-        
-        int count = 0;
-        Map<Object, Object> map = new HashMap<Object, Object>();
- 
-        count = signupService.idcheck(m);
-        map.put("cnt", count);
- 
-        return map;
-    }*/
- 
-	
-	
 }
 	

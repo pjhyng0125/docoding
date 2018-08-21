@@ -36,7 +36,7 @@ public class MemberDAO {
 	
 	public boolean select_idCheck(String idCheck) {
 		try {
-			int cnt = (Integer) smc.queryForObject(".idCheck", idCheck);
+			int cnt = (Integer) smc.queryForObject("mem.select_idCheck", idCheck);
 			if(cnt==1) return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
