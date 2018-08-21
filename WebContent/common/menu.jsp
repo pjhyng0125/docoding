@@ -16,22 +16,22 @@
     <div class="collapse navbar-collapse justify-content-center" id="menuNavbar">
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="d">Java</a>
+                <a class="nav-link" href="/docoding/post/sellList.do?postName=Java">Java</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="DB">DB</a>
+                <a class="nav-link" href="/docoding/post/sellList.do?postName=DB">DB</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="JavaScript">JavaScript</a>
+                <a class="nav-link" href="/docoding/post/sellList.do?postName=JavaScript">JavaScript</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="JSP">JSP</a>
+                <a class="nav-link" href="/docoding/post/sellList.do?postName=JSP">JSP</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="jQuery">jQuery</a>
+                <a class="nav-link" href="/docoding/post/sellList.do?postName=jQuery">jQuery</a>
             </li>
             <li class="nav-item">
-                    <a class="nav-link" href="jQuery">자유게시판</a>
+                    <a class="nav-link" href="/docoding/post/sellList.do?postName=free">자유게시판</a>
             </li>
         </ul>
     </div>

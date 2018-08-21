@@ -20,12 +20,14 @@ public class SellPostAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		String postName = request.getParameter("postName");//category
 		String action = request.getParameter("action"); //sell or free 게시판
 		String order = request.getParameter("order"); //리스트 순서 기준 0일 경우 조회순, 1일 경우 날짜순
 		String forwardName = null;
 		Sell_postDAO dao = new Sell_postDAO();
-
+		System.out.println(postName);
 		Map<String, Object> map = new HashMap<>();
+		map.put("sp_category", postName);
 		
 		if(action==null || action.equals("list")) {
 			if(order==null || order.equals("0")) { //조회순이라면

@@ -23,10 +23,11 @@ public class FreePostAction extends Action{
 		String action = request.getParameter("action"); //sell or free 게시판
 		String order = request.getParameter("order"); //리스트 순서 기준 0일 경우 조회순, 1일 경우 날짜순
 		String forwardName = null;
+		String postName = request.getParameter("postName");
 		Free_postDAO dao = new Free_postDAO();
-
 		Map<String, Object> map = new HashMap<>();
 		
+		map.put("fp_category", postName);
 		if(action==null || action.equals("list")) {
 			if(order==null || order.equals("0")) { //조회순이라면
 				map.put("fp_count", "fp_count");

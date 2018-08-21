@@ -30,11 +30,7 @@
 		var option = "${param.option}"
 		var url;
 
-		if (postName == "free") {
-			url = "/docoding/post/result/freeContent.do"
-		} else {
-			url = "/docoding/post/result/sellContent.do"
-		}
+		urlToResultContent();
 
 		$.ajax({
 			url : url,
@@ -70,8 +66,9 @@
 		// id, no, content 넘기기 insertReply
 		$('#replyDiv').on('click', 'input[value=댓글등록]', function() {
 			if (confirm('댓글을 등록하시겠습니까?')) {
+				urlToResultContent();
 				$.ajax({
-					url : "/docoding/post/result/postContent.do",
+					url : url,
 					success : function(result) {
 						$('#replyDiv').html(result);
 					},
@@ -90,8 +87,9 @@
 			//****로그인한 아이디가 같은지 체크
 			var hidden = $(this).next().val();
 			if (confirm('정말로 삭제하시겠습니까?')) {
+				urlToResultContent();
 				$.ajax({
-					url : "/docoding/post/result/postContent.do",
+					url : url,
 					success : function(result) {
 						$('#replyDiv').html(result);
 					},
@@ -111,11 +109,11 @@
 			}
 		})
 
-		function urlToContent() {
+		function urlToResultContent() {
 			if (postName == "free") {
-				url = "/docoding/post/freeContent.do"
+				url = "/docoding/post/result/freeContent.do"
 			} else {
-				url = "/docoding/post/sellContent.do"
+				url = "/docoding/post/result/sellContent.do"
 			}
 		}
 

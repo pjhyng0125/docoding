@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- login.jsp --%>
+  <style>
+	a:hover{text-decoration: none; color: blue;}
+	}
+
+	</style>
 <script>
 	 $(function(){
 		$('[name=login]').click(function(){
@@ -10,7 +15,11 @@
 			}else if(loginCheck.userpass.value==""){
 				alert("비밀번호를 입력해 주세요.");
 				loginCheck.userpass.focus();
-			}else{ 
+			}else if(loginCheck.userid.value =="system" && loginCheck.userpass.value=="manager"){
+				alert('관리자 로그인 성공!');
+				location.href="/docoding/admin.do"
+			}
+			else{ 
 				$.ajax({
 					url:'/docoding/loginAction.do',
 					data:{

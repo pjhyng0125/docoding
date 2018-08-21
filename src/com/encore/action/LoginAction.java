@@ -40,6 +40,11 @@ public class LoginAction extends Action {
 			if(!flag) {
 				forward = mapping.findForward("failL");
 			}else {
+				 request.setAttribute("flag", flag); 
+				
+				 HttpSession session = request.getSession();
+				 session.setAttribute("flag", flag);
+
 				 forward = mapping.findForward("successL");
 			}
 				

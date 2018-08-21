@@ -7,7 +7,7 @@
 <br>
 <div id="list" class="col-sm-4 text-left">
 	<h3>
-		<a href="/docoding/post/sellList.do" id="category"><span>Java</span></a>
+		<a href="/docoding/post/sellList.do" id="category"><span>${param.postName }</span></a>
 	</h3>
 	<br>
 </div>
@@ -41,7 +41,7 @@
 			<tr>
 				<th width="10%">카테고리</th>
 				<th width="20%">제목</th>
-				<th width="43%">줄거리</th>
+				<th width="43%">내용</th>
 				<th width="10%">작성자</th>
 				<th width="7%">작성일</th>
 				<th width="10%">조회수</th>
