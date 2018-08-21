@@ -13,7 +13,7 @@
 <%--header.jsp --%>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="nav">
-            <a href="/docoding/common/main.do" class="navbar-brand">
+            <a href="/docoding/main.do" class="navbar-brand">
                 <img src="/docoding/img/play_data_white.png" alt="playdata">
             </a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
