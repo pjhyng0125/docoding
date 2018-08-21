@@ -14,11 +14,12 @@
 		<c:when test="${sellReply!=null }">
 			<c:forEach items="${sellReply }" var="reply">
 				<tr name="commentParent">
-					<td colspan=2><strong id="replyId">${reply.sr_id }</strong>&nbsp;&nbsp;<a
-					style="cursor: pointer;" id="delReply"><font color="red">삭제</font></a>
+					<td colspan=2><strong id="replyId">${reply.sr_id }</strong>&nbsp;&nbsp;
+					<a style="cursor: pointer;" name="upReply"><font color="blue">수정</font></a>
+					<a style="cursor: pointer;" name="delReply"><font color="red">삭제</font></a>
 					<label class="font-weight-light font-italic">${reply.sr_time }</label>
 					<input type="hidden" value="${reply.sr_no }">
-					<p>${reply.sr_content }</p></td>
+					<div class="contentDiv">${reply.sr_content }</div></td>
 				</tr>
 			</c:forEach>
 		</c:when>
@@ -29,23 +30,27 @@
 						style="cursor: pointer;" id="delReply"><font color="red">삭제</font></a>
 						<label class="font-weight-light font-italic">${reply.fr_time }</label>
 						<input type="hidden" value="${reply.fr_no }">
-						<p>${reply.fr_content }</p></td>
+						<div id="contentDiv">${reply.fr_content }</div></td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
 
 </table>
+<div id='replyTableDiv'>
 <table class="table table-condensed" id='replyTable'>
 	<tr>
 		<td><span class="form-inline" role="form"> <textarea
-					id="sr_reply" class="form-control col-lg-12" style="width: 100%"
+					id="r_reply" class="form-control col-lg-12" style="width: 100%"
 					rows="4"></textarea>
 		</span></td>
 	</tr>
 </table>
+</div>
 <div class="input-group-btn" style="float: right;">
 	<input class="btn btn-default" type="button" value="댓글등록"
 		id="submitReply"> <input class="btn btn-default"
 		type="button" value="목록">
 </div>
+
+

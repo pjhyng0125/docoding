@@ -84,39 +84,9 @@
 			
 			alert(option);
 			location.href = url+"?postName="+postName+"&action=search&order=0&page=1&option="+option+"&searchTxt="+searchTxt;
-/* 			$.ajax({
-				url : "/docoding/post/result/postList.do",
-				success : function(result) {
-
-					$('#postList').html(result);
-				},
-				data : {
-					action : "search",
-					order:order,
-					option : option,
-					searchTxt : searchTxt,
-					page: page
-				},
-				error : function(xhr, status, error) {
-					alert('서버에러!!');
-					alert('상태: ' + xhr.status + ', 상태text: ' + xhr.statusText
-							+ '\nstatus: ' + status + '\nerror: ' + error)
-				}//에러 콜백
-			}) */
-/* 			if (option == '아이디') {
-				$('#tbody #sp_id').filter(function() {
-					var txt = $(this).text().toUpperCase();
-					$(this).parent().toggle(txt.indexOf(searchTxt) > -1)
-				})
-			} else {
-				$('#tbody #title').filter(function() {
-					var txt = $(this).text().toUpperCase();
-					$(this).parent().toggle(txt.indexOf(searchTxt) > -1)
-				})
-			} */
 		})
 		
-		//클릭한 게시물 확인
+		//클릭한 게시물 확인############################################
 		$('#postList').on('click','tr',function(){
 			var no = $(this).find(':hidden').val();
 			urlToContent();
@@ -128,7 +98,7 @@
 			}
 		})
 		
-		//글쓰기
+		//글쓰기####################################################
 		
 		$('#postList').on('click','#createPost',function(){
 			if(postName=="free"){
@@ -137,6 +107,22 @@
 			location.href = "/docoding/input.do";						
 			}
 		})
+		
+		//사진 퍼가기 방지##############################################
+		$('#postList').on('contextmenu','img',function(){
+			alert('우클릭을 할 수 없습니다!')
+			return false;
+		})
+
+		$('#postList').on('selectstart','img',function(){
+			return false;
+		})
+		
+		$('#postList').on('dragstart','img',function(){
+			return false;
+		})
+		
+		
 		
 		function urlToContent(){
 			if(postName=="free"){
@@ -194,7 +180,6 @@ div>#paging {
 tr img {
 	display: block;
 	width: 100%;
-	height: auto;
 }
 
 .pagination {
