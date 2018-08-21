@@ -14,15 +14,18 @@
 	button{
 			width : 200px;
 		}
+	.container{
+		position:relative;
+	}	
 
 </style>
 </head>
 <%--header.jsp --%>
 <body>
-
+<br>
 <div class="container">
 
-<br>
+
 <html:link action="/mypage/modify"><button class="btn btn-primary btn-lg">회원정보 수정</button></html:link><br><br>
 		<%-- 아래 두가지 다 같은 방식 forward 값  / path 값 읽느냐 차이 --%>
 <a href="/docoding/mypage/cash.do"><button class="btn btn-primary btn-lg">캐쉬충전 </button></a><br><br>

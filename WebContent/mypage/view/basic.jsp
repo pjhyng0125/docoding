@@ -7,26 +7,47 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/docoding/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
-	/*$(function(){
+	$(function(){
 		$.ajax({
-				url:'',
-				success:function(result){
-					
-				}
-		});
-	});*/
+			url:'/docoding/mypageAction.do',
+			data:{"pageAction":"basic", "id":$('#get_id').attr("value")},
+			success:function(result){
+				$('#mypage_basic').html(result);
+			}
+		}); 
+		
+	});
 </script>
+<style type="text/css">
+	#mypage_basic{
+		height: 400px;
+		width: 800px;
+		background-color: yellow;
+		border-radius: 20px;
+		margin-top : 30px;
+		position: relative; left: 150px;
+	}
+	
+	#title{
+		font-size:2.5em;
+		text-align:center;
+		
+	}
+	#title2{
+		text-decoration: underline;
+	}
+	.content{
+		font-size:2em;
+		text-align: left;
+		padding-left: 60px;
+	}
+</style>
 </head>
 <body>
-<input type="hidden" id="get_id">
+<input type="hidden" id="get_id" value="abcd">
 <input type="hidden" id="login_flag">
-<center>
-<font size="6">
-<div id="hello"></div>
-<div id="d1">보유 캐쉬 : </div>
-<div id="d2">판매자 등록 여부 : </div>
-<hr>
-</font>
-</center>
+
+<div id="mypage_basic"></div>
+
 </body>
 </html>

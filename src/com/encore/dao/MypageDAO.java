@@ -166,12 +166,72 @@ public class MypageDAO {
 		
 		try {
 			int t = (int) smc.queryForObject("mypage.check_assign", id);
-			System.out.println("t : "+t);
 			if(t==1)return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return false;
+	}
+	
+	public HashMap<String,String> select_basic(String id) {
+		
+		HashMap<String, String> map = null;
+		try {
+			map = (HashMap<String, String>) smc.queryForObject("mypage.select_basic", id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return map;
+	}
+	
+	public HashMap<String,Object> select_seller(String id) {
+		
+		HashMap<String,Object> map = null;
+		try {
+			map = (HashMap<String, Object>) smc.queryForObject("mypage.select_seller", id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return map;
+	}
+	
+	public boolean trans_profit1(String id, String name,String pass) { // È¸¿øÅ»Åð
+		Map<String, String>map = new HashMap<>();
+		map.put("id", id);
+		map.put("name", name);
+		map.put("pass", pass);
+		
+		try {
+			int t = (int) smc.queryForObject("mypage.trans_profit1", map);
+			System.out.println(t);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public int select_account(String id,String pass) {
+		Map<String, String>map = new HashMap<>();
+		map.put("id", id);
+		map.put("pass", pass);
+		int t = 0;
+		try {
+			t = (int) smc.queryForObject("mypage.select_account", map);
+			return t;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return t;
+	}
+	
+	public void trans_profit2(String id, int trans_money) {
+		Map<String,Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("trans_money", trans_money);
+		
+		
+		
 	}
 }
