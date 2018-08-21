@@ -21,22 +21,21 @@ public class LoginAction extends Action {
 		@Override
 		public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
+			String action=request.getParameter("action");
+			MemberDAO dao = new MemberDAO();
+			ActionForward forward =null;
 			
-			
+			if(action.equals("login")) {
 			String id = request.getParameter("userid");
 			String pass = request.getParameter("userpass");
-			
 			
 			Map<String,String> map = new HashMap<>();
 			map.put("userid", id); //map.put("name","우영");
 			map.put("userpass", pass); //map.put("name","우영");
 			System.out.println("loginMap>>"+map);
 			
-			
-			MemberDAO dao = new MemberDAO();
 			boolean flag = dao.login(map);
 			
-			ActionForward forward;
 			if(!flag) {
 				forward = mapping.findForward("failL");
 			}else {
@@ -46,6 +45,8 @@ public class LoginAction extends Action {
 				 session.setAttribute("flag", flag);
 
 				 forward = mapping.findForward("successL");
+				 session.setAttribute("login_id", id);
+			}
 			}
 				
 			

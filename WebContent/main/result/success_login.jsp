@@ -8,7 +8,11 @@
     			$.ajax({
 						url:'/docoding/main/view/login.jsp',    				
     					success:function(result){
-    						$('#successForm').html(result);
+    						if(confirm('로그아웃 하시겠습니까?')){
+    							<%-- <%=session.setAttribute("login_id", null) %> --%>
+    							alert('로그아웃 성공!');
+	    						$('#successForm').html(result);
+    						}
     					}
     			});
     		});
@@ -17,7 +21,7 @@
 <div id="successForm">
 <form>
 <fieldset id="id">
-<legend><strong>${param.userid }</strong>님</legend> 
+<legend><strong><%=session.getAttribute("login_id") %></strong>님</legend> 
 <table border="1">
 	<tr>
 		<td>충전잔액</td>

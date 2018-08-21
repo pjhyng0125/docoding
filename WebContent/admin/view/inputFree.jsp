@@ -20,7 +20,7 @@ $(function(){
 			url:"/docoding/action/admin.do",
 			data:{
 				action:$('#action').val(),
-				id:"pjhyng9494",
+				id:$('#id').val(),
 				category:$('#category').val(),
 				content:$('#content').val(),
 				title:$('#title').val()
@@ -42,6 +42,7 @@ $(function(){
 <%-- freeSell.jsp: 자유 게시물 입력 화면 --%>
 inputFree.jsp
 <input type="hidden" id="action" value="insert_freepost">
+<input type="hidden" id="id" value=<%=session.getAttribute("login_id")%> >
 	<input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
 	<select id="category" name="category">
 		<option>선택</option>
