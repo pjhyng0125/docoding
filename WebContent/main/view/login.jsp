@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- login.jsp --%>
+  <style>
+	a:hover{text-decoration: none; color: blue;}
+	}
+
+	</style>
 <script>
 	 $(function(){
 		$('[name=login]').click(function(){
