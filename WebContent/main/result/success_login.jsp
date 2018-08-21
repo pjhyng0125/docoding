@@ -5,23 +5,28 @@
     <script type="text/javascript">
     	$(function(){
     		$('[name=logout]').click(function(){
+    			/* if(confirm('로그아웃 하시겠습니까?')){ */
     			$.ajax({
-						url:'/docoding/main/view/login.jsp',    				
+						url:'/docoding/loginAction.do', 
+						data:{
+							action:"logout",
+							logout_id: $('#userid').val()
+						},
     					success:function(result){
-    						if(confirm('로그아웃 하시겠습니까?')){
-    							<%-- <%=session.setAttribute("login_id", null) %> --%>
-    							alert('로그아웃 성공!');
-	    						$('#successForm').html(result);
-    						}
+    						alert('로그아웃 성공!');
+	    					$('#successForm').html(result);
+    					
     					}
     			});
-    		});
-    	});    
+    		/* } */
+    	});
+    });    
     </script>
 <div id="successForm">
 <form>
 <fieldset id="id">
 <legend><strong><%=session.getAttribute("login_id") %></strong>님</legend> 
+<input type="hidden" id="userid" value="<%=session.getAttribute("login_id") %>"> 
 <table border="1">
 	<tr>
 		<td>충전잔액</td>

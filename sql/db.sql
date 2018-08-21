@@ -26,6 +26,7 @@ CREATE TABLE member (
 	cash NUMBER default 0
 );
 select * from MEMBER;
+select * from tab;
 
 CREATE UNIQUE INDEX PK_member
 	ON member (

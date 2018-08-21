@@ -6,7 +6,7 @@
 	}
 
 	</style>
-<script>
+ <script>
 	 $(function(){
 		$('[name=login]').click(function(){
 			if(loginCheck.userid.value ==""){
@@ -29,11 +29,14 @@
 						action:"login"
 					},
 					success:function(result){
-						alert(result);
-						if(result.contains('<script type="text/javascript">'))
-							$('#loginForm').html(result);
-						else
+						 if(result.indexOf('text/javascript') < 0)
+						  {
 							alert(result);
+						 }
+						else{
+							alert('로그인 성공!');
+							$('#loginForm').html(result);
+						} 
 					}
 					
 				});

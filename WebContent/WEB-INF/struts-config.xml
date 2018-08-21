@@ -160,6 +160,7 @@
 	<action path="/loginAction" type="com.encore.action.LoginAction">
 		<forward name="successL" path="/main/result/success_login.jsp"></forward>
 		<forward name="failL" path="/main/result/fail_login.jsp"></forward>
+		<forward name="loginL" path="/main/view/login.jsp"></forward>
 	</action>
 	<!-- 장우영 main action 설정 종료 -->
 	

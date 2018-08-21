@@ -59,10 +59,16 @@ public class LoginAction extends Action {
 				}//if-dao
 				else {	//login_flag='1'이면 이미 접속중이면
 					System.out.println(id+"는 현재 접속중입니다.");
-					response.getWriter().println(id+"는 현재 접속중입니다.");
+					response.getWriter().println(id+"는 현재 접속중입니다!");
 				}
 			}//else
 			}//if-action
+			else if(action.equals("logout")) {
+				String logout_id=request.getParameter("logout_id");
+				if(dao.update_logout_flag(logout_id))
+						System.out.println("user "+logout_id+" logout_flag: 1 -> 0");
+				forward = mapping.findForward("loginL");
+			}
 				
 			
 			return forward;
