@@ -48,7 +48,7 @@
 		<tbody id="tbody">
 			<c:forEach items="${list }" var="list">
 				<tr>
-					<td>${list.fp_category }</td>
+					<td>${list.fp_category }관련</td>
 					<td id="title" style="width: 50%">${list.fp_title }</td>
 					<td>${list.id }</td>
 					<td>${list.fp_time }</td>

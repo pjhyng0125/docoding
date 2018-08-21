@@ -29,7 +29,7 @@
 		var page = ${param.page}
 		var option = "${param.option}"
 		var url;
-
+		var no = "${param.no}";
 		urlToResultContent();
 
 		$.ajax({
@@ -39,7 +39,8 @@
 			},
 			data : {
 				action : "selectReply",
-				sp_no : "${sell.sp_no}"
+				no : no
+
 			},
 			error : function(xhr, status, error) {
 				alert('서버에러!!');
@@ -74,9 +75,9 @@
 					},
 					data : {
 						action : "insertReply",
-						sr_id : "길라임",
-						sp_no : "${param.no}",
-						sr_content : $('textarea').val()
+						r_id : "길라임",
+						no : no,
+						r_content : $('textarea').val()
 					}
 				})
 			}
@@ -95,8 +96,8 @@
 					},
 					data : {
 						action : "deleteReply",
-						sp_no : "${param.no}",
-						sr_no : hidden
+						no : no,
+						r_no : hidden
 					}
 				})
 			}
@@ -126,6 +127,12 @@
 		}
 	})
 </script>
+
+<style type="text/css">
+#commentTable label{
+ float: right;
+}
+</style>
 </head>
 <%--postContent.jsp --%>
 <body>
@@ -136,24 +143,24 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr align="center">
-							<th width="10%">${sell.sp_category }</th>
-							<th width="60%">${sell.sp_title }</th>
+							<th width="10%">${sell.sp_category }${free.fp_category }관련</th>
+							<th width="60%">${sell.sp_title }${free.fp_title }</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>작성일</td>
-							<td>${sell.sp_time }</td>
+							<td>${sell.sp_time }${free.fp_time }</td>
 						</tr>
 						<tr>
 							<td>글쓴이</td>
-							<td>${sell.id }<span style='float: right'>조회 :
-									${sell.sp_count }</span>
+							<td>${sell.id }${free.id }<span style='float: right'>조회 :
+									${sell.sp_count }${free.fp_count }</span>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
-								<p>${sell.sp_content }</p>
+								<p>${sell.sp_content }${free.fp_content }</p>
 							</td>
 						</tr>
 						<tr id="buyTr">
@@ -165,5 +172,6 @@
 					</tbody>
 				</table>
 				<div id='replyDiv'></div>
+				</div></div></div>
 </body>
 </html>

@@ -21,35 +21,32 @@ public class SellContentAction extends Action{
 		Sell_postDAO sp_dao = new Sell_postDAO();
 		Sell_replyDAO sr_dao = new Sell_replyDAO();
 		String forwardName = null;
+		String no = request.getParameter("no");
+		System.out.println(no);
 		if(action ==null || action.equals("selectContent")) {
-			String no = request.getParameter("no");
 			System.out.println(no);
 			request.setAttribute("sell", sp_dao.select(Integer.parseInt(no)));
 			forwardName = "content";
 		}else if(action.equals("selectReply")) {
-			String sp_no = request.getParameter("sp_no");
-			request.setAttribute("reply",sr_dao.selectReply(Integer.parseInt(sp_no)));
-			forwardName="reply";
+			request.setAttribute("sellReply",sr_dao.selectReply(Integer.parseInt(no)));
+			forwardName="sellReply";
 		}else if(action.equals("insertReply")) {
-			String sp_no = request.getParameter("sp_no");
-			String sr_id = request.getParameter("sr_id");
-			String sr_content = request.getParameter("sr_content");
+			String sr_id = request.getParameter("r_id");
+			String sr_content = request.getParameter("r_content");
 
-			System.out.println("sp_no= "+ sp_no +", sr_id= "+sr_id+ ", sr_content = " + sr_content );
-			Sell_reply sr = new Sell_reply(0, Integer.parseInt(sp_no), null, sr_id, sr_content);
+			Sell_reply sr = new Sell_reply(0, Integer.parseInt(no), null, sr_id, sr_content);
 			System.out.println(sr);
 			if(sr_dao.insertReply(sr)) {
 				System.out.println("댓글입력 성공");
-				forwardName ="reply";
-				request.setAttribute("reply",sr_dao.selectReply(Integer.parseInt(sp_no)));
+				forwardName ="sellReply";
+				request.setAttribute("sellReply",sr_dao.selectReply(Integer.parseInt(no)));
 			}
 		}else if(action.equals("deleteReply")) {
-			String sr_no = request.getParameter("sr_no");
-			String sp_no = request.getParameter("sp_no");
+			String sr_no = request.getParameter("r_no");
 			if(sr_dao.deleteReply(Integer.parseInt(sr_no))) {
 				System.out.println("댓글삭제 성공");
-				forwardName ="reply";
-				request.setAttribute("reply",sr_dao.selectReply(Integer.parseInt(sp_no)));
+				forwardName ="sellReply";
+				request.setAttribute("sellReply",sr_dao.selectReply(Integer.parseInt(no)));
 			}	
 		}
 		return mapping.findForward(forwardName);

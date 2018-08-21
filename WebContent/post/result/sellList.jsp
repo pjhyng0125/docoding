@@ -39,7 +39,7 @@
 		cellspacing="0">
 		<thead>
 			<tr>
-				<th width="10%">카테고리</th>
+				<th width="10%">게시물</th>
 				<th width="20%">제목</th>
 				<th width="43%">내용</th>
 				<th width="10%">작성자</th>

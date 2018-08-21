@@ -19,12 +19,12 @@ select fp_no, fp_category, fp_title, fp_content,id, to_char(fp_time,'YY/MM/DD HH
 from (select fp_no, fp_category, fp_title, fp_content,id, fp_time,fp_count, rownum rn 
         from (select fp_no, fp_category, fp_title, fp_content,id, fp_time,fp_count
 		  		 from free_post
-		  		 where fp_category=#fp_category#]]>
+		  	]]>
 	<isNotNull property="searchId">
-		and upper(id) like upper(#searchId#)
+		where upper(id) like upper(#searchId#)
 	</isNotNull>
 	<isNotNull property="searchTitle">
-		and upper(fp_title) like upper(#searchTitle#)
+		where upper(fp_title) like upper(#searchTitle#)
 	</isNotNull>
 	order by fp_no desc
 	)
@@ -48,12 +48,11 @@ from (select fp_no, fp_category, fp_title, fp_content,id, fp_time,fp_count, rown
 	<select id="selectTotalPage" parameterClass="java.util.Map"
 		resultClass="int">
 		select ceil((select count(*) from free_post
-		where fp_category=#fp_category#
 		<isNotNull property="searchId">
-			and upper(id) like upper(#searchId#)
+			where upper(id) like upper(#searchId#)
 		</isNotNull>
 		<isNotNull property="searchTitle">
-			and upper(fp_title) like upper(#searchTitle#)
+			where upper(fp_title) like upper(#searchTitle#)
 		</isNotNull>
 		)/#pageCount#) count from dual
 	</select>
