@@ -21,4 +21,20 @@
 	<select id="select_idCheck" resultClass="int" parameterClass="String">
 		select count(*) from member where id=#login_id#
 	</select>
+	
+	<select id="select_login_flag" parameterClass="String" resultClass="Boolean">
+		select login_flag from member
+		where id=#id#
+	</select>
+	<update id="update_login_flag" parameterClass="String">
+		update member
+		set login_flag='1'
+		where id=#id#
+	</update>
+	<update id="update_logout_flag" parameterClass="String">
+		update member
+		set login_flag='0'
+		where id=#id#
+	</update>
+	
 </sqlMap>

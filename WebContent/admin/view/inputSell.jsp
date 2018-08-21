@@ -50,6 +50,7 @@ $(function(){
 <%--0814 수정 시작 --%>
 <form enctype="multipart/form-data" method="post">
 	<input type="hidden" name="action" value="insert_sellpost">
+	<input type="hidden" name="id" value=<%=session.getAttribute("login_id")%> >
 	<input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
 	<select id="category" name="category">
 		<option>선택</option>

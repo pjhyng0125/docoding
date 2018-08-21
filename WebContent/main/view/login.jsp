@@ -17,17 +17,23 @@
 				loginCheck.userpass.focus();
 			}else if(loginCheck.userid.value =="system" && loginCheck.userpass.value=="manager"){
 				alert('관리자 로그인 성공!');
+				
 				location.href="/docoding/admin.do"
 			}
-			else{ 
+			else{//로그인 성공시
 				$.ajax({
 					url:'/docoding/loginAction.do',
 					data:{
 						userid:$('[name=userid]').val(),					
-						userpass:$('[name=userpass]').val()
+						userpass:$('[name=userpass]').val(),
+						action:"login"
 					},
 					success:function(result){
-						$('#loginForm').html(result);
+						alert(result);
+						if(result.contains('<script type="text/javascript">'))
+							$('#loginForm').html(result);
+						else
+							alert(result);
 					}
 					
 				});

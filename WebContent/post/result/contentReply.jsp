@@ -10,14 +10,31 @@
 			style="cursor: pointer;" name="delReply"><font color="red">삭제</font></a>
 			<p>여기는 댓글 내용입니다.</p></td>
 	</tr>
-	<c:forEach items="${reply }" var="reply">
-		<tr name="commentParent">
-			<td colspan=2><strong id="replyId">${reply.sr_id }</strong>&nbsp;&nbsp;<a
-				style="cursor: pointer;" id="delReply"><font color="red">삭제</font></a>
-				<input type="hidden" value="${reply.sr_no }">
-				<p>${reply.sr_content }</p></td>
-		</tr>
-	</c:forEach>
+	<c:choose>
+		<c:when test="${sellReply!=null }">
+			<c:forEach items="${sellReply }" var="reply">
+				<tr name="commentParent">
+					<td colspan=2><strong id="replyId">${reply.sr_id }</strong>&nbsp;&nbsp;<a
+					style="cursor: pointer;" id="delReply"><font color="red">삭제</font></a>
+					<label class="font-weight-light font-italic">${reply.sr_time }</label>
+					<input type="hidden" value="${reply.sr_no }">
+					<p>${reply.sr_content }</p></td>
+				</tr>
+			</c:forEach>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${freeReply }" var="reply">
+				<tr name="commentParent">
+					<td colspan=2><strong id="replyId">${reply.fr_id }</strong>&nbsp;&nbsp;<a
+						style="cursor: pointer;" id="delReply"><font color="red">삭제</font></a>
+						<label class="font-weight-light font-italic">${reply.fr_time }</label>
+						<input type="hidden" value="${reply.fr_no }">
+						<p>${reply.fr_content }</p></td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+
 </table>
 <table class="table table-condensed" id='replyTable'>
 	<tr>
