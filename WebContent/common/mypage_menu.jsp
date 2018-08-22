@@ -31,7 +31,7 @@
                     <li class="nav-item active"><a class="nav-link" href="/docoding/mypage.do">내 정보</a></li>
                     <li class="nav-item" ><a class="nav-link" href="/docoding/mypage/mybuylist.do">구매목록</a></li>
                     <li class="nav-item" ><a class="nav-link" href="/docoding/mypage/mysell.do">판매목록</a></li>
-                    <li class="nav-item" ><a class="nav-link" href="">히스토리</a></li>
+                    <li class="nav-item" ><a class="nav-link" href="/docoding/mypage/history.do">히스토리</a></li>
                 </ul>
             </div>
         </nav>

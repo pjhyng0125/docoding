@@ -118,6 +118,9 @@
    <definition name=".mysell" extends=".mypage">
    	  <put name="body" value="/mypage/view/sell_list.jsp"/>
    </definition>
+   <definition name=".history" extends=".mypage">
+   	  <put name="body" value="/mypage/view/history.jsp"/>
+   </definition>
   
    <!-- 이성훈 mypage tiles 설정 종료  -->
       
