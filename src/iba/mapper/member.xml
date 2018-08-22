@@ -36,5 +36,10 @@
 		set login_flag='0'
 		where id=#id#
 	</update>
+	<select id = "select_findId" parameterClass="String" resultClass="String">
+		select id 
+		from member 
+		where name = #name# and email = #email#
+	</select>
 	
 </sqlMap>

@@ -23,7 +23,7 @@ $(function(){
 				name:$('#name').val(),
 				gender:$('input[name=gender]:checked').val(),
 				birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val(),
-				email: $('#mail').val()+"@"+$('#mail2').val(),
+				email: $('#mail1').val()+"@"+$('#mail2').val(),
 				phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
 			},
 			success:function(data){
@@ -208,7 +208,7 @@ $(function(){
 				<td align="center" width="100" bgcolor="#b8d6d8">E-Mail<font
 					color="red">*</font></td>
 				<td colspan="3">
-					<input type="text" name="mail1" id="mail" maxlength="50"
+					<input type="text" name="mail1" id="mail1" maxlength="50"
 					style="height: 51px;">@ 
 				<select name="mail2" id="mail2" style="height: 51px; width: 129px">
 						<option>naver.com</option>
