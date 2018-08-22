@@ -8,6 +8,11 @@ where sp_no=#sp_no#
 order by sr_no asc
 </select>
 
+<update id="updateReply" parameterClass="java.util.Map">
+	update sell_reply set sr_content=#sr_content#, sr_time=sysdate
+	where sr_no=#sr_no# and sp_no =#sp_no#
+</update>
+
 <insert parameterClass="com.encore.vo.Sell_reply" id="insertReply">
  insert into sell_reply (sp_no,sr_no,sr_time,sr_id,sr_content)
  values (#sp_no#,sellreply_seq.nextval,sysdate,#sr_id#,#sr_content#)

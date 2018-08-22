@@ -1,5 +1,8 @@
 package com.encore.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +22,7 @@ public class FreeContentAction extends Action{
 		String action = request.getParameter("action");
 		Free_postDAO fp_dao = new Free_postDAO();
 		Free_replyDAO fr_dao = new Free_replyDAO();
-		String forwardName = null;
+		String forwardName = "freeReply";
 		String no = request.getParameter("no");
 		if(action ==null || action.equals("selectContent")) {
 			System.out.println(no);
@@ -27,7 +30,6 @@ public class FreeContentAction extends Action{
 			forwardName = "content";
 		}else if(action.equals("selectReply")) {
 			request.setAttribute("freeReply",fr_dao.selectReply(Integer.parseInt(no)));
-			forwardName="freeReply";
 		}else if(action.equals("insertReply")) {
 			String fr_id = request.getParameter("r_id");
 			String fr_content = request.getParameter("r_content");
@@ -36,15 +38,26 @@ public class FreeContentAction extends Action{
 			System.out.println(fr);
 			if(fr_dao.insertReply(fr)) {
 				System.out.println("댓글입력 성공");
-				forwardName ="freeReply";
 				request.setAttribute("freeReply",fr_dao.selectReply(Integer.parseInt(no)));
 			}
+		}else if(action.equals("updateReply")) { // 댓글 수정
+			String fr_no = request.getParameter("r_no");
+			String fr_content = request.getParameter("r_content");
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("fp_no", Integer.parseInt(no));
+			map.put("fr_no", Integer.parseInt(fr_no));
+			map.put("fr_content", fr_content);
+			
+			if(fr_dao.updateReply(map)) {
+				System.out.println("댓글업데이트 성공");
+				request.setAttribute("freeReply",fr_dao.selectReply(Integer.parseInt(no)));
+			}	
 		}else if(action.equals("deleteReply")) {
 			String fr_no = request.getParameter("r_no");
 			String fp_no = request.getParameter("no");
 			if(fr_dao.deleteReply(Integer.parseInt(fr_no))) {
 				System.out.println("댓글삭제 성공");
-				forwardName ="freeReply";
 				request.setAttribute("freeReply",fr_dao.selectReply(Integer.parseInt(fp_no)));
 			}	
 		}

@@ -2,6 +2,7 @@ package com.encore.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.encore.vo.Sell_reply;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -30,6 +31,17 @@ public class Sell_replyDAO {
 			smc.insert("sr.insertReply", sr);
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean updateReply(Map<String, Object> map) {
+		try {
+			int t = smc.update("sr.updateReply",map);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

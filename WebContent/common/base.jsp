@@ -22,8 +22,8 @@
 }
 
 .footer {
-  flex-shrink: 0;
-
+    position: absolute;
+    bottom: 0px;
 }
 
 #tilesTable{
@@ -34,12 +34,12 @@
 
 </head>
 <body>
-<table width="100%" id="tilesTable">	
-<tr><td><tiles:insert attribute="header"/></td></tr>
-<tr><td><div></div></td></tr>
-<tr><td><tiles:insert attribute="menu"/></td></tr>
-<tr><td><tiles:insert attribute="body"/></td></tr>
-<tr><td><tiles:insert attribute="footer"/></td></tr>
+<table width="100%" id="tilesTable" height="100%">   
+<tr ><td ><tiles:insert attribute="header"/></td></tr>
+<tr ><td ><div></div></td></tr>
+<tr ><td ><tiles:insert attribute="menu"/></td></tr>
+<tr ><td ><tiles:insert attribute="body"/></td></tr>
+<tr ><td ><tiles:insert attribute="footer"/></td></tr>
 </table>
 
 </body>
