@@ -237,16 +237,14 @@
 							<td>${sell.id }${free.id }<span style='float: right'>조회 :
 									${sell.sp_count }${free.fp_count }</span>
 							</td>
-						</tr>
-						<c:if  test='!${param.postName}.equals("free") '>						
+						</tr>			
 						<tr>
-							<td colspan="2">
-								<span style="float: right;" >첨부파일:<a href="">${sell.sp_filename }</a></span>
+							<td colspan="2" >
+								<span style="float: right;" >첨부파일 : <a href="">${sell.sp_filename }</a></span>
 							</td>
 						</tr>
-						</c:if>
 						<tr>
-							<td colspan="2">
+							<td colspan="2" style="border-top: 0px">
 								<p>${sell.sp_content }${free.fp_content }</p>
 							</td>
 						</tr>
