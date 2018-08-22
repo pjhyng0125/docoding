@@ -8,6 +8,8 @@ insert into member values
 ('abcd', '1234', '길동이', '남', '1999-09-09', 'abcd1234@naver.com', '010-1234-5678', '1', '2018-08-16', 1000);
 insert into member values
 ('abcd56', '1234', '길동이', '남', '1999-09-09', 'abcd1234@naver.com', '010-1234-5678', '1', '2018-08-16', 1000);
+insert into member values
+('abcd777', '1234', '김호철', '남', '1999-09-09', 'hocheol@naver.com', '010-1234-5678', '1', '2018-08-21', 1000);
 
 
 select * from sell_assign;

@@ -38,4 +38,16 @@
 	</tbody>
 	</table>
 	</c:when>
+	
+	<c:otherwise><!-- sell_profit에 대한 전달. -->
+		<div id="sell_profit_info">
+			<div class="pro_total_title"><span id="profit_title">[ ${sell_map.ID } ]</span> 님의 판매 수익 정보</div>
+			총 수익 : ${sell_map.PROFIT_SELL }<BR>
+			판매 등록 게시물 수 : ${sell_map.SELL_COUNT }<BR>
+			판매자 등록 일자 : ${sell_map.SA_TIME }<BR>
+			연동 계좌 번호 : ${sell_map.ACCOUNT }<br>
+			<div class="pro_total_title"><button id="trans_profit">수익전환</button></div>
+		</div>
+	</c:otherwise>
+	
 </c:choose>

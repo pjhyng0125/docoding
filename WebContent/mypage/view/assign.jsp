@@ -8,7 +8,19 @@
 <script type="text/javascript" src="/docoding/js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+		$.ajax({
+			url:'/docoding/mypageAction.do',
+			data:{"pageAction":"check_assign","id":$('#get_id').attr("value")},
+			success: function(result){
+				if(result.trim()=="true"){	// 이미 판매자 등록이 된 경우
+					$('#d1').hide();
+					$('#d4').show();
+				}else{						// 아직 판매자 등록 x
+					$('#d1').show();
+					$('#d4').hide();
+				}
+			}
+		});
 		$('[name=pw_check_bt]').click(function(){		// 비밀번호 확인
 			$.ajax({
 					url:'/docoding/mypageAction.do',		// action class와 연결
@@ -49,11 +61,11 @@
 					url:'/docoding/mypageAction.do',
 					data:{
 							"pageAction":"a_assign_seller",
-							"id":"abcd",
+							"id":$('#get_id').attr('value'),
 							"account_num":$('#account_num').val()
 						 },
 					success : function(result){
-						if(result.trim()==true){
+						if(result.trim()=="true"){
 							$('#d1').hide();
 							$('#d2').hide();
 							$('#d3').hide();
@@ -80,7 +92,7 @@
 	<center>
 		<h4>판매자 등록</h4>
 		<hr><br>
-		<div id="d1" style="display:">
+		<div id="d1" style="display: none;">
 			비밀번호 확인 : <input type="password" name="pwd" size="10" autofocus> <input
 				type="button" name="pw_check_bt" value="확인"><br>
 				 - 개인정보 확인을 위한 비밀번호 요청 -

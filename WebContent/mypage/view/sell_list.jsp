@@ -111,23 +111,49 @@
 			});
 		});	// 판매 게시글 삭제버튼
 		
-		$('#sel_bookmark').click(function(){
-			pageAction = "sel_bookmark";
+		$('#sell_profit').click(function(){
+			pageAction = "sell_profit";
 			$('#basic').hide();
 			$('#list').show();
 			$('#title').html('판매수익 현황');
 			$.ajax({
 				url:'/docoding/mypageAction.do',
-				data:{"pageAction":pageAction,"id":$('get_id').val()},
+				data:{"pageAction":pageAction,"id":$('#get_id').val()},
 				success:function(result){
 					
 					$('#add_list').html(result);
 				}
 			});	// ajax
-		});	// bookmark
+		});	// 판매자 수익정보 출력
+		
+		
+		$('#add_list').on('click','#trans_profit',function(){
+			window.open("/docoding/mypage/view/trans_profit.jsp", "chkForm",
+			"width=300, height=300, resizable = no, scrollbars = no");
+			
+		});// 수익전환
 		
 	});
 </script>
+<style type="text/css">
+	#sell_profit_info{
+		height:280px;
+		width:1000px;
+		background-color: yellow;
+		border-radius: 20px;
+		font-size:1.5em;
+		text-align: left;
+		padding-left: 60px;
+	}
+	#profit_title{
+		text-decoration: underline;
+		font-size:2em;
+	}
+	.pro_total_title{
+		text-align: center;
+	}
+
+</style>
 </head>
 <body>
 <input type="hidden" id="get_id" value="abcd">
@@ -137,7 +163,7 @@
 <br>
 <h4>판매자료 및 판매수익 현황</h4>
 <a id="mysell"><font size="4">판매자료</font></a> <font size="4">  |  </font> 
-<a id="sel_bookmark"><font size="4">수익현황</font></a>
+<a id="sell_profit"><font size="4">수익현황</font></a>
 <hr width="30%">
 </div>
 
@@ -147,7 +173,7 @@
 
 <div id="list" style="display: none;">
 <font size="5"><div id="title"></div></font>
-<hr width="80%">
+<hr id="h_line" width="50%">
 <div id="add_list">
 
 </div>

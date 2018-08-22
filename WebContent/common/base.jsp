@@ -20,10 +20,21 @@
 #menuNavbar a{
  
 }
+
+.footer {
+  flex-shrink: 0;
+
+}
+
+#tilesTable{
+	margin-bottom: 100px;
+}
+
 </style>
+
 </head>
 <body>
-<table width="100%">	
+<table width="100%" id="tilesTable">	
 <tr><td><tiles:insert attribute="header"/></td></tr>
 <tr><td><div></div></td></tr>
 <tr><td><tiles:insert attribute="menu"/></td></tr>

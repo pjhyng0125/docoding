@@ -34,6 +34,18 @@ public class MypageAction extends Action {
 		switch (pageAction) {
 		// 비밀번호 확인
 		// 명령어와 비밀번호를 보내려면 맵을 보내야할 같다.
+		
+		case "basic":
+			
+			HashMap<String, String> basic_map = dao.select_basic(id);
+			//System.out.println("time: "+basic_map.get("M_TIME")+" cash : "+basic_map.get("CASH"));
+			basic_map.put("check", dao.check_assign(id)+"");
+			basic_map.put("id",id);
+			System.out.println("check:" + basic_map.get("check") );
+			request.setAttribute("map", basic_map);
+			forward = mapping.findForward("basic");
+			break;
+			
 		case "m_search_pwd": 
 			
 			request.setAttribute("pwd", dao.search_pwd(id));
@@ -55,34 +67,29 @@ public class MypageAction extends Action {
 			request.setAttribute("pageAction", pageAction);
 			forward = mapping.findForward("modify");
 			break;
+			
+		case "check_assign":
+			request.setAttribute("msg", dao.check_assign(id));
+			forward = mapping.findForward("message");
+			break;
 
 		case "a_search_pwd":
 			
 			request.setAttribute("msg", dao.search_pwd(id));
 			request.setAttribute("pageAction", pageAction);
-			//request.setAttribute("msg", "1234");					// 잠시동안 쓸 값
 			forward = mapping.findForward("message");
 			break;
 			
 		case "a_assign_seller":
-			
-		/*	if(dao.check_assign(id)) {							///// 여기가 아니구나! ㅠㅜ
-				request.setAttribute("pageAction", pageAction);
-				request.setAttribute("msg", "이미 판매자 등록이 완료되었습니다.");
-				forward = mapping.findForward("message");
-				break;
-			}else {}*/
 			
 			String account_num = request.getParameter("account_num");	// 계좌번호 받기
 		
 			request.setAttribute("pageAction", pageAction);
 			request.setAttribute("msg", dao.assign_seller(id, account_num));
 			forward = mapping.findForward("message");
-			break;
-			
+			break;	
 			
 		case "d_drop_member":
-			id="abcd";
 			String id_d = request.getParameter("id_d");
 			String name = request.getParameter("name");
 			String pass = request.getParameter("pass");
@@ -90,7 +97,8 @@ public class MypageAction extends Action {
 				request.setAttribute("msg", dao.drop_member(id_d, name, pass));
 			}else {
 				System.out.println("삭제 id와 로그인 상태 id 불일치");
-				request.setAttribute("msg", "fail");
+				request.setAttribute("msg", "삭제 id와 로그인 상태 id 불일치합니다."
+						+ "본인 외의 계정은 삭제하실 수 없습니다.");
 			}
 			forward = mapping.findForward("message");
 			break;
@@ -164,8 +172,50 @@ public class MypageAction extends Action {
 				forward = mapping.findForward("message");
 				break;
 			}
+		
+		case "sell_profit":
+			
+			HashMap<String,Object> sell_map = dao.select_seller(id);
+			sell_map.put("ID", id);
+			request.setAttribute("pageAction", "sell_profit");
+			request.setAttribute("sell_map", sell_map);
+			forward = mapping.findForward("sellList");
+			break;
+		
+		case "trans_profit1":
+			String id_d2 = request.getParameter("id_d");
+			String name2 = request.getParameter("name");
+			String pass2 = request.getParameter("pass");
+			if(id.equals(id_d2)) {
+				if(dao.trans_profit1(id_d2, name2, pass2)) {
+					request.setAttribute("msg", dao.trans_profit1(id_d2, name2, pass2));
+					request.setAttribute("account", dao.select_account(id_d2, pass2));// 잔액
+				}else {
+					request.setAttribute("msg", "계정정보 불일치!");
+				}
+			}else {
+				System.out.println("현재 로그인 계정과 출금 계정 불일치");
+				request.setAttribute("msg", "본인 외의 다른 계정의 수익은 출금할 수 없습니다!");
+			}
+			request.setAttribute("pageAction", pageAction);
+			forward = mapping.findForward("message");
+			break;
+			
+		case "trans_profit2":
+			String trans_money = request.getParameter("trans_money");
+			System.out.println("money"+trans_money);
+			
+			/*
+			 내일 할 일 : 1.입력한 금액을 sell_assign table에서 id 금액을 찾아 뺀다.
+			 		 2.해당금액의 1/4를 계산하여 관리자 프로핏으로 넘긴다
+			 		 3.msg를 남긴다
+			 		 4.transprofit창에서 div3을 실행시킨다. - div3에 버튼두어 해당윈도우 클로즈
+			*/
 			
 		} // switch - case문 종료
+
+		
+		
 
 		return forward;
 	}

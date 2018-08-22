@@ -151,6 +151,8 @@
 				 path="/mypage/result/buylist_result.jsp"/> 
 		<forward name="sellList"
 				 path="/mypage/result/sell_list_result.jsp"/> 
+		<forward name="basic"
+				 path="/mypage/result/basic_result.jsp"/>		 
 			 
 	</action>
 	<!-- 이성훈 mypage action 설정 종료  -->

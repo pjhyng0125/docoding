@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>freeContent</title>
@@ -82,9 +82,47 @@
 				})
 			}
 		})
-
-		//댓글 삭제
-		$('#replyDiv').on('click', '#delReply', function() {
+		//댓글 수정###############################################
+		$('#replyDiv').on('click', 'a[name=upReply]', function() {
+			//****로그인한 아이디가 같은지 체크
+			var aTag = $(this);
+			aTag.hide(); aTag.next().hide(); //수정삭제 버튼 숨기기
+			var up_reply = $('#up_reply');
+			var content = $('#contentDiv').text();
+			$('#contentDiv').html('');
+			var contentDiv = aTag.parent().find('.contentDiv');
+			contentDiv.append(up_reply);
+			up_reply.show(1000);
+			
+			//댓글 수정 취소############################################
+			$('#cancleUpdate').click(function(){
+				aTag.show();
+				aTag.next().show(); //수정 삭제 버튼 보이기
+				$('#up_replyDiv').append(up_reply);	
+				up_reply.hide();
+				$('#contentDiv').html('');
+				$('#contentDiv').text(content);
+			});
+			
+			return;
+			var hidden = $(this).parent().find(':hidden').val();
+			alert(hidden);
+				urlToResultContent();
+				$.ajax({
+					url : url,
+					success : function(result) {
+						$('#replyDiv').html(result);
+					},
+					data : {
+						action : "updateReply",
+						no : no,
+						r_no : hidden
+					}
+				})
+		})
+		
+		//댓글 삭제###############################################
+		$('#replyDiv').on('click', 'a[name=delReply]', function() {
 			//****로그인한 아이디가 같은지 체크
 			var hidden = $(this).next().val();
 			if (confirm('정말로 삭제하시겠습니까?')) {
@@ -102,7 +140,9 @@
 				})
 			}
 		})
-
+		
+		
+		
 		//판매게시물 첨부파일 구매
 		$('#buyTr').on('click', 'input[value=구매하기]', function() {
 			alert('hi');
@@ -173,5 +213,16 @@
 				</table>
 				<div id='replyDiv'></div>
 				</div></div></div>
+				
+<div id="up_replyDiv">
+<div id="up_reply" style="width: 100%; display: none; border-color: skyblue">				
+<textarea class="form-control col-lg-12"  rows="4"></textarea>
+<div class="input-group-btn" style="float: right;">
+	<input class="btn btn-default" type="button" value="수정"
+		id="submitUpdate"> <input class="btn btn-default"
+		type="button" value="취소" id="cancleUpdate">
+</div>
+</div>
+</div>				
 </body>
 </html>

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="mypage">
+	
+	<select id="select_basic" parameterClass="String" resultClass="HashMap">
+		select to_char(m_time,'yyyy-mm-dd') "m_time", to_char(cash) "cash"
+		from member
+		where id=#id#
+	</select>
+	
 	<select id="select_pwd" parameterClass="String" resultClass="String">
 		select pass from member where id=#id#
 	</select>
@@ -83,4 +90,23 @@
 	<select id="check_assign" parameterClass="String" resultClass="int">
 		select count(*) from sell_assign where id = #id#
 	</select>
+	
+	<select id="select_seller" parameterClass="String" resultClass="HashMap">
+		select profit_sell, sell_count, to_char(account_num) account, to_char(sa_time,'yyyy-mm-dd') sa_time
+		from sell_assign
+		where id=#id#
+	</select>
+	
+	<select id="trans_profit1" parameterClass="java.util.Map" resultClass="int">
+		select count(*) 
+		from member 
+		where id=#id# and name=#name# and pass=#pass#
+	</select>
+	
+	<select id="select_account" parameterClass="java.util.Map" resultClass="int">
+		select s.profit_sell 
+		from member m, sell_assign s 
+		where m.id=s.id and m.id=#id# and m.pass=#pass#
+	</select>
+	
 </sqlMap>
