@@ -29,11 +29,11 @@ $(function(){
 		var formData=new FormData(form);
 		//게시물 입력 + 파일 업로드
 		$.ajax({
-			url:"/docoding/action/admin.do",
+			url:"/docoding/action/admin.do?postName=${param.postName }",
 			type:"POST",
 			processData:false,
 			contentType:false,
-			data:formData,
+			data:formData, 
 			success:function(data){
 				alert(data);//입력 성공시: 게시물 입력 성공!!!
 							//입력 실패시: 게시물 입력 실패...OTL

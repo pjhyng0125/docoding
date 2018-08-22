@@ -58,4 +58,24 @@ from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,s
 		</isNotNull>
 		)/#pageCount#) count from dual
 	</select>
+	
+	<!-- MemberDAO접근 -->
+<select id="selectCash" parameterClass="String" resultClass="int">
+	select cash from member where id=#id#
+</select>
+<update id="updateCash" parameterClass="String">
+	update member set cash = cash-200 where id=#id#
+</update>	
+
+<!-- 구매자 등록(미완) DAO등록 필요-->
+<insert id="insertBuyPost">
+insert into buy_post (bp_id,sp_no,id,bp_time)
+values (#bp_id#,#sp_no#,#id#,sysdate)
+</insert>
+<!-- 판매 횟수 증가(미완) -->
+<update id="updateSoldCnt" parameterClass="int">
+update sell_post 
+set sold_count = sold_count+1 
+where sp_no=#sp_no#
+</update>	
 </sqlMap>

@@ -25,10 +25,10 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${freeReply }" var="reply">
-				<tr name="commentParent" class="${reply.fr_id }">
+				<tr name="commentParent">
 					<td colspan=2><strong id="replyId">${reply.fr_id }</strong>&nbsp;&nbsp;
-					<a style="cursor: pointer; display: none;" name="upReply"><font color="blue">수정</font></a>
-					<a style="cursor: pointer; display: none;" name="delReply"><font color="red">삭제</font></a>
+					<a style="cursor: pointer; display: none;" name="upReply" class="${reply.fr_id }"><font color="blue">수정</font></a>
+					<a style="cursor: pointer; display: none;" name="delReply" class="${reply.fr_id }"><font color="red">삭제</font></a>
 						<label class="font-weight-light font-italic">${reply.fr_time }</label>
 						<input type="hidden" value="${reply.fr_no }">
 						<div class="contentDiv">${reply.fr_content }</div></td>

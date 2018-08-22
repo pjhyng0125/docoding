@@ -1,5 +1,6 @@
 package com.encore.action;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public class SellContentAction extends Action{
 		String forwardName = null;
 		String no = request.getParameter("no");
 		System.out.println(no);
+		response.setContentType("text/html;charset=UTF-8");
 		if(action ==null || action.equals("selectContent")) { // 게시글 내용 보이기
 			System.out.println(no);
 			request.setAttribute("sell", sp_dao.select(Integer.parseInt(no)));
@@ -65,6 +67,25 @@ public class SellContentAction extends Action{
 				forwardName ="sellReply";
 				request.setAttribute("sellReply",sr_dao.selectReply(Integer.parseInt(no)));
 			}	
+		}else if(action.equals("updateCash")) {//상품 구입
+			String id = request.getParameter("login_id");
+			System.out.println(id);
+			int currentMoney = sp_dao.selectCash(id);
+			PrintWriter out = response.getWriter();
+			if(currentMoney==-1) {
+				System.out.println("selectCash>>>error!");
+			}else if(currentMoney<200){
+				out.print("캐쉬가 부족합니다!");
+			}else {
+				if(sp_dao.updateCash(id)) {
+					int afterMoney = sp_dao.selectCash(id);
+					sp_dao.updateSoldCnt(Integer.parseInt(no));
+					System.out.println("판매횟수 증가");
+					out.print("결제가 완료되었습니다.\n현재 잔액은 "+afterMoney+"원 입니다.");
+				}else {					
+					System.out.println("updateCash>>>error!");
+				}
+			}
 		}
 		return mapping.findForward(forwardName);
 	}
