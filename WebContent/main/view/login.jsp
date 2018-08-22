@@ -62,7 +62,7 @@
 <center>
 <fieldset>
 <div class="card-body">
-<legend><font face="impact">코딩합니다!</font> <font>LOGIN</font></legend>
+<legend><font face="impact" color="gray">코딩합니다</font> <b>LOGIN</b></legend>
 <table cellpadding="5">
 	<tr>
 		<td><input type="text" placeholder="아이디" name="userid" required></td>
