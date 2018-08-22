@@ -126,4 +126,43 @@
 		update member set cash= cash+#cash#
 		where id=#id#
 	</update>
+	
+	<select id="total_history" parameterClass="Map" resultClass="int">
+		select ceil((select count(*) from free_post where id=#id#)/#pagecount#)
+		from dual
+	</select>
+	
+	<select id="select_history" resultClass="HashMap" parameterClass="java.util.Map">
+	<![CDATA[
+		select to_char(fp_time, 'yyyy-mm-dd') fp_time, fp_title, id, fp_count, fp_no
+		from (select fp_time, fp_title, id, fp_count, fp_no, rownum rn 
+				from (select fp_time, fp_title, id, fp_count, fp_no
+					  from free_post
+					  where id=#id#
+					  order by fp_time desc)
+			  )
+		where rn >= #start# and rn <= #end#
+	]]>
+	</select>
+	
+	<select id="total_history_reply" parameterClass="Map" resultClass="int">
+		select ceil((select count(*) from free_reply where fr_id=#id#)/#pagecount#)
+		from dual
+	</select>
+	
+	<select id="select_history_reply" resultClass="HashMap" parameterClass="java.util.Map">
+	<![CDATA[
+		select to_char(fp_time, 'yyyy-mm-dd') fp_time, fp_title, id, to_char(fr_time, 'yyyy-mm-dd') fr_time, fr_id, fr_content
+		from (select fp_time, fp_title, id, fr_time, fr_id, fr_content, rownum rn 
+				from (select fp_time, fp_title, id, fr_time,fr_id, fr_content
+					  from free_reply fr, free_post fp
+					  where fr.fp_no = fp.fp_no and fr.fr_id=#id#
+					  order by fr.fr_time desc)
+			  )
+		where rn >= #start# and rn <= #end#
+	]]>
+	
+	</select>
+	
+	
 </sqlMap>

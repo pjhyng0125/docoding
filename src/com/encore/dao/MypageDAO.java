@@ -268,4 +268,52 @@ public class MypageDAO {
 		}
 		return false;
 	}
+	
+	public int total_history(String id, String page_count) {
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pagecount", page_count);
+		try {
+			int t = (Integer)smc.queryForObject("mypage.total_history",map);
+			return t;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public List<Map> select_history(Map<String, String> map) {
+		List<Map> list = null;
+		try {
+			list = smc.queryForList("mypage.select_history",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public int total_history_reply(String id, String page_count) {
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pagecount", page_count);
+		try {
+			int t = (Integer)smc.queryForObject("mypage.total_history_reply",map);
+			return t;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	public List<Map> select_history_reply(Map<String, String> map) {
+		List<Map> list = null;
+		try {
+			list = smc.queryForList("mypage.select_history_reply",map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

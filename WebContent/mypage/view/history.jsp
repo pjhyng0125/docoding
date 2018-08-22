@@ -16,13 +16,11 @@
 		}
 		var max_page='';
 		
-		$('#sel_buylist').click(function(){
-		
-			
-			pageAction = "sel_buylist";
+		$('#history').click(function(){
+			pageAction = "history";
 			$('#basic').hide();
 			$('#list').show();
-			$('#title').html('구매 자료 현황');
+			$('#title').html('자유게시판 작성 현황');
 			$.ajax({
 					url:'/docoding/mypageAction.do',
 					data:{"pageAction":pageAction,"id":$('#get_id').attr("value"),"page":page},
@@ -82,17 +80,18 @@
 				page=page-1;
 			}
 		});	// 다음페이지로 이동
-		$('#sel_bookmark').click(function(){
-			pageAction = "sel_bookmark";
+		$('#history_reply').click(function(){
+			pageAction = "history_reply";
 			$('#basic').hide();
 			$('#list').show();
-			$('#title').html('즐겨찾기 현황');
+			$('#title').html('댓글 기록');
 			$.ajax({
 				url:'/docoding/mypageAction.do',
-				data:{"pageAction":pageAction,"id":$('get_id').val()},
+				data:{"pageAction":pageAction,"id":$('#get_id').val(),"page":page},
 				success:function(result){
 					
-					$('#add_list').html(result);
+					$('#add_list').html(result);	
+					max_page=$('#max_page').val();
 				}
 			});	// ajax
 		});	// bookmark
@@ -107,8 +106,8 @@
 <div>
 <br>
 <h4>게시물 관리 페이지</h4>
-<a id="sel_buylist"><font size="4">자유게시판 게시물</font></a> <font size="4">  |  </font> 
-<a id="sel_bookmark"><font size="4">댓글 작성기록</font></a>
+<a id="history"><font size="4">자유게시판 게시물</font></a> <font size="4">  |  </font> 
+<a id="history_reply"><font size="4">댓글 작성기록</font></a>
 <hr width="30%">
 </div>
 

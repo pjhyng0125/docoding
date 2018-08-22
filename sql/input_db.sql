@@ -62,3 +62,10 @@ insert into sell_post values ('15','java','자바스크립트를 배워보자 ','자바 기초�
 insert into sell_post values ('16','java','자바스크립트','자바 기초내용','abcd','2018-08-21','java_basic.txt','11','20');
 insert into sell_post values ('17','java','자바스크립트 배워 ','자바 기초내용','abcd','2018-08-20','java_basic.txt','11','20');
 insert into sell_post values ('18','java','자바스크립트 볼까 ','자바 기초내용','abcd','2018-08-20','java_basic.txt','11','20');
+
+
+insert into free_post values ('1','잡담','제목연습','이게 클릭이란거다.','abcd','2018-08-22','3');
+
+
+insert into free_reply values ('1','1','2018-08-22','qwer56','살아있네');
+insert into free_reply values ('2','1','2018-08-22','abcd','살아있네');

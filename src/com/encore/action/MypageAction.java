@@ -220,7 +220,61 @@ public class MypageAction extends Action {
 			request.setAttribute("msg", dao.c_input_cash(id, Integer.parseInt(request.getParameter("cash"))));
 			forward = mapping.findForward("message");
 			break;
+		
+		case "history":
 			
+			String page3 = request.getParameter("page");
+			int pageNo3 = Integer.parseInt(page3);				
+			int end3 = pageNo3*5;
+			String start3 = end3-4+"";
+			
+			Map<String, String> map3 = new HashMap<>();
+			map3.put("end", end3+"");
+			map3.put("start", start3);
+			map3.put("id", id);
+			
+			List<Map> list3 = new ArrayList<>();
+			
+			if(dao.total_history(id, 5+"")==0) {
+				request.setAttribute("msg", "게시물 작성 기록이 없습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}else {	
+				request.setAttribute("max_page", dao.total_history(id,5+""));
+				list3 = dao.select_history(map3);
+				System.out.println("history list : "+list3);
+				request.setAttribute("list", list3);
+			}		
+			request.setAttribute("pageAction", pageAction);
+			forward = mapping.findForward("history");
+			break;
+		
+		case "history_reply":
+			String page4 = request.getParameter("page");
+			int pageNo4 = Integer.parseInt(page4);				
+			int end4 = pageNo4*5;
+			String start4 = end4-4+"";
+			
+			Map<String, String> map4 = new HashMap<>();
+			map4.put("end", end4+"");
+			map4.put("start", start4);
+			map4.put("id", id);
+			
+			List<Map> list4 = new ArrayList<>();
+			
+			if(dao.total_history_reply(id, 5+"")==0) {
+				request.setAttribute("msg", "댓글 작성 기록이 없습니다.");
+				forward = mapping.findForward("message");
+				break;
+			}else {	
+				request.setAttribute("max_page", dao.total_history(id,5+""));
+				list3 = dao.select_history_reply(map4);
+				System.out.println("reply list : "+list4);
+				request.setAttribute("list", list4);
+			}		
+			request.setAttribute("pageAction", pageAction);
+			forward = mapping.findForward("history");
+			break;
 		} // switch - case문 종료
 		return forward;
 	}
