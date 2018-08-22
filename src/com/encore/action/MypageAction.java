@@ -203,25 +203,20 @@ public class MypageAction extends Action {
 			
 		case "trans_profit2":
 			String trans_money = request.getParameter("trans_money");
-			request.setAttribute("msg", dao.trans_profit2(id, Integer.parseInt(trans_money)));
-			forward = mapping.findForward("message");
-			break;
-		
-		case "c_check_member":
+			System.out.println("money"+trans_money);
 			
-			request.setAttribute("msg", dao.c_check_member(id,
-												request.getParameter("pass"),
-												request.getParameter("name"),
-												request.getParameter("phone")));
-			forward = mapping.findForward("message");
-			break;
-		
-		case "c_input_cash":
-			request.setAttribute("msg", dao.c_input_cash(id, Integer.parseInt(request.getParameter("cash"))));
-			forward = mapping.findForward("message");
-			break;
+			/*
+			 내일 할 일 : 1.입력한 금액을 sell_assign table에서 id 금액을 찾아 뺀다.
+			 		 2.해당금액의 1/4를 계산하여 관리자 프로핏으로 넘긴다
+			 		 3.msg를 남긴다
+			 		 4.transprofit창에서 div3을 실행시킨다. - div3에 버튼두어 해당윈도우 클로즈
+			*/
 			
 		} // switch - case문 종료
+
+		
+		
+
 		return forward;
 	}
 }

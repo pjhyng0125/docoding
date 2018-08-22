@@ -109,21 +109,4 @@
 		where m.id=s.id and m.id=#id# and m.pass=#pass#
 	</select>
 	
-	<update id="trans_profit2" parameterClass="java.util.Map">
-		update sell_assign set profit_sell=(profit_sell-#trans_money#)
-		where id=#id#
-	</update>
-	
-	<update id="trans_profit3" parameterClass="int">
-		update manager set profit = profit+#t_m#
-	</update>
-	
-	<select id="c_check_member" parameterClass="Map" resultClass="int">
-		select count(*) from member where id=#id# and pass=#pass# and name=#name# and phone=#phone#
-	</select>
-	
-	<update id="c_input_cash" parameterClass="java.util.Map">
-		update member set cash= cash+#cash#
-		where id=#id#
-	</update>
 </sqlMap>

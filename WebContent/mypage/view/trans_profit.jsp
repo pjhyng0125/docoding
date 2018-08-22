@@ -37,7 +37,7 @@
 		});// bt_check
 		
 		$('#bt_check2').click(function(){
-			if($('#get_money').attr('value')<eval($('#trans_money').val())){
+			if($('#get_money').attr('value')<$('#trans_money').val()){
 				alert("현재 소유하고 계신 캐쉬보다 많은 금액을 출금 할 수 없습니다.\n"
 						+"현재 소유 금액 : "+$('#get_money').attr('value'));
 			}else{
@@ -65,13 +65,6 @@
 			window.close();
 		});
 	});
-	
-	function close_page(){
-		//opener.location.href="/TomTest/guest/play?action=delete&no=${g.no }";
-//		opener.location.reload();
-		opener.location.href="/docoding/mypage.do";
-		window.close();	
-	}
 </script>
 </head>
 <body>
@@ -98,14 +91,11 @@
 		<tr align="center"><td colspan="2">수익으로 전환 할 금액을 입력하시오. </td></tr>
 		<tr align="center"><td colspan="2"><button id="bt_check2"> 확인 </button>
 						    <button class="bt_cancel"> 취소 </button></td></tr>
-		<tr align="center"><td colspan="2"><font color="red" size="2">*입력하신 금액의 75%가 지정하신 계좌로 입금됩니다.</font></td></tr>
+		<tr align="center"><td colspan="2"><font color="red" size="2">*전환된 수익은 다시 캐쉬로 반환 할 수 없음을 고지합니다.</font></td></tr>
 	</table>
 </div>
 <div id="clear" style="display: none">
-	<br>
-	수익전환 완료!<br>
-	<button onclick="close_page()">마이페이지로 이동하기</button><br>
-	<font color="red" size="2"><br>*전환하신 수익은 다시 캐쉬로 반환 할 수 없습니다.</font>
+	success
 </div>
 </center>
 </body>

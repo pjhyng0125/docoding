@@ -226,46 +226,12 @@ public class MypageDAO {
 		return t;
 	}
 	
-	public boolean trans_profit2(String id, int trans_money) {
+	public void trans_profit2(String id, int trans_money) {
 		Map<String,Object> map = new HashMap<>();
 		map.put("id", id);
 		map.put("trans_money", trans_money);
-		int t_m = trans_money/4;
-		try {
-			int t = smc.update("mypage.trans_profit2", map);	// 유저 수익 차감
-			int t2 = smc.update("mypage.trans_profit3", t_m);	// 관리자 수익전환
-			if(t==1 && t2==1) return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	public boolean c_check_member(String id, String pass, String name, String phone) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("id", id);
-		map.put("pass", pass);
-		map.put("name", name);
-		map.put("phone", phone);
-		try {
-			int t = (int) smc.queryForObject("mypage.c_check_member", map);
-			if(t==1) return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-	
-	public boolean c_input_cash(String id, int cash) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("id", id);
-		map.put("cash", cash);
-		try {
-			int t = smc.update("mypage.c_input_cash", map);
-			if(t==1) return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
+		
+		
+		
 	}
 }
