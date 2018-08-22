@@ -40,6 +40,12 @@
 <!-- ================================================ Form Bean Definitions -->
 
     <form-beans>
+<!-- 회원가입 유효성 검사 처리 시작 (ActionForm 등록)  -->
+<form-bean name="joinform"
+	type="com.encore.actionform.JoinActionForm"
+></form-bean>    
+<!-- 회원가입 유효성 검사 처리 끝  -->
+    
     <!-- sample form bean descriptor for an ActionForm
         <form-bean
             name="inputForm"
@@ -104,7 +110,19 @@
 <action path="/findIdPw" forward=".findIdPw"></action>
 	<!-- 민지환 admin action 설정 종료  -->
 	
-	<!-- 박진형 admin action 설정 시작  -->
+<!-- 회원가입 유효성 검사 처리 시작 (Action 등록) -->
+<action path="/actionform/join"
+	type="com.encore.action.JoinAction"
+	
+	name="joinform"
+	input="/login/view/join.jsp"
+	validate="true"
+	scope="request">
+<forward name="mainpage" path="/main.do"></forward>
+</action>
+<!-- 회원가입 유효성 검사 처리 끝  -->
+
+<!-- 박진형 admin action 설정 시작  -->
 <action path="/common/form" forward=".form"></action>
 <action path="/common/login" forward=".login"></action>
 
