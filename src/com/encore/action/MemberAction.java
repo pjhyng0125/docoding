@@ -53,7 +53,6 @@ public class MemberAction extends Action{
 			}
 		}
 		return forward;
-		
 	}
 }
 	

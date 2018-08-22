@@ -10,8 +10,6 @@ import java.util.Map;
 import com.encore.vo.Member;
 import com.encore.vo.Member_admin;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapSession;
-import com.ibatis.sqlmap.engine.impl.SqlMapSessionImpl;
 
 import iba.MySqlMapClient;
 
@@ -47,11 +45,6 @@ public class MemberDAO {
 		return false;
 		
 	}
-	
-	/*public String select_findId(String name, String email) throws Exception{
-		return SqlMapSession.selectAll("mem.select_findId", name, email);
-		
-	}*/
 	
 	
 public boolean login(Map<String,String> map) {
