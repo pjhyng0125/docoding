@@ -10,13 +10,13 @@
 
 		window.name = "parentForm";
 		window.open("/docoding/login/view/findID.jsp", "chkForm",
-				"width=500, height=500, resizable = no, scrollbars = no");
+				"width=800, height=500, resizable = no, scrollbars = no");
 	}
 	function openPwChk() {
 
 		window.name = "parentForm";
 		window.open("/docoding/login/view/findPW.jsp", "chkForm",
-				"width=500, height=500, resizable = no, scrollbars = no");
+				"width=800, height=500, resizable = no, scrollbars = no");
 	}
 </script>
 </head>

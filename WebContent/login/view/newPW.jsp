@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>새 패스워드</title>
+<script type="text/javascript">
+</script>
 </head>
 <%-- newPW.jsp --%>
 <body>
@@ -29,7 +31,7 @@
 		<br><br><br>
 		<input type="submit" value="설정"
 			style="background-color:orange; width: 88px; height: 41px;">
-		<input type="button" value="취소"
+		<input type="button" value="취소" onclick="window.close()"
 			style="background-color:orange; width: 88px; height: 41px;">
 	</center>
 </body>

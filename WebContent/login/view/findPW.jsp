@@ -5,9 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>패스워드 찾기</title>
+<script type="text/javascript">
+</script>
 </head>
 <%-- findPW.jsp --%>
 <body>
+<form method="post" action="newPW.jsp">
 	<center>
 		<br> <br>
 		<table>
@@ -78,5 +81,6 @@
 		<input type="button" value="취소" onclick="window.close()"
 			style="background-color: orange; width: 69px; height: 38px;">
 	</center>
+</form>
 </body>
 </html>

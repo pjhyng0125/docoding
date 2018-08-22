@@ -43,11 +43,93 @@ $(function(){
 		});
 		});
 	});//document ready
-</script>
+ 	  function inputCheck()
+     {
+         var form = document.userInfo;
+     
+         if(!form.id.value){
+             alert("아이디를 입력하세요.");
+             return false;
+         }
+         
+         if(form.idCheck != "idCheck"){
+             alert("아이디 중복체크를 해주세요.");
+             return false;
+         }
+         
+         if(!form.pass.value){
+             alert("비밀번호를 입력하세요.");
+             return false;
+         }
+         
+         // 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
+         if(form.pass.value != form.passCheck.value ){
+             alert("비밀번호를 동일하게 입력하세요.");
+             return false;
+         }    
+         
+         if(!form.name.value){
+             alert("이름을 입력하세요.");
+             return false;
+         }
+         
+         if(!form.year.value){
+             alert("년도를 선택하세요.");
+             return false;
+         }
+         
+         
+         if(form.month.value){
+             alert("월을 선택하세요.");
+             return false;
+         }
+         
+         if(!form.day.value){
+             alert("날짜를 선택하세요.");
+             return false;
+         }
+         
+        
+         if(!form.mail1.value){
+             alert("메일 주소를 입력하세요.");
+             return false;
+         }
+         
+         if(!form.mail2.value){
+        	 alert("주소를 선택하세요.");
+         }
+         
+         if(!form.cell.value){
+             alert("지역 번호를 선택하세요.");
+             return false;
+         }
+         
+         if(!form.cell1.value){
+             alert("앞자리를 입력하세요.");
+             return false;
+         }
+       
+         if(isNaN(form.cell1.value)){
+             alert("숫자만 입력가능합니다.");
+             return false;
+         }
+         
+         if(!form.cell2.value){
+             alert("뒷자리를 입력하세요.");
+             return false;
+         }
+        
+         if(isNaN(form.cell2.value)){
+             alert("숫자만 입력가능합니다.");
+             return false;
+         } 
+         
+
+</script> 
 </head>
 <%-- join.jsp --%>
 <body>
-	<form method="post"name="userInfo">
+	<form method="post" name="userInfo" onsubmit="return inputCheck();">
 	<center>
 		<br> <br> <b><font size="7" color="gray" face="impact">코딩합니다</font>
 			<font size="7" color="sky blue" face="imapct">회원가입</font></b>
@@ -59,13 +141,13 @@ $(function(){
 				<td align="center" width="100" bgcolor="#b8d6d8">아이디<font color="red">*</font></td>
 				<td colspan="3">
 					<input type="text" id="id" name="id" placeholder="영문/숫자(6자리~12자리)"
-					style="width: 371px; height: 51px" required> 
-					<input type="button" value="중복확인" name="id" id="idCheck" maxlength="50"
+					style="width: 371px; height: 51px" > 
+					<input type="button" value="중복확인" name="idCheck" id="idCheck" maxlength="50"
 					style="background-color: #b8d6d8; height: 40px;">
 			</tr>
 
 			<tr>
-				<td align="center" width="100" bgcolor="#b8d6d8">비밀번호<fontcolor="red">*</font></td>
+				<td align="center" width="100" bgcolor="#b8d6d8">비밀번호<font color="red">*</font></td>
 				<td colspan="3">
 					<input type="password" id="pass" name="pass" placeholder="영문/숫자/특수문자포함(6자리~12자리)"
 					style="width: 371px; height: 51px"></td>
@@ -73,7 +155,7 @@ $(function(){
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">비번확인</td>
 				<td>
-					<input type="password" name="passcheck" id="passCheck"
+					<input type="password" name="passCheck" id="passCheck"
 					style="width: 371px; height: 51px"></td>
 			</tr>
 			<tr>
@@ -128,7 +210,7 @@ $(function(){
 				<td colspan="3">
 					<input type="text" name="mail1" id="mail" maxlength="50"
 					style="height: 51px;">@ 
-				<select name="mail" id="mail2" style="height: 51px; width: 129px">
+				<select name="mail2" id="mail2" style="height: 51px; width: 129px">
 						<option>naver.com</option>
 						<option>daum.net</option>
 						<option>gmail.com</option>
@@ -147,8 +229,8 @@ $(function(){
 						<option value="017">017</option>
 						<option value="019">019</option>
 				</select> - <input type="text" size="4" maxlength="4" name="cell1" id="cell2"
-					style="height: 45px; width: 59px"> - <input type="text" id="cell3"
-					size="4" maxlength="4" name="cell2" style="height: 45px; width: 59px"></td>
+					style="height: 45px; width: 59px"> - <input type="text" name="cell2" id="cell3"
+					size="4" maxlength="4" style="height: 45px; width: 59px"></td>
 
 			</tr>
 	<!-- 		<tr>
@@ -167,7 +249,7 @@ $(function(){
 			</tr>  -->
 		</table>
 		<br> <br> <br> 
-			<input type="button" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
+			<input type="submit" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
 			<input type="reset" value="취소" onclick="goFirstForm()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </form>

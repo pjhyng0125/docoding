@@ -44,12 +44,6 @@ function checkValue() {
 			return false;
 		}
 		
-		if (!form.captcha.value){
-			alert("화면에 보이는 보안코드를 입력해주세요");
-			return false;
-			}
-		}
-		
 
 	
 	function goFirstForm() {
