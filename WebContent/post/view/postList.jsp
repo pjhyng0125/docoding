@@ -24,6 +24,9 @@
 	crossorigin="anonymous">
 <script type="text/javascript">
 	$(function() {
+		//로그인 정보 얻기
+		var login_id = "${login_id}";
+		var flag = "${flag}";
 		// 파라미터 받기 
 		var postName = "${param.postName}" //java, js, 자유게시판,...
 		var action = "${param.action}" // list or searchlist
@@ -99,10 +102,19 @@
 		})
 		
 		//글쓰기####################################################
-		
 		$('#postList').on('click','#createPost',function(){
+/* 			if(login_id){
+				if(flag && postName!="free"){
+					alert('판매자 인증이 먼저 필요합니다!')
+					return;
+				}
+			}else{
+				alert('로그인을 먼저 실행해주세요!');
+				return;
+			} */
+			
 			if(postName=="free"){
-			location.href = "/docoding/free.do";						
+			location.href = "/docoding/inputfree.do";						
 			}else{
 			location.href = "/docoding/input.do";						
 			}

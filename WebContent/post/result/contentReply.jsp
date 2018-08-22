@@ -13,10 +13,10 @@
 	<c:choose>
 		<c:when test="${sellReply!=null }">
 			<c:forEach items="${sellReply }" var="reply">
-				<tr name="commentParent">
-					<td colspan=2><strong id="replyId">${reply.sr_id }</strong>&nbsp;&nbsp;
-					<a style="cursor: pointer;" name="upReply"><font color="blue">수정</font></a>
-					<a style="cursor: pointer;" name="delReply"><font color="red">삭제</font></a>
+				<tr name="commentParent" class="${reply.sr_id }">
+					<td colspan=2><strong>${reply.sr_id }</strong>&nbsp;&nbsp;
+					<a style="cursor: pointer; display: none;" name="upReply"><font color="blue">수정</font></a>
+					<a style="cursor: pointer; display: none;" name="delReply"><font color="red">삭제</font></a>
 					<label class="font-weight-light font-italic">${reply.sr_time }</label>
 					<input type="hidden" value="${reply.sr_no }">
 					<div class="contentDiv">${reply.sr_content }</div></td>
@@ -25,12 +25,13 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach items="${freeReply }" var="reply">
-				<tr name="commentParent">
-					<td colspan=2><strong id="replyId">${reply.fr_id }</strong>&nbsp;&nbsp;<a
-						style="cursor: pointer;" id="delReply"><font color="red">삭제</font></a>
+				<tr name="commentParent" class="${reply.fr_id }">
+					<td colspan=2><strong id="replyId">${reply.fr_id }</strong>&nbsp;&nbsp;
+					<a style="cursor: pointer; display: none;" name="upReply"><font color="blue">수정</font></a>
+					<a style="cursor: pointer; display: none;" name="delReply"><font color="red">삭제</font></a>
 						<label class="font-weight-light font-italic">${reply.fr_time }</label>
 						<input type="hidden" value="${reply.fr_no }">
-						<div id="contentDiv">${reply.fr_content }</div></td>
+						<div class="contentDiv">${reply.fr_content }</div></td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>

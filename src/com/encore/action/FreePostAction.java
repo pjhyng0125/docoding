@@ -64,7 +64,10 @@ public class FreePostAction extends Action{
 		map.put("start", start);
 		map.put("end", end);
 		
+		
+		System.out.println("selectFPAllÀü");
 		List<Free_post> list = dao.selectFPAll(map);
+		System.out.println("selectFPAllÈÄ");
 		request.setAttribute("list", list);
 		if(totalPage>0) {
 			request.setAttribute("totalPage", totalPage);

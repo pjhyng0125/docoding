@@ -2,6 +2,7 @@ package com.encore.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.encore.vo.Free_reply;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -23,6 +24,17 @@ SqlMapClient smc;
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public boolean updateReply(Map<String, Object> map) {
+		try {
+			int t = smc.update("fr.updateReply",map);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	public boolean insertReply(Free_reply fr) {

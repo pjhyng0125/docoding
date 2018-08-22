@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,9 @@
 	crossorigin="anonymous">
 <script type="text/javascript">
 	$(function() {
+		var login_id = "${login_id}";
+		alert(login_id)
+		
 		var postName = "${param.postName}"
 		var order = ${param.order}
 		var page = ${param.page}
@@ -36,6 +40,26 @@
 			url : url,
 			success : function(result) {
 				$('#replyDiv').html(result);
+				if(login_id){
+					$('.${login_id} a').show();
+				} 
+				
+				$('input[value=구매하기]').hide();
+				$('input[value=수정]').hide(); 
+				$('input[value=삭제]').hide(); 
+				if(postName=="free"){
+				 	if("${free.id}"==login_id){
+						$('input[value=수정]').show(); 
+						$('input[value=삭제]').show(); 
+				    }
+				}else{
+					if("${sell.id}"==login_id){
+						$('input[value=수정]').show(); 
+					 }else{
+						$('input[value=구매하기]').show();
+					 }	
+				}
+				
 			},
 			data : {
 				action : "selectReply",
@@ -48,7 +72,6 @@
 						+ '\nstatus: ' + status + '\nerror: ' + error)
 			}//에러 콜백
 		})
-
 		$('#replyDiv').on('click','input[value=목록]', function() {
 					urlToList();
 					if (option) {
@@ -67,6 +90,11 @@
 		// id, no, content 넘기기 insertReply
 		$('#replyDiv').on('click', 'input[value=댓글등록]', function() {
 			if (confirm('댓글을 등록하시겠습니까?')) {
+				if(login_id){
+					alert('로그인을 먼저 실행해주세요!');
+					return;
+				}
+				
 				urlToResultContent();
 				$.ajax({
 					url : url,
@@ -75,56 +103,68 @@
 					},
 					data : {
 						action : "insertReply",
-						r_id : "길라임",
+						r_id : login_id,
 						no : no,
 						r_content : $('textarea').val()
 					}
 				})
 			}
 		})
-		//댓글 수정###############################################
+		//댓글 수정창 뜨기###############################################
 		$('#replyDiv').on('click', 'a[name=upReply]', function() {
-			//****로그인한 아이디가 같은지 체크
 			var aTag = $(this);
 			aTag.hide(); aTag.next().hide(); //수정삭제 버튼 숨기기
 			var up_reply = $('#up_reply');
-			var content = $('#contentDiv').text();
-			$('#contentDiv').html('');
-			var contentDiv = aTag.parent().find('.contentDiv');
+			
+			var commentParent = aTag.parent(); //aTag를 둘러싼 디브
+			var contentDiv = commentParent.find('.contentDiv');
+			
+			var content = contentDiv.text(); //내용 미리 저장
+			contentDiv.html(''); // 내용 지우기
+			var textarea = up_reply.find('textarea');
+			textarea.val(content);
 			contentDiv.append(up_reply);
 			up_reply.show(1000);
 			
+			var hidden = commentParent.find('input[type=hidden]').val(); //r_no얻기
 			//댓글 수정 취소############################################
 			$('#cancleUpdate').click(function(){
 				aTag.show();
 				aTag.next().show(); //수정 삭제 버튼 보이기
 				$('#up_replyDiv').append(up_reply);	
 				up_reply.hide();
-				$('#contentDiv').html('');
-				$('#contentDiv').text(content);
+				
+
+				contentDiv.html('');
+				contentDiv.text(content);
 			});
-			
-			return;
-			var hidden = $(this).parent().find(':hidden').val();
-			alert(hidden);
+			//댓글 수정###############################################
+			$('#submitUpdate').click(function(){
+				$('#up_replyDiv').append(up_reply); //수정입력 textarea 원래위치로 가기
+				up_reply.hide();
+				var r_content = textarea.val();
+				//alert(r_content) 두번 뜨는게 이상...
 				urlToResultContent();
 				$.ajax({
 					url : url,
 					success : function(result) {
-						$('#replyDiv').html(result);
+						$('#replyDiv').html(result); 
+						$('.${login_id} a').show();
+						textarea.val('');
 					},
 					data : {
 						action : "updateReply",
 						no : no,
-						r_no : hidden
+						r_no : hidden,
+						r_content : r_content
 					}
 				})
-		})
+			})
+		});//댓글 수정창 뜨기
 		
 		//댓글 삭제###############################################
 		$('#replyDiv').on('click', 'a[name=delReply]', function() {
-			//****로그인한 아이디가 같은지 체크
-			var hidden = $(this).next().val();
+			var hidden = $(this).parent().find(':hidden').val();
 			if (confirm('정말로 삭제하시겠습니까?')) {
 				urlToResultContent();
 				$.ajax({
@@ -198,15 +238,24 @@
 									${sell.sp_count }${free.fp_count }</span>
 							</td>
 						</tr>
+						<c:if  test='!${param.postName}.equals("free") '>						
+						<tr>
+							<td colspan="2">
+								<span style="float: right;" >첨부파일:<a href="">${sell.sp_filename }</a></span>
+							</td>
+						</tr>
+						</c:if>
 						<tr>
 							<td colspan="2">
 								<p>${sell.sp_content }${free.fp_content }</p>
 							</td>
 						</tr>
 						<tr id="buyTr">
-							<td colspan="2"><div class="input-group-btn"
+							<td colspan="2" style="border-top: 0px"><div class="input-group-btn"
 									style="float: right;">
-									<input class="btn btn-default" type="button" value="구매하기">
+									<input class="btn btn-default" name="postBt" type="button" value="구매하기">
+									<input class="btn btn-default" name="postBt" type="button" value="수정">
+									<input class="btn btn-default" name="postBt" type="button" value="삭제">
 								</div></td>
 						</tr>
 					</tbody>

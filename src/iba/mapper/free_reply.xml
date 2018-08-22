@@ -8,6 +8,11 @@ where fp_no=#fp_no#
 order by fr_no asc
 </select>
 
+<update id="updateReply" parameterClass="java.util.Map">
+	update free_reply set fr_content=#fr_content#, fr_time=sysdate
+	where fr_no=#fr_no# and fp_no =#fp_no#
+</update>
+
 <insert parameterClass="com.encore.vo.Free_reply" id="insertReply">
  insert into free_reply (fp_no,fr_no,fr_time,fr_id,fr_content)
  values (#fp_no#,freereply_seq.nextval,sysdate,#fr_id#,#fr_content#)
