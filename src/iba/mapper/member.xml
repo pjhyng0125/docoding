@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="mem">
-<typeAlias alias="member_admin" type="com.encore.vo.Member_admin"/>
-<typeAlias alias="member_login" type="com.encore.vo.Member"/>
+	<typeAlias alias="member_admin"
+		type="com.encore.vo.Member_admin" />
+	<typeAlias alias="member_login" type="com.encore.vo.Member" />
 	<select id="select_admin" resultClass="member_admin">
 	<![CDATA[
 		select id,name,gender,birth,email,phone,m_time,login_flag, 
@@ -13,28 +14,40 @@
 		from member
 	]]>
 	</select>
-	
+
 	<insert id="insert_login" parameterClass="member_login">
-		insert into member (id, pass, name, gender, birth, email, phone, m_time)
-		values (#id#, #pass#, #name#, #gender#, #birth#, #email#, #phone#, sysdate)
+		insert into member (id,
+		pass, name, gender, birth, email, phone, m_time)
+		values (#id#, #pass#,
+		#name#, #gender#, #birth#, #email#, #phone#, sysdate)
 	</insert>
-	<select id="select_idCheck" resultClass="int" parameterClass="String">
+	<select id="select_idCheck" resultClass="int"
+		parameterClass="String">
 		select count(*) from member where id=#login_id#
 	</select>
-	
-	<select id="select_login_flag" parameterClass="String" resultClass="Boolean">
+
+	<select id="select_login_flag" parameterClass="String"
+		resultClass="Boolean">
 		select login_flag from member
 		where id=#id#
 	</select>
 	<update id="update_login_flag" parameterClass="String">
 		update member
-		set login_flag='1'
+		set
+		login_flag='1'
 		where id=#id#
 	</update>
 	<update id="update_logout_flag" parameterClass="String">
 		update member
-		set login_flag='0'
+		set
+		login_flag='0'
 		where id=#id#
 	</update>
-	
+	<select id="select_findId" parameterClass="String"
+		resultClass="String">
+		select id
+		from member
+		where name = #name# and email = #email#
+	</select>
+
 </sqlMap>
