@@ -156,6 +156,7 @@ alter table buy_post
 create table manager (
 	profit NUMBER default 0
 );
+insert into manager values(0);
 
 /*foreign key ¿¬°á*/
 alter table sell_assign
