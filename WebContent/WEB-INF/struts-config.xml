@@ -119,6 +119,7 @@
 	validate="true"
 	scope="request">
 <forward name="mainpage" path="/main.do"></forward>
+<forward name="joinpage" path="/login/view/join.jsp"></forward>
 </action>
 <!-- 회원가입 유효성 검사 처리 끝  -->
 
