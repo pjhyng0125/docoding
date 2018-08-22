@@ -22,12 +22,14 @@
     	});
     });    
     </script>
-<div id="successForm">
+<div id="successForm" class="card align-middle" style="width:20rem; border-radius:20px;">
 <form>
 <fieldset id="id">
+<div class="card-body">
 <legend><strong><%=session.getAttribute("login_id") %></strong>님</legend> 
 <input type="hidden" id="userid" value="<%=session.getAttribute("login_id") %>"> 
-<table border="1">
+<div class="container">
+<table cellpadding="4">
 	<tr>
 		<td>충전잔액</td>
 		<td>올린자료</td>
@@ -39,7 +41,9 @@
 		<td>0개</td>
 	</tr>
 </table>
+</div>
 <input type="button" name="logout" value="로그아웃">
+</div>
 </fieldset>
 </form>
 </div>

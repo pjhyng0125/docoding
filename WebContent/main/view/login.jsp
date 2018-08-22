@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%-- login.jsp --%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style>
 	a:hover{text-decoration: none; color: blue;}
-	}
-
+	
+	.card-body{
+	   height: 60%;
+	   width:100%;
+	   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	   border-radius:20px;
+	   }
+	 
 	</style>
  <script>
 	 $(function(){
@@ -48,10 +56,13 @@
 	
 	
 </script>
-<div  id="loginForm">
+
+<div  id="loginForm" class="card align-middle" style="width:20rem; border-radius:20px;">
 <form name="loginCheck" method="post">
+<center>
 <fieldset>
-<legend><strong>코딩합니다!</strong> LOGIN</legend>
+<div class="card-body">
+<legend><font face="impact">코딩합니다!</font> <font>LOGIN</font></legend>
 <table cellpadding="5">
 	<tr>
 		<td><input type="text" placeholder="아이디" name="userid" required></td>
@@ -64,6 +75,8 @@
 		<th colspan="3"><font size="2"><a href="/docoding/join.do">회원가입</a> <a href="/docoding/findIdPw.do">아이디/비번찾기</a></font></th>
 	</tr> 
 </table>
+</div>
 </fieldset>
+</center>
 </form>
 </div>

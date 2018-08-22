@@ -6,8 +6,10 @@
 <style>
 .mySlides {
           display:none;
-		  width: 250px;
+		  width: 100%;
 		  height: 200px;
+		  border-radius: 10px;
+		  box-shadow:0 4px 8px 0px #666 ;
 		  }
 .w3-left, .w3-right, .w3-badge {cursor:pointer;}   
 
@@ -58,7 +60,7 @@ function showDivs(n) {
      dots[i].className = dots[i].className.replace(" w3-white", "");
   }
   x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
+  dots[slideIndex-1].className += "w3-white";
 }
 
 var myIndex = 0;
