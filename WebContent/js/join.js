@@ -43,6 +43,7 @@ function checkValue() {
 			alert("휴대폰 뒷자리를 입력하세요.");
 			return false;
 		}
+}
 		
 
 	

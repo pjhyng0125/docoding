@@ -122,7 +122,8 @@ $(function(){
          if(isNaN(form.cell2.value)){
              alert("숫자만 입력가능합니다.");
              return false;
-         } 
+         }
+     }
          
 
 </script> 
