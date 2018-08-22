@@ -249,7 +249,7 @@ $(function(){
 			</tr>  -->
 		</table>
 		<br> <br> <br> 
-			<input type="button" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
+			<input type="button" value="가입" id="userId" onclick="return inputCheck();" style="background-color: orange; width: 69px; height: 38px;">
 			<input type="reset" value="취소" onclick="goFirstForm()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </form>
