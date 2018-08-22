@@ -15,48 +15,54 @@ import iba.MySqlMapClient;
 
 public class MemberDAO {
 	SqlMapClient smc;
+
 	public MemberDAO() {
-		smc=MySqlMapClient.getSqlMapInstance();
-		}
-	
+		smc = MySqlMapClient.getSqlMapInstance();
+	}
+
 	public List<Member_admin> select_admin() throws SQLException {
 		return smc.queryForList("mem.select_admin");
 	}
-	
+
 	public boolean insert_login(Member m) {
 		try {
-			smc.insert("mem.insert_login",m);
+			smc.insert("mem.insert_login", m);
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
-	
+
 	public boolean select_idCheck(String idCheck) {
 		try {
 			int cnt = (Integer) smc.queryForObject("mem.select_idCheck", idCheck);
-			if(cnt==1) return true;
+			if (cnt == 1)
+				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
-		
+
 	}
-	
-	
-public boolean login(Map<String,String> map) {
-		
-		
+
+	/*public String select_findId(String name, String email) throws Exception {
+
+		return SqlMapSession.selectAll("mem.select_findId", name, email);
+
+	}*/
+
+	public boolean login(Map<String, String> map) {
+
 		try {
-		   int cnt = (Integer) smc.queryForObject("main.login", map);
-			if(cnt==1) return true;
+			int cnt = (Integer) smc.queryForObject("main.login", map);
+			if (cnt == 1)
+				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 
 	}
@@ -69,12 +75,12 @@ public boolean login(Map<String,String> map) {
 		}
 		return false;
 	}
-	
+
 	public boolean update_login_flag(String userid) {
 		try {
-		int n=smc.update("mem.update_login_flag", userid);
-		if(n==1)
-			return true;
+			int n = smc.update("mem.update_login_flag", userid);
+			if (n == 1)
+				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -83,8 +89,8 @@ public boolean login(Map<String,String> map) {
 
 	public boolean update_logout_flag(String userid) {
 		try {
-			int n=smc.update("mem.update_logout_flag", userid);
-			if(n==1)
+			int n = smc.update("mem.update_logout_flag", userid);
+			if (n == 1)
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,8 +98,3 @@ public boolean login(Map<String,String> map) {
 		return false;
 	}
 }
-
-			
-	
-
-

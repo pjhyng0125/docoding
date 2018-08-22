@@ -28,7 +28,7 @@
 		<br> <br> 
 			<input type="submit" value="ID찾기" onclick="openIdChk()" style="background-color: skyblue; width: 268px; height: 114px;">
 			<input type="submit" value="PW찾기" onclick="openPwChk()" style="background-color: skyblue; width: 268px; height: 114px;"><br><br>
-			<input type="button" value="취소" style="background-color: skyblue; width: 102px; height: 53px">
+			<input type="button" value="취소" onclick="window.location='main.do'" style="background-color: skyblue; width: 102px; height: 53px"> 
 	</center>
 </body>
 </html>
