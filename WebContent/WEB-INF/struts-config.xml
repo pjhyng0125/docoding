@@ -230,7 +230,7 @@
 <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"></controller>
 <!-- ======================================== Message Resources Definitions -->
 
-    <message-resources parameter="MessageResources" />
+<message-resources parameter="resources.application"></message-resources>
 
 
 <!-- =============================================== Plug Ins Configuration -->
