@@ -13,6 +13,8 @@ insert into member values
 
 
 select * from sell_assign;
+select * from manager;
+update manager set profit = profit+100
 
 insert into sell_assign values
 ('abcd12345', '1234-1234', '2018-08-16', 5, 5000);
@@ -22,6 +24,9 @@ insert into sell_assign values
 ('qwer56', '1234-1234', '2018-08-16', 5, 5000);
 insert into sell_assign values
 ('abcd', '1234-1234', '2018-08-20', 5, 5000);
+
+update sell_assign set profit_sell=5000
+where id='abcd';
 
 select * from buy_post;
 
