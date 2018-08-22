@@ -44,6 +44,7 @@ public class MemberAction extends Action{
 			}
 			
 		}else if(action.equals("select_idCheck")) {
+			System.out.println("크크");
 			System.out.println(request.getParameter("checkid"));
 			if(dao.select_idCheck(request.getParameter("checkid"))) {
 				response.getWriter().print("사용불가능");

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +32,8 @@ $(function(){
 			}
 		});//ajax
 	});//버튼 클릭
-	$('#idCheck').click(function(){
+	
+	/* $('#idCheck').click(function(){
 		$.ajax({
 			type:"POST",
 			url:"/docoding/joinAction.do",
@@ -41,87 +45,78 @@ $(function(){
 			alert(data);
 			}
 		});
+		});*/
+		
+		
+		$('#id').keyup(function(){
+			var str=$(this).val();
+			if(str.length>=6 && str.length<=12){
+				$.ajax({
+					url:"/docoding/idcheck.do",
+					data:{
+						action:"idcheck",
+						checkid:$('#id').val()
+					},
+					success: function(data){
+						$('#idcheck').html(data);
+					}
+				});
+			}else{
+				$('#idcheck').html('<font color=red>아이디 조건 위반</font>');
+			}
 		});
-	});//document ready
+		
+		
+	});//document ready 
  	  function inputCheck()
      {
          var form = document.userInfo;
      
          if(!form.id.value){
              alert("아이디를 입력하세요.");
-             return false;
          }
-         
-         if(form.idCheck != "idCheck"){
+         else if(form.idCheck != "idCheck"){
              alert("아이디 중복체크를 해주세요.");
-             return false;
          }
-         
-         if(!form.pass.value){
+         else if(!form.pass.value){
              alert("비밀번호를 입력하세요.");
-             return false;
          }
-         
          // 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
-         if(form.pass.value != form.passCheck.value ){
+         else if(form.pass.value != form.passCheck.value ){
              alert("비밀번호를 동일하게 입력하세요.");
-             return false;
-         }    
-         
-         if(!form.name.value){
+         }
+         else if(!form.name.value){
              alert("이름을 입력하세요.");
-             return false;
          }
-         
-         if(!form.year.value){
+         else if(!form.year.value){
              alert("년도를 선택하세요.");
-             return false;
          }
-         
-         
-         if(form.month.value){
+         else if(form.month.value){
              alert("월을 선택하세요.");
-             return false;
          }
-         
-         if(!form.day.value){
+         else if(!form.day.value){
              alert("날짜를 선택하세요.");
-             return false;
          }
-         
-        
-         if(!form.mail1.value){
+         else if(!form.mail1.value){
              alert("메일 주소를 입력하세요.");
-             return false;
          }
-         
-         if(!form.mail2.value){
+         else if(!form.mail2.value){
         	 alert("주소를 선택하세요.");
          }
-         
-         if(!form.cell.value){
+         else if(!form.cell.value){
              alert("지역 번호를 선택하세요.");
-             return false;
          }
-         
-         if(!form.cell1.value){
+         else if(!form.cell1.value){
              alert("앞자리를 입력하세요.");
-             return false;
          }
-       
-         if(isNaN(form.cell1.value)){
+         else if(isNaN(form.cell1.value)){
              alert("숫자만 입력가능합니다.");
-             return false;
          }
-         
-         if(!form.cell2.value){
+         else if(!form.cell2.value){
              alert("뒷자리를 입력하세요.");
-             return false;
          }
-        
-         if(isNaN(form.cell2.value)){
+         else if(isNaN(form.cell2.value)){
              alert("숫자만 입력가능합니다.");
-             return false;
          }
      }
          
@@ -130,7 +125,7 @@ $(function(){
 </head>
 <%-- join.jsp --%>
 <body>
-	<form method="post" name="userInfo" onsubmit="return inputCheck();">
+<form method="post" name="userInfo" onsubmit="return inputCheck();">	
 	<center>
 		<br> <br> <b><font size="7" color="gray" face="impact">코딩합니다</font>
 			<font size="7" color="sky blue" face="imapct">회원가입</font></b>
@@ -143,8 +138,12 @@ $(function(){
 				<td colspan="3">
 					<input type="text" id="id" name="id" placeholder="영문/숫자(6자리~12자리)"
 					style="width: 371px; height: 51px" > 
-					<input type="button" value="중복확인" name="idCheck" id="idCheck" maxlength="50"
+					<%-- <input type="button" value="중복확인" name="idCheck" id="idCheck" maxlength="50"
 					style="background-color: #b8d6d8; height: 40px;">
+					<html:messages message="true" id="msg">
+						<font color="blue"><b><bean:write name="msg"/></b></font>
+					</html:messages> --%>
+				<td><div id="idcheck"></div></td>
 			</tr>
 
 			<tr>
@@ -250,7 +249,7 @@ $(function(){
 			</tr>  -->
 		</table>
 		<br> <br> <br> 
-			<input type="submit" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
+			<input type="button" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
 			<input type="reset" value="취소" onclick="goFirstForm()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </form>

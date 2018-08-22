@@ -111,15 +111,8 @@
 	<!-- 민지환 admin action 설정 종료  -->
 	
 <!-- 회원가입 유효성 검사 처리 시작 (Action 등록) -->
-<action path="/actionform/join"
-	type="com.encore.action.JoinAction"
-	
-	name="joinform"
-	input="/login/view/join.jsp"
-	validate="true"
-	scope="request">
-<forward name="mainpage" path="/main.do"></forward>
-<forward name="joinpage" path="/login/view/join.jsp"></forward>
+<action path="/idcheck"
+	type="com.encore.action.JoinAction">
 </action>
 <!-- 회원가입 유효성 검사 처리 끝  -->
 
