@@ -28,7 +28,10 @@ $(function(){
 			},
 			success:function(data){
 				
-				alert(data);
+				if(data.trim()=="success"){
+					alert('가입을 환영합니다!');
+					location.href="/docoding/main.do";
+				}
 			}
 		});//ajax
 	});//버튼 클릭
@@ -74,9 +77,6 @@ $(function(){
      
          if(!form.id.value){
              alert("아이디를 입력하세요.");
-         }
-         else if(form.idCheck != "idCheck"){
-             alert("아이디 중복체크를 해주세요.");
          }
          else if(!form.pass.value){
              alert("비밀번호를 입력하세요.");

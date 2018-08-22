@@ -25,8 +25,6 @@ CREATE TABLE member (
 	m_time DATE, /* 가입일자 */
 	cash NUMBER default 0
 );
-select * from MEMBER;
-select * from tab;
 
 CREATE UNIQUE INDEX PK_member
 	ON member (

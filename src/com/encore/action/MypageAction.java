@@ -268,7 +268,7 @@ public class MypageAction extends Action {
 				break;
 			}else {	
 				request.setAttribute("max_page", dao.total_history(id,5+""));
-				list3 = dao.select_history_reply(map4);
+				list4 = dao.select_history_reply(map4);
 				System.out.println("reply list : "+list4);
 				request.setAttribute("list", list4);
 			}		

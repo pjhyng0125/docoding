@@ -69,3 +69,13 @@ insert into free_post values ('1','잡담','제목연습','이게 클릭이란거다.','abcd',
 
 insert into free_reply values ('1','1','2018-08-22','qwer56','살아있네');
 insert into free_reply values ('2','1','2018-08-22','abcd','살아있네');
+
+select to_char(fp_time, 'yyyy-mm-dd') fp_time, fp_title, id, to_char(fr_time, 'yyyy-mm-dd') fr_time, fr_id, fr_content
+		from (select fp_time, fp_title, id, fr_time, fr_id, fr_content, rownum rn 
+				from (select fp_time, fp_title, id, fr_time,fr_id, fr_content
+					  from free_reply fr, free_post fp
+					  where fr.fp_no = fp.fp_no and fr.fr_id='abcd'
+					  order by fr.fr_time desc)
+			  )
+		where rn >= '1' and rn <= '1'
+				
