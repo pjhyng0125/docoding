@@ -14,26 +14,66 @@
 <script type="text/javascript">
 $(function(){
 	$('#userId').click(function(){
-		$.ajax({	
-			url:"/docoding/joinAction.do",
-			data:{
-				action:"insert_login",
-				id:$('#id').val(),
-				pass:$('#pass').val(),
-				name:$('#name').val(),
-				gender:$('input[name=gender]:checked').val(),
-				birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val(),
-				email: $('#mail1').val()+"@"+$('#mail2').val(), 
-				phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
-			},
-			success:function(data){
-				
-				if(data.trim()=="success"){
-					alert('가입을 환영합니다!');
-					location.href="/docoding/main.do";
-				}
-			}
-		});//ajax
+		
+		var form = document.userInfo;
+	     
+        if(!form.id.value){
+            alert("아이디를 입력하세요.");
+        }
+        
+        else if(!form.pass.value){
+            alert("비밀번호를 입력하세요.");
+        }
+        
+        else if(form.pass.value.length<6 != form.pass.value.length>12){
+            alert("비밀번호를 6~12자까지 입력해주세요.");
+        }
+        
+        // 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
+        else if(form.pass.value != form.passCheck.value ){
+            alert("비밀번호를 동일하게 입력하세요.");
+        }
+              
+        else if(!form.name.value){
+            alert("이름을 입력하세요.");
+        }
+        
+        else if(!form.mail1.value){
+            alert("메일 주소를 입력하세요.");
+        }
+        
+       	else if(!form.cell1.value){
+            alert("앞자리를 입력하세요.");
+        }else if(isNaN(form.cell1.value)){
+        	alert("숫자만입력해주세요.");
+        	}
+                
+        else if(!form.cell2.value){
+            alert("뒷자리를 입력하세요.");
+         }else if(isNaN(form.cell2.value)){
+        	 alert("숫자만입력해주세요.");
+         }else{
+				$.ajax({	
+					url:"/docoding/joinAction.do",
+					data:{
+						action:"insert_login",
+						id:$('#id').val(),
+						pass:$('#pass').val(),
+						name:$('#name').val(),
+						gender:$('input[name=gender]:checked').val(),
+						birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val(),
+						email: $('#mail1').val()+"@"+$('#mail2').val(), 
+						phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
+					},
+					success:function(data){
+						
+						if(data.trim()=="success"){
+							alert('가입을 환영합니다!');
+							location.href="/docoding/main.do";
+						}
+					}
+				});//ajax
+              }
 	});//버튼 클릭
 	
 	/* $('#idCheck').click(function(){
@@ -71,54 +111,6 @@ $(function(){
 		
 		
 	});//document ready 
- 	  function inputCheck()
-     {
-         var form = document.userInfo;
-     
-         if(!form.id.value){
-             alert("아이디를 입력하세요.");
-         }
-         else if(!form.pass.value){
-             alert("비밀번호를 입력하세요.");
-         }
-         // 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
-         else if(form.pass.value != form.passCheck.value ){
-             alert("비밀번호를 동일하게 입력하세요.");
-         }
-         else if(!form.name.value){
-             alert("이름을 입력하세요.");
-         }
-         else if(!form.year.value){
-             alert("년도를 선택하세요.");
-         }
-         else if(form.month.value){
-             alert("월을 선택하세요.");
-         }
-         else if(!form.day.value){
-             alert("날짜를 선택하세요.");
-         }
-         else if(!form.mail1.value){
-             alert("메일 주소를 입력하세요.");
-         }
-         else if(!form.mail2.value){
-        	 alert("주소를 선택하세요.");
-         }
-         else if(!form.cell.value){
-             alert("지역 번호를 선택하세요.");
-         }
-         else if(!form.cell1.value){
-             alert("앞자리를 입력하세요.");
-         }
-         else if(isNaN(form.cell1.value)){
-             alert("숫자만 입력가능합니다.");
-         }
-         else if(!form.cell2.value){
-             alert("뒷자리를 입력하세요.");
-         }
-         else if(isNaN(form.cell2.value)){
-             alert("숫자만 입력가능합니다.");
-         }
-     }
          
 
 </script> 
@@ -130,6 +122,8 @@ $(function(){
 		<br> <br> <b><font size="7" color="gray" face="impact">코딩합니다</font>
 			<font size="7" color="sky blue" face="imapct">회원가입</font></b>
 		<table>
+			<br>
+			<br>
 			<br>
 			<br>
 			<br>
@@ -220,20 +214,20 @@ $(function(){
 				<td align="center" width="100" bgcolor="#b8d6d8">휴대폰<font
 					color="red">*</font></td>
 				<td colspan="3">
-				<select name="cell" id="cell1"
+				<select name="cell" id="cell"
 					style="width: 56px; height: 51px">
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="016">016</option>
 						<option value="017">017</option>
 						<option value="019">019</option>
-				</select> - <input type="text" size="4" maxlength="4" name="cell1" id="cell2"
-					style="height: 45px; width: 59px"> - <input type="text" name="cell2" id="cell3"
+				</select> - <input type="text" name="cell1" id="cell1" size="4" maxlength="4"
+					style="height: 45px; width: 59px"> - <input type="text" name="cell2" id="cell2"
 					size="4" maxlength="4" style="height: 45px; width: 59px"></td>
 			</tr>
 		</table>
 		<br> <br> <br> 
-			<input type="button" value="가입" id="userId" onclick="return inputCheck();" style="background-color: orange; width: 69px; height: 38px;">
+			<input type="button" value="가입" id="userId" style="background-color: orange; width: 69px; height: 38px;">
 			<input type="reset" value="취소" onclick="window.location='main.do'" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </form>
