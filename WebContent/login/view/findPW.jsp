@@ -26,22 +26,22 @@
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">휴대폰<font
 					color="red">*</font></td>
-				<td colspan="3"><select name="ph1"
+				<td colspan="3"><select name="cell" id="cell"
 					style="width: 56px; height: 51px">
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="016">016</option>
 						<option value="017">017</option>
 						<option value="019">019</option>
-				</select> - <input type="text" size="4" maxlength="4" name="ph2"
+				</select> - <input type="text" size="4" maxlength="4" name="cell1" id="cell1"
 					style="height: 51px; width: 61px"> - <input type="text"
-					size="4" maxlength="4" name="ph3" style="height: 51px; width: 61px"></td>
+					size="4" maxlength="4" name="cell3" id="cell3" style="height: 51px; width: 61px"></td>
 
 			</tr>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">생년월일<font
 					color="red">*</font></td>
-				<td colspan="3"><select name="year"
+				<td colspan="3"><select name="year" id="year"
 					style="height: 30px; width: 61px">
 						<%
 							for (int i = 2018; i >= 1900; i--) {
@@ -50,7 +50,7 @@
 						<%
 							}
 						%>
-				</select>년 <select name="month" style="width: 61px; height: 30px">
+				</select>년 <select name="month" id="month" style="width: 61px; height: 30px">
 						<%
 							for (int i = 1; i < 13; i++) {//12번 반복
 								if (i < 10) {
@@ -64,7 +64,7 @@
 							}
 							}
 						%>
-				</select>월 <select name="day" style="width: 61px; height: 30px">
+				</select>월 <select name="day" id="day" style="width: 61px; height: 30px">
 						<%
 							for (int i = 1; i < 32; i++) {
 								if (i < 10)

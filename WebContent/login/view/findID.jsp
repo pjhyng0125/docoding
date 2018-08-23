@@ -37,7 +37,7 @@
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">이름<font
 					color="red">*</font></td>
-				<td colspan="3"><input type="text" name="name"
+				<td colspan="3"><input type="text" name="name" id="name"
 					style="height: 51px; width: 299px"></td>
 			</tr>
 			<tr>
