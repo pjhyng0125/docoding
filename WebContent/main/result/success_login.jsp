@@ -20,8 +20,6 @@
     		}//confirm
     	});//click
     	
-    	
-    	alert($('#userid').val());
     	$.ajax({
     		url:"/docoding/mypageAction.do",
     		data:{
@@ -29,16 +27,10 @@
     			login_id:$('#userid').val()
     		},
     		success: function(data){
-    			alert(data);
     			var strs=data.split(',');
     			$('#d1').html(strs[0]+"원");
     			$('#d2').html(strs[1]+"개");
     			$('#d3').html(strs[2]+"개");
-    			
-    			
-    			/* $('#d1').html()=strs[0];
-    			$('#d2').html()=strs[1];
-    			$('#d3').html()=strs[2]; */
     		}
     	});
     });    
@@ -50,16 +42,16 @@
 <legend><strong><%=session.getAttribute("login_id") %></strong>님</legend> 
 <input type="hidden" id="userid" value="${login_id}"> 
 <div class="container">
-<table cellpadding="4">
+<table cellpadding="4" border="5">
 	<tr>
-		<td>충전잔액</td>
-		<td>판매자료</td>
-		<td>구입자료</td>
+		<td><a href="/docoding/mypage/cash.do">충전잔액</a></td>
+		<td><a href="/docoding/mypage/mysell.do">판매자료</a></td>
+		<td><a href="/docoding/mypage/mybuylist.do">구입자료</a></td>
 	</tr>
 	<tr align="center">
-		<td><div id="d1"></div></td>
-		<td><div id="d2"></div></td>
-		<td><div id="d3"></div></td>
+		<td><a href="/docoding/mypage/cash.do"><div id="d1"></div></a></td>
+		<td><a href="/docoding/mypage/mysell.do"><div id="d2"></div></a></td>
+		<td><a href="/docoding/mypage/mybuylist.do"><div id="d3"></div></a></td>
 	</tr>
 </table>
 </div>
