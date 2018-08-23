@@ -12,25 +12,15 @@
 <script type="text/javascript">
 	$(function() {
 		$('#findId').click(function() {
-
 			$.ajax({
-
 				url : "/docoding/findIdAction.do",
-
 				data : {
-
 					action : "select_findId",
-
 					name : $('#name').val(),
-
 					email : $('#mail1').val() + "@" + $('#mail2').val()
-
 				},
-
 				success : function(data) {
-
 					alert(data);
-
 				}
 			});
 		});
