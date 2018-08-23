@@ -5,7 +5,7 @@
     <script type="text/javascript">
     	$(function(){
     		$('[name=logout]').click(function(){
-    			/* if(confirm('로그아웃 하시겠습니까?')){ */
+    			if(confirm('로그아웃 하시겠습니까?')){
     			$.ajax({
 						url:'/docoding/loginAction.do', 
 						data:{
@@ -17,7 +17,29 @@
 	    					$('#successForm').html(result);
     					}
     			});
-    		/* } */
+    		}//confirm
+    	});//click
+    	
+    	
+    	alert($('#userid').val());
+    	$.ajax({
+    		url:"/docoding/mypageAction.do",
+    		data:{
+    			pageAction:"print",
+    			login_id:$('#userid').val()
+    		},
+    		success: function(data){
+    			alert(data);
+    			var strs=data.split(',');
+    			$('#d1').html(strs[0]+"원");
+    			$('#d2').html(strs[1]+"개");
+    			$('#d3').html(strs[2]+"개");
+    			
+    			
+    			/* $('#d1').html()=strs[0];
+    			$('#d2').html()=strs[1];
+    			$('#d3').html()=strs[2]; */
+    		}
     	});
     });    
     </script>
@@ -26,18 +48,18 @@
 <fieldset id="id">
 <div class="card-body">
 <legend><strong><%=session.getAttribute("login_id") %></strong>님</legend> 
-<input type="hidden" id="userid" value="<%=session.getAttribute("login_id") %>"> 
+<input type="hidden" id="userid" value="${login_id}"> 
 <div class="container">
 <table cellpadding="4">
 	<tr>
 		<td>충전잔액</td>
-		<td>올린자료</td>
+		<td>판매자료</td>
 		<td>구입자료</td>
 	</tr>
 	<tr align="center">
-		<td>0원</td>
-		<td>0개</td>
-		<td>0개</td>
+		<td><div id="d1"></div></td>
+		<td><div id="d2"></div></td>
+		<td><div id="d3"></div></td>
 	</tr>
 </table>
 </div>

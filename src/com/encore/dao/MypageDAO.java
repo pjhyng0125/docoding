@@ -18,6 +18,26 @@ public class MypageDAO {
 		smc = MySqlMapClient.getSqlMapInstance();
 	}
 	
+	public int select_m_cash(String id) throws SQLException {
+		return (int) smc.queryForObject("mypage.select_m_cash", id);
+	}
+	public int select_bp_id(String id) throws SQLException {
+		return (int) smc.queryForObject("mypage.select_bp_id", id);		
+	}
+	public int select_sp_id(String id) throws SQLException {
+		return (int) smc.queryForObject("mypage.select_sp_id", id);		
+	}
+	public boolean select_sa_id(String id) {
+		try {
+			int n=(int)smc.queryForObject("mypage.select_sa_id", id);
+			if(n==1)
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public String search_pwd(String id) {	// 비밀벊호 확인
 		String pwd = null;
 		try {

@@ -160,6 +160,8 @@
 	<!-- action class -->
 	<action path="/mypageAction"
 			type="com.encore.action.MypageAction">
+		<forward name="login"
+				 path="/main/result/success_login.jsp"></forward>
 		<forward name="modify"
 				 path="/mypage/result/modify_result.jsp"/>
 		<forward name="message"
