@@ -17,6 +17,7 @@
 	    					$('#successForm').html(result);
     					}
     			});
+    			window.location.reload();
     		}//confirm
     	});//click
     	
