@@ -100,10 +100,15 @@
             forward="/pages/Welcome.jsp"/>
             
 	<!-- tiles -->
-	<action path="/main" forward=".mainview"></action>
+	<action path="/main_nologin" forward=".mainview"></action>
+	<action path="/main_login" forward=".mainview_login"></action>
+	
+	<action path="/main" type="com.encore.action.LoginAction">
+		<forward name="nologin" path="/main_nologin.do"></forward>
+		<forward name="login" path="/main_login.do"></forward>	
+	</action>
 	<action path="/common/form" forward=".form"></action>
 	<action path="/common/login" forward=".login"></action>
-
 
 	<!-- 민지환 admin action 설정 시작  -->
 <action path="/join" forward=".join"></action>

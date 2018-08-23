@@ -142,14 +142,28 @@
       <put name="footer" value="/common/footer.jsp"></put>
       <put name="home" value=".home"></put> 
     </definition>
+
+    <definition name=".mainview_login" path="/common/home.jsp">
+      <put name="header" value="/common/header.jsp"></put>
+      <put name="menu" value="/common/menu.jsp"></put>
+      <put name="footer" value="/common/footer.jsp"></put>
+      <put name="home" value=".home_login"></put> 
+    </definition>
    
    	 <definition name=".home" path="/main/view/mainView.jsp">
    		 <put name="searchBar" value="/main/view/searchBar.jsp"/>
    		 <put name="adver" value="/main/result/adver.jsp"/>
    		 <put name="login" value="/main/view/login.jsp"/>
    		 <put name="category" value="/main/result/category.jsp"/>
-   		 <put name="successL" value="/main/result/success_login.jsp"/>
    	 </definition>
+   	 
+   	 <definition name=".home_login" path="/main/view/mainView.jsp">
+   	  	 <put name="searchBar" value="/main/view/searchBar.jsp"/>
+   		 <put name="adver" value="/main/result/adver.jsp"/>
+   		 <put name="login" value="/main/result/success_login.jsp"/>
+   		 <put name="category" value="/main/result/category.jsp"/>
+   	 </definition>
+   	 
 
    	 
    <!-- 장우영 main tiles 설정 종료 -->	
