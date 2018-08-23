@@ -56,4 +56,9 @@ from (select fp_no, fp_category, fp_title, fp_content,id, fp_time,fp_count, rown
 		</isNotNull>
 		)/#pageCount#) count from dual
 	</select>
+	
+		<!-- 게시물 삭제 -->
+	<delete id="deletePost" parameterClass="int">
+	delete from free_post where fp_no=#no#
+	</delete>
 </sqlMap>

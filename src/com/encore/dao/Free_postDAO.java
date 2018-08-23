@@ -49,6 +49,7 @@ public class Free_postDAO {
 		return null;
 	}
 	
+	
 	public int selectTotalPage(Map<String, Object> map) {
 		try {
 			System.out.println(map);
@@ -57,5 +58,15 @@ public class Free_postDAO {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public boolean deletePost(int no) {
+		try {
+			int t=smc.delete("fp.deletePost",no);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

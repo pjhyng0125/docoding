@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import com.encore.vo.Buy_post;
 import com.encore.vo.Sell_post;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -33,6 +34,7 @@ public class Sell_postDAO {
 	
 	
 	//박형진DAO
+	//페이지에 맞는 게시물 조회
 	public List<Sell_post> selectSPAll(Map<String, Object> map) {
 		List<Sell_post> list = null;
 		try {
@@ -43,6 +45,7 @@ public class Sell_postDAO {
 		return list;
 	}
 	
+	// 해당 글 내용 조회
 	public Sell_post select(int no) {
 		try {
 			return (Sell_post) smc.queryForObject("sp.selectContent",no);
@@ -52,6 +55,7 @@ public class Sell_postDAO {
 		return null;
 	}
 	
+	// 전체 페이지 수 조회
 	public int selectTotalPage(Map<String, Object> map) {
 		try {
 			System.out.println(map);
@@ -61,6 +65,7 @@ public class Sell_postDAO {
 		}
 		return -1;
 	}
+
 	
 	//상품 구매관련
 	public int selectCash(String id) {
@@ -92,5 +97,14 @@ public class Sell_postDAO {
 		return false;
 	}
 	
-	//
+	// 구매자 등록
+	public boolean insertBuyPost(Buy_post bp) {
+		try {
+			smc.insert("sp.insertBuyPost",bp);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

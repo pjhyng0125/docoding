@@ -1,5 +1,6 @@
 package com.encore.action;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public class FreeContentAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
 		String action = request.getParameter("action");
 		Free_postDAO fp_dao = new Free_postDAO();
 		Free_replyDAO fr_dao = new Free_replyDAO();
@@ -60,7 +62,14 @@ public class FreeContentAction extends Action{
 				System.out.println("댓글삭제 성공");
 				request.setAttribute("freeReply",fr_dao.selectReply(Integer.parseInt(fp_no)));
 			}	
+		}else if(action.equals("deletePost")) {
+			PrintWriter out = response.getWriter();
+			if(fp_dao.deletePost(Integer.parseInt(no))) {
+				out.print("게시물이 삭제되었습니다!");
+			}
+			return null;
 		}
+		
 		return mapping.findForward(forwardName);
 	}
 }
