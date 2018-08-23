@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.encore.dao.Sell_postDAO;
 import com.encore.dao.Sell_replyDAO;
+import com.encore.vo.Buy_post;
 import com.encore.vo.Sell_reply;
 
 public class SellContentAction extends Action{
@@ -21,13 +22,14 @@ public class SellContentAction extends Action{
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		String action = request.getParameter("action");
 		Sell_postDAO sp_dao = new Sell_postDAO();
 		Sell_replyDAO sr_dao = new Sell_replyDAO();
 		String forwardName = null;
 		String no = request.getParameter("no");
 		System.out.println(no);
-		response.setContentType("text/html;charset=UTF-8");
 		if(action ==null || action.equals("selectContent")) { // 게시글 내용 보이기
 			System.out.println(no);
 			request.setAttribute("sell", sp_dao.select(Integer.parseInt(no)));
@@ -71,7 +73,6 @@ public class SellContentAction extends Action{
 			String id = request.getParameter("login_id");
 			System.out.println(id);
 			int currentMoney = sp_dao.selectCash(id);
-			PrintWriter out = response.getWriter();
 			if(currentMoney==-1) {
 				System.out.println("selectCash>>>error!");
 			}else if(currentMoney<200){
@@ -81,12 +82,17 @@ public class SellContentAction extends Action{
 					int afterMoney = sp_dao.selectCash(id);
 					sp_dao.updateSoldCnt(Integer.parseInt(no));
 					System.out.println("판매횟수 증가");
+					Buy_post bp = new Buy_post(id, Integer.parseInt(no), null);
+					if(sp_dao.insertBuyPost(bp)) System.out.println("구매 등록 완료");
+					
 					out.print("결제가 완료되었습니다.\n현재 잔액은 "+afterMoney+"원 입니다.");
 				}else {					
 					System.out.println("updateCash>>>error!");
 				}
 			}
 		}
+
+		
 		return mapping.findForward(forwardName);
 	}
 }

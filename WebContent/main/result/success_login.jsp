@@ -13,7 +13,7 @@
 							logout_id: $('#userid').val()
 						},
     					success:function(result){
-    						alert('로그아웃 성공!');
+    						alert('로그아웃 성공! (홈페이지)');
 	    					$('#successForm').html(result);
     					}
     			});

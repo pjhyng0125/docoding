@@ -90,6 +90,8 @@ public class MemberDAO {
 	public boolean update_logout_flag(String userid) {
 		try {
 			int n = smc.update("mem.update_logout_flag", userid);
+			System.out.println("userId:"+userid);
+			System.out.println("n:"+n);
 			if (n == 1)
 				return true;
 		} catch (SQLException e) {

@@ -74,12 +74,31 @@ public class LoginAction extends Action {
 			}//if-action
 			else if(action.equals("logout")) {
 				String logout_id=request.getParameter("logout_id");
-				if(dao.update_logout_flag(logout_id))
+				if(dao.update_logout_flag(logout_id)) {
 						System.out.println("user "+logout_id+" logout_flag: 1 -> 0");
 						System.out.println(request.getSession().getAttribute("login_id"));
 						request.getSession().invalidate();
 						System.out.println(request.getSession().getAttribute("login_id"));
-				forward = mapping.findForward("loginL");
+						forward = mapping.findForward("loginL");
+				}else {
+					forward = null;					
+				}
+			}else if(action.equals("logout_mypage")) {
+				System.out.println("***************logout_mypage in***************");
+				String logout_id=request.getParameter("logout_id");
+				System.out.println(logout_id);
+				if(dao.update_logout_flag(logout_id)) {
+						System.out.println("user "+logout_id+" logout_flag: 1 -> 0");
+						System.out.println(request.getSession().getAttribute("login_id"));
+						request.getSession().invalidate();
+						System.out.println(request.getSession().getAttribute("login_id"));
+						response.getWriter().write("로그아웃 성공! (마이페이지)");
+						forward = mapping.findForward("logout");
+				}else {
+					response.getWriter().write("로그아웃 실패! (마이페이지)");
+					forward = null;
+				}
+				System.out.println("***************logout_mypage end***************");
 			}
 			
 			

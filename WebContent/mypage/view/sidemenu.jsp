@@ -10,6 +10,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script type="text/javascript">
+	$(function(){
+		$('#logout').click(function(){
+			alert($('#login_id').val());
+			 $.ajax({
+				url:"/docoding/loginAction.do",
+				data:{
+					action:"logout_mypage",
+					logout_id: $('#login_id').val()
+				},
+				success:function(result){
+					alert(result);
+					location.href="/docoding/main.do";
+				}
+			});
+		});
+	});
+</script>
+
 <style type="text/css">
 	button{
 			width : 200px;
@@ -25,7 +44,7 @@
 <br>
 <div class="container">
 
-
+<input type="hidden" id="login_id" value="${login_id }">
 <html:link action="/mypage/modify"><button class="btn btn-primary btn-lg">회원정보 수정</button></html:link><br><br>
 		<%-- 아래 두가지 다 같은 방식 forward 값  / path 값 읽느냐 차이 --%>
 <a href="/docoding/mypage/cash.do"><button class="btn btn-primary btn-lg">캐쉬충전 </button></a><br><br>
@@ -34,7 +53,7 @@
 
 <html:link action ="/mypage/drop"><button class="btn btn-primary btn-lg">회원탈퇴</button></html:link><br><br>
 		
-<button class="btn btn-primary btn-lg">로그아웃   </button>
+<button id="logout" class="btn btn-primary btn-lg">로그아웃   </button>
 
 
 </div>

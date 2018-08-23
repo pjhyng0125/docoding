@@ -100,7 +100,7 @@
 </script>
 </head>
 <body>
-<input type="hidden" id="get_id" value="abcd">
+<input type="hidden" id="get_id" value="${login_id}">
 <input type="hidden" id="login_flag">
 <center>
 <div>

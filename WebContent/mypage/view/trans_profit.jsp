@@ -75,7 +75,7 @@
 </script>
 </head>
 <body>
-<input type="hidden" id="get_id" value="abcd">
+<input type="hidden" id="get_id" value="${login_id}">
 <input type="hidden" id="get_money" value="">
 <center>
 <h3>수익전환 확인창</h3>

@@ -40,31 +40,27 @@
 			url : url,
 			success : function(result) {
 				$('#replyDiv').html(result);
+ 				
 				if(login_id){
 					$('.${login_id} a').show();
 				} 
 				
-				$('#buyBt').hide();
+				$('#buyBt').hide(); 
 				$('#upBt').hide(); 
 				$('#delBt').hide(); 
-				$('.'+login_id).show();
-				if(postName=="free"){
-				 	if("${free.id}"==login_id){//게시물 수정 삭제 버튼
-						$('input[value=수정]').show(); 
-						$('input[value=삭제]').show(); 
-				    }
-				 	
-					$('.'+login_id).show();
-				}else{
-					if("${sell.id}"==login_id){//게시물 수정 삭제 버튼
-						$('input[value=수정]').show(); 
-					 }else{
-						$('input[value=구매하기]').show();
-					 }
-					
-					
-				}
 				
+				if(postName=="free"){
+					
+				 	if("${free.id}"==login_id){
+						$('#upBt').show(); 
+						$('#delBt').show(); 
+				    }
+					if(login_id) $('.${login_id} a').show(); //a태그
+				}else{
+					if("${sell.id}"!=login_id){
+						 $('#buyBt').show();
+					 }	
+				}	
 			},
 			data : {
 				action : "selectReply",
@@ -77,6 +73,8 @@
 						+ '\nstatus: ' + status + '\nerror: ' + error)
 			}//에러 콜백
 		})
+		
+		
 		$('#replyDiv').on('click','input[value=목록]', function() {
 					urlToList();
 					if (option) {
@@ -95,7 +93,7 @@
 		// id, no, content 넘기기 insertReply
 		$('#replyDiv').on('click', 'input[value=댓글등록]', function() {
 			if (confirm('댓글을 등록하시겠습니까?')) {
-				if(login_id==''|| login_id == undefined){
+				if(login_id == undefined || login_id==""){
 					alert('로그인을 먼저 실행해주세요!');
 					return;
 				}
@@ -153,8 +151,8 @@
 				$.ajax({
 					url : url,
 					success : function(result) {
-						$('#replyDiv').html(result); 
-						$('.${login_id} a').show();
+						$('#replyDiv').html(result);
+						if(login_id) $('.${login_id} a').show();
 						textarea.val('');
 					},
 					data : {
@@ -192,6 +190,10 @@
 		$('#buyTr').on('click', 'input[value=구매하기]', function() {
 			alert('hi');
 			if (confirm('정말로 구매하시겠습니까?')) {
+				if(login_id=='' || login_id==undefined){
+					alert('로그인을 해주세요!');
+					return;
+				}
 				urlToResultContent();
 				$.ajax({
 					url : url,
@@ -206,23 +208,42 @@
 				});
 			}
 		})
+		
+		
+		//게시물 삭제
+		$('#delBt').click(function(){
+			urlToResultContent();
+			$.ajax({
+				url : url,
+				success : function(result){
+					alert(result);
+					location.href = "/docoding/post/sellList.do?postName=free"
+				},
+				data:{
+					action : "deletePost",
+					no : no,
+					id : login_id
+				}
+			});
+		});//게시물 삭제
+		
 
 		function urlToResultContent() {
 			if (postName == "free") {
-				url = "/docoding/post/result/freeContent.do"
+				url = "/docoding/post/result/freeContent.do";
 			} else {
-				url = "/docoding/post/result/sellContent.do"
+				url = "/docoding/post/result/sellContent.do";
 			}
 		}
 
 		function urlToList() {
 			if (postName == "free") {
-				url = "/docoding/post/freeList.do"
+				url = "/docoding/post/freeList.do";
 			} else {
-				url = "/docoding/post/sellList.do"
+				url = "/docoding/post/sellList.do";
 			}
 		}
-	})
+	})//function
 </script>
 
 <style type="text/css">
@@ -254,12 +275,14 @@
 							<td>${sell.id }${free.id }<span style='float: right'>조회 :
 									${sell.sp_count }${free.fp_count }</span>
 							</td>
-						</tr>			
+						</tr>
+						<c:if test='${!param.postName.equals("free") }'>			
 						<tr>
 							<td colspan="2" >
 								<span style="float: right;" >첨부파일 : <a href="">${sell.sp_filename }</a></span>
 							</td>
 						</tr>
+						</c:if>
 						<tr>
 							<td colspan="2" style="border-top: 0px">
 								<p>${sell.sp_content }${free.fp_content }</p>
@@ -268,9 +291,9 @@
 						<tr id="buyTr">
 							<td colspan="2" style="border-top: 0px"><div class="input-group-btn"
 									style="float: right;">
-									<input class="btn btn-default" name="buyBt" type="button" value="구매하기">
-									<input class="btn btn-default" name="upBt" type="button" value="수정">
-									<input class="btn btn-default" name="delBt" type="button" value="삭제">
+									<input class="btn btn-default" id="buyBt" type="button" value="구매하기">
+									<input class="btn btn-default" id="upBt" type="button" value="수정">
+									<input class="btn btn-default" id="delBt" type="button" value="삭제">
 								</div></td>
 						</tr>
 					</tbody>
