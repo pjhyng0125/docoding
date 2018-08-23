@@ -114,9 +114,9 @@
 			} */
 			
 			if(postName=="free"){
-			location.href = "/docoding/inputfree.do";						
+			location.href = "/docoding/inputfree.do?postName=free";						
 			}else{
-			location.href = "/docoding/input.do";						
+			location.href = "/docoding/input.do?postName="+postName;						
 			}
 		})
 		

@@ -32,6 +32,7 @@ $(function(){
 				$('#content').val('');
 				$('#category').val('선택');
 				
+				location.href="/docoding/post/freeList.do?postName=free";
 			}
 		});
 	});

@@ -62,4 +62,35 @@ public class Sell_postDAO {
 		return -1;
 	}
 	
+	//상품 구매관련
+	public int selectCash(String id) {
+		try {
+			return (int) smc.queryForObject("sp.selectCash",id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public boolean updateCash(String id) {
+		try {
+			int t = smc.update("sp.updateCash",id);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean updateSoldCnt(int sp_no) {
+		try {
+			int t = smc.update("sp.updateSoldCnt",sp_no);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	//
 }

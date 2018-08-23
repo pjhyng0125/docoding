@@ -26,8 +26,17 @@ public class LoginAction extends Action {
 			ActionForward forward =null;
 			Map<String,String> map=null;
 			response.setContentType("text/html; charset=UTF-8");
-			
-			if(action.equals("login")) {
+			if(action==null) {
+				//session
+				System.out.println("in session");
+				if(request.getSession().getAttribute("login_id")==null) {
+					System.out.println("nologin");
+					forward=mapping.findForward("nologin");
+				}else {
+					System.out.println("login");
+					forward=mapping.findForward("login");
+				}
+			}else if(action.equals("login")) {
 			String id = request.getParameter("userid");
 			String pass = request.getParameter("userpass");
 			
@@ -67,9 +76,12 @@ public class LoginAction extends Action {
 				String logout_id=request.getParameter("logout_id");
 				if(dao.update_logout_flag(logout_id))
 						System.out.println("user "+logout_id+" logout_flag: 1 -> 0");
+						System.out.println(request.getSession().getAttribute("login_id"));
+						request.getSession().invalidate();
+						System.out.println(request.getSession().getAttribute("login_id"));
 				forward = mapping.findForward("loginL");
 			}
-				
+			
 			
 			return forward;
 		}

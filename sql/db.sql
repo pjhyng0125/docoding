@@ -17,7 +17,7 @@ CREATE TABLE member (
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
 	pass VARCHAR2(50) NOT NULL, /* 비밀번호 */
 	name VARCHAR2(50) NOT NULL, /* 이름 */
-	gender VARCHAR2(6) NOT NULL, /* 성별 */
+	gender VARCHAR2(7) NOT NULL, /* 성별 */
 	birth VARCHAR2(20) NOT NULL, /* 생년월일 */
 	email VARCHAR2(100) NOT NULL, /* 이메일 */
 	phone VARCHAR2(20) NOT NULL, /* 연락처 */

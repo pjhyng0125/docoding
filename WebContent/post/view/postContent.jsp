@@ -44,20 +44,25 @@
 					$('.${login_id} a').show();
 				} 
 				
-				$('input[value=구매하기]').hide();
-				$('input[value=수정]').hide(); 
-				$('input[value=삭제]').hide(); 
+				$('#buyBt').hide();
+				$('#upBt').hide(); 
+				$('#delBt').hide(); 
+				$('.'+login_id).show();
 				if(postName=="free"){
-				 	if("${free.id}"==login_id){
+				 	if("${free.id}"==login_id){//게시물 수정 삭제 버튼
 						$('input[value=수정]').show(); 
 						$('input[value=삭제]').show(); 
 				    }
+				 	
+					$('.'+login_id).show();
 				}else{
-					if("${sell.id}"==login_id){
+					if("${sell.id}"==login_id){//게시물 수정 삭제 버튼
 						$('input[value=수정]').show(); 
 					 }else{
 						$('input[value=구매하기]').show();
-					 }	
+					 }
+					
+					
 				}
 				
 			},
@@ -90,7 +95,7 @@
 		// id, no, content 넘기기 insertReply
 		$('#replyDiv').on('click', 'input[value=댓글등록]', function() {
 			if (confirm('댓글을 등록하시겠습니까?')) {
-				if(login_id){
+				if(login_id==''|| login_id == undefined){
 					alert('로그인을 먼저 실행해주세요!');
 					return;
 				}
@@ -99,7 +104,7 @@
 				$.ajax({
 					url : url,
 					success : function(result) {
-						$('#replyDiv').html(result);
+						location.href = location.href;
 					},
 					data : {
 						action : "insertReply",
@@ -187,6 +192,18 @@
 		$('#buyTr').on('click', 'input[value=구매하기]', function() {
 			alert('hi');
 			if (confirm('정말로 구매하시겠습니까?')) {
+				urlToResultContent();
+				$.ajax({
+					url : url,
+					success : function(result){
+						alert(result);
+					},
+					data:{
+						action : "updateCash",
+						no : no,
+						login_id : login_id
+					}
+				});
 			}
 		})
 
@@ -237,25 +254,23 @@
 							<td>${sell.id }${free.id }<span style='float: right'>조회 :
 									${sell.sp_count }${free.fp_count }</span>
 							</td>
-						</tr>
-						<c:if  test='!${param.postName}.equals("free") '>						
+						</tr>			
 						<tr>
-							<td colspan="2">
-								<span style="float: right;" >첨부파일:<a href="">${sell.sp_filename }</a></span>
+							<td colspan="2" >
+								<span style="float: right;" >첨부파일 : <a href="">${sell.sp_filename }</a></span>
 							</td>
 						</tr>
-						</c:if>
 						<tr>
-							<td colspan="2">
+							<td colspan="2" style="border-top: 0px">
 								<p>${sell.sp_content }${free.fp_content }</p>
 							</td>
 						</tr>
 						<tr id="buyTr">
 							<td colspan="2" style="border-top: 0px"><div class="input-group-btn"
 									style="float: right;">
-									<input class="btn btn-default" name="postBt" type="button" value="구매하기">
-									<input class="btn btn-default" name="postBt" type="button" value="수정">
-									<input class="btn btn-default" name="postBt" type="button" value="삭제">
+									<input class="btn btn-default" name="buyBt" type="button" value="구매하기">
+									<input class="btn btn-default" name="upBt" type="button" value="수정">
+									<input class="btn btn-default" name="delBt" type="button" value="삭제">
 								</div></td>
 						</tr>
 					</tbody>

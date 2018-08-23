@@ -15,7 +15,6 @@
     					success:function(result){
     						alert('로그아웃 성공!');
 	    					$('#successForm').html(result);
-    					
     					}
     			});
     		/* } */

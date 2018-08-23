@@ -51,7 +51,7 @@ public class AdminAction extends Action {
 			sp.setSp_filename(mreq.getFilesystemName("upload"));
 			//0814 수정 파일명 set 끝
 			sp.setId(mreq.getParameter("id"));
-			sp.setSp_category(mreq.getParameter("category"));
+			sp.setSp_category(request.getParameter("postName"));
 			sp.setSp_content(mreq.getParameter("content"));
 			//sp.setSp_filename(request.getParameter("filename"));
 			sp.setSp_title(mreq.getParameter("title"));

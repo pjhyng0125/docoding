@@ -65,11 +65,15 @@ insert into sell_post values ('18','java','자바스크립트 볼까 ','자바 기초내용','
 
 
 insert into free_post values ('1','잡담','제목연습','이게 클릭이란거다.','abcd','2018-08-22','3');
+insert into free_post values ('2','잡담','제목연습','이게 클릭이란거다.','abcd','2018-08-22','3');
+insert into free_post values ('1','잡담','제목연습','이게 클릭이란거다.','abcd','2018-08-22','3');
 
 
 insert into free_reply values ('1','1','2018-08-22','qwer56','살아있네');
 insert into free_reply values ('2','1','2018-08-22','abcd','살아있네');
 
+select * from free_reply where fr_id='abcd'; 
+select * from free_post where fp_no=2;
 select to_char(fp_time, 'yyyy-mm-dd') fp_time, fp_title, id, to_char(fr_time, 'yyyy-mm-dd') fr_time, fr_id, fr_content
 		from (select fp_time, fp_title, id, fr_time, fr_id, fr_content, rownum rn 
 				from (select fp_time, fp_title, id, fr_time,fr_id, fr_content
@@ -77,5 +81,10 @@ select to_char(fp_time, 'yyyy-mm-dd') fp_time, fp_title, id, to_char(fr_time, 'y
 					  where fr.fp_no = fp.fp_no and fr.fr_id='abcd'
 					  order by fr.fr_time desc)
 			  )
-		where rn >= '1' and rn <= '1'
+		where rn >=1 and rn <= 1
+		
+		select fp_time, fp_title, id, fr_time,fr_id, fr_content
+					  from free_reply fr, free_post fp
+					  where fr.fp_no = fp.fp_no and fr.fr_id='abcd'
+					  order by fr.fr_time desc;
 				
