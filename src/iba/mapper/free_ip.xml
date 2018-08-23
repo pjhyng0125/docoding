@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="fi">
+<select id="selectFreeIpChk" parameterClass="java.util.Map" resultClass="int">
+select count(*) cnt
+from free_ip
+where fp_no = #fp_no# and fp_ip=#fp_ip#
+</select>
+
+<insert id="insertFreeIp" parameterClass="java.util.Map">
+	insert into free_ip (fp_no, fp_ip)
+	values (#fp_no#,#fp_ip#)
+</insert>
+</sqlMap>

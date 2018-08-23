@@ -36,6 +36,8 @@
    <sqlMap resource="./iba/mapper/main.xml"/>
   <sqlMap resource="./iba/mapper/sell_reply.xml" />
   <sqlMap resource="./iba/mapper/free_reply.xml" />
+  <sqlMap resource="./iba/mapper/sell_ip.xml" />
+  <sqlMap resource="./iba/mapper/free_ip.xml" />
   
 </sqlMapConfig>
 

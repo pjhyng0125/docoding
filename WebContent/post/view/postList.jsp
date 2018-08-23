@@ -103,7 +103,7 @@
 		
 		//글쓰기####################################################
 		$('#postList').on('click','#createPost',function(){
-/* 			if(login_id){
+ 			if(login_id){
 				if(flag && postName!="free"){
 					alert('판매자 인증이 먼저 필요합니다!')
 					return;
@@ -111,7 +111,7 @@
 			}else{
 				alert('로그인을 먼저 실행해주세요!');
 				return;
-			} */
+			}
 			
 			if(postName=="free"){
 			location.href = "/docoding/inputfree.do?postName=free";						

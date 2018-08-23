@@ -107,4 +107,25 @@ public class Sell_postDAO {
 		}
 		return false;
 	}
+	
+	//게시물 조회수 증가
+	public boolean updateSelectCnt(Map<String, Object> map) {
+		try {
+			int t = smc.update("sp.updateSelectCnt",map);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	//게시자 아이디 확인
+	public String selectSpId(int no) {
+		try {
+			return (String) smc.queryForObject("sp.selectSpId",no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
