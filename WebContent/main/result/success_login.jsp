@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- login.jsp --%>
+<style> 
+	.lo_b{
+		background-color: #00498c;
+		border-radius: 10px;
+		color: white;
+	}
+	.a_s:hover{text-decoration: none; color: black;}
+	.a_s{color: black; font-size: 5;}
+	#d1,#d2,#d3:hover{text-decoration: none; color: black;}
+	
+	
+	</style>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     	$(function(){
@@ -56,7 +68,7 @@
 	</tr>
 </table>
 </div>
-<input type="button" name="logout" value="로그아웃">
+<input type="button" name="logout" class="lo_b" value="로그아웃">
 </div>
 </fieldset>
 </form>
