@@ -82,5 +82,15 @@ values (#bp_id#,#sp_no#,sysdate)
 update sell_post 
 set sold_count = sold_count+1 
 where sp_no=#sp_no#
+</update>
+
+<!-- 게시자 아이디 확인 -->
+<select id="selectSpId" parameterClass="int">
+	select id from sell_post where sp_no=#no#
+</select>
+
+<!--게시물 조회수 추가-->
+<update id="updateSelectCnt" parameterClass="java.util.Map">
+update sell_post set sp_count = #sp_count# where sp_no=#sp_no#
 </update>	
 </sqlMap>

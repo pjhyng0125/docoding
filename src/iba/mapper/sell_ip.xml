@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
+<sqlMap namespace="si">
+<select id="selectSellIpChk" parameterClass="java.util.Map" resultClass="int">
+select count(*) cnt
+from sell_ip
+where sp_no = #sp_no# and sp_ip=#sp_ip#
+</select>
+
+<insert id="insertSellIp" parameterClass="java.util.Map">
+	insert into sell_ip (sp_no, sp_ip)
+	values (#sp_no#,#sp_ip#)
+</insert>
+
+<select id="selectSelectCnt" parameterClass="int" resultClass="int">
+	select count(*) cnt from sell_ip 
+	where sp_no=#sp_no#
+</select>
+</sqlMap>
