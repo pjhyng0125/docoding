@@ -105,7 +105,8 @@
 	
 	<action path="/main" type="com.encore.action.LoginAction">
 		<forward name="nologin" path="/main_nologin.do"></forward>
-		<forward name="login" path="/main_login.do"></forward>	
+		<forward name="login" path="/main_login.do"></forward>
+		<forward name="logout" path="/main.do"></forward>		
 	</action>
 	<action path="/common/form" forward=".form"></action>
 	<action path="/common/login" forward=".login"></action>
