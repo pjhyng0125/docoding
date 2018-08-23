@@ -28,6 +28,8 @@
 		
 		}
 	});
+
+	
 	
 	
 </script>
@@ -46,7 +48,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="myNavbar">
                 <ul class="nav navbar-nav">
               
-                	<div id="login_plz" style="display: "><li class="nav-item"><a href="" class="nav-link">로그인</a></li></div>
+                	<div id="login_plz" style="display: "><li class="nav-item"><a class="nav-link" href="/docoding/main.do" id="uplog">로그인</a></li></div>
                 	<div id="mypage_plz" style="display: none;" ><li class="nav-item"><a class="nav-link" href="/docoding/mypage.do">마이페이지</a></li></div>
                     <li class="nav-item"><a class="nav-link" href="">고객센터</a></li>
                 </ul>
