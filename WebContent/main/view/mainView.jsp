@@ -36,7 +36,9 @@
 		<table width="100%" >
 			<tr id="tr1">
 				<td colspan="2"><tiles:insert attribute="searchBar"/></td>
-			</tr>
+			</tr>			
+		</table>
+		<table width="70%">
 			<tr id="tr2">
 				<td width="40%" align="right"><tiles:insert attribute="adver"/></td>
 				<td align="center"><tiles:insert attribute="login"/></td>
