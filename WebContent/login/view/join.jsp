@@ -230,26 +230,11 @@ $(function(){
 				</select> - <input type="text" size="4" maxlength="4" name="cell1" id="cell2"
 					style="height: 45px; width: 59px"> - <input type="text" name="cell2" id="cell3"
 					size="4" maxlength="4" style="height: 45px; width: 59px"></td>
-
 			</tr>
-	<!-- 		<tr>
-				<th align="center" width="120" bgcolor="#b8d6d8">자동가입방지<font
-					color="red">*</font></th>
-				<td class="attach"><img id="captchaimg" name="captchaimg"
-					src="../../image/captcha1.png" alt="Captcha image" height="45" /> <a
-					onclick="document.inputForm.captchaimg.src='/captcha?id='+Math.random();"
-					id="refresh" style="cursor: pointer">이미지 새로고침</a></td>
-			</tr>
-			<tr>
-				<th></th>
-				<td class="td">
-					<input type="text" name="captcha" size="10" style="width: 157px;" /> 
-					<input type="button" value="확인" style="background-color: #b8d6d8"></td>
-			</tr>  -->
 		</table>
 		<br> <br> <br> 
 			<input type="button" value="가입" id="userId" onclick="return inputCheck();" style="background-color: orange; width: 69px; height: 38px;">
-			<input type="reset" value="취소" onclick="goFirstForm()" style="background-color: orange; width: 69px; height: 38px;">
+			<input type="reset" value="취소" onclick="window.location='main.do'" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </form>
 </body>
