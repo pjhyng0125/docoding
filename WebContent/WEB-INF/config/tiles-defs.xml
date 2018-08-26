@@ -66,10 +66,10 @@
   <!-- 박진형 admin tiles 설정 종료  -->
   
   <!-- 박형진 post tiles 설정 시작  -->
-  <definition name=".sellList" extends=".main">
+<definition name=".sellList" extends=".main">
   	<put name="body" value="/post/view/postList.jsp"></put>
   	<put name="menu" value="/common/menu.jsp"></put>
-  </definition>
+</definition>
 
   <definition name=".freeList" extends=".main">
   	<put name="body" value="/post/view/postList.jsp"></put>

@@ -103,20 +103,29 @@
 		
 		//글쓰기####################################################
 		$('#postList').on('click','#createPost',function(){
- 			if(login_id){
-				if(flag && postName!="free"){
-					alert('판매자 인증이 먼저 필요합니다!')
-					return;
+ 			if(flag){
+				if(postName!="free"){
+					$.ajax({
+						url:"/docoding/post/result/sellContent.do",
+						success: function(result){
+							if(result=="false"){
+							 alert("판매자 등록이 필요합니다!");
+							 return;								
+							}else{
+									location.href = "/docoding/input.do?postName="+postName;
+							}
+						},
+						data: {
+							action:"checkAssign",
+							login_id:login_id
+						}
+					});
+				}else{
+					location.href = "/docoding/inputfree.do?postName=free";
 				}
 			}else{
 				alert('로그인을 먼저 실행해주세요!');
 				return;
-			}
-			
-			if(postName=="free"){
-			location.href = "/docoding/inputfree.do?postName=free";						
-			}else{
-			location.href = "/docoding/input.do?postName="+postName;						
 			}
 		})
 		
@@ -168,13 +177,26 @@
 	text-align: center;
 }
 
-.table-hover>tbody>tr:hover {
+#tbody>tr:hover {
 	background-color: #e6ecff;
 }
 
-.table>tbody>tr>td {
+#tbody>tr>td {
 	text-align: center;
+	vertical-align: middle;
 }
+
+#imgTd {
+	margin: 0px;
+	padding: 0px;
+}
+
+#imgTd>img{
+	display: block;
+	width: 120px;
+	height: 100px;
+}
+
 
 .table>tbody>tr>#title {
 	text-align: left;
@@ -189,10 +211,6 @@ div>#paging {
 	height: 30px;
 }
 
-tr img {
-	display: block;
-	width: 100%;
-}
 
 .pagination {
 	justify-content: center;
@@ -202,6 +220,10 @@ tr img {
 }
 #category:visited {
 	color: black; text-decoration: none;
+}
+
+#postList{
+ height:820px; overflow:hidden;
 }
 </style>
 </head>

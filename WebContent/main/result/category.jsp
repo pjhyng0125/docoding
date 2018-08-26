@@ -23,6 +23,7 @@
 <center>
 <br><br>
 <p><font color="gray" face="impact" size="5"><b>코딩합니다</b></font><font color="skyblue" face="impact" size="5"><b> 카테고리</b></font></p>
+			<br><br>
 			<div class="row">
                <div class="col-md-4 yellow">
                <a href="/docoding/post/sellList.do?postName=Java">

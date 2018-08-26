@@ -26,7 +26,7 @@
 <script type="text/javascript">
 	$(function() {
 		var login_id = "${login_id}";
-		alert(login_id)
+		var flag="{flag}";
 		
 		var postName = "${param.postName}"
 		var order = ${param.order}
@@ -34,8 +34,16 @@
 		var option = "${param.option}"
 		var url;
 		var no = "${param.no}";
-		urlToResultContent();
+		
+		var upload = "${upload}";
+		$('#uploadImg').hide();
+		
+		if(upload =="upload")
+			$('#uploadImg').show();
 
+		urlToResultContent();
+		
+		
 		$.ajax({
 			url : url,
 			success : function(result) {
@@ -55,11 +63,10 @@
 						$('#upBt').show(); 
 						$('#delBt').show(); 
 				    }
-					if(login_id) $('.${login_id} a').show(); //a태그
+					if(login_id) $('.${login_id} a').show(); //댓글 수정, 삭제a태그
 				}else{
-					if("${sell.id}"!=login_id){
-						 $('#buyBt').show();
-					 }	
+					if("${sell.id}"!=login_id) 
+						$('#buyBt').show();	
 				}	
 			},
 			data : {
@@ -93,8 +100,9 @@
 		// id, no, content 넘기기 insertReply
 		$('#replyDiv').on('click', 'input[value=댓글등록]', function() {
 			if (confirm('댓글을 등록하시겠습니까?')) {
-				if(login_id == undefined || login_id==""){
+				if(flag=="false"){
 					alert('로그인을 먼저 실행해주세요!');
+					$('#r_reply').val('');
 					return;
 				}
 				
@@ -102,13 +110,14 @@
 				$.ajax({
 					url : url,
 					success : function(result) {
-						location.href = location.href;
+						$('#replyDiv').html(result);
+						if(login_id) $('.${login_id} a').show();
 					},
 					data : {
 						action : "insertReply",
 						r_id : login_id,
 						no : no,
-						r_content : $('textarea').val()
+						r_content : $('#r_reply').val()
 					}
 				})
 			}
@@ -174,6 +183,7 @@
 					url : url,
 					success : function(result) {
 						$('#replyDiv').html(result);
+						if(login_id) $('.${login_id} a').show();
 					},
 					data : {
 						action : "deleteReply",
@@ -188,7 +198,6 @@
 		
 		//판매게시물 첨부파일 구매
 		$('#buyTr').on('click', 'input[value=구매하기]', function() {
-			alert('hi');
 			if (confirm('정말로 구매하시겠습니까?')) {
 				if(login_id=='' || login_id==undefined){
 					alert('로그인을 해주세요!');
@@ -198,7 +207,12 @@
 				$.ajax({
 					url : url,
 					success : function(result){
-						alert(result);
+						if(result=="lackOfCash"){
+							alert('캐쉬가 부족합니다!');
+						}else{
+							alert(result);
+							$('#uploadImg').show();
+						}
 					},
 					data:{
 						action : "updateCash",
@@ -207,7 +221,12 @@
 					}
 				});
 			}
-		})
+		});
+		
+		$('#uploadImg a').click(function(){
+			window.open(this.href,"confirm",'width=600,height=400,top=100,left=100');
+			return false;
+		});
 		
 		
 		//게시물 삭제
@@ -279,7 +298,7 @@
 						<c:if test='${!param.postName.equals("free") }'>			
 						<tr>
 							<td colspan="2" >
-								<span style="float: right;" >첨부파일 : <a href="">${sell.sp_filename }</a></span>
+								<span style="float: right;" id="uploadImg">첨부파일 : <a href="/docoding/upload/${sell.sp_filename }">${sell.sp_filename }</a></span>
 							</td>
 						</tr>
 						</c:if>

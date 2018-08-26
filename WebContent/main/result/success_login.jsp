@@ -48,18 +48,18 @@
     	});
     });    
     </script>
-<div id="successForm" class="card align-middle" style="width:20rem; border-radius:20px;">
+<div id="successForm" class="card align-middle" style="width:25rem; border-radius:20px;">
 <form>
 <fieldset id="id">
 <div class="card-body">
 <legend><strong><%=session.getAttribute("login_id") %></strong>님</legend> 
 <input type="hidden" id="userid" value="${login_id}"> 
-<div class="container">
-<table cellpadding="4" border="5">
+<div class="container-fruid">
+<table class="table table-striped table-bordered text-center" cellpadding="4">
 	<tr>
-		<td><a href="/docoding/mypage/cash.do">충전잔액</a></td>
-		<td><a href="/docoding/mypage/mysell.do">판매자료</a></td>
-		<td><a href="/docoding/mypage/mybuylist.do">구입자료</a></td>
+		<td width="40%"><a href="/docoding/mypage/cash.do">충전잔액</a></td>
+		<td width="25%"><a href="/docoding/mypage/mysell.do">판매자료</a></td>
+		<td width="25%"><a href="/docoding/mypage/mybuylist.do">구입자료</a></td>
 	</tr>
 	<tr align="center">
 		<td><a href="/docoding/mypage/cash.do"><div id="d1"></div></a></td>

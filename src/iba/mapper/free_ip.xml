@@ -11,4 +11,9 @@ where fp_no = #fp_no# and fp_ip=#fp_ip#
 	insert into free_ip (fp_no, fp_ip)
 	values (#fp_no#,#fp_ip#)
 </insert>
+
+<select id="selectFiCnt" parameterClass="int" resultClass="int">
+	select count(*) cnt from free_ip 
+	where fp_no=#fp_no#
+</select>
 </sqlMap>

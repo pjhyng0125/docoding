@@ -38,21 +38,31 @@ public class SellContentAction extends Action{
 		if(action ==null || action.equals("selectContent")) { // 게시글 내용 보이기
 			HttpSession session = request.getSession();
 			String login_id = (String) session.getAttribute("login_id");
-			System.out.println(login_id);
+			System.out.println("로그인 id >>> "+login_id);
 			String sp_id = sp_dao.selectSpId(Integer.parseInt(no));
+			System.out.println("게시자 id >>> "+sp_id);
+			map.put("sp_no", Integer.parseInt(no));
+			
 			if(login_id==null || !(login_id.equals(sp_id))) { //게시자가 아닐 경우
 				String sp_ip = request.getRemoteAddr(); //아이피 얻기
 				map.put("sp_ip", sp_ip);
-				map.put("sp_no", Integer.parseInt(no));
 				if(!ip_dao.selectSellIpChk(map)) {
 					if(ip_dao.insertSellIp(map)) {
 						System.out.println("조회수 +1 증가 IP>>"+sp_ip);
-						int cnt = ip_dao.selectSelectCnt(Integer.parseInt(no));
+						int cnt = ip_dao.selectSiCnt(Integer.parseInt(no));
 						map.put("sp_count", cnt);
 						sp_dao.updateSelectCnt(map);
 					}
 				}
+			}else {
+				request.setAttribute("upload", "upload");
 			}
+			map.put("bp_id", login_id);
+			if(sp_dao.selectBuyPost(map)) {//구매 여부 확인
+				request.setAttribute("upload", "upload");
+				System.out.println(login_id+">>구매자 확인!");
+			}
+			
 			request.setAttribute("sell", sp_dao.select(Integer.parseInt(no)));
 			forwardName = "content";
 		}else if(action.equals("selectReply")) { //댓글 보이기
@@ -96,20 +106,30 @@ public class SellContentAction extends Action{
 			if(currentMoney==-1) {
 				System.out.println("selectCash>>>error!");
 			}else if(currentMoney<200){
-				out.print("캐쉬가 부족합니다!");
+				out.print("lackOfCash"); //캐쉬가 부족합니다!
 			}else {
+				map.put("sp_no", Integer.parseInt(no));
+				map.put("bp_id", id);
+				if(sp_dao.selectBuyPost(map)) {
+					out.print("이미 구입하신 상품입니다!");
+					return null;
+				}
+				
 				if(sp_dao.updateCash(id)) {
 					int afterMoney = sp_dao.selectCash(id);
 					sp_dao.updateSoldCnt(Integer.parseInt(no));
 					System.out.println("판매횟수 증가");
 					Buy_post bp = new Buy_post(id, Integer.parseInt(no), null);
+
 					if(sp_dao.insertBuyPost(bp)) System.out.println("구매 등록 완료");
-					
 					out.print("결제가 완료되었습니다.\n현재 잔액은 "+afterMoney+"원 입니다.");
-				}else {					
+				}else {
 					System.out.println("updateCash>>>error!");
 				}
 			}
+		}else if(action.equals("checkAssign")) {
+			String id = request.getParameter("login_id");
+				out.print(sp_dao.checkAssign(id));
 		}
 
 		

@@ -46,9 +46,13 @@ $(function(){
 			//}else{
 				$('#upload').val('');
 			//}
-				location.href="/docoding/post/sellList.do";
+				location.href="/docoding/post/sellList.do?postName=${param.postName }";
 			}
 		});
+	});
+	
+	$('#cancel').click(function(){
+		location.href="/docoding/post/sellList.do?postName=${param.postName }";
 	});
 });
 </script>
@@ -57,30 +61,29 @@ $(function(){
 <body>
 <%-- inputSell.jsp: 판매 게시물 입력 화면 --%>
 <%--0814 수정 시작 --%>
+<br><br>
 	<div class="container text-center">
-	<div class="row">
-		<div class="col-md-10">
-		<div class="form-group"><br><br>
-			<h3>판매 게시물 입력 화면</h3>
+				<h3 class="font-weight-bold">판매 게시물 입력 화면</h3>
+		<div class="row ">
+			<div class="col-md-8 " style="float: none; margin: 0 auto;">
 			<form enctype="multipart/form-data" method="post">
 				<input type="hidden" name="action" value="insert_sellpost">
 				<input type="hidden" name="id"
 					value=<%=session.getAttribute("login_id")%>>
-						<label id="category">${param.postName }</label>
+						<div class="float-left"><font id="category" size="5">&nbsp;&nbsp;${param.postName }</font></div>
+			<div  class="form-inline float-right">
 						<input type="text" id="title" name="title" placeholder="제목을 입력하세요"
 					required> <input type="file" id="upload" name="upload"> 
-					<input class="btn btn-default" type="button" id="post" value="발행"> 
-					<input class="btn btn-default" type="button" id="cancel" value="취소"><br>
-				
-				<textarea class="form-control col-md-12	" id="content" cols="100" rows="20" name="content"
+						<input class="btn btn-default" type="button" id="post" value="등록">&nbsp;&nbsp; 
+						<input class="btn btn-default" type="button" id="cancel" value="취소"><br></div>
+				<textarea class="form-control col-md-12	" id="content" cols="100" rows="18" name="content"
 					placeholder="내용을 입력하세요" required></textarea>
 			</form>
 			<div><br>
-			<a id="admin" class="btn btn-primary" href="/docoding/admin.do">관리자 화면</a><br><br>
-			<a id="free" class="btn btn-primary" href="/docoding/inputfree.do">자유 게시판 입력</a>
+<!-- 			<a id="admin" class="btn btn-primary" href="/docoding/admin.do">관리자 화면</a><br><br>
+			<a id="free" class="btn btn-primary" href="/docoding/inputfree.do">자유 게시판 입력</a> -->
 			</div>
 			</div>
-		</div>
 		</div>
 	</div>
 	<%--0814 수정 끝 --%>

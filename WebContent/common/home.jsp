@@ -15,7 +15,7 @@
 <table width="100%">	
 <tr><td><tiles:insert attribute="header"/></td></tr>
 <tr><td><div><tiles:insert attribute="home"/></div></td></tr>
-<tr><td><tiles:insert attribute="footer"/></td></tr>
+<tr><td id="footer"><tiles:insert attribute="footer"/></td></tr>
 </table>
 </body>
 </html>
