@@ -2,6 +2,7 @@ package com.encore.action;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import com.encore.dao.IpDAO;
 import com.encore.dao.Sell_postDAO;
 import com.encore.dao.Sell_replyDAO;
 import com.encore.vo.Buy_post;
+import com.encore.vo.Sell_post;
 import com.encore.vo.Sell_reply;
 
 public class SellContentAction extends Action{
@@ -63,7 +65,11 @@ public class SellContentAction extends Action{
 				System.out.println(login_id+">>구매자 확인!");
 			}
 			
-			request.setAttribute("sell", sp_dao.select(Integer.parseInt(no)));
+			Sell_post sell = sp_dao.select(Integer.parseInt(no));
+			System.out.println(sell.getSp_content());
+			sell.setSp_content(sell.getSp_content().replace("\r\n","<br>"));
+			
+			request.setAttribute("sell", sell);
 			forwardName = "content";
 		}else if(action.equals("selectReply")) { //댓글 보이기
 			request.setAttribute("sellReply",sr_dao.selectReply(Integer.parseInt(no)));
