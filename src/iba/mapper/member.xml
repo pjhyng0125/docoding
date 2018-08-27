@@ -53,10 +53,10 @@
 		from member
 		where id = #id# and phone = #phone# and birth = #birth#
 	</select>
- 	<update id="update_Pw" parameterClass="String">
+<!--  	<update id="update_Pw" parameterClass="String">
 		update member
 		set
 		pass = #pass#
 		where id = #id#
-	</update>
+	</update> -->
 </sqlMap>
