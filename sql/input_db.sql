@@ -1,11 +1,7 @@
 insert into member values
-('abcd', '1234', '길동이', '남', '1999-09-09', 'abcd1234@naver.com', '010-1234-5678', '1', '2018-08-16', 1000);
-
-update member set login_flag='0'
-where id='qpqpqp';
-select * from member where id='xxxxxx';
-
-select * from member;
+('encore', '1234', '엔코아', '남', '1997-10-31', 'encore@naver.com', '010-1234-5678', '0', '2018-08-27', 0);
+insert into member values
+('abcd', '1234', '길동이', '남', '1999-09-09', 'abcd1234@naver.com', '010-1234-5678', '0', '2018-08-16', 1000);
 
 -- demo play data - member
 insert into member values
@@ -170,4 +166,314 @@ select to_char(fp_time, 'yyyy-mm-dd') fp_time, fp_title, id, to_char(fr_time, 'y
 				
 					  
 ----------------------------------------------------------------------------
+--DB
+insert into SELL_POST
+values (sellpost_seq.nextVal,'DB','alter 핵심 요약 정리', 'alter 핵심 요약 정리
 
+칼럼추가: ADD (추가칼럼명 자료형)
+칼럼수정: MODIFY (기존칼럼명 자료형)
+제약수정: modify 컬럼명 (constraint 제약명) not null | null
+칼럼삭제: DROP COLUMN 삭제칼럼명
+칼럼이름변경: RENAME COLUMN 기존칼럼명 TO 새컬럼명
+칼럼명사용안함: SET UNUESD 칼럼명
+UNUSED 설정된 칼럼들 삭제: DROP UNUSED COLUMN);
+
+ex1> 컬럼 추가
+alter table player
+add address varchar2(80);
+
+ex2> 칼럼 삭제
+alter table player 
+drop column address;
+
+ex3> 칼럼 변경
+alter table team_temp 
+modify (orig_yyyy varchar2(8) default "20020129" not null);
+
+ex4> 칼럼명 변경
+alter table player 
+rename column player_ID to temp_ID;', 'encore', sysdate, 'db_1.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'DB','select 문장 실행 순서', '1. select 칼럼명 [ALIAS명]
+2. from 테이블명
+3. where 조건식
+4. group by 칼럼 || 표현식
+5. having 그룹 조건식
+6. order by 칼럼 || 표현식
+2->3->4->5->6->1', 'encore', sysdate, 'db_1.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'DB','order by절','order by 절: 특정 칼럼을 기준으로 정렬하여 출력
+order by 컬럼명 || ALIAS명 || 별칭 || 칼럼 순서를 나타내는 정수
+sql 문장의 제일 마지막에 위치
+
+order by 칼럼 or 표현식 [ASC(오름차순, 기본값) || DESC(내림차순,ㅎ->ㄱ)]
+order by player_name DESC;
+order by 포지션(별칭) ASC;
+Oracle: NULL 값을 가장 큰 값으로 취급
+
+ex1>
+select player_name 선수명, position 포지션, back_no 백넘버 from player
+where back_no is not null
+order by 3 desc, 2, 1;=> DB의 index는 1부터 시작
+
+ex2>
+select dname, loc area, deptno from dept 
+order by 1, area, 3 DESC;', 'encore', sysdate, 'db_3.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'DB','DCL(Data Control Language)','DCL(Data Control Language)
+유저를 생성하고 권한을 제어할 수 있는 명령어
+
+유저 생성 권한 부여
+grant create user to scott; => 유저 생성 권한 부여
+grant create session to pjh; => 로그인 권한 부여
+grant create table to pjh; => 테이블 생성 권한 부여
+grant select on menu to scott; => 테이블 select 권한 부여
+
+Role을 이용한 권한 부여
+grant create session, create table to login_tabel; => login_table(role) 생성
+grant login_table to pjh; => role 권한 부여
+
+grant connect, resource to pjh; => connect(role), resource(role) 내장 role 권한 부여', 'encore', sysdate, 'db_4.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'DB','outer join(외부 조인)','join 조건에서 동일한 값이 없는 행도 반환할 경우
+명시적 OUTER JOIN 사용 적극 권장
+JOIN조건을 FROM절에서 정의하겠다=> USING/ON 필수 사용
+
+1. LEFT [OUTER] JOIN
+조인 수행시 먼저 좌측 테이블 데이터 읽은 후=> 우측 테이블 JOIN 대상 데이터 읽어옴
+A left [outer] join B=> A와 B 비교 후 B의 JOIN 칼럼에서 같은 값이 있을 때 해당 데이터 가져옴
+같은 값이 없는 경우 B 테이블 컬럼 NULL 값으로 채움
+outer join을 통해 NULL값인 컬럼의 정보도 가져올 수 있다!
+
+2. RIGHT OUTER JOIN
+우측이 기준이 되어 결과 생성
+A right [outer] join B=> B 기준
+
+3. FULL OUTER JOIN
+좌측, 우측 테이블의 모든 데이터를 읽어 JOIN하여 결과 생성
+A full [outer] join B=> A, B 둘다 기준', 'encore', sysdate, 'db_5.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'DB','년도별 입사 인원수 출력 SQL문 (decode)','select count(*) as total, 
+count(decode(to_char(hiredate,"yyyy"),"1980", hiredate)) as 1980,
+count(decode(to_char(hiredate,"yyyy"), "1981", hiredate)) as 1981,
+count(decode(to_char(hiredate,"yyyy"), "1982", hiredate)) as 1982,
+count(decode(to_char(hiredate,"yyyy"), "1987", hiredate)) as 1987
+from emp;', 'encore', sysdate, 'db_6.png',0,0);
+-------------------------------------------------------------------------------------------------------------------------
+--java
+insert into SELL_POST
+values (sellpost_seq.nextVal,'Java','구구단 파일 입출력','public class GugudanTest {
+public static void main(String[] args) throws IOException {
+System.out.println("<<구구단>>");	
+System.out.print("원하는 단? ");
+boolean flag = true;
+do { 
+int start = System.in.read()-48;
+System.in.read();System.in.read();
+for (int dan = start; dan < 10; dan++) {
+for (int i = 1; i < 10; i++) {
+System.out.println(dan+"*"+i+"="+(dan*i));
+}}
+}while(flag);}}', 'encore', sysdate, 'java_1.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'Java','로또 번호 생성 프로그램','public class Lotto {
+int [] lotto;
+Random r;
+public Lotto() {
+lotto = new int[6];
+r = new Random();
+public void generateNum() {//로또번호발생
+for(int i=0; i<lotto.length; i++) {//배열인덱스 0~5
+lotto[i]=r.nextInt(45)+1;//랜덤한 수를 저장
+boolean flag = duplicateNumCheck(i);
+if(flag) {//(flag==true) {
+i--;  
+}}}
+public boolean duplicateNumCheck(int idx) {//중복숫자검사
+for(int i=idx-1; i>-1; i--) {
+if(lotto[idx] == lotto[i]) {//중복된 수가 발견되었다면!!
+return true;}}
+return false; 
+}
+public void printNum() {//로또번호출력(배열에 입력된 값을 출력)
+Arrays.sort(lotto);
+for(int i=0; i<lotto.length; i++) {//배열인덱스 0~5
+System.out.print(lotto[i]);
+if(i<lotto.length-1)System.out.print(", ");		  
+}
+}}}', 'encore', sysdate, 'java_2.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'Java','배열을 이용한 사원 관리 프로그램','names = new Vector<>();}//생성자
+
+public void insert(String name) {//데이터 입력
+names.add(name);
+}//insert
+
+public void select() {//데이터 검색
+System.out.println("\n#이름목록");  
+for (int i = 0; i < names.size(); i++) {
+System.out.println(names.get(i));}}
+
+public void update(String oldName, String newName) {//데이터 수정
+for (int i = 0; i < names.size(); i++) {
+if(oldName.equals(names.get(i))) {
+names.set(i, newName);
+break;}}}//update
+
+public void delete(String delName) {//데이터 삭제
+names.remove(delName);}//delete
+
+public boolean existNameCheck(String name) {//존재하는 이름 체크
+if(names.contains(name))return true;	  	  
+return false;
+}//existNameCheck}', 'encore', sysdate, 'java_3.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'Java','Java를 이용한 BaseBall Game 핵심코드','@Override
+public void actionPerformed(ActionEvent e) {
+Object ob = e.getSource();
+if(ob==tf) {
+ String str = tf.getText();//"369"
+for(int i=0; i<user.length; i++) {
+user[i]=str.charAt(i)-48;}
+
+ int strike=0, ball=0;
+for(int i=0; i<com.length; i++) {//com배열
+for(int j=0; j<user.length; j++) {//user배열
+if(com[i] == user[j]) {//같은수 ---> 스트라이크 또는 볼의 후보!!
+if(i==j) {//같은 자릿수 비교 ---> 스트라이크!!
+strike++;
+}else {//다른 자릿수  ---> 볼!!
+ball++; }}}}//for
+ta.append("1: "+str+" ▶ "+strike+"Strike "+ball+"Ball\n");
+tf.setText("");
+}else if(ob==bt_new) {
+createNum();
+}else if(ob==bt_clear) {
+ta.setText("");
+tf.setText("");
+}else if(ob==bt_dap) {
+ta.append("▣ 정답은 ["+com[0]+com[1]+com[2]+"]입니다.\n");
+}else if(ob==bt_exit) {
+System.exit(0);}}
+public static void main(String[] args) {
+new BaseBallGame();
+}}', 'encore', sysdate, 'java_4.png',0,0);
+
+insert into SELL_POST
+values (sellpost_seq.nextVal,'Java','TCP전송방식 개념정리','<TCP전송방식>
+1. 연결방식
+- 연결기반(connection-oriented)
+- 연결 후 통신(전화기)
+- 1:1 통신방식
+2. 특징
+- 데이터의 경계를 구분 안 함.(byte-stream)
+- 신뢰성 있는 데이터 전송
+- 데이터의 전송순서가 보장.
+- 데이터의 수신여부를 확인함(데이터가 손실되면 재전송)
+- 패킷을 관리할 필요가 없음
+- UDP보다 전송속도가 느림
+3. 관련 클래스
+- Socket, ServerSocket', 'encore', sysdate, 'java_5.png',0,0);
+
+-----------------------------------------------------------------
+--jsp
+insert into sell_assign values ('qwer7777','100-0011-1101','2018-08-28',0,0);
+insert into sell_assign values ('asdf7777','100-0011-1102','2018-08-28',0,0);
+insert into sell_assign values ('zxcv7777','100-0011-1103','2018-08-28',0,0);
+insert into sell_assign values ('kakao777','100-0011-1104','2018-08-28',0,0);
+insert into sell_assign values ('547dodo','100-0011-1105','2018-08-28',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JSP','계산기 관련 코드입니다.','안녕하세요.
+계산기 관련 코드입니다.
+간단한 사칙연산이 가능하도록 한 코드에요.
+부디 공부하시면서 많은 도움 되시길 바라겠습니다!','qwer7777',sysdate,'calc.png',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JSP','따끈따끈한 구구단 소스!!','java나 c언어를 할 때 한번 쯤은 해보셨을 구구단입니다 ㅎㅎ
+이것만 보고 익히신다면 jsp에서도 어렵지 않아요!!
+필요하시다면 구매 ^^ 부탁드릴게요','asdf7777',sysdate,'gugudan.png',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JSP','간단한 비밀번호 확인방법입니다.','jsp를 공부하면서 익힌 비밀번호 확인방법입니다.
+쉽게 생각하실 분들도 있으시겠지만 jsp가 처음이신분들께 추천드려요~~','zxcv7777',sysdate,'passCheck.png',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JSP','페이지이동 관련 코드입니다.','간단한 코드입니다.
+하지만 충분히 구매할 가치가 있습니다. 고민말고 구매해주세요','kakao777',sysdate,'pageMove.png',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JSP','회원가입이 궁금하신가요?','회원가입이 간단해 보여도 꽤나 까다로워요!
+이 코드를 양식으로 쓰시면 나중에 편하실거에요 ㅎㅎ 제가 장담합니다.
+혹시나 궁금하신 사항들 있으시면 언제든지 !! 댓글 남겨주세요^^
+감사합니다~~','547dodo',sysdate,'input.png',0,0);
+-----------------------------------------------------------------
+--js
+--판매자 인증
+insert into sell_assign values ('doco1234','110-1111-1234','2018-08-27',0,0);
+insert into sell_assign values ('sarang2lub','111-1231-1111','2018-08-27',0,0);
+insert into sell_assign values ('mgame5588','112-1111-1121','2018-08-27',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JavaScript','js 빌트인함수입니다!','제목 그대로 js 빌트인 함수를 참고하시기 편하도록 모아놓았습니다^^
+eval, parseInt, parseFloat, isNaN, esacape, unescape과 같은 함수들을 
+이용하여 작성한 테스트 코드이니 참고하신다면 js 실력이 한층 늘어날 거라 생각합니다 ㅎㅎ','doco1234',sysdate,'js_builtin.jpg',1,0);
+insert into sell_post values (sellpost_seq.nextVal,'JavaScript','정규표현식 관련 코드입니다!','정규표현식 관련 코드입니다.
+정규 표현 객체를 사용하여 더욱 간결한 유효성 검사 코드를 작성해보세요!
+분명 도움이 되실겁니다^^
+
+필요하시다면 구매 부탁드려요ㅎㅎ','doco1234',sysdate,'regexp.jpg',0,0);
+insert into sell_post values (sellpost_seq.nextVal,'JavaScript','js와 ajax!!','안녕하세요 !!
+sarang2lub입니다!
+오늘은 js, ajax  추가적으로 서버통신객체에 대한
+간단 설명을 올리게 되었습니다!
+
+이번에도 많이들 구입해 주실꺼죠??ㅎㅎㅎ
+모두들 열공하세요♥','sarang2lub',sysdate,'js_ajax설명.jpg',0,0);
+insert into sell_post values (sellpost_seq.nextVal,'JavaScript','기본적인 function 작성방법!','안녕하세요!!
+다시 찾아온 sarang2lub입니다.
+다들 열공하시고 계신가요 ㅎㅎ
+
+오늘은 js에서 기본적인 function 작성 방법을 올려봅니다!
+모두들 화이팅!','sarang2lub',sysdate,'js_function.jpg',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'JavaScript','페이지이동 관련 코드입니다.','안녕하세요.
+페이지 이동 관련 코드입니다.
+참고하시고 궁금한점 있으면 언제든지 댓글로 문의해주세요.','mgame5588',sysdate,'page이동_history객체.jpg',0,0);
+
+-----------------------------------------------------------------
+--jquery
+insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery 환경설정 방법','jQuery 환경설정 방법에 대한 스크린샷
+여러 기능 중 ajax 개발에 용이한 자바스크립트 라이브러리 중 하나 ajax외에도 애니메이트, 이벤트 등을 처리할 수 있다
+다운로드 부터 jsp파일에 jQuery적용하는 방법까지 첨부하였습니다','encore',sysdate,'jquery_1.jsp',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery를 통한 ajax','jQuery 장점 중 하나가 ajax를 편리하게 사용할 수 있다는 점이다 
+jQuery를 통한 ajax사용에 대한 기초적 문법을 기재하였으니 참고하길 바람','encore',sysdate,'jquery_2.jpg',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery와 JSON의 동시 활용','jQuery의 ajax를 통해 post방식일 경우 
+JSON타입으로 데이터를  받는 부분에 관해 첨부','encore',sysdate,'jquery_3.jpg',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery를 활용한 계산기 프로그램', 
+'jQuery를 이용하여 기초적인 계산기 프로그램을 만들어봄 계산기의 기능은 사칙연산에 한함',
+'encore',sysdate,'jquery_4.jpg',0,0);
+
+insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery tiles 사용을 위한 plug in방법', 
+'tiles란, jQuery에서 레이아웃과 비슷한 형식을 말하는데, 하나의 웹브라우저 상에서 공통된 부분이 여러 jsp에 필요할 경우 사용합니다 
+jQuery상에서 tiles를 활용하기 위한 Plug-in 설정들과 tiles를 정의하는 tiles-defs에 관해 예시를 첨부했습니다.',
+'encore',sysdate,'jquery_5.jpg',0,0);
+
+create table sell_ip
+(
+  sp_no number,
+  sp_ip  varchar2(50),
+  primary key(sp_no,sp_ip)
+);
+
+create table free_ip
+(
+  fp_no number,
+  fp_ip  varchar2(50),
+  primary key(fp_no,fp_ip)
+);

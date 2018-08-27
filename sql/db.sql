@@ -48,7 +48,7 @@ CREATE TABLE free_post (
 	fp_no NUMBER NOT NULL, /* 글번호 */
 	fp_category VARCHAR2(20) NOT NULL, /* 카테고리 */
 	fp_title VARCHAR2(100) NOT NULL, /* 글제목 */
-	fp_content VARCHAR2(800) NOT NULL, /* 내용 */
+	fp_content VARCHAR2(1000) NOT NULL, /* 내용 */
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
 	fp_time DATE, /* 작성시간 */
 	fp_count NUMBER default 0 /* 조회수 */
@@ -86,7 +86,7 @@ CREATE TABLE sell_post (
 	sp_no NUMBER NOT NULL, /* 글번호 */
 	sp_category VARCHAR2(20) NOT NULL, /* 카테고리 */
 	sp_title VARCHAR2(100) NOT NULL, /* 글제목 */
-	sp_content VARCHAR2(800) NOT NULL, /* 내용 */
+	sp_content VARCHAR2(1000) NOT NULL, /* 내용 */
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
 	sp_time DATE, /* 작성시간 */
 	sp_filename VARCHAR2(100), /* 파일이름 */
