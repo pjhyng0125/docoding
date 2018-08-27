@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="select_sellpost" resultClass="sellpost">
-		select sp_no,sp_category,sp_title,sp_content,id,sp_time,sp_filename,sp_count from sell_post
+		select sp_no,sp_category,sp_title, substr(sp_content,1,40) || '...' "sp_content",id,sp_time,sp_filename,sp_count from sell_post
 	</select>
 	
 <!-- 박형진 -->
