@@ -56,20 +56,22 @@ public class MemberAction extends Action{
 		
 		}else if(action.equals("select_findPw")) {
 			Map<String, String> map=new HashMap<>();
-			String birth=request.getParameter("birth");
-			String phone=request.getParameter("phone");
 			String id1=request.getParameter("id");
-			map.put("birth",birth);
-			map.put("phone",phone);
+			String phone=request.getParameter("phone");
+			String birth=request.getParameter("birth");
 			map.put("id",id1);
-			System.out.println(birth);
-			System.out.println(phone);
+			map.put("phone",phone);
+			map.put("birth",birth);
 			System.out.println(id1);
+			System.out.println(phone);
+			System.out.println(birth);
 			String find_pw=dao.select_findPw(map);
-			response.getWriter().write(find_pw);
+			if(find_pw != null && find_pw.length()>0)
+				response.getWriter().write("true");
 		}
 		
 		return forward;
+		
 	}
 }
 	

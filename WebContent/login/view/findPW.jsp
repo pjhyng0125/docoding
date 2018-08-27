@@ -23,7 +23,10 @@
 					birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val()
 				},
 				success : function(data) {
-					alert(data);
+					if(data=="true")
+						location.href= "newPW.jsp";
+					else
+						alert('가입된 정보가 없습니다!');
 				}
 			});
 		});
@@ -40,7 +43,8 @@
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">아이디<font
 					color="red">*</font></td>
-				<td colspan="3"><input type="text" name="id" style="width: 371px; height: 51px">
+				<td colspan="3">
+				<input type="text" name="id" id="id" style="width: 371px; height: 51px">
 			</tr>
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">휴대폰<font
@@ -60,8 +64,8 @@
 			<tr>
 				<td align="center" width="100" bgcolor="#b8d6d8">생년월일<font
 					color="red">*</font></td>
-				<td colspan="3"><select name="year" id="year"
-					style="height: 30px; width: 61px">
+				<td colspan="3">
+				<select name="year" id="year" style="height: 30px; width: 61px">
 						<%
 							for (int i = 2018; i >= 1900; i--) {
 						%>
@@ -95,7 +99,7 @@
 				</select>일
 		</table>
 		<br> <br> <br> 
-		<input type="submit" value="찾기" style="background-color: orange; width: 69px; height: 38px;">
+		<input type="button" value="찾기" id="findPw" style="background-color: orange; width: 69px; height: 38px;">
 		<input type="button" value="취소" onclick="window.close()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </body>

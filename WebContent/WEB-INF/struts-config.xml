@@ -193,11 +193,11 @@
 	<action path="/joinAction" type="com.encore.action.MemberAction">
 		<forward name="successJ" path="/login/view/join.jsp"></forward>
 	</action>
-	<action path="/findIdAction" type="com.encore.action.MemberAction"> 
+	<!-- <action path="/findIdAction" type="com.encore.action.MemberAction"> 
 		<forward name="successI" path="/login/view/findID.jsp"></forward> 
-	</action> 
+	</action>  -->
 	<action path="/findPwAction" type="com.encore.action.MemberAction">
-		<forward name="successP" path="/login/view/findPW.jsp"></forward>
+		<forward name="successP" path="/login/view/newPW.jsp"></forward>
 	</action>
 	<!-- 민지환 login action 설정 종료 -->
 	

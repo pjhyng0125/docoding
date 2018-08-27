@@ -20,7 +20,10 @@
 					email : $('#mail1').val() + "@" + $('#mail2').val()
 				},
 				success : function(data) {
-					alert(data);
+					alert("아이디는 "+data+" 입니다!");
+				},
+				error : function(data){
+					alert("가입된 정보가 없습니다!");
 				}
 			});
 		});
@@ -54,7 +57,7 @@
 			</tr>
 		</table>
 		<br> <br> <br> 
-		<input type="submit" value="찾기" id="findId" style="background-color: orange; width: 69px; height: 38px;">
+		<input type="button" value="찾기" id="findId" style="background-color: orange; width: 69px; height: 38px;">
 		<input type="button" value="취소" onclick="window.close()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </body>
