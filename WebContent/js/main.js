@@ -24,12 +24,4 @@
     
     
     //---------------------------- searchBar 시작 ---------------------
-	$(function() {
-		var languages = [ "Java","JavaScript","sql","xml","DB","DataBase","jQuery"];
-		
-
-		$("#my-language").autocomplete({
-			source : languages
-		});
-	});
     

@@ -38,10 +38,10 @@
 		cellspacing="0">
 		<thead>
 			<tr>
-				<th width="15%">카테고리</th>
+				<th width="20%">카테고리</th>
 				<th width="50%">제목</th>
 				<th width="10%">작성자</th>
-				<th width="15%">작성일</th>
+				<th width="10%">작성일</th>
 				<th width="10%">조회수</th>
 			</tr>
 		</thead>

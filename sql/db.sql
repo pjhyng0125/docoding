@@ -126,7 +126,7 @@ ALTER TABLE sell_reply
 /* 새 테이블6 */
 CREATE TABLE sell_assign (
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
-	account_num VARCHAR2(20), /*계좌번호*/
+	account_num VARCHAR2(30), /*계좌번호*/
 	sa_time DATE, /* 인증된시간 */
 	sell_count NUMBER default 0,
 	profit_sell NUMBER default 0

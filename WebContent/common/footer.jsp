@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>footer</title>
 </head>
 <%--footer.jsp --%>
 <body>
-<!-- 	<div class="footer text-left">
-            <a href="" title="High Quality Wordpress theme for personal blogs">회사명
-               : (주)엔코아 | 대표이사 : 이화식 | 사업자 등록번호 : 229-81-30104 | 통신판매업신고번호 :
-               2017-서울서초-1653 <br> TEL : +82-2-754-7302 FAX : +82-2-754-7303
-               E-Mail : playdata@playdata.io <br> &copy;EN-CORE GROUP ALL
-               RIGHT RESERVED
-            </a>
-      </div> -->
-</body>
+<footer class="footer">
+<div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://playdata.io"> playdata.io</a>
+    </div>
+</footer>
 </body>
 </html>

@@ -13,7 +13,14 @@
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+var login_id = "${login_id}";
+if(login_id==undefined || login_id==""){
+	location.href = "/docoding/main.do";
+	alert('로그인이 필요합니다!');
+}
+
 $(function(){
+	
 	$('#post').click(function(){
 		//게시물 입력 + 파일 업로드
 		$.ajax({
@@ -36,27 +43,40 @@ $(function(){
 			}
 		});
 	});
+	$('#cancel').click(function(){
+		location.href="/docoding/post/freeList.do?postName=free";
+	});
 });
 </script>
 </head>
 <body>
 <%-- freeSell.jsp: 자유 게시물 입력 화면 --%>
-inputFree.jsp
+<br><br>
+<div class="container text-center">
+<div class="row">
+<div class="col-md-8 " style="float: none; margin: 0 auto;">
 <input type="hidden" id="action" value="insert_freepost">
 <input type="hidden" id="id" value=<%=session.getAttribute("login_id")%> >
-	<input type="text" id="title" name="title" placeholder="제목을 입력하세요" required>
+<div class="float-left"><font size="5">&nbsp;&nbsp;자유게시판</font></div>
+<div class="form-inline float-right">
+	<input type="text" id="title" name="title" size="35" placeholder="제목을 입력하세요" required>
+	&nbsp;&nbsp;
 	<select id="category" name="category">
 		<option>선택</option>
-		<option>java</option>
+		<option>Java</option>
 		<option>DB</option>
-		<option>javascript</option>
-		<option>jsp</option>
+		<option>Javascript</option>
+		<option>JSP</option>
 		<option>jQuery</option>
 	</select>
-	<input type="button" id="post" value="발행">
-	<input type="button" id="cancel" value="취소"><br>
+	&nbsp;&nbsp;
+	<input class="btn btn-default" type="button" id="post" value="등록">&nbsp;&nbsp;
+	<input class="btn btn-default" type="button" id="cancel" value="취소">&nbsp;&nbsp;</div>
 	<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요" required></textarea><br>
-	<button id="admin"><a href="/docoding/admin.do">관리자 화면</a></button><br>
-	<button id="admin"><a href="/docoding/input.do">판매 게시물 입력</a></button><br>
+	<!-- <button id="admin"><a href="/docoding/admin.do">관리자 화면</a></button><br>
+	<button id="admin"><a href="/docoding/input.do">판매 게시물 입력</a></button><br> -->
+	</div>
+	</div>
+	</div>
 </body>
 </html>

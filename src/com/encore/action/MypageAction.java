@@ -34,7 +34,26 @@ public class MypageAction extends Action {
 		switch (pageAction) {
 		// 비밀번호 확인
 		// 명령어와 비밀번호를 보내려면 맵을 보내야할 같다.
-		
+		case "print":
+			String login_id=request.getParameter("login_id");
+			System.out.println("login_id:"+login_id);
+			if(login_id==null) {
+				response.getWriter().write("로그인이 필요합니다");
+			}else {
+				int sell=dao.select_sp_id(login_id);
+				int buy=dao.select_bp_id(login_id);
+				int cash=dao.select_m_cash(login_id);
+				
+				
+				request.setAttribute("cash", cash);
+				request.setAttribute("sell", sell);
+				request.setAttribute("buy", buy);
+				
+				System.out.println("cash:"+cash+" sell:"+sell+" buy:"+buy);
+				response.getWriter().write(cash+","+sell+","+buy);
+			}
+			forward=null;
+			break;
 		case "basic":
 			
 			HashMap<String, String> basic_map = dao.select_basic(id);

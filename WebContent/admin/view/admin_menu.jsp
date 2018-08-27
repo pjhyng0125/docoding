@@ -18,7 +18,7 @@
 	<li><a href="/docoding/sell.do">판매 게시물</a></li>
 	<li><a href="/docoding/free.do">자유 게시물</a></li>
 	<li><a href="/docoding/autho.do">판매자 인증</a></li>
-	<li><a href="/docoding/main.do">메인화면</a></li>	
+	<li><a href="/docoding/main.do">로그아웃</a></li>	
 </ul>
 	<div id="d1"></div>
 </body>

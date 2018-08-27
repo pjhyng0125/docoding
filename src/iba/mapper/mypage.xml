@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd" >
 <sqlMap namespace="mypage">
+	<select id="select_m_cash" parameterClass="String" resultClass="int">
+		select cash from member
+		where id=#id#
+	</select>
+	<select id="select_bp_id" parameterClass="String" resultClass="int">
+		select count(*) from buy_post
+		where bp_id=#id#
+	</select>
+	<select id="select_sp_id" parameterClass="String" resultClass="int">
+		select count(*) from sell_post
+		where id=#id#
+	</select>
+	<select id="select_sa_id" parameterClass="String" resultClass="int">
+		select count(*) from sell_assign
+		where id=#id#
+	</select>
 	
 	<select id="select_basic" parameterClass="String" resultClass="HashMap">
 		select to_char(m_time,'yyyy-mm-dd') "m_time", to_char(cash) "cash"

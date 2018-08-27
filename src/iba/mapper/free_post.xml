@@ -45,6 +45,7 @@ from (select fp_no, fp_category, fp_title, fp_content,id, fp_time,fp_count, rown
 		from free_post
 		where fp_no=#no#
 	</select>
+	
 	<select id="selectTotalPage" parameterClass="java.util.Map"
 		resultClass="int">
 		select ceil((select count(*) from free_post
@@ -61,4 +62,15 @@ from (select fp_no, fp_category, fp_title, fp_content,id, fp_time,fp_count, rown
 	<delete id="deletePost" parameterClass="int">
 	delete from free_post where fp_no=#no#
 	</delete>
+	
+	<!-- 게시자 아이디 확인 -->
+<select id="selectFpId" parameterClass="int" resultClass="String">
+	select id from free_post where fp_no=#no#
+</select>
+
+<!--게시물 조회수 추가-->
+<update id="updateSelectCnt" parameterClass="java.util.Map">
+update free_post set fp_count = #fp_count# where fp_no=#fp_no#
+</update>
+
 </sqlMap>

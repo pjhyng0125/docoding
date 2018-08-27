@@ -4,12 +4,6 @@
 <%--contentReply.jsp --%>
 
 <table id="commentTable" class="table table-condensed">
-	<!-- 댓글 예시 -->
-	<tr>
-		<td colspan=2><strong id="replyId">홍길동</strong>&nbsp;&nbsp;<a
-			style="cursor: pointer;" name="delReply"><font color="red">삭제</font></a>
-			<p>여기는 댓글 내용입니다.</p></td>
-	</tr>
 	<c:choose>
 		<c:when test="${sellReply!=null }">
 			<c:forEach items="${sellReply }" var="reply" >

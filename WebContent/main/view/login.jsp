@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%-- login.jsp --%>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <style>
+<style>
 	a:hover{text-decoration: none; color: blue;}
 	
 	.card-body{
@@ -12,6 +13,12 @@
 	   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	   border-radius:20px;
 	   }
+	   
+	.lo_b{
+		background-color: #00498c;
+		border-radius: 10px;
+		color: white;
+	}
 	 
 	</style>
  <script>
@@ -48,6 +55,7 @@
 					}
 					
 				});
+				window.location.reload();
 			}
 		});	
 		
@@ -66,7 +74,7 @@
 <table cellpadding="5">
 	<tr>
 		<td><input type="text" placeholder="아이디" name="userid" required></td>
-		<td rowspan="2"><input type="button" name="login" value="로그인" ></td>
+		<td rowspan="2"><input type="button" name="login" class="lo_b" value="로그인" ></td>
 	</tr>
 	<tr>
 		<td><input type="password" placeholder="비밀번호" name="userpass" required></td>

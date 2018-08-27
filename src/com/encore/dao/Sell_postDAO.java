@@ -96,6 +96,16 @@ public class Sell_postDAO {
 		}
 		return false;
 	}
+	// 해당 게시물 구매여부 확인
+	public boolean selectBuyPost(Map<String,Object> map) {
+		try {
+			int t = (int) smc.queryForObject("sp.selectBuyPost",map);
+			if(t==1) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 	
 	// 구매자 등록
 	public boolean insertBuyPost(Buy_post bp) {
@@ -106,5 +116,48 @@ public class Sell_postDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	//게시물 조회수 증가
+	public boolean updateSelectCnt(Map<String, Object> map) {
+		try {
+			int t = smc.update("sp.updateSelectCnt",map);
+			if(t>0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	//게시자 아이디 확인
+	public String selectSpId(int no) {
+		try {
+			return (String) smc.queryForObject("sp.selectSpId",no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//판매자 인증 확인
+	public String checkAssign(String id) {
+		try {
+			int t = (int) smc.queryForObject("sp.checkAssign",id);
+			if(t==1) return "true";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "false";
+	}
+	
+	//검색기능
+	public List<Sell_post> searchPost(String sp_title) {
+		List<Sell_post> list=null;
+		try {
+			list = smc.queryForList("sp.searchPost", sp_title);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

@@ -35,24 +35,23 @@
 	<hr>
 </nav>
 <div>
-	<table class="table table-striped table-bordered table-hover"
-		cellspacing="0">
-		<thead>
+	<table class="table table-striped table-bordered table-hover">
+		<thead >
 			<tr>
 				<th width="10%">게시물</th>
 				<th width="20%">제목</th>
-				<th width="43%">내용</th>
+				<th width="40%">내용</th>
 				<th width="10%">작성자</th>
-				<th width="7%">작성일</th>
+				<th width="10%">작성일</th>
 				<th width="10%">조회수</th>
 			</tr>
 		</thead>
-		<tbody id="tbody">
+		<tbody id="tbody" >
 			<c:forEach items="${list }" var="list">
 				<tr>
-					<td><img src="/docoding/image/${list.sp_filename }"
+					<td id="imgTd"><img src="/docoding/upload/${list.sp_filename }"
 						class="img-fluid" alt=""></td>
-					<td id="title">${list.sp_title}</td>
+					<td id="title" >${list.sp_title}</td>
 					<td>${list.sp_content }</td>
 					<td id="sp_id">${list.id}</td>
 					<td>${list.sp_time}</td>

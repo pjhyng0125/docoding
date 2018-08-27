@@ -17,7 +17,7 @@
 <select id="selectSPAll" resultClass="sellpost"
 	parameterClass="Map">
 <![CDATA[
-select sp_no, sp_category, sp_title, sp_content,id, to_char(sp_time,'YY/MM/DD HH24:MI:SS') as sp_time, sp_filename,sp_count
+select sp_no, sp_category, sp_title, substr(sp_content,1,20) sp_content,id, to_char(sp_time,'YY/MM/DD HH24:MI:SS') as sp_time, sp_filename,sp_count
 from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count, rownum rn 
         from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,sp_count
 		  		 from sell_post
@@ -33,7 +33,7 @@ from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,s
 	)
 	where rn between #start# and #end#
 	<isNotNull property="sp_count">
-		order by sp_count desc
+		order by sp_count desc,sp_no desc
 	</isNotNull>
 	<isNotNull property="sp_time">
 		order by sp_time desc
@@ -72,15 +72,48 @@ from (select sp_no, sp_category, sp_title, sp_content,id, sp_time, sp_filename,s
 	update member set cash = cash-200 where id=#id#
 </update>	
 
-<!-- 구매자 등록(미완) DAO등록 필요-->
+<!-- 해당 게시물 구매여부 확인 -->
+<select id="selectBuyPost" parameterClass="java.util.Map" resultClass="int" >
+select count(*) cnt
+from buy_post
+where bp_id=#bp_id# and sp_no=#sp_no#
+</select>	
+
+<!-- 구매자 등록-->
 <insert id="insertBuyPost" parameterClass="com.encore.vo.Buy_post">
 insert into buy_post (bp_id,sp_no,bp_time)
 values (#bp_id#,#sp_no#,sysdate)
 </insert>
-<!-- 판매 횟수 증가(미완) -->
+
+<!-- 판매 횟수 증가 -->
 <update id="updateSoldCnt" parameterClass="int">
 update sell_post 
 set sold_count = sold_count+1 
 where sp_no=#sp_no#
-</update>	
+</update>
+
+
+<!-- 게시자 아이디 확인 -->
+<select id="selectSpId" parameterClass="int" resultClass="String">
+	select id from sell_post where sp_no=#no#
+</select>
+
+<!--게시물 조회수 추가-->
+<update id="updateSelectCnt" parameterClass="java.util.Map">
+update sell_post set sp_count = #sp_count# where sp_no=#sp_no#
+</update>
+
+<!-- 판매자 인증 확인 -->
+<select id="checkAssign" parameterClass="String" resultClass="int">
+	select count(*) cnt from sell_assign where id=#id#
+</select>
+
+<!-- 검색기능 -->
+<select id="searchPost" parameterClass="String" resultClass="sellpost">
+select sp_category,sp_title 
+from sell_post 
+where sp_title like #sp_title# and rownum between 1 and 5
+order by sp_count desc;
+</select>
+
 </sqlMap>
