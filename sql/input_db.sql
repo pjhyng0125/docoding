@@ -447,22 +447,25 @@ insert into sell_post values (sellpost_seq.nextVal,'JavaScript','페이지이동 관련
 --jquery
 insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery 환경설정 방법','jQuery 환경설정 방법에 대한 스크린샷
 여러 기능 중 ajax 개발에 용이한 자바스크립트 라이브러리 중 하나 ajax외에도 애니메이트, 이벤트 등을 처리할 수 있다
-다운로드 부터 jsp파일에 jQuery적용하는 방법까지 첨부하였습니다','encore',sysdate,'jquery_1.jsp',0,0);
+다운로드 부터 jsp파일에 jQuery적용하는 방법까지 첨부하였습니다','encore',sysdate,'jquery_1.png',0,0);
 
 insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery를 통한 ajax','jQuery 장점 중 하나가 ajax를 편리하게 사용할 수 있다는 점이다 
-jQuery를 통한 ajax사용에 대한 기초적 문법을 기재하였으니 참고하길 바람','encore',sysdate,'jquery_2.jpg',0,0);
+jQuery를 통한 ajax사용에 대한 기초적 문법을 기재하였으니 참고하길 바람','encore',sysdate,'jquery_2.png',0,0);
 
 insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery와 JSON의 동시 활용','jQuery의 ajax를 통해 post방식일 경우 
-JSON타입으로 데이터를  받는 부분에 관해 첨부','encore',sysdate,'jquery_3.jpg',0,0);
+JSON타입으로 데이터를  받는 부분에 관해 첨부','encore',sysdate,'jquery_3.png',0,0);
 
 insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery를 활용한 계산기 프로그램', 
 'jQuery를 이용하여 기초적인 계산기 프로그램을 만들어봄 계산기의 기능은 사칙연산에 한함',
-'encore',sysdate,'jquery_4.jpg',0,0);
+'encore',sysdate,'jquery_4.png',0,0);
 
 insert into sell_post values (sellpost_seq.nextVal,'jQuery','jQuery tiles 사용을 위한 plug in방법', 
 'tiles란, jQuery에서 레이아웃과 비슷한 형식을 말하는데, 하나의 웹브라우저 상에서 공통된 부분이 여러 jsp에 필요할 경우 사용합니다 
 jQuery상에서 tiles를 활용하기 위한 Plug-in 설정들과 tiles를 정의하는 tiles-defs에 관해 예시를 첨부했습니다.',
-'encore',sysdate,'jquery_5.jpg',0,0);
+'encore',sysdate,'jquery_5.png',0,0);
+
+delete from SELL_POST
+where sp_title='제목';
 
 create table sell_ip
 (
