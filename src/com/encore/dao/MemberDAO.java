@@ -47,10 +47,14 @@ public class MemberDAO {
 
 	}
 
-	public String select_findId(String name, String email) throws SQLException {
+	public String select_findId(Map map) throws SQLException {
 
-		return (String) smc.queryForObject("mem.select_findID", name, email);
+		return (String) smc.queryForObject("mem.select_findId", map);
 
+	}
+	
+	public String select_findPw(Map map) throws SQLException{
+		return (String) smc.queryForObject("mem.select_findPw", map);
 	}
 
 	public boolean login(Map<String, String> map) {

@@ -1,6 +1,5 @@
 package com.encore.action;
 
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +25,7 @@ public class MemberAction extends Action{
 		ActionForward forward=null;
 		response.setContentType("text/html; charset=UTF-8");
 		System.out.println(action);
+		boolean flag;
 		if(action.equals("insert_login")) {
 			//로그인 insert
 			Member m = new Member();
@@ -43,15 +43,32 @@ public class MemberAction extends Action{
 				response.getWriter().print("failled");
 			}
 			
-		}else if(action.equals("select_idCheck")) {
-			System.out.println("크크");
-			System.out.println(request.getParameter("checkid"));
-			if(dao.select_idCheck(request.getParameter("checkid"))) {
-				response.getWriter().print("사용불가능");
-			}else {
-				response.getWriter().println("사용가능");
-			}
+		}else if(action.equals("select_findId")) {
+			Map<String, String> map=new HashMap<>();
+			String name=request.getParameter("name");
+			String email=request.getParameter("email");
+			map.put("name",name);
+			map.put("email",email);
+			System.out.println(name);
+			System.out.println(email);
+			String find_id=dao.select_findId(map);
+			response.getWriter().write(find_id);
+		
+		}else if(action.equals("select_findPw")) {
+			Map<String, String> map=new HashMap<>();
+			String birth=request.getParameter("birth");
+			String phone=request.getParameter("phone");
+			String id1=request.getParameter("id");
+			map.put("birth",birth);
+			map.put("phone",phone);
+			map.put("id",id1);
+			System.out.println(birth);
+			System.out.println(phone);
+			System.out.println(id1);
+			String find_pw=dao.select_findPw(map);
+			response.getWriter().write(find_pw);
 		}
+		
 		return forward;
 	}
 }

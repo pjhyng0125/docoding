@@ -16,9 +16,14 @@ $(function(){
 	$('#userId').click(function(){
 		
 		var form = document.userInfo;
-	     
+	    
+		
         if(!form.id.value){
             alert("아이디를 입력하세요.");
+        }
+        
+        else if(form.id.value.length<6 != form.pass.value.length>12){
+        	alert("아이디를 확인해주세요.")
         }
         
         else if(!form.pass.value){
@@ -44,13 +49,18 @@ $(function(){
         
        	else if(!form.cell1.value){
             alert("앞자리를 입력하세요.");
-        }else if(isNaN(form.cell1.value)){
+        
+       	}
+       	
+       	else if(isNaN(form.cell1.value)){
         	alert("숫자만입력해주세요.");
         	}
-                
-        else if(!form.cell2.value){
+       	
+       	else if(!form.cell2.value){
             alert("뒷자리를 입력하세요.");
-         }else if(isNaN(form.cell2.value)){
+         }
+       	
+       	else if(isNaN(form.cell2.value)){
         	 alert("숫자만입력해주세요.");
          }else{
 				$.ajax({	
@@ -63,7 +73,7 @@ $(function(){
 						gender:$('input[name=gender]:checked').val(),
 						birth: $('#year').val()+"/"+$('#month').val()+"/"+$('#day').val(),
 						email: $('#mail1').val()+"@"+$('#mail2').val(), 
-						phone: $('#cell1').val()+"-"+$('#cell2').val()+"-"+$('#cell3').val()
+						phone: $('#cell').val()+"-"+$('#cell1').val()+"-"+$('#cell2').val()
 					},
 					success:function(data){
 						
@@ -75,21 +85,7 @@ $(function(){
 				});//ajax
               }
 	});//버튼 클릭
-	
-	/* $('#idCheck').click(function(){
-		$.ajax({
-			type:"POST",
-			url:"/docoding/joinAction.do",
-		  data:{
-			action:"select_idCheck",
-			checkid:$('#id').val()
-		},
-		success:function(data){
-			alert(data);
-			}
-		});
-		});*/
-		
+			
 		
 		$('#id').keyup(function(){
 			var str=$(this).val();
@@ -122,7 +118,6 @@ $(function(){
 		<br> <br> <b><font size="7" color="gray" face="impact">코딩합니다</font>
 			<font size="7" color="sky blue" face="imapct">회원가입</font></b>
 		<table>
-			<br>
 			<br>
 			<br>
 			<br>

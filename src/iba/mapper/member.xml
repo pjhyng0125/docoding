@@ -43,11 +43,15 @@
 		login_flag='0'
 		where id=#id#
 	</update>
-	<select id="select_findId" parameterClass="String"
-		resultClass="String">
+	<select id="select_findId" parameterClass="map" resultClass="String">
 		select id
 		from member
 		where name = #name# and email = #email#
+	</select>
+	<select id="select_findPw" parameterClass="map" resultClass="String">
+		select pass
+		from member
+		where id = #id# and phone = #phone# and birth = #birth#
 	</select>
 
 </sqlMap>

@@ -41,6 +41,8 @@
 					style="height: 51px; width: 299px"></td>
 			</tr>
 			<tr>
+				<td align="center" width="100" bgcolor="#b8d6d8">E-Mail<font
+					color="red">*</font></td>
 				<td colspan="3"><input type="text" name="mail1" id="mail1"
 					maxlength="50" style="height: 51px;">@<select name="mail2"
 					id="mail2" style="height: 51px; width: 129px">
@@ -52,7 +54,7 @@
 			</tr>
 		</table>
 		<br> <br> <br> 
-		<input type="submit" value="찾기"id="findId" style="background-color: orange; width: 69px; height: 38px;">
+		<input type="submit" value="찾기" id="findId" style="background-color: orange; width: 69px; height: 38px;">
 		<input type="button" value="취소" onclick="window.close()" style="background-color: orange; width: 69px; height: 38px;">
 	</center>
 </body>

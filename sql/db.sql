@@ -14,6 +14,8 @@ drop table manager;
 insert into member values
 ('abcd', '1234', '길동이', '남', '1999-09-09', 'abcd1234@naver.com', '010-1234-5678', '1', '2018-08-16', 1000);
 
+select id, phone, birth from member;
+select * from MEMBER;
 /* 새 테이블 */
 CREATE TABLE member (
 	id VARCHAR2(50) NOT NULL, /* 아이디 */
