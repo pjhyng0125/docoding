@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="select_freepost" resultClass="freepost">
-		select fp_no,fp_category,fp_title,fp_content,id,fp_time,fp_count from free_post
+		select fp_no,fp_category,fp_title,substr(fp_content,1,40) || ' ...' "fp_content",id,fp_time,fp_count from free_post
 	</select>
 	
 	<!-- 박형진 -->	
