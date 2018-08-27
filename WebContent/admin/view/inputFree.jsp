@@ -13,7 +13,14 @@
 </style>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+var login_id = "${login_id}";
+if(login_id==undefined || login_id==""){
+	location.href = "/docoding/main.do";
+	alert('로그인이 필요합니다!');
+}
+
 $(function(){
+	
 	$('#post').click(function(){
 		//게시물 입력 + 파일 업로드
 		$.ajax({

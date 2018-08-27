@@ -23,10 +23,26 @@
 	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
 	crossorigin="anonymous">
 <script type="text/javascript">
+var assign= "${assign}";
+var login_id = "${login_id}";
+
+if(login_id==undefined || login_id==""){
+	alert('로그인이 필요합니다!');
+	location.href = "/docoding/main.do";
+
+}else if(assign!="assign"){
+	alert('판매자 인증이 필요합니다!');
+	location.href = "/docoding/mypage/assign.do";
+}	
+
 $(function(){
+
+	
 	$('#post').click(function(){
 		var form=$('form')[0];
 		var formData=new FormData(form);
+
+		
 		//게시물 입력 + 파일 업로드
 		$.ajax({
 			url:"/docoding/action/admin.do?postName=${param.postName }",

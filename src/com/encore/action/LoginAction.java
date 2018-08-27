@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.encore.dao.MemberDAO;
+import com.encore.dao.MypageDAO;
 import com.encore.vo.Member;
 
 public class LoginAction extends Action {
@@ -56,14 +57,20 @@ public class LoginAction extends Action {
 				if(!login_flag) {//login_flag='0'이면
 					if(dao.update_login_flag(id))
 						System.out.println("user "+id+" login_flag: 0 -> 1");
-				 
+					
 					//session 영역 저장
 					request.setAttribute("flag", flag); 
 					HttpSession session = request.getSession();
 					session.setAttribute("flag", flag);
 					//session 영역에 로그인 idd 저장
 					session.setAttribute("login_id", id);
-				 
+					
+					//session 영역에 판매자 인증 여부 저장
+					MypageDAO mypageDAO = new MypageDAO();
+					if(mypageDAO.check_assign(id)) {
+						session.setAttribute("assign","assign");
+					}
+					
 					forward = mapping.findForward("successL");
 				}//if-dao
 				else {	//login_flag='1'이면 이미 접속중이면
