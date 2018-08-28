@@ -105,6 +105,9 @@ public class MypageAction extends Action {
 		
 			request.setAttribute("pageAction", pageAction);
 			request.setAttribute("msg", dao.assign_seller(id, account_num));
+			if(dao.check_assign(id)) {
+				request.getSession().setAttribute("assign", "assign");				
+			}
 			forward = mapping.findForward("message");
 			break;	
 			
